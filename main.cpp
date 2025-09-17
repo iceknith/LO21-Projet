@@ -2,7 +2,8 @@
 // #define NDEBUG
 
 #include <iostream>
-#include "Tests/tests.h"
+#include "main.hpp"
+#include "Tests/tests.hpp"
 using namespace std;
 
 int main() {
