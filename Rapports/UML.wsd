@@ -1,0 +1,214 @@
+@startuml UML Projet LO21 A25 : Arkropolis
+
+abstract class Hexagone {
+    # indice_tuile : int
+    # texture : image
+    # couleur : int [enum Couleur]
+    # tuileParent : Tuile*
+
+    + get_texture() : image
+    + get_couleur() : int
+    + get_tuile() : Tuile*
+    + get_local_position() : Vector2
+    + peut_etre_placée(map:Map*, position:Vector2) : bool
+    + si_recouverte(joueur_qui_la_recouvre:Joueur*)
+}
+
+abstract class Carrière extends Hexagone {}
+
+abstract class Place extends Hexagone {
+    # etoiles : int
+
+    + get_etoiles() : int
+}
+
+abstract class Quartier extends Hexagone {}
+
+class PlaceBleu extends Place {}
+
+class PlaceJaune extends Place {}
+
+class PlaceRouge extends Place {}
+
+class PlaceVerte extends Place {}
+
+class QuartierBleu extends Quartier {}
+
+class QuartierJaune extends Quartier {}
+
+class QuartierRouge extends Quartier {}
+
+class QuartierVert extends Quartier {}
+
+class CarrièreSimple extends Carrière {
+    + si_recouverte(Joueur*)
+}
+
+class Plateau {
+    - Map<int:Hexagone*>
+
+    + obtenir_hexagone(coordonées:Vector2) : Hexagone*
+    + peut_placer(tuileJeu:TuileJeu*, position:Vector2) : bool
+    + placer(tuileJeu:TuileJeu*, position:Vector2)
+}
+note left : Est un singleton
+Plateau --> "*" Hexagone
+
+class Joueur {
+    # pierres : int
+    # ScoreJoueur : Score*
+    # plateauJoueur : Plateau
+
+    + place_tuile(tuile:Tuile, coordonées:Vector2) : bool
+    + get_score() : int
+    + get_pierres() : int
+    + set_pierres(pierre:int)
+    + ajouter_pierres(pierre:int)
+}
+Plateau <-- Joueur
+
+class IllustreArchitecte extends Joueur {
+    # niveau : int
+    
+    + set_niveau(niveau:int)
+    + get_niveau() : int
+    + jouer(chantier:Tuile)
+    # choisir_tuile(chantier:Tuile*) : Tuile
+    # trouver_emplacement_tuile() : Vector2
+}
+
+abstract class Tuile {
+    - hauteur : int
+    - enfants : Hexagone*
+    - positions_enfants : Vector2*
+    - nombre_enfants : int
+
+    + set_hauteur(hauteur:int)
+    + get_hauteur() : int
+    + get_enfants() : Hexagone*
+    + get_position_enfants() : Vector2*
+    + get_nombre_enfants() : Vector2
+}
+Tuile <--> Hexagone
+
+abstract class TuileDépart extends Tuile {}
+
+abstract class TuileJeu extends Tuile {}
+
+class TuileDépartConcrète extends TuileDépart {}
+
+class TuileJeuConcrète extends TuileJeu {}
+
+abstract class Score {
+    # scoreDécoré : Score*
+    + score(Plateau*) : int 
+}
+Joueur --> Score
+note left : Est un décorateur
+
+class ScoreBleu extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_bleu(plateau:Plateau*) : int
+}
+
+class ScoreJaune extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_jaune(plateau:Plateau*) : int
+}
+
+class ScoreRouge extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_rouge(plateau:Plateau*) : int
+}
+
+class ScoreVert extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_vert(plateau:Plateau*) : int
+}
+
+class ScoreBleuVariante extends Score {
+    + score(plateau:Plateau*) : int
+    - score_bleu_variante(plateau:Plateau*) : int
+}
+
+class ScoreJauneVariante extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_jaune_variante(plateau:Plateau*) : int
+}
+
+class ScoreRougeVariante extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_rouge_variante(plateau:Plateau*) : int
+}
+
+class ScoreVertVariante extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_vert_variante(plateau:Plateau*) : int
+}
+
+abstract class ScoreSoloArchitechte extends Score {
+    # niveau : int
+    + set_niveau(niveau:int)
+    + get_niveau() : int
+}
+
+class ScoreSoloArchitechteBleu extends ScoreSoloArchitechte {
+    + score(plateau:Plateau*) : int 
+    - score_bleu(plateau:Plateau*) : int
+}
+
+class ScoreSoloArchitechteJaune extends ScoreSoloArchitechte {
+    + score(plateau:Plateau*) : int 
+    - score_jaune(plateau:Plateau*) : int
+}
+
+class ScoreSoloArchitechteRouge extends ScoreSoloArchitechte {
+    + score(plateau:Plateau*) : int 
+    - score_rouge(plateau:Plateau*) : int
+}
+
+class ScoreSoloArchitechteVert extends ScoreSoloArchitechte {
+    + score(plateau:Plateau*) : int 
+    - score_vert(plateau:Plateau*) : int
+}
+
+class Deck {
+    - taille : int
+    - tuiles : Tuile*
+
+    + set_nombre_joueurs(nombre_joueurs:int)
+    + set_taille(taille:int)
+    + get_taille() : int
+    + obtenir_tuile() : Tuile
+    + obtenir_tuile(nombre:int) : Tuile*
+}
+Deck --> Tuile
+
+class Chantier {
+    - taille : int
+    - tuiles : Tuile*
+
+    + set_nombre_joueurs(nombre_joueurs:int)
+    + set_taille(taille:int)
+    + get_taille() : int
+    + get_tuiles() : Tuile*
+    + obtenir_tuile(index:int)
+    + ajouter_tuile(tuile:Tuile)
+    + ajouter_tuile(tuile:Tuile*, nombre:int)
+}
+Chantier --> Tuile
+
+class Jeu {
+    # nombre_joueurs : int
+    # joueurs : Joueur*
+    # deck : Deck*
+    # chantier : Chantier*
+
+
+}
+Jeu --> Joueur
+Jeu --> Deck
+Jeu --> Chantier
+note right : Est un singleton
+
+@enduml
