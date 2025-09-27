@@ -5,5 +5,5 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(LO21-Projet main.cpp
         Tests/tests.cpp
-
+        Score.cpp
 )
