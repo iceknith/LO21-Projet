@@ -1,4 +1,4 @@
-@startuml UML Akropolis - Full
+@startuml UML Akropolis - Culled
 
 abstract class Hexagone {
     # indice_tuile : int
@@ -23,26 +23,6 @@ abstract class Place extends Hexagone {
 }
 
 abstract class Quartier extends Hexagone {}
-
-class PlaceBleu extends Place {}
-
-class PlaceJaune extends Place {}
-
-class PlaceRouge extends Place {}
-
-class PlaceVerte extends Place {}
-
-class QuartierBleu extends Quartier {}
-
-class QuartierJaune extends Quartier {}
-
-class QuartierRouge extends Quartier {}
-
-class QuartierVert extends Quartier {}
-
-class CarrièreSimple extends Carrière {
-    + si_recouverte(Joueur*)
-}
 
 class Plateau {
     - Map<int:Hexagone*>
@@ -110,9 +90,6 @@ abstract class TuileDépart extends Tuile {}
 
 abstract class TuileJeu extends Tuile {}
 
-class TuileDépartConcrète extends TuileDépart {}
-
-class TuileJeuConcrète extends TuileJeu {}
 
 abstract class Score {
     # scoreDécoré : Score*
@@ -120,70 +97,10 @@ abstract class Score {
 }
 note left : Est un décorateur
 
-class ScoreBleu extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_bleu(plateau:Plateau*) : int
-}
-
-class ScoreJaune extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_jaune(plateau:Plateau*) : int
-}
-
-class ScoreRouge extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_rouge(plateau:Plateau*) : int
-}
-
-class ScoreVert extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_vert(plateau:Plateau*) : int
-}
-
-class ScoreBleuVariante extends Score {
-    + score(plateau:Plateau*) : int
-    - score_bleu_variante(plateau:Plateau*) : int
-}
-
-class ScoreJauneVariante extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_jaune_variante(plateau:Plateau*) : int
-}
-
-class ScoreRougeVariante extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_rouge_variante(plateau:Plateau*) : int
-}
-
-class ScoreVertVariante extends Score {
-    + score(plateau:Plateau*) : int 
-    - score_vert_variante(plateau:Plateau*) : int
-}
-
 abstract class ScoreSoloArchitechte extends Score {
     # niveau : int
     + set_niveau(niveau:int)
     + get_niveau() : int
-}
-
-class ScoreSoloArchitechteBleu extends ScoreSoloArchitechte {
-    + score(plateau:Plateau*) : int 
-    - score_bleu(plateau:Plateau*) : int
-}
-
-class ScoreSoloArchitechteJaune extends ScoreSoloArchitechte {
-    + score(plateau:Plateau*) : int 
-    - score_jaune(plateau:Plateau*) : int
-}
-
-class ScoreSoloArchitechteRouge extends ScoreSoloArchitechte {
-    + score(plateau:Plateau*) : int 
-    - score_rouge(plateau:Plateau*) : int
-}
-
-class ScoreSoloArchitechteVert extends ScoreSoloArchitechte {
-    + score(plateau:Plateau*) : int 
-    - score_vert(plateau:Plateau*) : int
 }
 
 class Deck {
