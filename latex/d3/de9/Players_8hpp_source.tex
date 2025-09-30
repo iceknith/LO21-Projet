@@ -1,0 +1,56 @@
+\hypertarget{Players_8hpp_source}{}\doxysection{Players.\+hpp}
+\label{Players_8hpp_source}\index{Players.hpp@{Players.hpp}}
+\mbox{\hyperlink{Players_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LO21\_PROJET\_PLAYERS\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LO21\_PROJET\_PLAYERS\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../Score/Score.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../Tuile/Tuile.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../Utils.hpp"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{classJoueur}{Joueur}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}} = 0;}
+\DoxyCodeLine{18     \mbox{\hyperlink{classPlateau}{Plateau}}\& \mbox{\hyperlink{classJoueur_a4a87ca756d8940a1600f1747783ca756}{plateauJoueur}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classJoueur_acf077e39ed48eb1cfd4d58705804d7da}{joueToutSeul}};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueur_ae46d462bc45eddb50bf617f0e3cf18de}{get\_score}}();}
+\DoxyCodeLine{30     \textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueur_aa607c9c7d956052e72968238f8815475}{get\_pierre}}();}
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{classJoueur_a555b03e154cba8df9c50a972fce8d9cc}{set\_pierre}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}});}
+\DoxyCodeLine{34     \textcolor{keywordtype}{void} \mbox{\hyperlink{classJoueur_af76c56726209959ed6ab7df700777884}{ajouter\_pierre}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}});}
+\DoxyCodeLine{36     \mbox{\hyperlink{classPlateau}{Plateau}}\& \mbox{\hyperlink{classJoueur_ac6ea3d78fb52465542bbcf754c0f61a0}{get\_plateau}}();}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classJoueur_aae9e73be0422d26e9f87311a392751ef}{place\_tuile}}(\mbox{\hyperlink{classTuile}{Tuile}} tuile, \mbox{\hyperlink{classVector2}{Vector2}} coordonées);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{classJoueur_a8cba4c0232493e0741c9f2d6483f1edd}{jouer}}(\mbox{\hyperlink{classTuile}{Tuile}}* chantier);}
+\DoxyCodeLine{50 \};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{56 \textcolor{keyword}{class }\mbox{\hyperlink{classJoueurSimple}{JoueurSimple}} : \textcolor{keyword}{public} \mbox{\hyperlink{classJoueur}{Joueur}} \{}
+\DoxyCodeLine{57 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{59     \mbox{\hyperlink{classScore}{Score}}* \mbox{\hyperlink{classJoueurSimple_a245ab51c4ea9aa8be59a4149efdf475d}{scoreJoueur}};}
+\DoxyCodeLine{61     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classJoueurSimple_a8ff329e57e48b14547ba4af0a8249a5f}{joueToutSeul}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{62 \textcolor{keyword}{public}:}
+\DoxyCodeLine{64     \textcolor{keywordtype}{int} \mbox{\hyperlink{classJoueurSimple_a1ef90909ace8482bd91985b322ba83e1}{get\_score}}();}
+\DoxyCodeLine{65 \};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{class }\mbox{\hyperlink{classIllustreArchitecte}{IllustreArchitecte}} : \textcolor{keyword}{public} \mbox{\hyperlink{classJoueur}{Joueur}} \{}
+\DoxyCodeLine{68 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{70     \mbox{\hyperlink{classScoreSoloArchitechte}{ScoreSoloArchitechte}}* \mbox{\hyperlink{classIllustreArchitecte_af4bad737dc65413a75f4674ca80bc2d1}{score}};}
+\DoxyCodeLine{72     \textcolor{keywordtype}{int} \mbox{\hyperlink{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}{niveau}} = 0;}
+\DoxyCodeLine{74     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classIllustreArchitecte_a660c3eb65517ea057834d19a3f7e49e5}{joueToutSeul}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{76     \mbox{\hyperlink{classTuile}{Tuile}} \mbox{\hyperlink{classIllustreArchitecte_ab0a188d98a5c95f4e9d13cd3e70b3f56}{choisir\_tuile}}(\mbox{\hyperlink{classTuile}{Tuile}}* chantier);}
+\DoxyCodeLine{78     \mbox{\hyperlink{classVector2}{Vector2}} \mbox{\hyperlink{classIllustreArchitecte_ae5308f1a4934d95bf814fb5ab9dbf3b2}{trouver\_emplacement\_tuile}}(\mbox{\hyperlink{classTuile}{Tuile}}\& tuile);}
+\DoxyCodeLine{79 \textcolor{keyword}{public}:}
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{classIllustreArchitecte_ab2051646d5c11c4cc02aa705b6a16f70}{set\_niveau}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}{niveau}});}
+\DoxyCodeLine{83     \textcolor{keywordtype}{int} \mbox{\hyperlink{classIllustreArchitecte_abdcb764e5bd558db1d3902667f51d8e8}{get\_niveau}}();}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} \mbox{\hyperlink{classIllustreArchitecte_ab1da98a95b21f3b5d5d8581cbb008459}{jouer}}(\mbox{\hyperlink{classTuile}{Tuile}}* chantier);}
+\DoxyCodeLine{86 \};}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//LO21\_PROJET\_PLAYERS\_HPP}}
+
+\end{DoxyCode}

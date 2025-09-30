@@ -1,0 +1,158 @@
+\hypertarget{classHexagone}{}\doxysection{Hexagone Class Reference}
+\label{classHexagone}\index{Hexagone@{Hexagone}}
+
+
+La classe \mbox{\hyperlink{classHexagone}{Hexagone}} \+: le bloc de base de Akropolis.  
+
+
+
+
+{\ttfamily \#include $<$Hexagone.\+hpp$>$}
+
+Inheritance diagram for Hexagone\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d4/dfc/classHexagone}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHexagone_a037ba3e6574078ba1332d51ed565aad2}{Hexagone}} ()=default
+\item 
+\mbox{\hyperlink{classHexagone_a3ff1e331e0a48408a7c2fe616b13a4f0}{$\sim$\+Hexagone}} ()=default
+\item 
+int \mbox{\hyperlink{classHexagone_a0036f077ae47abd88202706bd97f1c8f}{get\+\_\+couleur}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la couleur de cet hexagone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuile}{Tuile}} $\ast$ \mbox{\hyperlink{classHexagone_ae597040b87e82bf37b15e91222984d43}{get\+\_\+tuile}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la tuile qui contient cet hexagone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector2}{Vector2}} \mbox{\hyperlink{classHexagone_abb4ed9632dc26f633edfd9898e736204}{get\+\_\+local\+\_\+position}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la position locale de cet hexagone dans la tuile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classHexagone_a255f6c453d9be13a55c12c2f4c10165e}{get\+\_\+hauteur}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la hauteur de cet hexagone. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classHexagone_a31f4be9a6a9dc0ae8d406ea1833ee4bc}{peut\+\_\+etre\+\_\+placee}} (\mbox{\hyperlink{classPlateau}{Plateau}} $\ast$map, \mbox{\hyperlink{classVector2}{Vector2}} position) const
+\begin{DoxyCompactList}\small\item\em Retourne si l\textquotesingle{}hexagone peut être placé à cet endroit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHexagone_aa6b25e5b33d783cc7e2a19d1edced90d}{quand\+\_\+recouvert}} (\mbox{\hyperlink{classJoueur}{Joueur}} $\ast$joueur\+\_\+qui\+\_\+recouvre) const
+\begin{DoxyCompactList}\small\item\em Fonction appelée dès que l\textquotesingle{}hexagone est recouvert. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classHexagone_ac9e89999627ba4d5c3e86b5180bb5a4f}{get\+\_\+displayed\+\_\+text}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le texte affichée au centre de l\textquotesingle{}hexagone affichée dans la Console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Utils_8hpp_a892c50cc8f60ade01ab459df925252ce}{Couleurs\+Akropolis}} \mbox{\hyperlink{classHexagone_a4caf71f85b23de2606ca5d10b0d52bf5}{couleur}}
+\begin{DoxyCompactList}\small\item\em La couleur de cet hexagone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuile}{Tuile}} $\ast$ \mbox{\hyperlink{classHexagone_a236d0fe3282613ef1abeeed69be7bacc}{tuile\+Parent}}
+\begin{DoxyCompactList}\small\item\em La tuile qui contient l\textquotesingle{}hexagone. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classHexagone_aee88d167803f2d9d487fb1490fd1f21f}{indice\+\_\+tuile}}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}indice de cet hexagone, dans tuile\+Parent. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe \mbox{\hyperlink{classHexagone}{Hexagone}} modelise un hexagone, qui pourra être placé par un \mbox{\hyperlink{classJoueur}{Joueur}} sur un \mbox{\hyperlink{classPlateau}{Plateau}}. Il s\textquotesingle{}agit d\textquotesingle{}une classe abstraite, qui est héritée par d\textquotesingle{}autres classes Comme \mbox{\hyperlink{classPlace}{Place}}, \mbox{\hyperlink{classCarriere}{Carriere}} ou \mbox{\hyperlink{classQuartier}{Quartier}} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHexagone_a037ba3e6574078ba1332d51ed565aad2}\label{classHexagone_a037ba3e6574078ba1332d51ed565aad2}} 
+\index{Hexagone@{Hexagone}!Hexagone@{Hexagone}}
+\index{Hexagone@{Hexagone}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{Hexagone()}{Hexagone()}}
+{\footnotesize\ttfamily Hexagone\+::\+Hexagone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classHexagone_a3ff1e331e0a48408a7c2fe616b13a4f0}\label{classHexagone_a3ff1e331e0a48408a7c2fe616b13a4f0}} 
+\index{Hexagone@{Hexagone}!````~Hexagone@{$\sim$Hexagone}}
+\index{````~Hexagone@{$\sim$Hexagone}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{$\sim$Hexagone()}{~Hexagone()}}
+{\footnotesize\ttfamily Hexagone\+::$\sim$\+Hexagone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHexagone_a0036f077ae47abd88202706bd97f1c8f}\label{classHexagone_a0036f077ae47abd88202706bd97f1c8f}} 
+\index{Hexagone@{Hexagone}!get\_couleur@{get\_couleur}}
+\index{get\_couleur@{get\_couleur}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{get\_couleur()}{get\_couleur()}}
+{\footnotesize\ttfamily int Hexagone\+::get\+\_\+couleur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classHexagone_ac9e89999627ba4d5c3e86b5180bb5a4f}\label{classHexagone_ac9e89999627ba4d5c3e86b5180bb5a4f}} 
+\index{Hexagone@{Hexagone}!get\_displayed\_text@{get\_displayed\_text}}
+\index{get\_displayed\_text@{get\_displayed\_text}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{get\_displayed\_text()}{get\_displayed\_text()}}
+{\footnotesize\ttfamily string Hexagone\+::get\+\_\+displayed\+\_\+text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retourne le texte affichée au centre de l\textquotesingle{}hexagone affichée dans la Console, est utilisée dans \mbox{\hyperlink{classAffichageConsole}{Affichage\+Console}}. Et est surchargée à chaque implémentation concrète de l\textquotesingle{}\mbox{\hyperlink{classHexagone}{Hexagone}}. \begin{DoxyReturn}{Returns}
+Le texte à afficher au centre de l\textquotesingle{}hexagone dans l\textquotesingle{}affichage console 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classHexagone_a255f6c453d9be13a55c12c2f4c10165e}\label{classHexagone_a255f6c453d9be13a55c12c2f4c10165e}} 
+\index{Hexagone@{Hexagone}!get\_hauteur@{get\_hauteur}}
+\index{get\_hauteur@{get\_hauteur}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{get\_hauteur()}{get\_hauteur()}}
+{\footnotesize\ttfamily int Hexagone\+::get\+\_\+hauteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+La hauteur de cet hexagone, qui est obtenu à partir de la hauteur de la tuile qui le contient 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classHexagone_abb4ed9632dc26f633edfd9898e736204}\label{classHexagone_abb4ed9632dc26f633edfd9898e736204}} 
+\index{Hexagone@{Hexagone}!get\_local\_position@{get\_local\_position}}
+\index{get\_local\_position@{get\_local\_position}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{get\_local\_position()}{get\_local\_position()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector2}{Vector2}} Hexagone\+::get\+\_\+local\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classHexagone_ae597040b87e82bf37b15e91222984d43}\label{classHexagone_ae597040b87e82bf37b15e91222984d43}} 
+\index{Hexagone@{Hexagone}!get\_tuile@{get\_tuile}}
+\index{get\_tuile@{get\_tuile}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{get\_tuile()}{get\_tuile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}} $\ast$ Hexagone\+::get\+\_\+tuile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classHexagone_a31f4be9a6a9dc0ae8d406ea1833ee4bc}\label{classHexagone_a31f4be9a6a9dc0ae8d406ea1833ee4bc}} 
+\index{Hexagone@{Hexagone}!peut\_etre\_placee@{peut\_etre\_placee}}
+\index{peut\_etre\_placee@{peut\_etre\_placee}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{peut\_etre\_placee()}{peut\_etre\_placee()}}
+{\footnotesize\ttfamily bool Hexagone\+::peut\+\_\+etre\+\_\+placee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlateau}{Plateau}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{classVector2}{Vector2}}}]{position }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Un pointeur vers le plateau dans lequel on va vouloir placer l\textquotesingle{}hexagone \\
+\hline
+{\em position} & Un vecteur 2d qui donne la position à laquelle on va vouloir placer l\textquotesingle{}hexagone /!\textbackslash{} Attention /!\textbackslash{}, cette fonction ne dit pas si l\textquotesingle{}emplacement est un emplacemen valide, mais elle va dire (à partir d\textquotesingle{}un emplacement génériquement valide), si on peut placer cet hexagone spécifique, à cet endroit. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si l\textquotesingle{}hexagone peut être placé à cet endroit. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classHexagone_aa6b25e5b33d783cc7e2a19d1edced90d}\label{classHexagone_aa6b25e5b33d783cc7e2a19d1edced90d}} 
+\index{Hexagone@{Hexagone}!quand\_recouvert@{quand\_recouvert}}
+\index{quand\_recouvert@{quand\_recouvert}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{quand\_recouvert()}{quand\_recouvert()}}
+{\footnotesize\ttfamily void Hexagone\+::quand\+\_\+recouvert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classJoueur}{Joueur}} $\ast$}]{joueur\+\_\+qui\+\_\+recouvre }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em joueur\+\_\+qui\+\_\+recouvre} & un pointeur vers le \mbox{\hyperlink{classJoueur}{Joueur}} qui recouvre la tuile. Est utilisé pour modifier des attributs du joueur. Cette fonction est appelée dès que l\textquotesingle{}hexagone est recouvert. Elle sert notemment à la classe Carrière à ajouter une pierre au joureur. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classHexagone_a4caf71f85b23de2606ca5d10b0d52bf5}\label{classHexagone_a4caf71f85b23de2606ca5d10b0d52bf5}} 
+\index{Hexagone@{Hexagone}!couleur@{couleur}}
+\index{couleur@{couleur}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{Utils_8hpp_a892c50cc8f60ade01ab459df925252ce}{Couleurs\+Akropolis}} Hexagone\+::couleur\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classHexagone_aee88d167803f2d9d487fb1490fd1f21f}\label{classHexagone_aee88d167803f2d9d487fb1490fd1f21f}} 
+\index{Hexagone@{Hexagone}!indice\_tuile@{indice\_tuile}}
+\index{indice\_tuile@{indice\_tuile}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{indice\_tuile}{indice\_tuile}}
+{\footnotesize\ttfamily int Hexagone\+::indice\+\_\+tuile\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classHexagone_a236d0fe3282613ef1abeeed69be7bacc}\label{classHexagone_a236d0fe3282613ef1abeeed69be7bacc}} 
+\index{Hexagone@{Hexagone}!tuileParent@{tuileParent}}
+\index{tuileParent@{tuileParent}!Hexagone@{Hexagone}}
+\doxysubsubsection{\texorpdfstring{tuileParent}{tuileParent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}}$\ast$ Hexagone\+::tuile\+Parent\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Hexagone_8hpp}{Hexagone.\+hpp}}\item 
+\mbox{\hyperlink{Hexagone_8cpp}{Hexagone.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+\hypertarget{classScore}{}\doxysection{Score Class Reference}
+\label{classScore}\index{Score@{Score}}
+
+
+Classe de \mbox{\hyperlink{classScore}{Score}}, utilisée pour calculer le score d\textquotesingle{}un joueur à partir d\textquotesingle{}un plateau.  
+
+
+
+
+{\ttfamily \#include $<$Score.\+hpp$>$}
+
+Inheritance diagram for Score\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{d7/d48/classScore}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScore_aa34a5054236b40a6de262f1251e05f2c}{Score}} ()=default
+\item 
+\mbox{\hyperlink{classScore_aac9a421717543d27245942dbe36ebff2}{Score}} (\mbox{\hyperlink{classScore}{Score}} $\ast$\mbox{\hyperlink{classScore_a3b57d7afaf21a727c6637b319ae5b675}{score\+Decore}})
+\item 
+virtual \mbox{\hyperlink{classScore_aaff2e45637fcb22eb3a85ff2394a649c}{$\sim$\+Score}} ()=default
+\item 
+virtual int \mbox{\hyperlink{classScore_af5bce9896da09c955652894163208a90}{score}} (\mbox{\hyperlink{classPlateau}{Plateau}} $\ast$plateau)
+\begin{DoxyCompactList}\small\item\em La fonction de calcul de \mbox{\hyperlink{classScore}{Score}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScore}{Score}} $\ast$ \mbox{\hyperlink{classScore_a3b57d7afaf21a727c6637b319ae5b675}{score\+Decore}} = nullptr
+\begin{DoxyCompactList}\small\item\em Le score décoré \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe de \mbox{\hyperlink{classScore}{Score}}, utilisée pour calculer le score d\textquotesingle{}un joueur à partir d\textquotesingle{}un plateau Est une classe abstraite, mais également un décorateur. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScore_aa34a5054236b40a6de262f1251e05f2c}\label{classScore_aa34a5054236b40a6de262f1251e05f2c}} 
+\index{Score@{Score}!Score@{Score}}
+\index{Score@{Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{Score()}{Score()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Score\+::\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classScore_aac9a421717543d27245942dbe36ebff2}\label{classScore_aac9a421717543d27245942dbe36ebff2}} 
+\index{Score@{Score}!Score@{Score}}
+\index{Score@{Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{Score()}{Score()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Score\+::\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classScore}{Score}} $\ast$}]{score\+Decore }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classScore_aaff2e45637fcb22eb3a85ff2394a649c}\label{classScore_aaff2e45637fcb22eb3a85ff2394a649c}} 
+\index{Score@{Score}!````~Score@{$\sim$Score}}
+\index{````~Score@{$\sim$Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{$\sim$Score()}{~Score()}}
+{\footnotesize\ttfamily virtual Score\+::$\sim$\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScore_af5bce9896da09c955652894163208a90}\label{classScore_af5bce9896da09c955652894163208a90}} 
+\index{Score@{Score}!score@{score}}
+\index{score@{score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{score()}{score()}}
+{\footnotesize\ttfamily virtual int Score\+::score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlateau}{Plateau}} $\ast$}]{plateau }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classScoreSoloArchitechteBleu_a5abb33a06bf37bb8301fd5b0b77a31f0}{Score\+Solo\+Architechte\+Bleu}}, \mbox{\hyperlink{classScoreSoloArchitechteRouge_ad5249f020351b950f627cfb931c83d90}{Score\+Solo\+Architechte\+Rouge}}, \mbox{\hyperlink{classScoreSoloArchitechteJaune_ab26290d2ee803cc5ba336bbd4ef7fcc8}{Score\+Solo\+Architechte\+Jaune}}, \mbox{\hyperlink{classScoreSoloArchitechteVert_a9329fafeff2d638ff6dc3d2d6a3547a5}{Score\+Solo\+Architechte\+Vert}}, \mbox{\hyperlink{classScoreSoloArchitechteViolet_af7680e6888bf0794a4bb833a8caf8bc7}{Score\+Solo\+Architechte\+Violet}}, \mbox{\hyperlink{classScoreBleu_a65cfc3e8500df00b031addbbdfff630a}{Score\+Bleu}}, \mbox{\hyperlink{classScoreRouge_a0028523f8fb9726bbb6281a517e939bc}{Score\+Rouge}}, \mbox{\hyperlink{classScoreVert_ab85c0b19f15a6fa3549abfd2fc9e3b31}{Score\+Vert}}, \mbox{\hyperlink{classScoreViolet_ab2092ed478073b982595c9d8ae3e3715}{Score\+Violet}}, \mbox{\hyperlink{classScoreJaune_a75beecece2719f8031d784410a65bf01}{Score\+Jaune}}, \mbox{\hyperlink{classScoreBleuVariante_a888de39aa434fd433051d7358c618d7d}{Score\+Bleu\+Variante}}, \mbox{\hyperlink{classScoreRougeVariante_a128febc1539f960b5c31d912e58f2a67}{Score\+Rouge\+Variante}}, \mbox{\hyperlink{classScoreVertVariante_aff737f99839b57341e358f2efeb5d14a}{Score\+Vert\+Variante}}, \mbox{\hyperlink{classScoreVioletVariante_a107d868e255bd5ee192ddbf7232af920}{Score\+Violet\+Variante}}, and \mbox{\hyperlink{classScoreJauneVariante_ab4b81f52e0443d34f81c1e1abd33fb58}{Score\+Jaune\+Variante}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classScore_a3b57d7afaf21a727c6637b319ae5b675}\label{classScore_a3b57d7afaf21a727c6637b319ae5b675}} 
+\index{Score@{Score}!scoreDecore@{scoreDecore}}
+\index{scoreDecore@{scoreDecore}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{scoreDecore}{scoreDecore}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classScore}{Score}}$\ast$ Score\+::score\+Decore = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Score_8hpp}{Score.\+hpp}}\end{DoxyCompactItemize}

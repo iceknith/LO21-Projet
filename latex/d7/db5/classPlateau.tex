@@ -1,0 +1,125 @@
+\hypertarget{classPlateau}{}\doxysection{Plateau Class Reference}
+\label{classPlateau}\index{Plateau@{Plateau}}
+
+
+La classe implémentant le \mbox{\hyperlink{classPlateau}{Plateau}} de jeu d\textquotesingle{}un joueur.  
+
+
+
+
+{\ttfamily \#include $<$Plateau.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlateau_a0a018077715440adf1cd7cc967e14dcb}{Plateau}} ()=default
+\item 
+\mbox{\hyperlink{classPlateau_a8b1d2279b59c6428ac22fd3fe8b22dfa}{$\sim$\+Plateau}} ()=default
+\item 
+\mbox{\hyperlink{classHexagone}{Hexagone}} \& \mbox{\hyperlink{classPlateau_ac37237d1ddd761a82e21aa0f1136eafc}{obtenir\+\_\+hexagone}} (const \mbox{\hyperlink{classVector2}{Vector2}} \&coordonees)
+\begin{DoxyCompactList}\small\item\em TODO\+: implémenter le destructeur de \mbox{\hyperlink{classPlateau}{Plateau}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlateau_aaa3072f43de48e8c66f20946a2c3a789}{peut\+\_\+placer}} (const \mbox{\hyperlink{classTuile}{Tuile}} \&tuile\+Jeu, const \mbox{\hyperlink{classVector2}{Vector2}} \&position)
+\begin{DoxyCompactList}\small\item\em Retourne true si il est possible de placer tuile\+Jeu à la position du \mbox{\hyperlink{classVector2}{Vector2}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlateau_ae8cec981227aae34591b16b0c72250a8}{placer}} (const \mbox{\hyperlink{classTuile}{Tuile}} \&tuile, const \mbox{\hyperlink{classVector2}{Vector2}} \&position)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPlace}{Place}} une tuile à des coordonées spécifiques. \end{DoxyCompactList}\item 
+map$<$ \mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}} \& $>$\+::iterator \mbox{\hyperlink{classPlateau_a0824231977a62dda75b74e9cc89312c8}{get\+\_\+iterateur\+\_\+debut}} ()
+\begin{DoxyCompactList}\small\item\em Retourne un itérateur sur le plateau, mis au début de celui-\/ci. \end{DoxyCompactList}\item 
+map$<$ \mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}} \& $>$\+::iterator \mbox{\hyperlink{classPlateau_a5188d935302f6bb3a7b940c9c7b6a4ed}{get\+\_\+iterateur\+\_\+fin}} ()
+\begin{DoxyCompactList}\small\item\em Retourne un itérateur sur le plateau, mis à la fin de celui-\/ci. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ \mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}} \& $>$ \mbox{\hyperlink{classPlateau_a789a619cc2d2acf4b8a98671883234fa}{plateau}}
+\begin{DoxyCompactList}\small\item\em La map associant une coordonée vectorielle à un hexagone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlateau_a0a018077715440adf1cd7cc967e14dcb}\label{classPlateau_a0a018077715440adf1cd7cc967e14dcb}} 
+\index{Plateau@{Plateau}!Plateau@{Plateau}}
+\index{Plateau@{Plateau}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{Plateau()}{Plateau()}}
+{\footnotesize\ttfamily Plateau\+::\+Plateau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPlateau_a8b1d2279b59c6428ac22fd3fe8b22dfa}\label{classPlateau_a8b1d2279b59c6428ac22fd3fe8b22dfa}} 
+\index{Plateau@{Plateau}!````~Plateau@{$\sim$Plateau}}
+\index{````~Plateau@{$\sim$Plateau}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{$\sim$Plateau()}{~Plateau()}}
+{\footnotesize\ttfamily Plateau\+::$\sim$\+Plateau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlateau_a0824231977a62dda75b74e9cc89312c8}\label{classPlateau_a0824231977a62dda75b74e9cc89312c8}} 
+\index{Plateau@{Plateau}!get\_iterateur\_debut@{get\_iterateur\_debut}}
+\index{get\_iterateur\_debut@{get\_iterateur\_debut}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{get\_iterateur\_debut()}{get\_iterateur\_debut()}}
+{\footnotesize\ttfamily map$<$ \mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}} \& $>$\+::iterator Plateau\+::get\+\_\+iterateur\+\_\+debut (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPlateau_a5188d935302f6bb3a7b940c9c7b6a4ed}\label{classPlateau_a5188d935302f6bb3a7b940c9c7b6a4ed}} 
+\index{Plateau@{Plateau}!get\_iterateur\_fin@{get\_iterateur\_fin}}
+\index{get\_iterateur\_fin@{get\_iterateur\_fin}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{get\_iterateur\_fin()}{get\_iterateur\_fin()}}
+{\footnotesize\ttfamily map$<$ \mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}} \& $>$\+::iterator Plateau\+::get\+\_\+iterateur\+\_\+fin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classPlateau_ac37237d1ddd761a82e21aa0f1136eafc}\label{classPlateau_ac37237d1ddd761a82e21aa0f1136eafc}} 
+\index{Plateau@{Plateau}!obtenir\_hexagone@{obtenir\_hexagone}}
+\index{obtenir\_hexagone@{obtenir\_hexagone}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{obtenir\_hexagone()}{obtenir\_hexagone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classHexagone}{Hexagone}} \& Plateau\+::obtenir\+\_\+hexagone (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVector2}{Vector2}} \&}]{coordonees }\end{DoxyParamCaption})}
+
+Retourne l\textquotesingle{}hexagone aux coordonées du \mbox{\hyperlink{classVector2}{Vector2}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordonees} & le \mbox{\hyperlink{classVector2}{Vector2}} des coordonées de l\textquotesingle{}hexagone recherché \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+l\textquotesingle{}hexagone à ces coordonées 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlateau_aaa3072f43de48e8c66f20946a2c3a789}\label{classPlateau_aaa3072f43de48e8c66f20946a2c3a789}} 
+\index{Plateau@{Plateau}!peut\_placer@{peut\_placer}}
+\index{peut\_placer@{peut\_placer}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{peut\_placer()}{peut\_placer()}}
+{\footnotesize\ttfamily bool Plateau\+::peut\+\_\+placer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTuile}{Tuile}} \&}]{tuile\+Jeu,  }\item[{const \mbox{\hyperlink{classVector2}{Vector2}} \&}]{position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tuile\+Jeu} & La \mbox{\hyperlink{classTuile}{Tuile}} qu\textquotesingle{}on essaye de placer \\
+\hline
+{\em position} & La position à laquelle on essaye de placer la \mbox{\hyperlink{classTuile}{Tuile}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si l\textquotesingle{}emplacement est valide (check également si les condition de placement des Hexagones sont validés) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlateau_ae8cec981227aae34591b16b0c72250a8}\label{classPlateau_ae8cec981227aae34591b16b0c72250a8}} 
+\index{Plateau@{Plateau}!placer@{placer}}
+\index{placer@{placer}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{placer()}{placer()}}
+{\footnotesize\ttfamily bool Plateau\+::placer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTuile}{Tuile}} \&}]{tuile,  }\item[{const \mbox{\hyperlink{classVector2}{Vector2}} \&}]{position }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tuile} & La \mbox{\hyperlink{classTuile}{Tuile}} à placer \\
+\hline
+{\em position} & La position où l\textquotesingle{}on essaye de placer la \mbox{\hyperlink{classTuile}{Tuile}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si le placement s\textquotesingle{}est bien effectué ou non 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPlateau_a789a619cc2d2acf4b8a98671883234fa}\label{classPlateau_a789a619cc2d2acf4b8a98671883234fa}} 
+\index{Plateau@{Plateau}!plateau@{plateau}}
+\index{plateau@{plateau}!Plateau@{Plateau}}
+\doxysubsubsection{\texorpdfstring{plateau}{plateau}}
+{\footnotesize\ttfamily map$<$\mbox{\hyperlink{classVector2}{Vector2}}, \mbox{\hyperlink{classHexagone}{Hexagone}}\&$>$ Plateau\+::plateau\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Plateau_8hpp}{Plateau.\+hpp}}\end{DoxyCompactItemize}

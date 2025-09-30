@@ -1,0 +1,124 @@
+\hypertarget{classChantier}{}\doxysection{Chantier Class Reference}
+\label{classChantier}\index{Chantier@{Chantier}}
+
+
+La classe implémentant le \mbox{\hyperlink{classChantier}{Chantier}}, permettant aux \mbox{\hyperlink{classJoueur}{Joueur}} de piocher des \mbox{\hyperlink{classTuile}{Tuile}}.  
+
+
+
+
+{\ttfamily \#include $<$Chantier.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classChantier_adc9af9ebd92763c6e564ad99b05e689e}{set\+\_\+nombre\+\_\+joueurs}} (int nombre\+\_\+joueurs)
+\begin{DoxyCompactList}\small\item\em Calcule la taille du chantier selon le nombre de joueurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChantier_a512e037a5478e72ff9c0f09ba458c72b}{set\+\_\+taille}} (int \mbox{\hyperlink{classChantier_ac4329d5290fc704627acc00dbe803535}{taille}})
+\begin{DoxyCompactList}\small\item\em Setteur de la taille du chantier. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classChantier_a89be8a807e1abfabcd05f690a852781f}{get\+\_\+taille}} ()
+\begin{DoxyCompactList}\small\item\em Getteur de la taille du chantier. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classChantier_a7c1bf2ce21a70f1305ecd7765b264a7f}{get\+\_\+nombre\+\_\+tuiles}} ()
+\begin{DoxyCompactList}\small\item\em Getteur du nombres de tuiles dans le chantier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuile}{Tuile}} $\ast$ \mbox{\hyperlink{classChantier_a99ad4655e897fea2b7712f635e6afed0}{get\+\_\+tuiles}} ()
+\begin{DoxyCompactList}\small\item\em Getteur des tuiles du chantier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuile}{Tuile}} \mbox{\hyperlink{classChantier_a32dc1eb4a9ef82a5ed836a50cc50bb0b}{prendre\+\_\+tuile}} (int index)
+\begin{DoxyCompactList}\small\item\em Retire la tuile, à l\textquotesingle{}index indiqué, du chantier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChantier_a4058ca66b5823c39b9060a724f7c8c1d}{ajouter\+\_\+tuile}} (\mbox{\hyperlink{classTuile}{Tuile}} $\ast$tuile)
+\begin{DoxyCompactList}\small\item\em Ajoute une \mbox{\hyperlink{classTuile}{Tuile}} à la fin du chantier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChantier_a88b6e488d56545a8cf67d9af662d02ae}{ajouter\+\_\+tuile}} (\mbox{\hyperlink{classTuile}{Tuile}} $\ast$tuile, int nombre)
+\begin{DoxyCompactList}\small\item\em Ajoute des \mbox{\hyperlink{classTuile}{Tuile}} à la fin du chantier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classChantier_ac4329d5290fc704627acc00dbe803535}{taille}}
+\begin{DoxyCompactList}\small\item\em La taille maximale du \mbox{\hyperlink{classChantier}{Chantier}} (est dépendante du nombre de joueurs) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classChantier_a45f56941fbdcdb09fa8f5b0f467b4712}{nombre\+Tuiles}} = 0
+\begin{DoxyCompactList}\small\item\em le nombre de tuiles actuellement dans le \mbox{\hyperlink{classChantier}{Chantier}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTuile}{Tuile}} \mbox{\hyperlink{classChantier_a20d660b94bd60d6a05ab1fc285df60cf}{tuiles}} \mbox{[}\mbox{\hyperlink{Chantier_8hpp_acae09b4b6e0453d4c579a927c09e37a3}{max\+\_\+tuiles\+\_\+par\+\_\+chantier}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Le tableau enregistrant toutes les tuiles sur tout le \mbox{\hyperlink{classChantier}{Chantier}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classChantier_a4058ca66b5823c39b9060a724f7c8c1d}\label{classChantier_a4058ca66b5823c39b9060a724f7c8c1d}} 
+\index{Chantier@{Chantier}!ajouter\_tuile@{ajouter\_tuile}}
+\index{ajouter\_tuile@{ajouter\_tuile}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{ajouter\_tuile()}{ajouter\_tuile()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Chantier\+::ajouter\+\_\+tuile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} $\ast$}]{tuile }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classChantier_a88b6e488d56545a8cf67d9af662d02ae}\label{classChantier_a88b6e488d56545a8cf67d9af662d02ae}} 
+\index{Chantier@{Chantier}!ajouter\_tuile@{ajouter\_tuile}}
+\index{ajouter\_tuile@{ajouter\_tuile}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{ajouter\_tuile()}{ajouter\_tuile()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Chantier\+::ajouter\+\_\+tuile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} $\ast$}]{tuile,  }\item[{int}]{nombre }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classChantier_a7c1bf2ce21a70f1305ecd7765b264a7f}\label{classChantier_a7c1bf2ce21a70f1305ecd7765b264a7f}} 
+\index{Chantier@{Chantier}!get\_nombre\_tuiles@{get\_nombre\_tuiles}}
+\index{get\_nombre\_tuiles@{get\_nombre\_tuiles}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{get\_nombre\_tuiles()}{get\_nombre\_tuiles()}}
+{\footnotesize\ttfamily int Chantier\+::get\+\_\+nombre\+\_\+tuiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChantier_a89be8a807e1abfabcd05f690a852781f}\label{classChantier_a89be8a807e1abfabcd05f690a852781f}} 
+\index{Chantier@{Chantier}!get\_taille@{get\_taille}}
+\index{get\_taille@{get\_taille}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{get\_taille()}{get\_taille()}}
+{\footnotesize\ttfamily int Chantier\+::get\+\_\+taille (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChantier_a99ad4655e897fea2b7712f635e6afed0}\label{classChantier_a99ad4655e897fea2b7712f635e6afed0}} 
+\index{Chantier@{Chantier}!get\_tuiles@{get\_tuiles}}
+\index{get\_tuiles@{get\_tuiles}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{get\_tuiles()}{get\_tuiles()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}} $\ast$ Chantier\+::get\+\_\+tuiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChantier_a32dc1eb4a9ef82a5ed836a50cc50bb0b}\label{classChantier_a32dc1eb4a9ef82a5ed836a50cc50bb0b}} 
+\index{Chantier@{Chantier}!prendre\_tuile@{prendre\_tuile}}
+\index{prendre\_tuile@{prendre\_tuile}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{prendre\_tuile()}{prendre\_tuile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}} Chantier\+::prendre\+\_\+tuile (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Retire la tuile, à l\textquotesingle{}index indiqué, du chantier Les tuiles d\textquotesingle{}index supérieur vons \char`\"{}descendre\char`\"{} le chantier comme un mechanisme de rivière. 
+\begin{DoxyParams}{Parameters}
+{\em index} & l\textquotesingle{}index de la tuile à prendre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La \mbox{\hyperlink{classTuile}{Tuile}} selectionée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChantier_adc9af9ebd92763c6e564ad99b05e689e}\label{classChantier_adc9af9ebd92763c6e564ad99b05e689e}} 
+\index{Chantier@{Chantier}!set\_nombre\_joueurs@{set\_nombre\_joueurs}}
+\index{set\_nombre\_joueurs@{set\_nombre\_joueurs}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{set\_nombre\_joueurs()}{set\_nombre\_joueurs()}}
+{\footnotesize\ttfamily void Chantier\+::set\+\_\+nombre\+\_\+joueurs (\begin{DoxyParamCaption}\item[{int}]{nombre\+\_\+joueurs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classChantier_a512e037a5478e72ff9c0f09ba458c72b}\label{classChantier_a512e037a5478e72ff9c0f09ba458c72b}} 
+\index{Chantier@{Chantier}!set\_taille@{set\_taille}}
+\index{set\_taille@{set\_taille}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{set\_taille()}{set\_taille()}}
+{\footnotesize\ttfamily void Chantier\+::set\+\_\+taille (\begin{DoxyParamCaption}\item[{int}]{taille }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classChantier_a45f56941fbdcdb09fa8f5b0f467b4712}\label{classChantier_a45f56941fbdcdb09fa8f5b0f467b4712}} 
+\index{Chantier@{Chantier}!nombreTuiles@{nombreTuiles}}
+\index{nombreTuiles@{nombreTuiles}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{nombreTuiles}{nombreTuiles}}
+{\footnotesize\ttfamily int Chantier\+::nombre\+Tuiles = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChantier_ac4329d5290fc704627acc00dbe803535}\label{classChantier_ac4329d5290fc704627acc00dbe803535}} 
+\index{Chantier@{Chantier}!taille@{taille}}
+\index{taille@{taille}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{taille}{taille}}
+{\footnotesize\ttfamily int Chantier\+::taille\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChantier_a20d660b94bd60d6a05ab1fc285df60cf}\label{classChantier_a20d660b94bd60d6a05ab1fc285df60cf}} 
+\index{Chantier@{Chantier}!tuiles@{tuiles}}
+\index{tuiles@{tuiles}!Chantier@{Chantier}}
+\doxysubsubsection{\texorpdfstring{tuiles}{tuiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}} Chantier\+::tuiles\mbox{[}\mbox{\hyperlink{Chantier_8hpp_acae09b4b6e0453d4c579a927c09e37a3}{max\+\_\+tuiles\+\_\+par\+\_\+chantier}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Chantier_8hpp}{Chantier.\+hpp}}\end{DoxyCompactItemize}

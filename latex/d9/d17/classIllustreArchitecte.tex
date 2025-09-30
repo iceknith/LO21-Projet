@@ -1,0 +1,96 @@
+\hypertarget{classIllustreArchitecte}{}\doxysection{Illustre\+Architecte Class Reference}
+\label{classIllustreArchitecte}\index{IllustreArchitecte@{IllustreArchitecte}}
+
+
+{\ttfamily \#include $<$Players.\+hpp$>$}
+
+Inheritance diagram for Illustre\+Architecte\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d9/d17/classIllustreArchitecte}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classIllustreArchitecte_ab2051646d5c11c4cc02aa705b6a16f70}{set\+\_\+niveau}} (int \mbox{\hyperlink{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}{niveau}})
+\begin{DoxyCompactList}\small\item\em Le setteur du niveau. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classIllustreArchitecte_abdcb764e5bd558db1d3902667f51d8e8}{get\+\_\+niveau}} ()
+\begin{DoxyCompactList}\small\item\em Le getteur du niveau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIllustreArchitecte_ab1da98a95b21f3b5d5d8581cbb008459}{jouer}} (\mbox{\hyperlink{classTuile}{Tuile}} $\ast$chantier)
+\begin{DoxyCompactList}\small\item\em La fonction appelée pour faire jouer l\textquotesingle{}Illustre Architechte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTuile}{Tuile}} \mbox{\hyperlink{classIllustreArchitecte_ab0a188d98a5c95f4e9d13cd3e70b3f56}{choisir\+\_\+tuile}} (\mbox{\hyperlink{classTuile}{Tuile}} $\ast$chantier)
+\begin{DoxyCompactList}\small\item\em Choisit une tuile à partir du chantier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector2}{Vector2}} \mbox{\hyperlink{classIllustreArchitecte_ae5308f1a4934d95bf814fb5ab9dbf3b2}{trouver\+\_\+emplacement\+\_\+tuile}} (\mbox{\hyperlink{classTuile}{Tuile}} \&tuile)
+\begin{DoxyCompactList}\small\item\em Trouve un emplacement vide et valide pour placer une tuile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScoreSoloArchitechte}{Score\+Solo\+Architechte}} $\ast$ \mbox{\hyperlink{classIllustreArchitecte_af4bad737dc65413a75f4674ca80bc2d1}{score}}
+\begin{DoxyCompactList}\small\item\em Le \mbox{\hyperlink{classScore}{Score}} de l\textquotesingle{}illustre architechte, il va être utilisé pour calculer son score à la fun de la partie. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}{niveau}} = 0
+\begin{DoxyCompactList}\small\item\em Le niveau de l\textquotesingle{}Architechte (va changer les regles) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classIllustreArchitecte_a660c3eb65517ea057834d19a3f7e49e5}{joue\+Tout\+Seul}} = true
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}illustre Architechte étant un automate, il joue tout seul. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIllustreArchitecte_ab0a188d98a5c95f4e9d13cd3e70b3f56}\label{classIllustreArchitecte_ab0a188d98a5c95f4e9d13cd3e70b3f56}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!choisir\_tuile@{choisir\_tuile}}
+\index{choisir\_tuile@{choisir\_tuile}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{choisir\_tuile()}{choisir\_tuile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTuile}{Tuile}} Illustre\+Architecte\+::choisir\+\_\+tuile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} $\ast$}]{chantier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classIllustreArchitecte_abdcb764e5bd558db1d3902667f51d8e8}\label{classIllustreArchitecte_abdcb764e5bd558db1d3902667f51d8e8}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!get\_niveau@{get\_niveau}}
+\index{get\_niveau@{get\_niveau}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{get\_niveau()}{get\_niveau()}}
+{\footnotesize\ttfamily int Illustre\+Architecte\+::get\+\_\+niveau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classIllustreArchitecte_ab1da98a95b21f3b5d5d8581cbb008459}\label{classIllustreArchitecte_ab1da98a95b21f3b5d5d8581cbb008459}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!jouer@{jouer}}
+\index{jouer@{jouer}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{jouer()}{jouer()}}
+{\footnotesize\ttfamily void Illustre\+Architecte\+::jouer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} $\ast$}]{chantier }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classIllustreArchitecte_ab2051646d5c11c4cc02aa705b6a16f70}\label{classIllustreArchitecte_ab2051646d5c11c4cc02aa705b6a16f70}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!set\_niveau@{set\_niveau}}
+\index{set\_niveau@{set\_niveau}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{set\_niveau()}{set\_niveau()}}
+{\footnotesize\ttfamily void Illustre\+Architecte\+::set\+\_\+niveau (\begin{DoxyParamCaption}\item[{int}]{niveau }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classIllustreArchitecte_ae5308f1a4934d95bf814fb5ab9dbf3b2}\label{classIllustreArchitecte_ae5308f1a4934d95bf814fb5ab9dbf3b2}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!trouver\_emplacement\_tuile@{trouver\_emplacement\_tuile}}
+\index{trouver\_emplacement\_tuile@{trouver\_emplacement\_tuile}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{trouver\_emplacement\_tuile()}{trouver\_emplacement\_tuile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector2}{Vector2}} Illustre\+Architecte\+::trouver\+\_\+emplacement\+\_\+tuile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} \&}]{tuile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classIllustreArchitecte_a660c3eb65517ea057834d19a3f7e49e5}\label{classIllustreArchitecte_a660c3eb65517ea057834d19a3f7e49e5}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!joueToutSeul@{joueToutSeul}}
+\index{joueToutSeul@{joueToutSeul}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{joueToutSeul}{joueToutSeul}}
+{\footnotesize\ttfamily bool Illustre\+Architecte\+::joue\+Tout\+Seul = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}\label{classIllustreArchitecte_abbecc0c1f7178f7af007204905fb09fb}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!niveau@{niveau}}
+\index{niveau@{niveau}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{niveau}{niveau}}
+{\footnotesize\ttfamily int Illustre\+Architecte\+::niveau = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classIllustreArchitecte_af4bad737dc65413a75f4674ca80bc2d1}\label{classIllustreArchitecte_af4bad737dc65413a75f4674ca80bc2d1}} 
+\index{IllustreArchitecte@{IllustreArchitecte}!score@{score}}
+\index{score@{score}!IllustreArchitecte@{IllustreArchitecte}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classScoreSoloArchitechte}{Score\+Solo\+Architechte}}$\ast$ Illustre\+Architecte\+::score\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Players_8hpp}{Players.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,133 @@
+\hypertarget{classJoueur}{}\doxysection{Joueur Class Reference}
+\label{classJoueur}\index{Joueur@{Joueur}}
+
+
+La classe abstraite \mbox{\hyperlink{classJoueur}{Joueur}}, qui implémente n\textquotesingle{}importe quel \mbox{\hyperlink{classJoueur}{Joueur}}.  
+
+
+
+
+{\ttfamily \#include $<$Players.\+hpp$>$}
+
+Inheritance diagram for Joueur\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dd/d07/classJoueur}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classJoueur_ae46d462bc45eddb50bf617f0e3cf18de}{get\+\_\+score}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le \mbox{\hyperlink{classScore}{Score}} calculé du \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classJoueur_aa607c9c7d956052e72968238f8815475}{get\+\_\+pierre}} ()
+\begin{DoxyCompactList}\small\item\em Retourne la quantité de pierres du \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJoueur_a555b03e154cba8df9c50a972fce8d9cc}{set\+\_\+pierre}} (int \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}})
+\begin{DoxyCompactList}\small\item\em Set la quantité de pierres du \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJoueur_af76c56726209959ed6ab7df700777884}{ajouter\+\_\+pierre}} (int \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}})
+\begin{DoxyCompactList}\small\item\em Ajoute des pierres au \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlateau}{Plateau}} \& \mbox{\hyperlink{classJoueur_ac6ea3d78fb52465542bbcf754c0f61a0}{get\+\_\+plateau}} ()
+\begin{DoxyCompactList}\small\item\em Retourne le plateau du \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classJoueur_aae9e73be0422d26e9f87311a392751ef}{place\+\_\+tuile}} (\mbox{\hyperlink{classTuile}{Tuile}} tuile, \mbox{\hyperlink{classVector2}{Vector2}} coordonées)
+\begin{DoxyCompactList}\small\item\em Tente de placer une tuile aux coordonées indiquées. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classJoueur_a8cba4c0232493e0741c9f2d6483f1edd}{jouer}} (\mbox{\hyperlink{classTuile}{Tuile}} $\ast$chantier)
+\begin{DoxyCompactList}\small\item\em La fonction appelée lorsque le joueur joue\+Tout\+Seul. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}{pierre}} = 0
+\begin{DoxyCompactList}\small\item\em Le nombre de pierres du \mbox{\hyperlink{classJoueur}{Joueur}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPlateau}{Plateau}} \& \mbox{\hyperlink{classJoueur_a4a87ca756d8940a1600f1747783ca756}{plateau\+Joueur}}
+\begin{DoxyCompactList}\small\item\em Le \mbox{\hyperlink{classPlateau}{Plateau}} du joueur. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classJoueur_acf077e39ed48eb1cfd4d58705804d7da}{joue\+Tout\+Seul}}
+\begin{DoxyCompactList}\small\item\em Si le joueur joue tout seul. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+La classe qui va représenter à la fois chaque joueur humain, mais à la fois chaque joueur non humain (dont l\textquotesingle{}Illustre\+Architechte) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJoueur_af76c56726209959ed6ab7df700777884}\label{classJoueur_af76c56726209959ed6ab7df700777884}} 
+\index{Joueur@{Joueur}!ajouter\_pierre@{ajouter\_pierre}}
+\index{ajouter\_pierre@{ajouter\_pierre}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{ajouter\_pierre()}{ajouter\_pierre()}}
+{\footnotesize\ttfamily void Joueur\+::ajouter\+\_\+pierre (\begin{DoxyParamCaption}\item[{int}]{pierre }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classJoueur_aa607c9c7d956052e72968238f8815475}\label{classJoueur_aa607c9c7d956052e72968238f8815475}} 
+\index{Joueur@{Joueur}!get\_pierre@{get\_pierre}}
+\index{get\_pierre@{get\_pierre}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{get\_pierre()}{get\_pierre()}}
+{\footnotesize\ttfamily int Joueur\+::get\+\_\+pierre (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classJoueur_ac6ea3d78fb52465542bbcf754c0f61a0}\label{classJoueur_ac6ea3d78fb52465542bbcf754c0f61a0}} 
+\index{Joueur@{Joueur}!get\_plateau@{get\_plateau}}
+\index{get\_plateau@{get\_plateau}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{get\_plateau()}{get\_plateau()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlateau}{Plateau}} \& Joueur\+::get\+\_\+plateau (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classJoueur_ae46d462bc45eddb50bf617f0e3cf18de}\label{classJoueur_ae46d462bc45eddb50bf617f0e3cf18de}} 
+\index{Joueur@{Joueur}!get\_score@{get\_score}}
+\index{get\_score@{get\_score}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{get\_score()}{get\_score()}}
+{\footnotesize\ttfamily int Joueur\+::get\+\_\+score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classJoueur_a8cba4c0232493e0741c9f2d6483f1edd}\label{classJoueur_a8cba4c0232493e0741c9f2d6483f1edd}} 
+\index{Joueur@{Joueur}!jouer@{jouer}}
+\index{jouer@{jouer}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{jouer()}{jouer()}}
+{\footnotesize\ttfamily void Joueur\+::jouer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}} $\ast$}]{chantier }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em chantier} & un tableau de \mbox{\hyperlink{classTuile}{Tuile}}, représentant le chantier \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classJoueur_aae9e73be0422d26e9f87311a392751ef}\label{classJoueur_aae9e73be0422d26e9f87311a392751ef}} 
+\index{Joueur@{Joueur}!place\_tuile@{place\_tuile}}
+\index{place\_tuile@{place\_tuile}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{place\_tuile()}{place\_tuile()}}
+{\footnotesize\ttfamily bool Joueur\+::place\+\_\+tuile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTuile}{Tuile}}}]{tuile,  }\item[{\mbox{\hyperlink{classVector2}{Vector2}}}]{coordonées }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tuile} & la \mbox{\hyperlink{classTuile}{Tuile}} à placer \\
+\hline
+{\em coordonées} & le \mbox{\hyperlink{classVector2}{Vector2}} qui donne la position de la \mbox{\hyperlink{classTuile}{Tuile}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si la tuile as été placé ou non 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classJoueur_a555b03e154cba8df9c50a972fce8d9cc}\label{classJoueur_a555b03e154cba8df9c50a972fce8d9cc}} 
+\index{Joueur@{Joueur}!set\_pierre@{set\_pierre}}
+\index{set\_pierre@{set\_pierre}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{set\_pierre()}{set\_pierre()}}
+{\footnotesize\ttfamily void Joueur\+::set\+\_\+pierre (\begin{DoxyParamCaption}\item[{int}]{pierre }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classJoueur_acf077e39ed48eb1cfd4d58705804d7da}\label{classJoueur_acf077e39ed48eb1cfd4d58705804d7da}} 
+\index{Joueur@{Joueur}!joueToutSeul@{joueToutSeul}}
+\index{joueToutSeul@{joueToutSeul}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{joueToutSeul}{joueToutSeul}}
+{\footnotesize\ttfamily bool Joueur\+::joue\+Tout\+Seul\hspace{0.3cm}{\ttfamily [protected]}}
+
+Si le joueur joue tout seul. ~\newline
+Cet attribut indique au moteur de jeu, si il as à attendre des inputs de la part du joueur \mbox{\Hypertarget{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}\label{classJoueur_ad54ce85c9f6130df62f6af546d33ab2c}} 
+\index{Joueur@{Joueur}!pierre@{pierre}}
+\index{pierre@{pierre}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{pierre}{pierre}}
+{\footnotesize\ttfamily int Joueur\+::pierre = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classJoueur_a4a87ca756d8940a1600f1747783ca756}\label{classJoueur_a4a87ca756d8940a1600f1747783ca756}} 
+\index{Joueur@{Joueur}!plateauJoueur@{plateauJoueur}}
+\index{plateauJoueur@{plateauJoueur}!Joueur@{Joueur}}
+\doxysubsubsection{\texorpdfstring{plateauJoueur}{plateauJoueur}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlateau}{Plateau}}\& Joueur\+::plateau\+Joueur\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Players_8hpp}{Players.\+hpp}}\end{DoxyCompactItemize}

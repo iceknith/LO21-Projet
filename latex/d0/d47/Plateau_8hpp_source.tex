@@ -1,0 +1,36 @@
+\hypertarget{Plateau_8hpp_source}{}\doxysection{Plateau.\+hpp}
+\label{Plateau_8hpp_source}\index{Plateau.hpp@{Plateau.hpp}}
+\mbox{\hyperlink{Plateau_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LO21\_PROJET\_MAP\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LO21\_PROJET\_MAP\_HPP}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../Utils.hpp"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../Tuile/Hexagone.hpp"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{8 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{classPlateau}{Plateau}} \{}
+\DoxyCodeLine{12 \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     map<Vector2, Hexagone\&> \mbox{\hyperlink{classPlateau_a789a619cc2d2acf4b8a98671883234fa}{plateau}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \mbox{\hyperlink{classPlateau_a0a018077715440adf1cd7cc967e14dcb}{Plateau}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{18     \mbox{\hyperlink{classPlateau_a8b1d2279b59c6428ac22fd3fe8b22dfa}{\string~Plateau}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{22 }
+\DoxyCodeLine{27     \mbox{\hyperlink{classHexagone}{Hexagone}}\& \mbox{\hyperlink{classPlateau_ac37237d1ddd761a82e21aa0f1136eafc}{obtenir\_hexagone}}(\textcolor{keyword}{const} \mbox{\hyperlink{classVector2}{Vector2}}\& coordonees);}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{35     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPlateau_aaa3072f43de48e8c66f20946a2c3a789}{peut\_placer}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTuile}{Tuile}}\& tuileJeu, \textcolor{keyword}{const} \mbox{\hyperlink{classVector2}{Vector2}}\& position);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{43     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classPlateau_ae8cec981227aae34591b16b0c72250a8}{placer}}(\textcolor{keyword}{const} \mbox{\hyperlink{classTuile}{Tuile}}\& tuile, \textcolor{keyword}{const} \mbox{\hyperlink{classVector2}{Vector2}}\& position);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{46     map<Vector2, Hexagone\&>::iterator \mbox{\hyperlink{classPlateau_a0824231977a62dda75b74e9cc89312c8}{get\_iterateur\_debut}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classPlateau_a789a619cc2d2acf4b8a98671883234fa}{plateau}}.begin();\};}
+\DoxyCodeLine{48     map<Vector2, Hexagone\&>::iterator \mbox{\hyperlink{classPlateau_a5188d935302f6bb3a7b940c9c7b6a4ed}{get\_iterateur\_fin}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classPlateau_a789a619cc2d2acf4b8a98671883234fa}{plateau}}.end();\};}
+\DoxyCodeLine{49 \};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//LO21\_PROJET\_MAP\_HPP}}
+
+\end{DoxyCode}
