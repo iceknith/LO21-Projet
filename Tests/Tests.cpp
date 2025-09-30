@@ -1,4 +1,4 @@
-#include "tests.hpp"
+#include "Tests.hpp"
 
 void assertTests(){
     /*

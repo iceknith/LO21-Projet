@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "main.hpp"
-#include "Tests/tests.hpp"
+#include "Tests/Tests.hpp"
 using namespace std;
 
 int main() {

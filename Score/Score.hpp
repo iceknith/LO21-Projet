@@ -5,7 +5,7 @@
 #ifndef LO21_PROJET_SCORE_HPP
 #define LO21_PROJET_SCORE_HPP
 
-class Plateau{};
+#include "../Players/Plateau.hpp"
 
 class Score {
 protected:

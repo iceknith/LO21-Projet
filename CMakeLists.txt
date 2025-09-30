@@ -4,7 +4,11 @@ project(LO21-Projet)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(LO21-Projet main.cpp
-        Tests/tests.cpp
+        Tests/Tests.cpp
+        Tuile/Tuile.cpp
+        Tuile/Hexagone.cpp
+        Players/Players.hpp
+        Players/Plateau.cpp
         Score/Score.cpp
-        Utils.hpp
+        Affichage/Affichage.cpp
 )

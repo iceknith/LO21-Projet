@@ -6,21 +6,23 @@
 #define LO21_PROJET_PLAYERS_HPP
 
 #include "../Score/Score.hpp"
-#include "../Tuile/tuile.hpp"
+#include "../Tuile/Tuile.hpp"
 #include "../Utils.hpp"
 
 class Joueur {
 protected:
     int pierre = 0;
-    Plateau PlateauJoueur;
+    Plateau& plateauJoueur;
     bool joueToutSeul;
 
 public:
-    bool place_tuile(Tuile tuile, Vector2 coordonées);
     int get_score();
     int get_pierre();
     void set_pierre(int pierre);
     void ajouter_pierre(int pierre);
+    Plateau& get_plateau();
+
+    bool place_tuile(Tuile tuile, Vector2 coordonées);
 };
 
 class JoueurSimple : Joueur {
@@ -31,7 +33,6 @@ public:
     void set_niveau(int niveau);
     int get_niveau();
     void jouer(Tuile chantier);
-
 };
 
 class IllustreArchitecte : Joueur {
