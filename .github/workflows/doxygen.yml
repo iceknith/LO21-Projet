@@ -16,10 +16,10 @@ jobs:
         with:
             working-directory: '.'
             doxyfile-path: './Doxyfile'
-            enable-latex: true
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .docs/html
+          allow_empty_commit: true
