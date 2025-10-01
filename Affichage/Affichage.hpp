@@ -8,7 +8,7 @@
 class Affichage {
 
 public:
-   virtual void affiche_plateau_actuel(Joueur& joueur);
+   virtual void affiche_plateau_actuel(Joueur& joueur) {};
 };
 
 class AffichageConsole : Affichage{
@@ -16,9 +16,8 @@ class AffichageConsole : Affichage{
     const int hexH = 5; // lignes
     const int hexW = 9; // colonnes
 
-    AffichageConsole() = default;
-
 public:
+    AffichageConsole() = default;
 
     static AffichageConsole* getInstance() {
         if (instance == nullptr) instance = new AffichageConsole();

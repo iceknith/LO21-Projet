@@ -12,4 +12,11 @@ All documentation about Doxygen can be found at : \sa https://www.doxygen.nl/man
 #ifndef LO21_PROJET_MAIN_HPP
 #define LO21_PROJET_MAIN_HPP
 
+// Inclut toutes les définitions précédentes.
+#include "Affichage/Affichage.hpp"
+#include "Chantier/Chantier.hpp"
+#include "Players/Players.hpp"
+#include "Score/Score.hpp"
+#include "Tuile/Tuile.hpp"
+
 #endif //LO21_PROJET_MAIN_HPP

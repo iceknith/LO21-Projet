@@ -15,4 +15,5 @@ add_executable(LO21-Projet main.cpp
         Chantier/Chantier.hpp
         Chantier/Deck.cpp
         Chantier/Deck.hpp
+        Players/Players.cpp
 )

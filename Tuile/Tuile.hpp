@@ -14,6 +14,10 @@ const int max_enfants_par_tuile = 10;
  */
 class Tuile {
 protected:
+    //! L'identifiant unique de la prochaine tuile initialisée
+    static int nextID;
+    //! L'identifiant unique de la tuile
+    int id;
     //! La hauteur de la tuile, une fois placée sur le terrain
     int hauteur;
     //! Le nombre d'enfants (Hexagone) par Tuile
@@ -26,19 +30,37 @@ protected:
     int rotation;
 
 public :
-    Tuile() = default;
-    ~Tuile() {std::cout<<"Tuile détruite";};
+    Tuile();
+    ~Tuile() {};
 
     //! Setteur de la Hauteur. À appeler lors de la pose sur le terrain
-    void set_hauteur(int hauteur) {hauteur = max(hauteur, 0);}
+    void set_hauteur(const int hauteur) {this->hauteur = max(hauteur, 0);}
     //! Getteur de la Hauteur
     int get_hauteur() const {return hauteur;}
     //! Getteur des enfants
     Hexagone* get_enfants() {return enfants;}
     //! Getteur de la position des enfants
     Vector2* get_positions_enfants() {return positions_enfants;}
-    //! Getteur du nombre d'enfants de la tuile
-    int get_nombre_enfant() {return nombre_enfants;}
+    //! Getteur du nombre d'enfants de la Tuile
+    int get_nombre_enfant() const {return nombre_enfants;}
+    //! Getteur de l'identifiant unique de la Tuile
+    int get_id() const {return id;}
+    //! Surcharge de l'opérateur ==
+    /*!
+     * Surcharge de l'opérateur ==
+     * Soit A et B deux tuiles, A == B <=> A.id == B.id
+     * @param t la deuxième tuile
+     * @return si this == t
+     */
+    bool operator==(const Tuile& t) const {return get_id() == t.get_id();}
+    //! Surcharge de l'opérateur !=
+    /*!
+     * Surcharge de l'opérateur !=
+     * Soit A et B deux tuiles, A != B <=> A.id != B.id
+     * @param t la deuxième tuile
+     * @return si this != t
+     */
+    bool operator!=(const Tuile& t) const {return get_id() != t.get_id();}
 };
 
 //! Représente une Tuile de Départ de jeu, ne peut pas être placée lors d'une partie
@@ -52,6 +74,8 @@ class TuileJeu : public Tuile {
 
 //! Implémentation concrète de la tuile de Jeu de base
 class TuileJeuConcrete : public TuileJeu {
+public:
+    TuileJeuConcrete();
 };
 
 #endif

@@ -15,7 +15,7 @@ protected:
     //! Le nombre de pierres du Joueur
     int pierre = 0;
     //! Le Plateau du joueur
-    Plateau& plateauJoueur;
+    Plateau plateauJoueur;
     //! Si le joueur joue tout seul
     /*!
       Si le joueur joue tout seul. \n
@@ -24,29 +24,31 @@ protected:
     bool joueToutSeul;
 
 public:
+    //! Constructeur du joueur
+    Joueur();
     //! Retourne le Score calculé du Joueur
-    int get_score();
+    int get_score() {return 0;} // Le score est implémenté avec les joueurs concrèts
     //! Retourne la quantité de pierres du Joueur
-    int get_pierre();
+    int get_pierre() {return pierre;}
     //! Set la quantité de pierres du Joueur
-    void set_pierre(int pierre);
+    void set_pierre(int pierre) {this->pierre = max(0, pierre);}
     //! Ajoute des pierres au Joueur
-    void ajouter_pierre(int pierre);
+    void ajouter_pierre(int pierre) {this->pierre += pierre;}
     //! Retourne le plateau du Joueur
-    Plateau& get_plateau();
+    Plateau& get_plateau() {return plateauJoueur;}
     //! Tente de placer une tuile aux coordonées indiquées.
     /*!
      * @param tuile la Tuile à placer
      * @param coordonées le Vector2 qui donne la position de la Tuile
      * @return Si la tuile as été placé ou non
      */
-    bool place_tuile(Tuile tuile, Vector2 coordonées);
+    bool place_tuile(Tuile* tuile, Vector2& coordonees) {return plateauJoueur.placer(tuile, coordonees);}
     //! La fonction appelée lorsque le joueur joueToutSeul
     /*!
      *
      * @param chantier un tableau de Tuile, représentant le chantier
      */
-    void jouer(Tuile* chantier);
+    void jouer(Tuile* chantier) {}
 };
 
 //! Une impléméntation concrète d'un Joueur humain

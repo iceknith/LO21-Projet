@@ -27,12 +27,15 @@ protected:
 
 public :
     Hexagone() = default;
+    Hexagone(Tuile* tuile_parent, int indice_tuile, CouleursAkropolis couleur) :
+        tuileParent(tuile_parent), indice_tuile(indice_tuile), couleur(couleur)
+        {};
     ~Hexagone() = default;
 
     //! Retourne la couleur de cet hexagone
-    int get_couleur() const;
+    int get_couleur() const {return couleur;}
     //! Retourne la tuile qui contient cet hexagone
-    Tuile* get_tuile() const;
+    Tuile* get_tuile() const {return tuileParent;}
     //! Retourne la position locale de cet hexagone dans la tuile
     Vector2 get_local_position() const;
     //! Retourne la hauteur de cet hexagone
@@ -52,7 +55,7 @@ public :
      placer cet hexagone spécifique, à cet endroit.
      \return Si l'hexagone peut être placé à cet endroit.
     */
-    bool peut_etre_placee(Plateau* map, Vector2 position) const;
+    bool peut_etre_placee(Plateau* map, Vector2 position) const {return true;}
 
     //! Fonction appelée dès que l'hexagone est recouvert
     /*!
@@ -60,7 +63,7 @@ public :
      Cette fonction est appelée dès que l'hexagone est recouvert.
      Elle sert notemment à la classe Carrière à ajouter une pierre au joureur.
     */
-    void quand_recouvert(Joueur* joueur_qui_recouvre) const;
+    void quand_recouvert(Joueur* joueur_qui_recouvre) const {}
 
     //! Retourne le texte affichée au centre de l'hexagone affichée dans la Console
     /*!

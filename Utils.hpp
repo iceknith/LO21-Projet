@@ -30,6 +30,18 @@ public:
     //! Initialize un Vecteur avec les coordonées donées
     /*! Initialize un Vecteur avec les coordonées donées */
     Vector2(float x, float y) : x(x), y(y) {};
+
+    //! Surcharge l'operateur inférieur à, pour qu'il puisse être utilisé comme clé dans une map
+    /*!
+     * Surcharge l'operateur inférieur à, pour qu'il puisse être utilisé comme clé dans une map
+     * Soit A et B deux vecteurs, A < B <=> (A.y < B.y) || (A.y == B.y && A.x < B.x)
+    */
+    bool operator<(const Vector2 v) const{return (y < v.y) || (y == v.y && x < v.x);}
+    //! Surcharge de l'opérateur addition
+    /*! Surcharge de l'opérateur addition
+     * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
+     */
+    Vector2 operator+(const Vector2& v) const{return {x + v.x, y + v.y};}
 };
 
 #endif

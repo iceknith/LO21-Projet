@@ -17,8 +17,8 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         const Hexagone& h = iterateur->second;
 
         // coordonnées "écran" (placement en quinconce)
-        int px = q * (hexW - 3) + r * ((hexW - 3) / 2);
-        int py = r * (hexH - 1);
+        int px = q * (2 * hexW - 2) + (r%2) * (hexW-1);
+        int py = r * (hexH - 3);
 
         // message centré dans 5 colonnes
         string msg = h.get_displayed_text();
@@ -26,25 +26,28 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         int padLeft  = (5 - msg.size()) / 2;
         int padRight = 5 - msg.size() - padLeft;
 
+        int hauteur = h.get_hauteur();
+        cout << hauteur << endl;
+
         // construire chaque ligne de l’hexagone
-        std::string top    = "   _ _   ";
+        string top    = "   _ _   ";
 
-        std::string l1     = " /" + std::to_string(h.get_hauteur()) +
-                    " " + std::to_string(h.get_hauteur()) +
-                    " " + std::to_string(h.get_hauteur()) + "\\ ";
+        string l1     = " /" + to_string(hauteur) +
+                    " " + to_string(hauteur) +
+                    " " + to_string(hauteur) + "\\ ";
 
-        string l2 = "/" + to_string(h.get_hauteur())
+        string l2 = "/" + to_string(hauteur)
                          + string(padLeft, ' ')
                          + msg
                          + string(padRight, ' ')
-                         + to_string(h.get_hauteur()) + "\\";
+                         + to_string(hauteur) + "\\";
 
-        string l3     = "\\" + to_string(h.get_hauteur())
+        string l3     = "\\" + to_string(hauteur)
                              + string(5, 'X')
-                             + to_string(h.get_hauteur()) + "/";
+                             + to_string(hauteur) + "/";
 
-        string l4     = " \\_" + to_string(h.get_hauteur())
-                             + "_" + to_string(h.get_hauteur())
+        string l4     = " \\_" + to_string(hauteur)
+                             + "_" + to_string(hauteur)
                              + "_/ ";
 
         // dessiner dans le canvas si dans les bornes
@@ -60,6 +63,6 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
 
     // Affichage final
     for (auto &line : canvas) {
-        std::cout << line << "\n";
+        cout << line << "\n";
     }
 }
