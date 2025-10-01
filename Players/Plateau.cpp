@@ -9,7 +9,7 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
     // - Si on peut placer toutes les tuiles, à leurs positions locales
     // - Sur un niveau commun
     // - Sur plus d'une tuile
-    //! TODO implémenter une condition, qui regarde si on est adjascente à une tuile lorsqu'on place
+    //! TODO implémenter une condition, qui regarde si on est adjascente à une tuile lorsqu'on place à la hauteur 0
 
     // Définition des variables
     int hauteur = 0;
@@ -28,7 +28,7 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
         Vector2 positionHex = position + positionLocaleHex;
 
         if (hexagone_existe(positionHex)){
-            Hexagone h = obtenir_hexagone(position);
+            Hexagone h = obtenir_hexagone(positionHex);
             // Condition hauteur
             if (hauteur != h.get_hauteur()) return false;
             // Condition Tuile - Si !conditionTuileValidee, tuile_base != nullptr
@@ -54,7 +54,6 @@ bool Plateau::placer(Tuile* tuile, const Vector2 &position) {
     int hauteur = 1;
     if (hexagone_existe(position)) hauteur = obtenir_hexagone(position).get_hauteur() + 1;
     tuile->set_hauteur(hauteur);
-    cout << "new h" << hauteur << endl;
 
     // Iteration à travers toute les positions, pour voir si elles sont légales
     for (int i = 0; i < tuile->get_nombre_enfant(); i++) {

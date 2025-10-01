@@ -1,6 +1,6 @@
 #include <vector>
 #include "Affichage.hpp"
-
+using namespace AffichageConsoleUtils;
 
 void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
     // tableau "canvas" de caractères (assez grand pour plusieurs hex)
@@ -27,10 +27,9 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         int padRight = 5 - msg.size() - padLeft;
 
         int hauteur = h.get_hauteur();
-        cout << hauteur << endl;
 
         // construire chaque ligne de l’hexagone
-        string top    = "   _ _   ";
+        string top    = "  _ _ _  ";
 
         string l1     = " /" + to_string(hauteur) +
                     " " + to_string(hauteur) +
@@ -52,18 +51,34 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
 
         // dessiner dans le canvas si dans les bornes
         if (py + 4 < (int)canvas.size() && px + hexW <= (int)canvas[0].size()) {
+            /*
             canvas[py+0].replace(px, hexW, top);
             canvas[py+1].replace(px, hexW, l1);
             canvas[py+2].replace(px, hexW, l2);
             canvas[py+3].replace(px, hexW, l3);
             canvas[py+4].replace(px, hexW, l4);
+             */
+            replace_sauf_charactere(canvas[py+0], px, hexW, top, ' ');
+            replace_sauf_charactere(canvas[py+1], px, hexW, l1, ' ');
+            replace_sauf_charactere(canvas[py+2], px, hexW, l2, ' ');
+            replace_sauf_charactere(canvas[py+3], px, hexW, l3, ' ');
+            replace_sauf_charactere(canvas[py+4], px, hexW, l4, ' ');
         }
-        //! TODO: faire une fonciton replace_sauf_espace, qui remplace, sauf lorsqu'il y as des espaces
 
     } while (++iterateur != iterateur_fin);
 
     // Affichage final
     for (auto &line : canvas) {
         cout << line << "\n";
+    }
+}
+
+void AffichageConsoleUtils::replace_sauf_charactere(string &text_original, size_t pos, size_t len,
+                                                    const std::string &text_nouveau, char charactere_non_remplace)  {
+    size_t endSize = min(text_original.length(), pos + min(len, text_nouveau.size()));
+    for (size_t i = pos; i < endSize; i++){
+        if (text_nouveau[i - pos] != charactere_non_remplace){
+            text_original[i] = text_nouveau[i - pos];
+        }
     }
 }

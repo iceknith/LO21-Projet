@@ -27,5 +27,20 @@ public:
     void affiche_plateau_actuel(Joueur &joueur);
 };
 
+//! Ensemble de fonctions utiles à l'affichage console
+namespace AffichageConsoleUtils {
+    //! Implémente replace, sauf qu'il 'skip' les charactères identiques à charactere_non_remplace
+    /*!
+     *
+     * @param text_original Le texte d'où on va remplacer des choses
+     * @param pos La position du remplacement
+     * @param len La taille du remplacement
+     * @param text_nouveau Le texte avec lequel on remplace
+     * @param charactere_non_remplace Le charactère qui ne remplacera pas le texte_original
+     */
+    void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
+                                 const string& text_nouveau, char charactere_non_remplace);
+}
+
 
 #endif //LO21_PROJET_AFFICHAGE_HPP

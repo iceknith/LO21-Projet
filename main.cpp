@@ -14,11 +14,11 @@ int main() {
 
     auto position = Vector2(0,0);
     j.place_tuile(new TuileJeuConcrete(), position);
-    position = Vector2(0,2);
+    //position = Vector2(0,2);
+    //j.place_tuile(new TuileJeuConcrete(), position);
+    position = Vector2(0,3);
     j.place_tuile(new TuileJeuConcrete(), position);
-
-    auto b = j.get_plateau().obtenir_hexagone(Vector2(0,0));
-    cout << b.get_hauteur() << endl;
+    position = Vector2(0,2);
 
     a.affiche_plateau_actuel(j);
 
