@@ -58,6 +58,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
             canvas[py+3].replace(px, hexW, l3);
             canvas[py+4].replace(px, hexW, l4);
         }
+        //! TODO: faire une fonciton replace_sauf_espace, qui remplace, sauf lorsqu'il y as des espaces
 
     } while (++iterateur != iterateur_fin);
 
