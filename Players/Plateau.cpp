@@ -4,6 +4,7 @@
 
 #include "Plateau.hpp"
 
+
 bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
     // On peut placer si on est:
     // - Si on peut placer toutes les tuiles, à leurs positions locales
@@ -21,6 +22,10 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
     }
 
     bool conditionTuileValidee = (tuile_base == nullptr); // Si on n'as pas de tuile, la condition d'être sur plusieurs tuiles est déjà validée
+
+    int adjacent =0;// compte le nombre d'hexagone adjacent a notre position
+    static const Vector2 PositionContourHexagone[6] = { {0,1}, {0,2}, {0,-1}, {0,-2},{1,1},{1,-1}}; // position de tout les voisions locals
+
 
     // Iteration à travers toute les positions, pour voir si elles sont légales
     for (int i = 0; i < tuile.get_nombre_enfant(); i++){
@@ -40,6 +45,20 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
             // Condition hauteur
             if (hauteur != 0) return false;
             // On ne check pas la condition tuile, car si tuile_base, sa hauteur est au moins 1, donc la condition hauteur se déclenchera avant
+        }
+        //On regarde si notre hexagone est adjascente à une tuile lorsqu'on place à la hauteur 0
+
+        for (int j = 0; j < 6; ++j) {
+            if (plateau.find(positionHex + PositionContourHexagone[j]) != plateau.end()) {
+                ++adjacent;
+            }
+        }
+    }
+
+    // Si hexagone sans adjacent et n'est pas la premiere tuile alors mauvais placement
+    if (adjacent ==0) {
+        if (tuile.get_id()!=0) {
+            return true;  // WARNING: supposement juste mais il semble avoir un probleme dans comment on a codé la map
         }
     }
 

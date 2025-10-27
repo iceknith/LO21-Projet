@@ -44,7 +44,11 @@ public :
      de la hauteur de la tuile qui le contient
     */
     int get_hauteur() const;
-
+    //! Retourne l'id de cet hexagone
+    /*!
+     \return L'id de cet hexagone
+    */
+    int get_id() const;
     //! Retourne si l'hexagone peut être placé à cet endroit
     /*!
      \param map Un pointeur vers le plateau dans lequel on va vouloir placer l'hexagone

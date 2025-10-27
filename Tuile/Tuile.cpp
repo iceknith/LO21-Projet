@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Tuile.hpp"
 
+
 using namespace std;
 
 // Initialize le nextID
@@ -12,10 +13,24 @@ Tuile::Tuile() {
 
 TuileJeuConcrete::TuileJeuConcrete() {
     nombre_enfants = 3;
-    positions_enfants[0] = Vector2(0,1);
-    positions_enfants[1] = Vector2(0,0);
-    positions_enfants[2] = Vector2(0,2);
+    positions_enfants[0] = Vector2(0,0);
+    positions_enfants[1] = Vector2(0,1);
+    positions_enfants[2] = Vector2(-1,2);
     enfants[0] = Hexagone(this, 0, CouleursAkropolis::BLANC);
     enfants[1] = Hexagone(this, 1, CouleursAkropolis::ROUGE);
     enfants[2] = Hexagone(this, 2, CouleursAkropolis::BLEU);
+}
+
+
+TuileDepart::TuileDepart() {
+    
+    nombre_enfants = 4;
+    positions_enfants[0] = Vector2(0,0);
+    positions_enfants[1] = Vector2(0,1);
+    positions_enfants[2] = Vector2(1,1);
+    positions_enfants[3] = Vector2(0,-2);
+    enfants[0] = Hexagone(this, 0, CouleursAkropolis::BLEU);
+    enfants[1] = Hexagone(this, 1, CouleursAkropolis::ROUGE);
+    enfants[2] = Hexagone(this, 2, CouleursAkropolis::JAUNE);
+    enfants[3] = Hexagone(this, 2, CouleursAkropolis::VERT);
 }

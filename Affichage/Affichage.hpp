@@ -40,6 +40,12 @@ namespace AffichageConsoleUtils {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
+    //! Donne la couleur en type string
+    /*!
+     * @param couleur la couleur dont on veut changer le type
+     * @return cette meme couleur sous le type string
+     */
+    string couleur_to_string(CouleursAkropolis couleur);
 }
 
 

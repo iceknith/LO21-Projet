@@ -6,7 +6,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
     // tableau "canvas" de caractères (assez grand pour plusieurs hex)
     vector<string> canvas(40, string(120, ' '));
 
-    auto iterateur = joueur.get_plateau().get_iterateur_debut();
+    auto iterateur = joueur.get_plateau().get_iterateur_debut(); // recupere les exagones du plateau via iterator
     auto iterateur_fin = joueur.get_plateau().get_iterateur_fin();
 
     // itere sur toute la map
@@ -16,17 +16,20 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         int r = (int) iterateur->first.y;
         const Hexagone& h = iterateur->second;
 
+        //int qx = q + (r - (r & 1)) / 2;
+        // TODO : Probleme affichage tuile --> on utilise une representation axiale mais on represente en quinconce: position differente en fonction de si on est en position pair ou impaire
         // coordonnées "écran" (placement en quinconce)
         int px = q * (2 * hexW - 2) + (r%2) * (hexW-1);
         int py = r * (hexH - 3);
 
         // message centré dans 5 colonnes
-        string msg = h.get_displayed_text();
+        string msg = "(" +  to_string(q) + ","+ to_string(r)+")"; //affiche les coordoné hexagonales
         if (msg.size() > 5) msg = msg.substr(0,5); // tronque si message trop long
         int padLeft  = (5 - msg.size()) / 2;
         int padRight = 5 - msg.size() - padLeft;
 
         int hauteur = h.get_hauteur();
+
 
         // construire chaque ligne de l’hexagone
         string top    = "  _ _ _  ";
@@ -42,7 +45,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
                          + to_string(hauteur) + "\\";
 
         string l3     = "\\" + to_string(hauteur)
-                             + string(5, 'X')
+                            + couleur_to_string(static_cast<CouleursAkropolis>(h.get_couleur()))
                              + to_string(hauteur) + "/";
 
         string l4     = " \\_" + to_string(hauteur)
@@ -69,7 +72,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
 
     // Affichage final
     for (auto &line : canvas) {
-        cout << line << "\n";
+        cout << line ;//<< "\n";
     }
 }
 
@@ -82,3 +85,19 @@ void AffichageConsoleUtils::replace_sauf_charactere(string &text_original, size_
         }
     }
 }
+
+string AffichageConsoleUtils::couleur_to_string(CouleursAkropolis couleur) {
+    static const std::map<CouleursAkropolis, std::string> noms = {
+        {BLANC, "BLANC"},
+        {BLEU, "BLEU "},
+        {JAUNE, "JAUNE"},
+        {ROUGE, "ROUGE"},
+        {VIOLET, "VILET"},// Avec un charcater en moin pour le faire rentrer dans l'hexagone
+        {VERT, "VERT "}
+    };
+
+    auto it = noms.find(couleur);
+    if (it != noms.end()) { return(it->second);}
+    else  {return("VIDE");}
+}
+
