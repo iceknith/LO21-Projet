@@ -8,7 +8,7 @@ var searchData=
   ['tuile_5',['Tuile',['../d7/d88/classTuile.html',1,'Tuile'],['../d7/d88/classTuile.html#afb479e0f8dc6b2cfeb656fa901d39c41',1,'Tuile::Tuile()']]],
   ['tuile_2ecpp_6',['Tuile.cpp',['../d5/dc8/Tuile_8cpp.html',1,'']]],
   ['tuile_2ehpp_7',['Tuile.hpp',['../da/d27/Tuile_8hpp.html',1,'']]],
-  ['tuiledepart_8',['TuileDepart',['../db/d42/classTuileDepart.html',1,'']]],
+  ['tuiledepart_8',['TuileDepart',['../db/d42/classTuileDepart.html',1,'TuileDepart'],['../db/d42/classTuileDepart.html#ac98fb0b9bb2aeccdb48fc8eaaed91a61',1,'TuileDepart::TuileDepart()']]],
   ['tuilejeu_9',['TuileJeu',['../d4/dec/classTuileJeu.html',1,'']]],
   ['tuilejeuconcrete_10',['TuileJeuConcrete',['../d9/d9a/classTuileJeuConcrete.html',1,'TuileJeuConcrete'],['../d9/d9a/classTuileJeuConcrete.html#a71a395ec11cacd2c07fb7c465c567d12',1,'TuileJeuConcrete::TuileJeuConcrete()']]],
   ['tuileparent_11',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
