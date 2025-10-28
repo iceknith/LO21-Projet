@@ -12,3 +12,4 @@ int Hexagone::get_id() const {
 Vector2 Hexagone::get_local_position() const {
     return tuileParent->get_positions_enfants()[indice_tuile];
 }
+

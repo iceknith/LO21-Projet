@@ -6,29 +6,34 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
     // tableau "canvas" de caractères (assez grand pour plusieurs hex)
     vector<string> canvas(40, string(120, ' '));
 
-    auto iterateur = joueur.get_plateau().get_iterateur_debut(); // recupere les exagones du plateau via iterator
-    auto iterateur_fin = joueur.get_plateau().get_iterateur_fin();
+    auto iterateur = joueur.get_plateau().get_iterateur_debut();
+    auto iterateur_fin = joueur.get_plateau().get_iterateur_fin(); // recupere les hexagones du plateau via iterator
 
     // itere sur toute la map
     do {
         // Coordonees hexagoneales
         int q = (int) iterateur->first.x;
         int r = (int) iterateur->first.y;
-        const Hexagone& h = iterateur->second;
 
-        //int qx = q + (r - (r & 1)) / 2;
-        // TODO : Probleme affichage tuile --> on utilise une representation axiale mais on represente en quinconce: position differente en fonction de si on est en position pair ou impaire
+        const auto * h = iterateur->second;
+        if (!h) continue;
+
         // coordonnées "écran" (placement en quinconce)
         int px = q * (2 * hexW - 2) + (r%2) * (hexW-1);
         int py = r * (hexH - 3);
 
         // message centré dans 5 colonnes
-        string msg = "(" +  to_string(q) + ","+ to_string(r)+")"; //affiche les coordoné hexagonales
+
+        string msg =  type_to_string(h->get_type());
+        // DEBUG option: afficher les coordonées
+        //string msg = "("+ to_string( q)+","+ to_string(r)+")";
+        if (h->get_type() == TypeHexagone::Hexagone);
+
         if (msg.size() > 5) msg = msg.substr(0,5); // tronque si message trop long
         int padLeft  = (5 - msg.size()) / 2;
         int padRight = 5 - msg.size() - padLeft;
 
-        int hauteur = h.get_hauteur();
+        int hauteur = h->get_hauteur();
 
 
         // construire chaque ligne de l’hexagone
@@ -45,7 +50,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
                          + to_string(hauteur) + "\\";
 
         string l3     = "\\" + to_string(hauteur)
-                            + couleur_to_string(static_cast<CouleursAkropolis>(h.get_couleur()))
+                             + couleur_to_string(static_cast<CouleursAkropolis>(h->get_couleur()))
                              + to_string(hauteur) + "/";
 
         string l4     = " \\_" + to_string(hauteur)
@@ -72,7 +77,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
 
     // Affichage final
     for (auto &line : canvas) {
-        cout << line ;//<< "\n";
+        cout << line;
     }
 }
 
@@ -97,6 +102,20 @@ string AffichageConsoleUtils::couleur_to_string(CouleursAkropolis couleur) {
     };
 
     auto it = noms.find(couleur);
+    if (it != noms.end()) { return(it->second);}
+    else  {return("VIDE");}
+}
+
+
+string AffichageConsoleUtils::type_to_string(TypeHexagone type) {
+    static const std::map<TypeHexagone, std::string> noms = {
+        {TypeHexagone::Hexagone, "Hexagone"},
+        {TypeHexagone::Place, "Place "},
+        {TypeHexagone::Carriere, "Carriere"},
+        {TypeHexagone::Quartier, "Quartier"}
+    };
+
+    auto it = noms.find(type);
     if (it != noms.end()) { return(it->second);}
     else  {return("VIDE");}
 }

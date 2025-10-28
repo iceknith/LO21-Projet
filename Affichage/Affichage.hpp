@@ -40,12 +40,18 @@ namespace AffichageConsoleUtils {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
-    //! Donne la couleur en type string
+    //! Donne la couleur d'un hexagone en type string
     /*!
-     * @param couleur la couleur dont on veut changer le type
+     * @param couleur La couleur dont on veut changer le type
      * @return cette meme couleur sous le type string
      */
     string couleur_to_string(CouleursAkropolis couleur);
+    //! Donne le type d'un Hexagone en type string
+    /*!
+     * @param type Le type dont on veut changer le type
+     * @return ce meme type en string
+     */
+    string type_to_string(TypeHexagone type);
 }
 
 

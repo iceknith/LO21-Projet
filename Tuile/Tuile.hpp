@@ -23,7 +23,7 @@ protected:
     //! Le nombre d'enfants (Hexagone) par Tuile
     int nombre_enfants;
     //! La liste des enfants (Hexagone) de cette Tuile
-    Hexagone enfants[max_enfants_par_tuile];
+    Hexagone *enfants[max_enfants_par_tuile];
     //! Les positions relatives des enfants (Hexagone) de cette tuile par rapport à la tuile
     Vector2 positions_enfants[max_enfants_par_tuile];
     //! La rotation de la tuile
@@ -38,7 +38,7 @@ public :
     //! Getteur de la Hauteur
     int get_hauteur() const {return hauteur;}
     //! Getteur des enfants
-    Hexagone* get_enfants() {return enfants;}
+    Hexagone** get_enfants() {return enfants;}
     //! Getteur de la position des enfants
     Vector2* get_positions_enfants() {return positions_enfants;}
     //! Getteur du nombre d'enfants de la Tuile

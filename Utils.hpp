@@ -10,6 +10,16 @@ enum CouleursAkropolis {
     VIOLET,
     VERT
 };
+//! Définit les types des hexagones d'Akropolis
+enum class TypeHexagone {
+    Hexagone,
+    Place,
+    Carriere,
+    Quartier
+};
+
+
+
 
 //! Représente un Vecteur 2D
 class Vector2 {

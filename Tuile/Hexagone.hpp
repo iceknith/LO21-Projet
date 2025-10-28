@@ -26,11 +26,15 @@ protected:
     int indice_tuile;
 
 public :
+    virtual TypeHexagone get_type() const {
+    return TypeHexagone::Hexagone;
+}
     Hexagone() = default;
     Hexagone(Tuile* tuile_parent, int indice_tuile, CouleursAkropolis couleur) :
         tuileParent(tuile_parent), indice_tuile(indice_tuile), couleur(couleur)
         {};
     ~Hexagone() = default;
+
 
     //! Retourne la couleur de cet hexagone
     int get_couleur() const {return couleur;}
@@ -59,6 +63,8 @@ public :
      placer cet hexagone spécifique, à cet endroit.
      \return Si l'hexagone peut être placé à cet endroit.
     */
+
+
     bool peut_etre_placee(Plateau* map, Vector2 position) const {return true;}
 
     //! Fonction appelée dès que l'hexagone est recouvert
@@ -76,7 +82,10 @@ public :
      Et est surchargée à chaque implémentation concrète de l'Hexagone.
      \return Le texte à afficher au centre de l'hexagone dans l'affichage console
     */
-    string get_displayed_text() const {return "default";};
+
+
+
+
 };
 
 //! La classe Place
@@ -90,13 +99,15 @@ protected:
      * Permet de savoir le multiplicateur à appliquer à la fin de la partie pour le score
      */
     int etoiles;
-
 public:
-    Place() = default;
+    using Hexagone::Hexagone;
     ~Place() {std::cout<<"Place détruite";};
-
+    // ! Retourne le type de l'hexagone
+    TypeHexagone get_type()  const override{
+        return TypeHexagone::Place;
+    }
     //! Retourne le nombre d'étoiles
-    int get_etoiles();
+    int get_etoiles() const {return etoiles;};
 };
 
 //! La classe Carriere
@@ -104,6 +115,13 @@ public:
   Un Hexagone, qui lorsque recouvert, donne une pierre au joueur actuel
 */
 class Carriere : public Hexagone{
+public:
+    using Hexagone::Hexagone;
+    ~Carriere() {std::cout<<"Carriere détruite";};
+    // ! Retourne le type de l'hexagone
+    TypeHexagone get_type()  const override{
+        return TypeHexagone::Carriere;
+    }
 
 };
 
@@ -112,6 +130,13 @@ class Carriere : public Hexagone{
   Un Hexagone, qui est utilisé pour scorer des points
 */
 class Quartier : public Hexagone{
+public:
+    using Hexagone::Hexagone;
+    ~Quartier() {std::cout<<"Quartier détruite";};
+    // ! Retourne le type de l'hexagone
+    TypeHexagone get_type()  const override{
+        return TypeHexagone::Quartier;
+    }
 
 };
 

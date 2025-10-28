@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include "main.hpp"
+
+#include <memory>
+
 #include "Tests/Tests.hpp"
 using namespace std;
 
@@ -13,12 +16,13 @@ int main() {
     auto a = AffichageConsole();
 
     auto position = Vector2(0,0);
+
+    position = Vector2(3,4);
     j.place_tuile(new TuileJeuConcrete(), position);
-    //position = Vector2(0,2);
-    //j.place_tuile(new TuileJeuConcrete(), position);
-    position = Vector2(0,3);
-    j.place_tuile(new TuileJeuConcrete(), position);
-    position = Vector2(0,2);
+
+    position = Vector2(1,7);
+    j.place_tuile(new TuileDepart(), position);
+
 
     a.affiche_plateau_actuel(j);
 
