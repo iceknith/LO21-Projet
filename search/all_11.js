@@ -12,5 +12,7 @@ var searchData=
   ['tuilejeu_9',['TuileJeu',['../d4/dec/classTuileJeu.html',1,'']]],
   ['tuilejeuconcrete_10',['TuileJeuConcrete',['../d9/d9a/classTuileJeuConcrete.html',1,'TuileJeuConcrete'],['../d9/d9a/classTuileJeuConcrete.html#a71a395ec11cacd2c07fb7c465c567d12',1,'TuileJeuConcrete::TuileJeuConcrete()']]],
   ['tuileparent_11',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
-  ['tuiles_12',['tuiles',['../df/d51/classChantier.html#a20d660b94bd60d6a05ab1fc285df60cf',1,'Chantier::tuiles()'],['../d6/df2/classDeck.html#ad5cebfb3050dd617db2f175c79d18f7e',1,'Deck::tuiles()']]]
+  ['tuiles_12',['tuiles',['../df/d51/classChantier.html#a20d660b94bd60d6a05ab1fc285df60cf',1,'Chantier::tuiles()'],['../d6/df2/classDeck.html#ad5cebfb3050dd617db2f175c79d18f7e',1,'Deck::tuiles()']]],
+  ['type_5fto_5fstring_13',['type_to_string',['../d9/d0a/namespaceAffichageConsoleUtils.html#a629e04ef4778ae12352c09e8542be162',1,'AffichageConsoleUtils']]],
+  ['typehexagone_14',['TypeHexagone',['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf',1,'Utils.hpp']]]
 ];
