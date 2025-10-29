@@ -89,6 +89,8 @@ public:
 class ScoreVert : public Score{
     int score_vert(Plateau* plateau);
 public:
+ScoreVert(Score* s) : Score(s) {}
+
     int score (Plateau* plateau) override;
 };
 
@@ -140,6 +142,32 @@ class ScoreJauneVariante : public Score{
     int score_jaune_variante(Plateau* plateau);
 public:
     int score (Plateau* plateau) override;
+};
+
+//! Ensemble de fonctions utiles au calcul du score
+namespace ScoreUtils {
+
+    int get_iteration_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+
+    int get_iteration_with_hauteur_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+
+    //std::vector<Hexagone*> get_hexagones_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+
+    int get_largest_voisinnage_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur) ;
+
+    //std::vector<Vector2> get_hexagones_coordonates_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur)
+
+
+
+    //int plusLongVolume(plateau)
+
+    //hex** verifi contour(map et coordones)
+
+    //entouré?
+
+
+
+
 };
 
 
