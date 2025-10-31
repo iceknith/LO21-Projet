@@ -52,6 +52,18 @@ public:
      * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
      */
     Vector2 operator+(const Vector2& v) const{return {x + v.x, y + v.y};}
+    //! Surcharge l'operateur égale à, pour pouvoir comparer deux Vector2
+    /*!
+     * Surcharge l'operateur égale à, pour pouvoir comparer deux Vector2
+     * Soit A et B deux vecteurs, A == B <=> (A.y == B.y) || (A.y == B.y)
+    */
+    bool operator==(const Vector2& v) const {
+        return (x == v.x) && (y == v.y);
+    }
+
 };
+
+// position de tout les voisions locals d'un Hexagone
+static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}};
 
 #endif

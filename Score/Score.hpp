@@ -2,7 +2,7 @@
 #define LO21_PROJET_SCORE_HPP
 
 #include "../Players/Plateau.hpp"
-
+#include <vector>
 //! Classe de Score, utilisée pour calculer le score d'un joueur à partir d'un plateau
 /*!
  * Classe de Score, utilisée pour calculer le score d'un joueur à partir d'un plateau
@@ -147,16 +147,26 @@ public:
 //! Ensemble de fonctions utiles au calcul du score
 namespace ScoreUtils {
 
+    map<Vector2, Hexagone*> get_hexagone_filtres(Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur );
+
     int get_iteration_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
 
     int get_iteration_with_hauteur_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+
+    map<Vector2, Hexagone*>  get_hexagone_voisins(Plateau* plateau, Vector2 position) ;
+
+    Hexagone* get_hexagone_with_position(Plateau* plateau, Vector2 position);
+
+
 
     //std::vector<Hexagone*> get_hexagones_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
 
     int get_largest_voisinnage_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur) ;
 
-    //std::vector<Vector2> get_hexagones_coordonates_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur)
+    std::vector<Vector2> get_hexagones_coordonates_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
 
+
+    std::vector<Hexagone*> get_hexagone__voisins(Plateau* plateau, Vector2 position) ;
 
 
     //int plusLongVolume(plateau)
