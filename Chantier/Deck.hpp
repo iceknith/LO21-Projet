@@ -17,9 +17,9 @@ public:
     //! Initialise le Deck selon le nombre de joueurs.
     Deck(int nombre_joueurs);
     //! Getteur de la taille maximale du Deck
-    int get_taille();
+    int get_taille() {return taille;};
     //! Getteur du nombre de tuiles
-    int get_nombre_tuiles();
+    int get_nombre_tuiles(){return nombreTuiles;};
     //! Tire la tuile la plus en haut du deck
     Tuile tirer_tuile();
     //! Tire les x tuiles les plus en haut du deck
