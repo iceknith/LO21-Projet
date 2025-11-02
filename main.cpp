@@ -23,6 +23,8 @@ int main() {
     position = Vector2(1,7);
     j.place_tuile(new TuileDepart(), position);
 
+    position = Vector2(1,5);
+    j.place_tuile(new TuileJeuConcrete(), position);
 
     a.affiche_plateau_actuel(j);
 

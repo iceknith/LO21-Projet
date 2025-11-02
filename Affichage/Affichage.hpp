@@ -3,6 +3,7 @@
 
 #include "../Utils.hpp"
 #include "../Players/Players.hpp"
+#include <vector>
 
 
 class Affichage {
@@ -40,18 +41,9 @@ namespace AffichageConsoleUtils {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
-    //! Donne la couleur d'un hexagone en type string
-    /*!
-     * @param couleur La couleur dont on veut changer le type
-     * @return cette meme couleur sous le type string
-     */
-    string couleur_to_string(CouleursAkropolis couleur);
-    //! Donne le type d'un Hexagone en type string
-    /*!
-     * @param type Le type dont on veut changer le type
-     * @return ce meme type en string
-     */
-    string type_to_string(TypeHexagone type);
+
+    //! Convertion entre les coordonées axiales et les coordonées de l'écran
+    Vector2 axialToScreen (Vector2 v);
 }
 
 

@@ -45,6 +45,9 @@ public :
     int get_nombre_enfant() const {return nombre_enfants;}
     //! Getteur de l'identifiant unique de la Tuile
     int get_id() const {return id;}
+    //! Retourne true si la position pos est dans les positions enfants de la tuile
+    bool is_in_positions_enfants(Vector2 pos) const;
+
     //! Surcharge de l'opérateur ==
     /*!
      * Surcharge de l'opérateur ==
