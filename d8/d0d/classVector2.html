@@ -96,9 +96,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a569bd5994787fb2ff4554fea86cd8fc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0d/classVector2.html#a569bd5994787fb2ff4554fea86cd8fc3">operator&lt;</a> (const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> v) const</td></tr>
 <tr class="memdesc:a569bd5994787fb2ff4554fea86cd8fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surcharge l'operateur inférieur à, pour qu'il puisse être utilisé comme clé dans une map.  <a href="../../d8/d0d/classVector2.html#a569bd5994787fb2ff4554fea86cd8fc3">More...</a><br /></td></tr>
 <tr class="separator:a569bd5994787fb2ff4554fea86cd8fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16a83bba9f02169184c2c5543ad860d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0d/classVector2.html#ae16a83bba9f02169184c2c5543ad860d">operator==</a> (const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> v) const</td></tr>
+<tr class="memdesc:ae16a83bba9f02169184c2c5543ad860d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surcharge l'operateur est égal à  <a href="../../d8/d0d/classVector2.html#ae16a83bba9f02169184c2c5543ad860d">More...</a><br /></td></tr>
+<tr class="separator:ae16a83bba9f02169184c2c5543ad860d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18759ffa878ab208dbe092ae07e70b6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d0d/classVector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0d/classVector2.html#a18759ffa878ab208dbe092ae07e70b6f">operator+</a> (const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> &amp;v) const</td></tr>
 <tr class="memdesc:a18759ffa878ab208dbe092ae07e70b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surcharge de l'opérateur addition.  <a href="../../d8/d0d/classVector2.html#a18759ffa878ab208dbe092ae07e70b6f">More...</a><br /></td></tr>
 <tr class="separator:a18759ffa878ab208dbe092ae07e70b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37653598d7dd2e823c7af55bc50b92bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d0d/classVector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0d/classVector2.html#a37653598d7dd2e823c7af55bc50b92bb">operator-</a> (const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> &amp;v) const</td></tr>
+<tr class="memdesc:a37653598d7dd2e823c7af55bc50b92bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Surcharge de l'opérateur soustraction.  <a href="../../d8/d0d/classVector2.html#a37653598d7dd2e823c7af55bc50b92bb">More...</a><br /></td></tr>
+<tr class="separator:a37653598d7dd2e823c7af55bc50b92bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -228,6 +234,33 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a37653598d7dd2e823c7af55bc50b92bb" name="a37653598d7dd2e823c7af55bc50b92bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37653598d7dd2e823c7af55bc50b92bb">&#9670;&#160;</a></span>operator-()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> Vector2::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Surcharge de l'opérateur soustraction Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y) </p>
+
+</div>
+</div>
 <a id="a569bd5994787fb2ff4554fea86cd8fc3" name="a569bd5994787fb2ff4554fea86cd8fc3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a569bd5994787fb2ff4554fea86cd8fc3">&#9670;&#160;</a></span>operator&lt;()</h2>
 
@@ -252,6 +285,33 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Surcharge l'operateur inférieur à, pour qu'il puisse être utilisé comme clé dans une map Soit A et B deux vecteurs, A &lt; B &lt;=&gt; (A.y &lt; B.y) || (A.y == B.y &amp;&amp; A.x &lt; B.x) </p>
+
+</div>
+</div>
+<a id="ae16a83bba9f02169184c2c5543ad860d" name="ae16a83bba9f02169184c2c5543ad860d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae16a83bba9f02169184c2c5543ad860d">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Vector2::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Surcharge l'operateur inférieur égal Soit A et B deux vecteurs, A == B &lt;=&gt; (A.x == B.x) &amp;&amp; (A.y == B.y) </p>
 
 </div>
 </div>

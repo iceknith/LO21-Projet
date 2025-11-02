@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['max_5fenfants_5fpar_5ftuile_0',['max_enfants_par_tuile',['../da/d27/Tuile_8hpp.html#a1c9645f5d846bde6daca67dbe9bfcefe',1,'Tuile.hpp']]],
-  ['max_5ftuiles_5fdans_5fdeck_1',['max_tuiles_dans_deck',['../d1/dd3/Deck_8hpp.html#ae1d1e67f923a2cdb02960034a41a78e9',1,'Deck.hpp']]],
-  ['max_5ftuiles_5fpar_5fchantier_2',['max_tuiles_par_chantier',['../d7/dc0/Chantier_8hpp.html#acae09b4b6e0453d4c579a927c09e37a3',1,'Chantier.hpp']]]
+  ['id_0',['id',['../d7/d88/classTuile.html#a45754810cef2273dd533138572fd69d3',1,'Tuile']]],
+  ['indice_5ftuile_1',['indice_tuile',['../d4/dfc/classHexagone.html#aee88d167803f2d9d487fb1490fd1f21f',1,'Hexagone']]],
+  ['instance_2',['instance',['../d1/d3c/classAffichageConsole.html#a9a0ee13be7c3c26676e3e937382d43e7',1,'AffichageConsole']]]
 ];

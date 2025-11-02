@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['enfants_0',['enfants',['../d7/d88/classTuile.html#ab470ea67e8c0c3872cf1ee27539b401d',1,'Tuile']]],
-  ['etoiles_1',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
+  ['couleur_0',['couleur',['../d4/dfc/classHexagone.html#ad78220d8d5ad4b96e506ea2af205b815',1,'Hexagone']]],
+  ['couleursconsole_1',['couleursConsole',['../d3/d75/namespaceconstAffichageConsoleHex.html#a2b44973055378475f314af37b2ce0fb8',1,'constAffichageConsoleHex']]]
 ];
