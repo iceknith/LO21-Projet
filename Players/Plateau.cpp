@@ -23,7 +23,6 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
 
     bool conditionTuileValidee = (tuile_base == nullptr); // Si on n'as pas de tuile, la condition d'être sur plusieurs tuiles est déjà validée
 
-    static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}}; // position de tout les voisions locals
     int adjacent =0;// compte le nombre d'hexagone adjacent a notre position
 
 
