@@ -17,5 +17,12 @@
 //! \brief The main test function
 void assertTests();
 
+// Tests pour le système de Score
+void test_ScoreUtils();
+void test_ScoreBleu();
+void test_ScoreRouge();
+void test_ScoreVert();
+void test_ScoreViolet();
+void test_ScoreJaune();
 
 #endif

@@ -18,6 +18,22 @@ enum class TypeHexagone {
     Quartier
 };
 
+namespace GameConstants {
+    // Constantes de score
+    const int VERT_PLACE_MULTIPLIER = 3;
+    const int BLEU_VARIANTE_BONUS_THRESHOLD = 10;
+    const int BLEU_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int ROUGE_VARIANTE_BONUS_MIN_EDGES = 3;
+    const int ROUGE_VARIANTE_BONUS_MAX_EDGES = 4;
+    const int ROUGE_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int VIOLET_VARIANTE_HAUTEUR_THRESHOLD = 1;
+    const int VIOLET_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int JAUNE_VARIANTE_BONUS_MULTIPLIER = 2;
+
+    // Game rules
+    const int MAX_HEXAGON_NEIGHBORS = 6;
+    const int HEXAGON_DIRECTIONS = 6;
+}
 
 
 
@@ -57,9 +73,8 @@ public:
      * Surcharge l'operateur égale à, pour pouvoir comparer deux Vector2
      * Soit A et B deux vecteurs, A == B <=> (A.y == B.y) || (A.y == B.y)
     */
-    bool operator==(const Vector2& v) const {
-        return (x == v.x) && (y == v.y);
-    }
+    bool operator==(const Vector2& v) const {return (x == v.x) && (y == v.y);}
+
 
 };
 

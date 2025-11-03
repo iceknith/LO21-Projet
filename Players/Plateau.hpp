@@ -27,14 +27,12 @@ public:
     bool hexagone_existe(const Vector2& coordonees) {return plateau.find(coordonees) != plateau.end();}
     //! Retourne l'hexagone aux coordonées du Vector2
     /*!
-     *
      * @param coordonees le Vector2 des coordonées de l'hexagone recherché
      * @return l'hexagone à ces coordonées
      */
     Hexagone* obtenir_hexagone(const Vector2& coordonees) {return plateau.at(coordonees);}
     //! Retourne true si il est possible de placer tuile à la position du Vector2
     /*!
-     *
      * @param tuile La Tuile qu'on essaye de placer
      * @param position La position à laquelle on essaye de placer la Tuile
      * @return si l'emplacement est valide (check également si les condition de placement des Hexagones sont validés)
