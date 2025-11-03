@@ -7,6 +7,8 @@ var searchData=
   ['choisir_5ftuile_4',['choisir_tuile',['../d9/d17/classIllustreArchitecte.html#ab0a188d98a5c95f4e9d13cd3e70b3f56',1,'IllustreArchitecte']]],
   ['constaffichageconsolehex_5',['constAffichageConsoleHex',['../d3/d75/namespaceconstAffichageConsoleHex.html',1,'']]],
   ['couleur_6',['couleur',['../d4/dfc/classHexagone.html#ad78220d8d5ad4b96e506ea2af205b815',1,'Hexagone']]],
-  ['couleursakropolis_7',['CouleursAkropolis',['../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce',1,'Utils.hpp']]],
-  ['couleursconsole_8',['couleursConsole',['../d3/d75/namespaceconstAffichageConsoleHex.html#a2b44973055378475f314af37b2ce0fb8',1,'constAffichageConsoleHex']]]
+  ['couleurconsoleoutline_7',['couleurConsoleOutline',['../d3/d75/namespaceconstAffichageConsoleHex.html#a189471fad0ab53512795a0785ab6ae1b',1,'constAffichageConsoleHex']]],
+  ['couleursakropolis_8',['CouleursAkropolis',['../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce',1,'Utils.hpp']]],
+  ['couleursconsole_9',['couleursConsole',['../d3/d75/namespaceconstAffichageConsoleHex.html#a2b44973055378475f314af37b2ce0fb8',1,'constAffichageConsoleHex']]],
+  ['couleursconsolehighlighted_10',['couleursConsoleHighlighted',['../d3/d75/namespaceconstAffichageConsoleHex.html#a06c3abb15e7871bb644a2dfbb939183b',1,'constAffichageConsoleHex']]]
 ];
