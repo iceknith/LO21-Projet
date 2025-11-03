@@ -22,11 +22,10 @@ using namespace AffichageConsoleUtils;
 // \1     1/
 //  \1 1 1/
 
-void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
-
+void AffichageConsole::affiche_plateau_actuel(Plateau &plateau, bool selectHexagone, Vector2 selectedHexagone) {
     // trouve les bornes de l'affichage
-    const auto iterateur_debut = joueur.get_plateau().get_iterateur_debut();
-    const auto iterateur_fin = joueur.get_plateau().get_iterateur_fin();
+    const auto iterateur_debut = plateau.get_iterateur_debut();
+    const auto iterateur_fin = plateau.get_iterateur_fin();
 
     Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : iterateur_debut->first);
     Vector2 posFin = posInit;
@@ -57,6 +56,8 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
         emptyLineB += emptyHexLineB;
         emptyLineS += emptyHexLineS;
     }
+    emptyLineS += " ";
+    emptyLineB += " ";
 
     //Optention de la parité de l'affichage
     int parite = static_cast<int>(2 * (highestVectX - posInit.x) / largeurHex) % 2;
@@ -100,6 +101,10 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
         cout << couleurConsoleOutline; // On mets la console à la bonne couleur
         cout << line << endl;
     }
+}
+
+void AffichageConsole::affiche_joueur_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
+    affiche_plateau_actuel(joueur.get_plateau(), selectHexagone, selectedHexagone);
 }
 
 Vector2 AffichageConsoleUtils::axialToScreen(Vector2 v) {

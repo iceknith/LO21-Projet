@@ -17,6 +17,23 @@ bool Tuile::is_in_positions_enfants(Vector2 pos) const {
     return false;
 }
 
+void Tuile::tourne_tuile(bool sens_horaire) {
+    for (size_t i = 0; i < nombre_enfants; i++) {
+        // Convertir les coordonées axiales en coordonées cubiques
+        float q = positions_enfants[i].x;
+        float r = positions_enfants[i].y;
+        float s = -q-r;
+
+        // Tourner les coordonées et reconvertir en axial
+        if (sens_horaire) {
+            positions_enfants[i] = Vector2(-r, -s);
+        }
+        else {
+            positions_enfants[i] = Vector2(-s, -q);
+        }
+    }
+}
+
 TuileJeuConcrete::TuileJeuConcrete() {
     nombre_enfants = 3;
     positions_enfants[0] = Vector2(0,0);

@@ -9,11 +9,14 @@
 class Affichage {
 
 protected:
-    virtual void affiche_plateau_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) {};
+    virtual void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) {};
+    virtual void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) {};
 
 public:
-    void affiche_plateau_actuel(Joueur& joueur) {affiche_plateau_actuel(joueur, false, Vector2());};
-    void affiche_plateau_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_plateau_actuel(joueur, true, selectedHexagone);};
+    void affiche_plateau_actuel(Plateau& plateau) {affiche_plateau_actuel(plateau, false, Vector2());};
+    void affiche_plateau_actuel(Plateau& plateau, Vector2 selectedHexagone) {affiche_plateau_actuel(plateau, true, selectedHexagone);};
+    void affiche_joueur_actuel(Joueur& joueur) {affiche_joueur_actuel(joueur, false, Vector2());};
+    void affiche_joueur_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_joueur_actuel(joueur, true, selectedHexagone);};
 };
 
 class AffichageConsole : public Affichage{
@@ -22,7 +25,8 @@ class AffichageConsole : public Affichage{
     const int hexW = 9; // colonnes
 
 protected:
-    void affiche_plateau_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) override;
 
 public:
     AffichageConsole() = default;

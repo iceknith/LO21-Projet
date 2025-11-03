@@ -48,6 +48,9 @@ public :
     //! Retourne true si la position pos est dans les positions enfants de la tuile
     bool is_in_positions_enfants(Vector2 pos) const;
 
+    //! Tourne la tuile
+    void tourne_tuile(bool sens_horaire);
+
     //! Surcharge de l'opérateur ==
     /*!
      * Surcharge de l'opérateur ==
