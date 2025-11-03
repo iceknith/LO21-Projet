@@ -36,10 +36,12 @@ var searchData=
   ['scorevertvariante_33',['ScoreVertVariante',['../db/da3/classScoreVertVariante.html',1,'']]],
   ['scoreviolet_34',['ScoreViolet',['../df/d68/classScoreViolet.html',1,'']]],
   ['scorevioletvariante_35',['ScoreVioletVariante',['../dd/d84/classScoreVioletVariante.html',1,'']]],
-  ['set_5fhauteur_36',['set_hauteur',['../d7/d88/classTuile.html#a58a907432889638851df867002cbe0d2',1,'Tuile']]],
-  ['set_5fniveau_37',['set_niveau',['../d9/d17/classIllustreArchitecte.html#ab2051646d5c11c4cc02aa705b6a16f70',1,'IllustreArchitecte::set_niveau()'],['../d0/d34/classScoreSoloArchitechte.html#af269607fe60c04363ddc209983270226',1,'ScoreSoloArchitechte::set_niveau()']]],
-  ['set_5fnombre_5fjoueurs_38',['set_nombre_joueurs',['../df/d51/classChantier.html#adc9af9ebd92763c6e564ad99b05e689e',1,'Chantier']]],
-  ['set_5fpierre_39',['set_pierre',['../dd/d07/classJoueur.html#a555b03e154cba8df9c50a972fce8d9cc',1,'Joueur']]],
-  ['set_5ftaille_40',['set_taille',['../df/d51/classChantier.html#a512e037a5478e72ff9c0f09ba458c72b',1,'Chantier']]],
-  ['sum_5fheights_41',['sum_heights',['../da/dd1/namespaceScoreUtils.html#aa413551b5b9f833c4f6a2ae1163b58b7',1,'ScoreUtils']]]
+  ['selectjoueurs_36',['selectJoueurs',['../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe',1,'Jeu::selectJoueurs()'],['../dc/dcd/classJeuConsole.html#aafb6a953e5bcdb9a4c485ef99f7d57af',1,'JeuConsole::selectJoueurs()']]],
+  ['selecttuile_37',['selectTuile',['../d1/de1/classJeu.html#a5a69c820d38c68577235ac1cb3b2b27c',1,'Jeu::selectTuile()'],['../dc/dcd/classJeuConsole.html#a0ea2bf229f2599ad1280166b5333adf9',1,'JeuConsole::selectTuile()']]],
+  ['set_5fhauteur_38',['set_hauteur',['../d7/d88/classTuile.html#a58a907432889638851df867002cbe0d2',1,'Tuile']]],
+  ['set_5fniveau_39',['set_niveau',['../d9/d17/classIllustreArchitecte.html#ab2051646d5c11c4cc02aa705b6a16f70',1,'IllustreArchitecte::set_niveau()'],['../d0/d34/classScoreSoloArchitechte.html#af269607fe60c04363ddc209983270226',1,'ScoreSoloArchitechte::set_niveau()']]],
+  ['set_5fnombre_5fjoueurs_40',['set_nombre_joueurs',['../df/d51/classChantier.html#adc9af9ebd92763c6e564ad99b05e689e',1,'Chantier']]],
+  ['set_5fpierre_41',['set_pierre',['../dd/d07/classJoueur.html#a555b03e154cba8df9c50a972fce8d9cc',1,'Joueur']]],
+  ['set_5ftaille_42',['set_taille',['../df/d51/classChantier.html#a512e037a5478e72ff9c0f09ba458c72b',1,'Chantier']]],
+  ['sum_5fheights_43',['sum_heights',['../da/dd1/namespaceScoreUtils.html#aa413551b5b9f833c4f6a2ae1163b58b7',1,'ScoreUtils']]]
 ];
