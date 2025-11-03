@@ -23,8 +23,13 @@ int main() {
     position = Vector2(1,7);
     j.place_tuile(new TuileDepart(), position);
 
+    position = Vector2(1,3);
+    j.place_tuile(new TuileJeuConcrete(), position);
 
-    a.affiche_plateau_actuel(j);
+    //cout << "\033[1;94mHeyyyyy" << endl;
+    //cout << "\033[0;94mHeyyyyy" << endl;
+
+    a.Affichage::affiche_plateau_actuel(j, Vector2(1,5));
 
     return 0;
 }

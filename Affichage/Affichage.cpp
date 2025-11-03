@@ -1,84 +1,101 @@
-#include <vector>
 #include "Affichage.hpp"
+using namespace constAffichageConsoleHex;
 using namespace AffichageConsoleUtils;
 
-void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
+// L'affichage se fera sous la forme
+//  /1 1 1\
+// /1 Mar-1\
+// \1-ché 1/3 3 3\
+//  \1 1 1/3Carr-3\
+//  /2 2 2\3-iere3/
+// /2Place2\3 3 3/
+// \2     2/
+//  \2 2 2/
+
+// Ou (si dans une tuile unie)
+//  /1 1 1\
+// /1 Mar-1\
+// \1-ché   1 1 1\
+//  \1      Carr-1\
+//  /1      -iere1/
+// /1Place  1 1 1/
+// \1     1/
+//  \1 1 1/
+
+void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
+
+    // trouve les bornes de l'affichage
+    const auto iterateur_debut = joueur.get_plateau().get_iterateur_debut();
+    const auto iterateur_fin = joueur.get_plateau().get_iterateur_fin();
+
+    Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : iterateur_debut->first);
+    Vector2 posFin = posInit;
+
+    for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
+        Vector2 pos = axialToScreen(iterateur->first);
+
+        if (pos.x < posInit.x) posInit.x = pos.x;
+        else if (pos.x > posFin.x) posFin.x = pos.x;
+
+        if (pos.y < posInit.y) posInit.y = pos.y;
+        else if (pos.y > posFin.y) posFin.y = pos.y;
+    }
+
     // tableau "canvas" de caractères (assez grand pour plusieurs hex)
-    vector<string> canvas(40, string(120, ' '));
+    size_t largeur = (posFin.x - posInit.x) + largeurHex;
+    size_t hauteur = (posFin.y - posInit.y) + hauteurHex;
+    vector<string> canvas(hauteur);
 
-    auto iterateur = joueur.get_plateau().get_iterateur_debut();
-    auto iterateur_fin = joueur.get_plateau().get_iterateur_fin(); // recupere les hexagones du plateau via iterator
+    // Initialisation des valeurs du tableau, et insertion de balises de couleurs, pour assurer un alignement
+    string emptyLineB{};
+    string emptyLineS{" "};
+    for (int i = 0; i < largeur/emptyHexLineB.size(); i++) {
+        emptyLineB += emptyHexLineB;
+        emptyLineS += emptyHexLineS;
+    }
 
-    // itere sur toute la map
-    do {
-        // Coordonees hexagoneales
-        int q = (int) iterateur->first.x;
-        int r = (int) iterateur->first.y;
+    int parite = (largeur/largeurHex)%2;
+    for (int i = 0; i < hauteur; i += 1) {
+        // Si la parite est à 0, alors les petites lignes sont aux indices 0 et 3, sinon ils sont aux indices 1 et 2.
+        if (i%4 == parite || i%4 == 3 - parite) canvas[i] = emptyLineS;
+        else canvas[i] = emptyLineB;
+    }
 
-        const auto * h = iterateur->second;
-        if (!h) continue;
-
-        // coordonnées "écran" (placement en quinconce)
-        int px = q * (2 * hexW - 2) + (r%2) * (hexW-1);
-        int py = r * (hexH - 3);
-
-        // message centré dans 5 colonnes
-
-        string msg =  type_to_string(h->get_type());
-        // DEBUG option: afficher les coordonées
-        //string msg = "("+ to_string( q)+","+ to_string(r)+")";
-        if (h->get_type() == TypeHexagone::Hexagone);
-
-        if (msg.size() > 5) msg = msg.substr(0,5); // tronque si message trop long
-        int padLeft  = (5 - msg.size()) / 2;
-        int padRight = 5 - msg.size() - padLeft;
-
-        int hauteur = h->get_hauteur();
+    // Affichage de chaque carreau
+    bool selectedHexEstAffiche = false;
+    for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
+        Vector2 pos = axialToScreen(iterateur->first) - posInit;
+        bool highlighted = selectHexagone && selectedHexagone == iterateur->first;
+        if (highlighted) selectedHexEstAffiche = true;
+        vector<string> affichageHex = iterateur->second->affiche_console(highlighted);
 
 
-        // construire chaque ligne de l’hexagone
-        string top    = "  _ _ _  ";
+        canvas[pos.y].replace(pos.x+decalagePetiteLigne, affichageHex[0].size(), affichageHex[0]);
+        canvas[pos.y+1].replace(pos.x, affichageHex[1].size(), affichageHex[1]);
+        canvas[pos.y+2].replace(pos.x, affichageHex[2].size(), affichageHex[2]);
+        canvas[pos.y+3].replace(pos.x+decalagePetiteLigne, affichageHex[3].size(), affichageHex[3]);
+    }
 
-        string l1     = " /" + to_string(hauteur) +
-                    " " + to_string(hauteur) +
-                    " " + to_string(hauteur) + "\\ ";
-
-        string l2 = "/" + to_string(hauteur)
-                         + string(padLeft, ' ')
-                         + msg
-                         + string(padRight, ' ')
-                         + to_string(hauteur) + "\\";
-
-        string l3     = "\\" + to_string(hauteur)
-                             + couleur_to_string(static_cast<CouleursAkropolis>(h->get_couleur()))
-                             + to_string(hauteur) + "/";
-
-        string l4     = " \\_" + to_string(hauteur)
-                             + "_" + to_string(hauteur)
-                             + "_/ ";
-
-        // dessiner dans le canvas si dans les bornes
-        if (py + 4 < (int)canvas.size() && px + hexW <= (int)canvas[0].size()) {
-            /*
-            canvas[py+0].replace(px, hexW, top);
-            canvas[py+1].replace(px, hexW, l1);
-            canvas[py+2].replace(px, hexW, l2);
-            canvas[py+3].replace(px, hexW, l3);
-            canvas[py+4].replace(px, hexW, l4);
-             */
-            replace_sauf_charactere(canvas[py+0], px, hexW, top, ' ');
-            replace_sauf_charactere(canvas[py+1], px, hexW, l1, ' ');
-            replace_sauf_charactere(canvas[py+2], px, hexW, l2, ' ');
-            replace_sauf_charactere(canvas[py+3], px, hexW, l3, ' ');
-            replace_sauf_charactere(canvas[py+4], px, hexW, l4, ' ');
-        }
-
-    } while (++iterateur != iterateur_fin);
+    //Affichage de l'hexagone séléctionné, si il n'as pas encore été affiché
+    if (selectHexagone && !selectedHexEstAffiche) {
+        Vector2 pos = axialToScreen(selectedHexagone) - posInit;
+        canvas[pos.y].replace(pos.x+decalagePetiteLigne, emptySelectedHex[0].size(), emptySelectedHex[0]);
+        canvas[pos.y+1].replace(pos.x, emptySelectedHex[1].size(), emptySelectedHex[1]);
+        canvas[pos.y+2].replace(pos.x, emptySelectedHex[2].size(), emptySelectedHex[2]);
+        canvas[pos.y+3].replace(pos.x+decalagePetiteLigne, emptySelectedHex[3].size(), emptySelectedHex[3]);
+    }
 
     // Affichage final
     for (auto &line : canvas) {
-        cout << line;
+        cout << couleurConsoleOutline; // On mets la console à la bonne couleur
+        cout << line << endl;
     }
+}
+
+Vector2 AffichageConsoleUtils::axialToScreen(Vector2 v) {
+    float col = v.x / 2 * largeurHex;
+    float ligne = (v.y + v.x / 2) * hauteurHex;
+    return Vector2{col, ligne};
 }
 
 void AffichageConsoleUtils::replace_sauf_charactere(string &text_original, size_t pos, size_t len,
@@ -90,33 +107,3 @@ void AffichageConsoleUtils::replace_sauf_charactere(string &text_original, size_
         }
     }
 }
-
-string AffichageConsoleUtils::couleur_to_string(CouleursAkropolis couleur) {
-    static const std::map<CouleursAkropolis, std::string> noms = {
-        {BLANC, "BLANC"},
-        {BLEU, "BLEU "},
-        {JAUNE, "JAUNE"},
-        {ROUGE, "ROUGE"},
-        {VIOLET, "VILET"},// Avec un charcater en moin pour le faire rentrer dans l'hexagone
-        {VERT, "VERT "}
-    };
-
-    auto it = noms.find(couleur);
-    if (it != noms.end()) { return(it->second);}
-    else  {return("VIDE");}
-}
-
-
-string AffichageConsoleUtils::type_to_string(TypeHexagone type) {
-    static const std::map<TypeHexagone, std::string> noms = {
-        {TypeHexagone::Hexagone, "Hexagone"},
-        {TypeHexagone::Place, "Place "},
-        {TypeHexagone::Carriere, "Carriere"},
-        {TypeHexagone::Quartier, "Quartier"}
-    };
-
-    auto it = noms.find(type);
-    if (it != noms.end()) { return(it->second);}
-    else  {return("VIDE");}
-}
-

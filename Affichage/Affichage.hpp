@@ -3,18 +3,26 @@
 
 #include "../Utils.hpp"
 #include "../Players/Players.hpp"
+#include <vector>
 
 
 class Affichage {
 
+protected:
+    virtual void affiche_plateau_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) {};
+
 public:
-   virtual void affiche_plateau_actuel(Joueur& joueur) {};
+    void affiche_plateau_actuel(Joueur& joueur) {affiche_plateau_actuel(joueur, false, Vector2());};
+    void affiche_plateau_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_plateau_actuel(joueur, true, selectedHexagone);};
 };
 
-class AffichageConsole : Affichage{
+class AffichageConsole : public Affichage{
     static AffichageConsole* instance;
     const int hexH = 5; // lignes
     const int hexW = 9; // colonnes
+
+protected:
+    void affiche_plateau_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
 
 public:
     AffichageConsole() = default;
@@ -24,7 +32,6 @@ public:
         return instance;
     }
 
-    void affiche_plateau_actuel(Joueur &joueur);
 };
 
 //! Ensemble de fonctions utiles à l'affichage console
@@ -40,18 +47,9 @@ namespace AffichageConsoleUtils {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
-    //! Donne la couleur d'un hexagone en type string
-    /*!
-     * @param couleur La couleur dont on veut changer le type
-     * @return cette meme couleur sous le type string
-     */
-    string couleur_to_string(CouleursAkropolis couleur);
-    //! Donne le type d'un Hexagone en type string
-    /*!
-     * @param type Le type dont on veut changer le type
-     * @return ce meme type en string
-     */
-    string type_to_string(TypeHexagone type);
+
+    //! Convertion entre les coordonées axiales et les coordonées de l'écran
+    Vector2 axialToScreen (Vector2 v);
 }
 
 
