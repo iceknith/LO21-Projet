@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['hauteur_0',['hauteur',['../d7/d88/classTuile.html#a5bd69abde0437d5f456386eded9065f8',1,'Tuile']]],
-  ['hauteurcentre_1',['hauteurCentre',['../d3/d75/namespaceconstAffichageConsoleHex.html#a495dbee3478d28f5372c3fa7f43698cb',1,'constAffichageConsoleHex']]],
-  ['hauteurhex_2',['hauteurHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a90201f7ad0d7814d1f0954097f378e5d',1,'constAffichageConsoleHex']]],
-  ['hexh_3',['hexH',['../d1/d3c/classAffichageConsole.html#a2ca67a11efbf8b4625e59bc37d3e0aa9',1,'AffichageConsole']]],
-  ['hexw_4',['hexW',['../d1/d3c/classAffichageConsole.html#aac9f910ea5635395f38202b9c72c5076',1,'AffichageConsole']]]
+  ['emptyhexlineb_0',['emptyHexLineB',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3eef6083b6b26377d53e31e313765be8',1,'constAffichageConsoleHex']]],
+  ['emptyhexlines_1',['emptyHexLineS',['../d3/d75/namespaceconstAffichageConsoleHex.html#a981f53256b830f6e427d730bfb33c002',1,'constAffichageConsoleHex']]],
+  ['emptyselectedhex_2',['emptySelectedHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a75e8aa4d329b16142d0a030daafd6989',1,'constAffichageConsoleHex']]],
+  ['enfants_3',['enfants',['../d7/d88/classTuile.html#ab470ea67e8c0c3872cf1ee27539b401d',1,'Tuile']]],
+  ['etoiles_4',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
 ];

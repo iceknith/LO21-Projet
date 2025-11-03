@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['id_0',['id',['../d7/d88/classTuile.html#a45754810cef2273dd533138572fd69d3',1,'Tuile']]],
-  ['indice_5ftuile_1',['indice_tuile',['../d4/dfc/classHexagone.html#aee88d167803f2d9d487fb1490fd1f21f',1,'Hexagone']]],
-  ['instance_2',['instance',['../d1/d3c/classAffichageConsole.html#a9a0ee13be7c3c26676e3e937382d43e7',1,'AffichageConsole']]]
+  ['hauteur_0',['hauteur',['../d7/d88/classTuile.html#a5bd69abde0437d5f456386eded9065f8',1,'Tuile']]],
+  ['hauteurcentre_1',['hauteurCentre',['../d3/d75/namespaceconstAffichageConsoleHex.html#a495dbee3478d28f5372c3fa7f43698cb',1,'constAffichageConsoleHex']]],
+  ['hauteurhex_2',['hauteurHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a90201f7ad0d7814d1f0954097f378e5d',1,'constAffichageConsoleHex']]],
+  ['hexagon_5fdirections_3',['HEXAGON_DIRECTIONS',['../de/d62/namespaceGameConstants.html#a770a2cc635cae967e4a8d3665ece527b',1,'GameConstants']]],
+  ['hexh_4',['hexH',['../d1/d3c/classAffichageConsole.html#a2ca67a11efbf8b4625e59bc37d3e0aa9',1,'AffichageConsole']]],
+  ['hexw_5',['hexW',['../d1/d3c/classAffichageConsole.html#aac9f910ea5635395f38202b9c72c5076',1,'AffichageConsole']]]
 ];

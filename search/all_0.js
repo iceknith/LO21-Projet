@@ -11,5 +11,6 @@ var searchData=
   ['ajouter_5fpierre_8',['ajouter_pierre',['../dd/d07/classJoueur.html#af76c56726209959ed6ab7df700777884',1,'Joueur']]],
   ['ajouter_5ftuile_9',['ajouter_tuile',['../df/d51/classChantier.html#a4058ca66b5823c39b9060a724f7c8c1d',1,'Chantier::ajouter_tuile(Tuile *tuile)'],['../df/d51/classChantier.html#a88b6e488d56545a8cf67d9af662d02ae',1,'Chantier::ajouter_tuile(Tuile *tuile, int nombre)']]],
   ['asserttests_10',['assertTests',['../d0/d76/Tests_8cpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp'],['../dc/d9d/Tests_8hpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp']]],
-  ['axialtoscreen_11',['axialToScreen',['../d9/d0a/namespaceAffichageConsoleUtils.html#a4cfec5a9ff924113baa60ee20c12fd80',1,'AffichageConsoleUtils']]]
+  ['asserttestsscore_11',['assertTestsScore',['../d0/d76/Tests_8cpp.html#a1df0098b34e447a85ffd547a1c4b0b96',1,'Tests.cpp']]],
+  ['axialtoscreen_12',['axialToScreen',['../d9/d0a/namespaceAffichageConsoleUtils.html#a4cfec5a9ff924113baa60ee20c12fd80',1,'AffichageConsoleUtils']]]
 ];

@@ -1,5 +1,20 @@
 var searchData=
 [
-  ['quand_5frecouvert_0',['quand_recouvert',['../d4/dfc/classHexagone.html#a720f838a00490f62829ef04624a76108',1,'Hexagone']]],
-  ['quartier_1',['Quartier',['../de/df6/classQuartier.html',1,'Quartier'],['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdafaa109df924e7f154ec0f7a1121791484a',1,'Quartier():&#160;Utils.hpp']]]
+  ['peut_5fetre_5fplacee_0',['peut_etre_placee',['../d4/dfc/classHexagone.html#afc8d977bc9a643d9a845f76c44d93e04',1,'Hexagone']]],
+  ['peut_5fplacer_1',['peut_placer',['../d7/db5/classPlateau.html#a24df939cb85679b3bb3c371a52d6a6b1',1,'Plateau']]],
+  ['pierre_2',['pierre',['../dd/d07/classJoueur.html#ad54ce85c9f6130df62f6af546d33ab2c',1,'Joueur']]],
+  ['place_3',['Place',['../d9/d58/classPlace.html',1,'Place'],['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdafa7b9cf007806ed854cd12ab800c8a982b',1,'Place():&#160;Utils.hpp']]],
+  ['place_5ftuile_4',['place_tuile',['../dd/d07/classJoueur.html#a02fbaee11ee1a5a8415f5ba274aac9fb',1,'Joueur']]],
+  ['placer_5',['placer',['../d7/db5/classPlateau.html#a02113f4475cd5166770e4c7061605bb6',1,'Plateau']]],
+  ['plateau_6',['Plateau',['../d7/db5/classPlateau.html',1,'']]],
+  ['plateau_7',['plateau',['../d7/db5/classPlateau.html#ac1aff6cd910fdb5c2bb7a260acdb48c3',1,'Plateau']]],
+  ['plateau_8',['Plateau',['../d7/db5/classPlateau.html#a0a018077715440adf1cd7cc967e14dcb',1,'Plateau']]],
+  ['plateau_2ecpp_9',['Plateau.cpp',['../dd/d2c/Plateau_8cpp.html',1,'']]],
+  ['plateau_2ehpp_10',['Plateau.hpp',['../d0/d47/Plateau_8hpp.html',1,'']]],
+  ['plateaujoueur_11',['plateauJoueur',['../dd/d07/classJoueur.html#aa00702edc61257a89fd1ecb7498a53eb',1,'Joueur']]],
+  ['players_2ecpp_12',['Players.cpp',['../dc/d0f/Players_8cpp.html',1,'']]],
+  ['players_2ehpp_13',['Players.hpp',['../d3/de9/Players_8hpp.html',1,'']]],
+  ['positioncontourhexagone_14',['PositionContourHexagone',['../d7/d09/Utils_8hpp.html#ae4e98f601c102bdf7e1e03c48891a1f0',1,'Utils.hpp']]],
+  ['positions_5fenfants_15',['positions_enfants',['../d7/d88/classTuile.html#a756b25d0bc1cf103456f844e9ea9b26f',1,'Tuile']]],
+  ['prendre_5ftuile_16',['prendre_tuile',['../df/d51/classChantier.html#a32dc1eb4a9ef82a5ed836a50cc50bb0b',1,'Chantier']]]
 ];

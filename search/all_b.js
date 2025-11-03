@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['nextid_0',['nextID',['../d7/d88/classTuile.html#a63c3b12021b48b208011f34de1860b4b',1,'Tuile']]],
-  ['niveau_1',['niveau',['../d9/d17/classIllustreArchitecte.html#abbecc0c1f7178f7af007204905fb09fb',1,'IllustreArchitecte::niveau()'],['../d0/d34/classScoreSoloArchitechte.html#a918806c51765cf74f4f9fbdfe67319e5',1,'ScoreSoloArchitechte::niveau()']]],
-  ['nombre_5fenfants_2',['nombre_enfants',['../d7/d88/classTuile.html#a3fe2e7699b49ef1b888563f07f8cc9fb',1,'Tuile']]],
-  ['nombretuiles_3',['nombreTuiles',['../df/d51/classChantier.html#a45f56941fbdcdb09fa8f5b0f467b4712',1,'Chantier::nombreTuiles()'],['../d6/df2/classDeck.html#a9878a7063597ce97808f3168323a1810',1,'Deck::nombreTuiles()']]]
+  ['main_0',['main',['../df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../df/d0a/main_8cpp.html',1,'']]],
+  ['main_2ehpp_2',['main.hpp',['../d0/d00/main_8hpp.html',1,'']]],
+  ['max_5fenfants_5fpar_5ftuile_3',['max_enfants_par_tuile',['../da/d27/Tuile_8hpp.html#a1c9645f5d846bde6daca67dbe9bfcefe',1,'Tuile.hpp']]],
+  ['max_5fhexagon_5fneighbors_4',['MAX_HEXAGON_NEIGHBORS',['../de/d62/namespaceGameConstants.html#a51219f7a52ac96d57c7557352f53560d',1,'GameConstants']]],
+  ['max_5ftuiles_5fdans_5fdeck_5',['max_tuiles_dans_deck',['../d1/dd3/Deck_8hpp.html#ae1d1e67f923a2cdb02960034a41a78e9',1,'Deck.hpp']]],
+  ['max_5ftuiles_5fpar_5fchantier_6',['max_tuiles_par_chantier',['../d7/dc0/Chantier_8hpp.html#acae09b4b6e0453d4c579a927c09e37a3',1,'Chantier.hpp']]]
 ];

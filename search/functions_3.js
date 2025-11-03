@@ -1,24 +1,4 @@
 var searchData=
 [
-  ['get_5fcouleur_0',['get_couleur',['../d4/dfc/classHexagone.html#abc1f91ebdb81e12da4ef2dcc75ad6fb2',1,'Hexagone']]],
-  ['get_5fenfants_1',['get_enfants',['../d7/d88/classTuile.html#a690ee2d842c7281943d1badae9a48779',1,'Tuile']]],
-  ['get_5fetoiles_2',['get_etoiles',['../d9/d58/classPlace.html#a1851977cbb72508ceab273144de12911',1,'Place']]],
-  ['get_5fhauteur_3',['get_hauteur',['../d4/dfc/classHexagone.html#a255f6c453d9be13a55c12c2f4c10165e',1,'Hexagone::get_hauteur()'],['../d7/d88/classTuile.html#a370644aebb3ad497d46a528d5be54bc6',1,'Tuile::get_hauteur()']]],
-  ['get_5fid_4',['get_id',['../d4/dfc/classHexagone.html#a7fc525ec10bfc4664049db9265549b73',1,'Hexagone::get_id()'],['../d7/d88/classTuile.html#a426b8435a775b7524294529be4b851fe',1,'Tuile::get_id()']]],
-  ['get_5fiterateur_5fdebut_5',['get_iterateur_debut',['../d7/db5/classPlateau.html#a11e4e22155826b21ae25c38d7ebeaca2',1,'Plateau']]],
-  ['get_5fiterateur_5ffin_6',['get_iterateur_fin',['../d7/db5/classPlateau.html#a65b1b7c5ece3d132ffdbe1abf286a1ac',1,'Plateau']]],
-  ['get_5flocal_5fposition_7',['get_local_position',['../d4/dfc/classHexagone.html#abb4ed9632dc26f633edfd9898e736204',1,'Hexagone']]],
-  ['get_5fniveau_8',['get_niveau',['../d9/d17/classIllustreArchitecte.html#abdcb764e5bd558db1d3902667f51d8e8',1,'IllustreArchitecte::get_niveau()'],['../d0/d34/classScoreSoloArchitechte.html#a7399d7a6fa8e269adad344ee745e0046',1,'ScoreSoloArchitechte::get_niveau()']]],
-  ['get_5fnombre_5fenfant_9',['get_nombre_enfant',['../d7/d88/classTuile.html#a1f0d50cee8c89860dece57a74c8928e8',1,'Tuile']]],
-  ['get_5fnombre_5ftuiles_10',['get_nombre_tuiles',['../df/d51/classChantier.html#a7c1bf2ce21a70f1305ecd7765b264a7f',1,'Chantier::get_nombre_tuiles()'],['../d6/df2/classDeck.html#ac5cb1a2360a6931d02d950b01a11c661',1,'Deck::get_nombre_tuiles()']]],
-  ['get_5fpierre_11',['get_pierre',['../dd/d07/classJoueur.html#aa607c9c7d956052e72968238f8815475',1,'Joueur']]],
-  ['get_5fplateau_12',['get_plateau',['../dd/d07/classJoueur.html#ac6ea3d78fb52465542bbcf754c0f61a0',1,'Joueur']]],
-  ['get_5fpositions_5fenfants_13',['get_positions_enfants',['../d7/d88/classTuile.html#afdba22ab5bea7f4c50290fd025d8f644',1,'Tuile']]],
-  ['get_5fscore_14',['get_score',['../dd/d07/classJoueur.html#ae46d462bc45eddb50bf617f0e3cf18de',1,'Joueur::get_score()'],['../d6/dfa/classJoueurSimple.html#a1ef90909ace8482bd91985b322ba83e1',1,'JoueurSimple::get_score()']]],
-  ['get_5ftaille_15',['get_taille',['../df/d51/classChantier.html#a89be8a807e1abfabcd05f690a852781f',1,'Chantier::get_taille()'],['../d6/df2/classDeck.html#acfb6adf3f104f389d4f2c5ee769b9444',1,'Deck::get_taille()']]],
-  ['get_5ftext_16',['get_text',['../d4/dfc/classHexagone.html#af2a85c9015595003ec56d926f87b79b3',1,'Hexagone::get_text()'],['../d9/d58/classPlace.html#a8e0e4d107bd5ecf1aac2f38d07f2723f',1,'Place::get_text()'],['../dc/dfe/classCarriere.html#a211453dc465f165e33c85d6443bab314',1,'Carriere::get_text()'],['../de/df6/classQuartier.html#a1fc01ebb155ec9afc2baca2b9120facd',1,'Quartier::get_text()']]],
-  ['get_5ftuile_17',['get_tuile',['../d4/dfc/classHexagone.html#ae597040b87e82bf37b15e91222984d43',1,'Hexagone']]],
-  ['get_5ftuiles_18',['get_tuiles',['../df/d51/classChantier.html#a99ad4655e897fea2b7712f635e6afed0',1,'Chantier']]],
-  ['get_5ftype_19',['get_type',['../d4/dfc/classHexagone.html#aa7e8669570bc49957e66ffa44cb92391',1,'Hexagone::get_type()'],['../d9/d58/classPlace.html#a9dda8243462b1a5ee6284632d423ded0',1,'Place::get_type()'],['../dc/dfe/classCarriere.html#ae4b77ec224dce7bc58ef08af4dab0d0b',1,'Carriere::get_type()'],['../de/df6/classQuartier.html#adc001192d4315cb162bf0a23e8ff0b46',1,'Quartier::get_type()']]],
-  ['getinstance_20',['getInstance',['../d1/d3c/classAffichageConsole.html#aa81c3f205d74e2f88b40723f04668381',1,'AffichageConsole']]]
+  ['flood_5ffill_5fcollect_0',['flood_fill_collect',['../da/dd1/namespaceScoreUtils.html#af09bbcb17db2edbbc531163924e18b37',1,'ScoreUtils']]]
 ];

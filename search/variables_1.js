@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['couleur_0',['couleur',['../d4/dfc/classHexagone.html#ad78220d8d5ad4b96e506ea2af205b815',1,'Hexagone']]],
-  ['couleurconsoleoutline_1',['couleurConsoleOutline',['../d3/d75/namespaceconstAffichageConsoleHex.html#a189471fad0ab53512795a0785ab6ae1b',1,'constAffichageConsoleHex']]],
-  ['couleursconsole_2',['couleursConsole',['../d3/d75/namespaceconstAffichageConsoleHex.html#a2b44973055378475f314af37b2ce0fb8',1,'constAffichageConsoleHex']]],
-  ['couleursconsolehighlighted_3',['couleursConsoleHighlighted',['../d3/d75/namespaceconstAffichageConsoleHex.html#a06c3abb15e7871bb644a2dfbb939183b',1,'constAffichageConsoleHex']]]
+  ['bleu_5fvariante_5fbonus_5fmultiplier_0',['BLEU_VARIANTE_BONUS_MULTIPLIER',['../de/d62/namespaceGameConstants.html#af8221b876855caa5955ab12579170262',1,'GameConstants']]],
+  ['bleu_5fvariante_5fbonus_5fthreshold_1',['BLEU_VARIANTE_BONUS_THRESHOLD',['../de/d62/namespaceGameConstants.html#adb98be7447c38e4cdbf15e5958423c6e',1,'GameConstants']]]
 ];
