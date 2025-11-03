@@ -30,6 +30,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
 
     Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : iterateur_debut->first);
     Vector2 posFin = posInit;
+    float highestVectX = posInit.x;
 
     for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
         Vector2 pos = axialToScreen(iterateur->first);
@@ -37,7 +38,10 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
         if (pos.x < posInit.x) posInit.x = pos.x;
         else if (pos.x > posFin.x) posFin.x = pos.x;
 
-        if (pos.y < posInit.y) posInit.y = pos.y;
+        if (pos.y < posInit.y) {
+            posInit.y = pos.y;
+            highestVectX = pos.x;
+        }
         else if (pos.y > posFin.y) posFin.y = pos.y;
     }
 
@@ -54,7 +58,8 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
         emptyLineS += emptyHexLineS;
     }
 
-    int parite = (largeur/largeurHex)%2;
+    //Optention de la parité de l'affichage
+    int parite = static_cast<int>(2 * (highestVectX - posInit.x) / largeurHex) % 2;
     for (int i = 0; i < hauteur; i += 1) {
         // Si la parite est à 0, alors les petites lignes sont aux indices 0 et 3, sinon ils sont aux indices 1 et 2.
         if (i%4 == parite || i%4 == 3 - parite) canvas[i] = emptyLineS;
@@ -69,11 +74,16 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagon
         if (highlighted) selectedHexEstAffiche = true;
         vector<string> affichageHex = iterateur->second->affiche_console(highlighted);
 
-
+        /*
         canvas[pos.y].replace(pos.x+decalagePetiteLigne, affichageHex[0].size(), affichageHex[0]);
         canvas[pos.y+1].replace(pos.x, affichageHex[1].size(), affichageHex[1]);
         canvas[pos.y+2].replace(pos.x, affichageHex[2].size(), affichageHex[2]);
         canvas[pos.y+3].replace(pos.x+decalagePetiteLigne, affichageHex[3].size(), affichageHex[3]);
+         */
+        replace_sauf_charactere(canvas[pos.y], pos.x+decalagePetiteLigne, affichageHex[0].size(), affichageHex[0], ' ');
+        replace_sauf_charactere(canvas[pos.y+1], pos.x, affichageHex[1].size(), affichageHex[1], ' ');
+        replace_sauf_charactere(canvas[pos.y+2], pos.x, affichageHex[2].size(), affichageHex[2], ' ');
+        replace_sauf_charactere(canvas[pos.y+3], pos.x+decalagePetiteLigne, affichageHex[3].size(), affichageHex[3], ' ');
     }
 
     //Affichage de l'hexagone séléctionné, si il n'as pas encore été affiché
