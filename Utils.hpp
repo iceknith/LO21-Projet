@@ -62,12 +62,6 @@ public:
      * Soit A et B deux vecteurs, A < B <=> (A.y < B.y) || (A.y == B.y && A.x < B.x)
     */
     bool operator<(const Vector2 v) const{return (y < v.y) || (y == v.y && x < v.x);}
-    //! Surcharge l'operateur est égal à
-    /*!
-     * Surcharge l'operateur inférieur égal
-     * Soit A et B deux vecteurs, A == B <=> (A.x == B.x) && (A.y == B.y)
-    */
-    bool operator==(const Vector2 v) const{return (x == v.x) && (y == v.y);}
     //! Surcharge de l'opérateur addition
     /*! Surcharge de l'opérateur addition
      * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
@@ -85,8 +79,8 @@ public:
      * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
      */
     Vector2 operator-(const Vector2& v) const{return {x - v.x, y - v.y};}
-
-// position de tout les voisions locals d'un Hexagone
+};
+// position de tous les voisins d'un Hexagone
 static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}};
 
 #endif

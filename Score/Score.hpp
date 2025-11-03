@@ -184,6 +184,14 @@ namespace ScoreUtils {
      * @return Une map des hexagones du plus grand voisinnage
      */
     std::map<Vector2, Hexagone*> get_largest_hexagone_voisinnage_filtres( Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+    //! Retourne tous les hexagones voisinage en partant d'un hexagone (recursivement)
+    /*!
+    * @param selection Les hexagones sur lequels on effectue la recherche
+     * @param visite Positions déjà visitées
+     * @param positionDepart Point de départ de l'exploration
+     * @return Groupe connecté d'hexagones
+     */
+    std::map<Vector2, Hexagone*> flood_fill_collect(const std::map<Vector2, Hexagone*>& selection,set<Vector2>& visite,const Vector2& positionDepart);
     //! Retourne la somme des hauteurs d'une map d'hexagones
     /*!
      * @param m map associant Vector2 (position) et Hexagone* sur lequel on va iterer
@@ -191,7 +199,6 @@ namespace ScoreUtils {
      */
     int sum_heights( std::map<Vector2, Hexagone*> m);
 
-    std::map<Vector2, Hexagone*> flood_fill_collect(const std::map<Vector2, Hexagone*>& selection,set<Vector2>& visite,const Vector2& positionDepart);
 };
 
 
