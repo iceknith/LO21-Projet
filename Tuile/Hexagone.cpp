@@ -14,7 +14,7 @@ Vector2 Hexagone::get_local_position() const {
 }
 
 using namespace constAffichageConsoleHex;
-const vector<string> Hexagone::affiche_console() const {
+const vector<string> Hexagone::affiche_console(bool highlighted) const {
     vector<string> affichage{4, ""};
 
     // Construction du texte central
@@ -36,34 +36,35 @@ const vector<string> Hexagone::affiche_console() const {
     // En prenant compte des hexagones adjascents
     Vector2 locPos = get_local_position();
     string hauteurTuileTxt = to_string(get_hauteur());
+    string couleurString = highlighted ? couleursConsoleHighlighted[couleur] : couleursConsole[couleur];
 
     // Haut Gauche
     if (get_tuile()->is_in_positions_enfants(locPos + adjascence[0])) {
-        affichage[1] += " " + couleursConsole[couleur] + " ";
+        affichage[1] += " " + couleurString + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
         if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2]))
-            affichage[0] += " " + couleursConsole[couleur] + " ";
+            affichage[0] += " " + couleurString + " ";
         else
-            affichage[0] += " " + couleursConsole[couleur] + hauteurTuileTxt;
+            affichage[0] += " " + couleurString + hauteurTuileTxt;
     }
     else {
-        affichage[0] += "/" + couleursConsole[couleur] + hauteurTuileTxt;
-        affichage[1] += "/" + couleursConsole[couleur] + hauteurTuileTxt;
+        affichage[0] += "/" + couleurString + hauteurTuileTxt;
+        affichage[1] += "/" + couleurString + hauteurTuileTxt;
     }
     // Bas Gauche
     if (get_tuile()->is_in_positions_enfants(locPos + adjascence[1])) {
-        affichage[2] += " " + couleursConsole[couleur] + " ";
+        affichage[2] += " " + couleurString + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
         if (get_tuile()->is_in_positions_enfants(locPos + adjascence[3]))
-            affichage[3] += " " + couleursConsole[couleur] + " ";
+            affichage[3] += " " + couleurString + " ";
         else
-            affichage[3] += " " + couleursConsole[couleur] + hauteurTuileTxt;
+            affichage[3] += " " + couleurString + hauteurTuileTxt;
     }
     else {
-        affichage[2] += "\\" + couleursConsole[couleur] + hauteurTuileTxt;
-        affichage[3] += "\\" + couleursConsole[couleur] + hauteurTuileTxt;
+        affichage[2] += "\\" + couleurString + hauteurTuileTxt;
+        affichage[3] += "\\" + couleurString + hauteurTuileTxt;
     }
     // Haut Centre
     if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2])) {
@@ -86,31 +87,31 @@ const vector<string> Hexagone::affiche_console() const {
 
     // Haut Droite
     if (get_tuile()->is_in_positions_enfants(locPos + adjascence[4])) {
-        affichage[1] += " " + couleursConsole[BLANC] + " ";
+        affichage[1] += " " + couleurConsoleOutline + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
         if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2]))
-            affichage[0] += " " + couleursConsole[BLANC] + " ";
+            affichage[0] += " " + couleurConsoleOutline + " ";
         else
-            affichage[0] += hauteurTuileTxt + couleursConsole[BLANC] + " ";
+            affichage[0] += hauteurTuileTxt + couleurConsoleOutline + " ";
     }
     else {
-        affichage[0] += hauteurTuileTxt + couleursConsole[BLANC] + "\\";
-        affichage[1] += hauteurTuileTxt + couleursConsole[BLANC] + "\\";
+        affichage[0] += hauteurTuileTxt + couleurConsoleOutline + "\\";
+        affichage[1] += hauteurTuileTxt + couleurConsoleOutline + "\\";
     }
     // Bas Droite
     if (get_tuile()->is_in_positions_enfants(locPos + adjascence[5])) {
-        affichage[2] += " " + couleursConsole[BLANC] + " ";
+        affichage[2] += " " + couleurConsoleOutline + " ";
 
         // Ne pas afficher le coin si il y as une tuile en bas également
         if (get_tuile()->is_in_positions_enfants(locPos + adjascence[3]))
-            affichage[3] += " " + couleursConsole[BLANC] + " ";
+            affichage[3] += " " + couleurConsoleOutline + " ";
         else
-            affichage[3] += hauteurTuileTxt + couleursConsole[BLANC] + " ";
+            affichage[3] += hauteurTuileTxt + couleurConsoleOutline + " ";
     }
     else {
-        affichage[2] += hauteurTuileTxt + couleursConsole[BLANC] + "/";
-        affichage[3] += hauteurTuileTxt + couleursConsole[BLANC] + "/";
+        affichage[2] += hauteurTuileTxt + couleurConsoleOutline + "/";
+        affichage[3] += hauteurTuileTxt + couleurConsoleOutline + "/";
     }
 
     return affichage;

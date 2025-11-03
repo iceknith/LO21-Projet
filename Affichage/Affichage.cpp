@@ -22,13 +22,13 @@ using namespace AffichageConsoleUtils;
 // \1     1/
 //  \1 1 1/
 
-void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
+void AffichageConsole::affiche_plateau_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
 
     // trouve les bornes de l'affichage
     const auto iterateur_debut = joueur.get_plateau().get_iterateur_debut();
     const auto iterateur_fin = joueur.get_plateau().get_iterateur_fin();
 
-    Vector2 posInit = axialToScreen(iterateur_debut->first);
+    Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : iterateur_debut->first);
     Vector2 posFin = posInit;
 
     for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
@@ -44,7 +44,7 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
     // tableau "canvas" de caractères (assez grand pour plusieurs hex)
     size_t largeur = (posFin.x - posInit.x) + largeurHex;
     size_t hauteur = (posFin.y - posInit.y) + hauteurHex;
-    vector<string> canvas(hauteur, string(largeur, ' '));
+    vector<string> canvas(hauteur);
 
     // Initialisation des valeurs du tableau, et insertion de balises de couleurs, pour assurer un alignement
     string emptyLineB{};
@@ -61,9 +61,13 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         else canvas[i] = emptyLineB;
     }
 
+    // Affichage de chaque carreau
+    bool selectedHexEstAffiche = false;
     for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
         Vector2 pos = axialToScreen(iterateur->first) - posInit;
-        vector<string> affichageHex = iterateur->second->affiche_console();
+        bool highlighted = selectHexagone && selectedHexagone == iterateur->first;
+        if (highlighted) selectedHexEstAffiche = true;
+        vector<string> affichageHex = iterateur->second->affiche_console(highlighted);
 
 
         canvas[pos.y].replace(pos.x+decalagePetiteLigne, affichageHex[0].size(), affichageHex[0]);
@@ -72,8 +76,18 @@ void AffichageConsole::affiche_plateau_actuel(Joueur &joueur) {
         canvas[pos.y+3].replace(pos.x+decalagePetiteLigne, affichageHex[3].size(), affichageHex[3]);
     }
 
+    //Affichage de l'hexagone séléctionné, si il n'as pas encore été affiché
+    if (selectHexagone && !selectedHexEstAffiche) {
+        Vector2 pos = axialToScreen(selectedHexagone) - posInit;
+        canvas[pos.y].replace(pos.x+decalagePetiteLigne, emptySelectedHex[0].size(), emptySelectedHex[0]);
+        canvas[pos.y+1].replace(pos.x, emptySelectedHex[1].size(), emptySelectedHex[1]);
+        canvas[pos.y+2].replace(pos.x, emptySelectedHex[2].size(), emptySelectedHex[2]);
+        canvas[pos.y+3].replace(pos.x+decalagePetiteLigne, emptySelectedHex[3].size(), emptySelectedHex[3]);
+    }
+
     // Affichage final
     for (auto &line : canvas) {
+        cout << couleurConsoleOutline; // On mets la console à la bonne couleur
         cout << line << endl;
     }
 }

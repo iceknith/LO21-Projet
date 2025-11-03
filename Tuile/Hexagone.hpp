@@ -13,13 +13,12 @@ using namespace std;
 namespace constAffichageConsoleHex {
     // Taille
     const size_t hauteurHex = 4;
-    const size_t largeurHex = 34;
+    const size_t largeurHex = 42;
     const size_t hauteurCentre = 2;
     const size_t largeurCentre = 5;
 
     // Alignement
     const size_t decalagePetiteLigne = 1;
-    const size_t tailleOverlappLargeur = 1;
 
     // Affichage
     const Vector2 adjascence[6]{
@@ -31,17 +30,35 @@ namespace constAffichageConsoleHex {
         Vector2(+1, 0) // Bas Droite
     };
 
+    const string couleurConsoleOutline = "\033[0;37m";
+
     const string couleursConsole[6]{
-            "\033[97m", // Blanc
-            "\033[34m", // Bleu
-            "\033[33m", // Jaune
-            "\033[31m", // Rouge
-            "\033[35m", // Violet
-            "\033[32m", // Vert
+            "\033[0;97m", // Blanc
+            "\033[0;34m", // Bleu
+            "\033[0;33m", // Jaune
+            "\033[0;31m", // Rouge
+            "\033[0;35m", // Violet
+            "\033[0;32m", // Vert
     };
 
-    const string emptyHexLineB{" \033[97m       \033[97m \033[97m     \033[97m"};
-    const string emptyHexLineS{" \033[97m     \033[97m \033[97m       \033[97m"};
+    const string couleursConsoleHighlighted[6]{
+            "\033[4;97m", // Blanc
+            "\033[4;94m", // Bleu
+            "\033[4;93m", // Jaune
+            "\033[4;91m", // Rouge
+            "\033[4;95m", // Violet
+            "\033[4;92m", // Vert
+    };
+
+    const string emptyHexLineB{" \033[0;37m       \033[0;37m \033[0;37m     \033[0;37m"};
+    const string emptyHexLineS{" \033[0;37m     \033[0;37m \033[0;37m       \033[0;37m"};
+
+    const string emptySelectedHex[4]{
+            "/\033[4;37m     \033[0;37m\\",
+            "/\033[4;37m       \033[0;37m\\",
+            "\\\033[4;37m       \033[0;37m/",
+            "\\\033[4;37m     \033[0;37m/",
+    };
 }
 
 //! La classe Hexagone : le bloc de base de Akropolis
@@ -128,7 +145,7 @@ public :
      Prends en compte la connexité avec les autres hexagones de la tuile (ne dessine pas de bordures dans ce cas là)
      \return Un vecteur de 4 éléments, représentant chacun une ligne de l'hexagone
     */
-    const vector<string> affiche_console() const;
+    const vector<string> affiche_console(bool highlighted) const;
 };
 
 //! La classe Place
