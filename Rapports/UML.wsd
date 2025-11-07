@@ -52,7 +52,7 @@ class Plateau {
     + placer(tuileJeu:TuileJeu*, position:Vector2)
 }
 note left : Est un singleton
-Plateau --> "*" Hexagone
+Plateau "1" *-- "1..*" Hexagone
 
 abstract class Joueur {
     # pierres : int
@@ -67,7 +67,7 @@ abstract class Joueur {
     + a_son_tour(chantier:Tuile)
     + ajouter_pierres(pierre:int)
 }
-Plateau <-- Joueur
+Plateau "1" o-- "1..*" Joueur
 
 class JoueurSimple extends Joueur {
     # ScoreJoueur : Score*
@@ -75,7 +75,7 @@ class JoueurSimple extends Joueur {
 
     + get_score() : int
 }
-JoueurSimple --> Score
+JoueurSimple "1" *-- "1" Score
 
 class JoueurIllustreArchitecte extends Joueur {
     # niveau : int
@@ -89,7 +89,7 @@ class JoueurIllustreArchitecte extends Joueur {
     # choisir_tuile(chantier:Tuile*) : Tuile
     # trouver_emplacement_tuile() : Vector2
 }
-JoueurIllustreArchitecte --> ScoreSoloArchitechte
+JoueurIllustreArchitecte "1" *-- "1" ScoreSoloArchitechte
 
 
 abstract class Tuile {
@@ -104,7 +104,7 @@ abstract class Tuile {
     + get_position_enfants() : Vector2*
     + get_nombre_enfants() : Vector2
 }
-Tuile <--> Hexagone
+Tuile "*" o--> "*" Hexagone
 
 abstract class TuileDépart extends Tuile {}
 
@@ -196,7 +196,7 @@ class Deck {
     + obtenir_tuile() : Tuile
     + obtenir_tuile(nombre:int) : Tuile*
 }
-Deck --> Tuile
+Deck "1" o-- "1..61" Tuile
 
 class Chantier {
     - taille : int
@@ -210,7 +210,7 @@ class Chantier {
     + ajouter_tuile(tuile:Tuile)
     + ajouter_tuile(tuile:Tuile*, nombre:int)
 }
-Chantier --> Tuile
+Chantier "1" o-- "1..*" Tuile
 
 class Jeu {
     # nombre_joueurs : int
@@ -218,14 +218,13 @@ class Jeu {
     # deck : Deck*
     # chantier : Chantier*
     # affichage : Affichage*
-
-
 }
+
 note right : Est un singleton
-Jeu --> Joueur
-Jeu --> Deck
-Jeu --> Chantier
-Jeu --> Affichage
+Jeu "1" *-- "1..*" Joueur
+Jeu "1" *-- "1" Deck
+Jeu "1" *-- "1" Chantier
+Jeu "1" *-- "1" Affichage
 
 abstract class Affichage {
     + affichePlateauActuel(joueur : Joueur*, chantier : Chantier*, deck : Deck*)
