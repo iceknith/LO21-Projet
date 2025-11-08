@@ -140,6 +140,11 @@ class ScoreVert extends Score {
     - score_vert(plateau:Plateau*) : int
 }
 
+class ScoreViolet extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_violet(plateau:Plateau*) : int
+}
+
 class ScoreBleuVariante extends Score {
     + score(plateau:Plateau*) : int
     - score_bleu_variante(plateau:Plateau*) : int
@@ -158,6 +163,11 @@ class ScoreRougeVariante extends Score {
 class ScoreVertVariante extends Score {
     + score(plateau:Plateau*) : int 
     - score_vert_variante(plateau:Plateau*) : int
+}
+
+class ScoreVioletVariante extends Score {
+    + score(plateau:Plateau*) : int 
+    - score_violet_variante(plateau:Plateau*) : int
 }
 
 abstract class ScoreSoloArchitechte extends Score {
@@ -186,6 +196,11 @@ class ScoreSoloArchitechteVert extends ScoreSoloArchitechte {
     - score_vert(plateau:Plateau*) : int
 }
 
+class ScoreSoloArchitechteViolet extends ScoreSoloArchitechte {
+    + score(plateau:Plateau*) : int 
+    - score_violet(plateau:Plateau*) : int
+}
+
 class Deck {
     - taille : int
     - tuiles : Tuile*
@@ -196,7 +211,7 @@ class Deck {
     + obtenir_tuile() : Tuile
     + obtenir_tuile(nombre:int) : Tuile*
 }
-Deck "1" o-- "1..61" Tuile
+Deck "1" *-- "1..61" Tuile
 
 class Chantier {
     - taille : int
@@ -210,7 +225,7 @@ class Chantier {
     + ajouter_tuile(tuile:Tuile)
     + ajouter_tuile(tuile:Tuile*, nombre:int)
 }
-Chantier "1" o-- "1..*" Tuile
+Chantier "1" *-- "1..*" Tuile
 
 class Jeu {
     # nombre_joueurs : int
@@ -221,10 +236,10 @@ class Jeu {
 }
 
 note right : Est un singleton
-Jeu "1" *-- "1..*" Joueur
-Jeu "1" *-- "1" Deck
-Jeu "1" *-- "1" Chantier
-Jeu "1" *-- "1" Affichage
+Jeu "1" o-- "1..*" Joueur
+Jeu "1" o-- "1" Deck
+Jeu "1" o-- "1" Chantier
+Jeu "1" o-- "1" Affichage
 
 abstract class Affichage {
     + affichePlateauActuel(joueur : Joueur*, chantier : Chantier*, deck : Deck*)
