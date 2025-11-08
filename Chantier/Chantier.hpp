@@ -23,6 +23,8 @@ public:
     int get_taille() {return taille;}
     //! Getteur du nombres de tuiles dans le chantier
     int get_nombre_tuiles() {return nombreTuiles;}
+    //! Si le chantier est vide
+    bool est_vide() {return nombreTuiles <= 0;}
     //! Getteur des tuiles du chantier
     Tuile* get_tuiles() {return tuiles;}
     //! Retire la tuile, à l'index indiqué, du chantier

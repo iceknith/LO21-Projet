@@ -23,7 +23,7 @@ protected:
     //! Le nombre d'enfants (Hexagone) par Tuile
     int nombre_enfants;
     //! La liste des enfants (Hexagone) de cette Tuile
-    Hexagone enfants[max_enfants_par_tuile];
+    Hexagone *enfants[max_enfants_par_tuile];
     //! Les positions relatives des enfants (Hexagone) de cette tuile par rapport à la tuile
     Vector2 positions_enfants[max_enfants_par_tuile];
     //! La rotation de la tuile
@@ -38,13 +38,19 @@ public :
     //! Getteur de la Hauteur
     int get_hauteur() const {return hauteur;}
     //! Getteur des enfants
-    Hexagone* get_enfants() {return enfants;}
+    Hexagone** get_enfants() {return enfants;}
     //! Getteur de la position des enfants
     Vector2* get_positions_enfants() {return positions_enfants;}
     //! Getteur du nombre d'enfants de la Tuile
     int get_nombre_enfant() const {return nombre_enfants;}
     //! Getteur de l'identifiant unique de la Tuile
     int get_id() const {return id;}
+    //! Retourne true si la position pos est dans les positions enfants de la tuile
+    bool is_in_positions_enfants(Vector2 pos) const;
+
+    //! Tourne la tuile
+    void tourne_tuile(bool sens_horaire);
+
     //! Surcharge de l'opérateur ==
     /*!
      * Surcharge de l'opérateur ==
@@ -65,7 +71,8 @@ public :
 
 //! Représente une Tuile de Départ de jeu, ne peut pas être placée lors d'une partie
 class TuileDepart : public Tuile {
-
+public:
+    TuileDepart();
 };
 
 //! Représente une Tuile de jeu classique

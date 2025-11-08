@@ -3,18 +3,30 @@
 
 #include "../Utils.hpp"
 #include "../Players/Players.hpp"
+#include <vector>
 
 
 class Affichage {
 
+protected:
+    virtual void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) {};
+    virtual void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) {};
+
 public:
-   virtual void affiche_plateau_actuel(Joueur& joueur) {};
+    void affiche_plateau_actuel(Plateau& plateau) {affiche_plateau_actuel(plateau, false, Vector2());};
+    void affiche_plateau_actuel(Plateau& plateau, Vector2 selectedHexagone) {affiche_plateau_actuel(plateau, true, selectedHexagone);};
+    void affiche_joueur_actuel(Joueur& joueur) {affiche_joueur_actuel(joueur, false, Vector2());};
+    void affiche_joueur_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_joueur_actuel(joueur, true, selectedHexagone);};
 };
 
-class AffichageConsole : Affichage{
+class AffichageConsole : public Affichage{
     static AffichageConsole* instance;
     const int hexH = 5; // lignes
     const int hexW = 9; // colonnes
+
+protected:
+    void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) override;
 
 public:
     AffichageConsole() = default;
@@ -24,7 +36,6 @@ public:
         return instance;
     }
 
-    void affiche_plateau_actuel(Joueur &joueur);
 };
 
 //! Ensemble de fonctions utiles à l'affichage console
@@ -40,6 +51,9 @@ namespace AffichageConsoleUtils {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
+
+    //! Convertion entre les coordonées axiales et les coordonées de l'écran
+    Vector2 axialToScreen (Vector2 v);
 }
 
 

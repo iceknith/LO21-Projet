@@ -10,6 +10,31 @@ enum CouleursAkropolis {
     VIOLET,
     VERT
 };
+//! Définit les types des hexagones d'Akropolis
+enum class TypeHexagone {
+    Hexagone,
+    Place,
+    Carriere,
+    Quartier
+};
+
+namespace GameConstants {
+    // Constantes de score
+    const int VERT_PLACE_MULTIPLIER = 3;
+    const int BLEU_VARIANTE_BONUS_THRESHOLD = 10;
+    const int BLEU_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int ROUGE_VARIANTE_BONUS_MIN_EDGES = 3;
+    const int ROUGE_VARIANTE_BONUS_MAX_EDGES = 4;
+    const int ROUGE_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int VIOLET_VARIANTE_HAUTEUR_THRESHOLD = 1;
+    const int VIOLET_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int JAUNE_VARIANTE_BONUS_MULTIPLIER = 2;
+
+    // Game rules
+    const int MAX_HEXAGON_NEIGHBORS = 6;
+    const int HEXAGON_DIRECTIONS = 6;
+}
+
 
 //! Représente un Vecteur 2D
 class Vector2 {
@@ -42,6 +67,20 @@ public:
      * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
      */
     Vector2 operator+(const Vector2& v) const{return {x + v.x, y + v.y};}
+    //! Surcharge l'operateur égale à, pour pouvoir comparer deux Vector2
+    /*!
+     * Surcharge l'operateur égale à, pour pouvoir comparer deux Vector2
+     * Soit A et B deux vecteurs, A == B <=> (A.y == B.y) || (A.y == B.y)
+    */
+    bool operator==(const Vector2& v) const {return (x == v.x) && (y == v.y);}
+
+    //! Surcharge de l'opérateur soustraction
+    /*! Surcharge de l'opérateur soustraction
+     * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
+     */
+    Vector2 operator-(const Vector2& v) const{return {x - v.x, y - v.y};}
 };
+// position de tous les voisins d'un Hexagone
+static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}};
 
 #endif
