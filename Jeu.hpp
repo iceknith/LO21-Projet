@@ -40,9 +40,9 @@ protected:
     virtual void selectJoueurs() {};
 
     //! La méthode chargée de la séléction d'une tuile.
-    virtual Tuile& selectTuile(size_t joueur) {};
+    virtual Tuile* selectTuile(size_t joueur) {};
     //! La méthode chargée du placement d'une tuile séléctionné.
-    virtual void placeTuile(size_t joueur, Tuile& tuileSelected) {};
+    virtual void placeTuile(size_t joueur, Tuile* tuileSelected) {};
 
     //! La méthode chargée de la gestion de la fin de partie
     virtual void finDePartie() {};
@@ -54,8 +54,8 @@ public:
 class JeuConsole : public Jeu {
 protected:
     void selectJoueurs() override;
-    Tuile& selectTuile(size_t joueur) override;
-    void placeTuile(size_t joueur, Tuile& tuileSelected) override;
+    Tuile* selectTuile(size_t joueur) override;
+    void placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void finDePartie() override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile

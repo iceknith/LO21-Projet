@@ -7,7 +7,7 @@ using namespace std;
 int Tuile::nextID = 0;
 
 Tuile::Tuile() {
-    id = nextID++;
+
 }
 
 bool Tuile::is_in_positions_enfants(Vector2 pos) const {
@@ -35,16 +35,32 @@ void Tuile::tourne_tuile(bool sens_horaire) {
 }
 
 TuileJeuConcrete::TuileJeuConcrete() {
+
+    id = nextID++;
+
     nombre_enfants = 3;
     positions_enfants[0] = Vector2(0,0);
     positions_enfants[1] = Vector2(0,1);
     positions_enfants[2] = Vector2(1,0);
-    enfants[0] = new Place(this, 0, CouleursAkropolis::VERT);
-    enfants[1] = new Carriere(this, 1);
-    enfants[2] = new Quartier(this, 2, CouleursAkropolis::BLEU);
+    int selec = rand()%100;
+
+    for (size_t i = 0; i<3; i++) {
+        if (selec >= 0 && selec <= 20) {
+            enfants[i] = new Place(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
+        }
+        else if (selec > 20 && selec <= 60) {
+            enfants[i] = new Carriere(this, i);
+        }
+        else {
+            enfants[i] = new Quartier(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
+        }
+        selec = rand()%100;
+    }
 }
 
-TuileDepart::TuileDepart() {
+TuileDepart::TuileDepart(int identifiant) {
+
+    id = -identifiant;
 
     nombre_enfants = 4;
     positions_enfants[0] = Vector2(0,0);
