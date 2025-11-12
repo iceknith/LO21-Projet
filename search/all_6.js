@@ -25,7 +25,7 @@ var searchData=
   ['get_5ftaille_22',['get_taille',['../d6/df2/classDeck.html#acfb6adf3f104f389d4f2c5ee769b9444',1,'Deck::get_taille()'],['../df/d51/classChantier.html#a89be8a807e1abfabcd05f690a852781f',1,'Chantier::get_taille()']]],
   ['get_5ftext_23',['get_text',['../d4/dfc/classHexagone.html#af2a85c9015595003ec56d926f87b79b3',1,'Hexagone::get_text()'],['../de/df6/classQuartier.html#a1fc01ebb155ec9afc2baca2b9120facd',1,'Quartier::get_text()'],['../dc/dfe/classCarriere.html#a211453dc465f165e33c85d6443bab314',1,'Carriere::get_text()'],['../d9/d58/classPlace.html#a8e0e4d107bd5ecf1aac2f38d07f2723f',1,'Place::get_text()']]],
   ['get_5ftuile_24',['get_tuile',['../d4/dfc/classHexagone.html#ae597040b87e82bf37b15e91222984d43',1,'Hexagone']]],
-  ['get_5ftuiles_25',['get_tuiles',['../df/d51/classChantier.html#a99ad4655e897fea2b7712f635e6afed0',1,'Chantier']]],
+  ['get_5ftuiles_25',['get_tuiles',['../df/d51/classChantier.html#a0194e7015f55d1514de1b71e1154fe70',1,'Chantier']]],
   ['get_5ftype_26',['get_type',['../d4/dfc/classHexagone.html#aa7e8669570bc49957e66ffa44cb92391',1,'Hexagone::get_type()'],['../d9/d58/classPlace.html#a9dda8243462b1a5ee6284632d423ded0',1,'Place::get_type()'],['../dc/dfe/classCarriere.html#ae4b77ec224dce7bc58ef08af4dab0d0b',1,'Carriere::get_type()'],['../de/df6/classQuartier.html#adc001192d4315cb162bf0a23e8ff0b46',1,'Quartier::get_type()']]],
   ['getinstance_27',['getInstance',['../d1/d3c/classAffichageConsole.html#aa81c3f205d74e2f88b40723f04668381',1,'AffichageConsole']]]
 ];
