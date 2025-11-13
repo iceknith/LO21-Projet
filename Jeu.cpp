@@ -6,6 +6,10 @@ void Jeu::gameLoop() {
     srand(time(NULL));
     size_t joueurActuel = rand()%nombreJoueurs;
 
+    for (size_t i = 0; i<nombreJoueurs; i++) {
+        joueurs[(joueurActuel+i)%nombreJoueurs].set_pierre(i+1);
+    }
+
     chantier.set_nombre_joueurs(nombreJoueurs);
 
     deck = new Deck(nombreJoueurs);
@@ -23,10 +27,10 @@ void Jeu::gameLoop() {
     // À décommenter dès que le chantier est implémenté
     //while (!chantier.est_vide()) {
     while (true) {
-        joueurActuel = (joueurActuel + 1)%nombreJoueurs;
 
         Tuile* tuileSelected = selectTuile(joueurActuel);
         placeTuile(joueurActuel, tuileSelected);
+        joueurActuel = (joueurActuel + 1)%nombreJoueurs;
     }
     finDePartie();
 }
@@ -85,18 +89,32 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
         affichage->affiche_plateau_actuel(plateauTuileSelected);
 
     }
-    cout<<"\033[0;97mVotre plateau :" <<endl;
+    cout<<"\033[0;97m\n Votre plateau :" <<endl;
     affichage->affiche_joueur_actuel(joueurs[joueur]);
 
-    cout << "\033[0;97mQuelle tuile voulez vous selectionner ?" << endl;
+    cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ? (Nombre de pierre en votre possession : "<< joueurs[joueur].get_pierre() << ")" << endl;
     cout << "\033[0;37m-> \033[0;97m";
     cin >> output;
 
-    while (output <= 0 || output > chantier.get_taille()) {
-        cout << "La valeur doit etre entre "<< 1 <<" et " << chantier.get_taille() << endl;
+    while (output <= 0 || output > chantier.get_taille() || (output-1 > joueurs[joueur].get_pierre()) || cin.fail()) {
+        if (output <= 0 || output > chantier.get_taille()){
+            cout << "\033[1;31mLa valeur doit etre entre "<< 1 <<" et " << chantier.get_taille() << endl;
+        }
+        else if (output-1 > joueurs[joueur].get_pierre()) {
+            cout << "\033[1;31mVous n'avez pas assez de pierre pour prendre cette tuile !" << endl;
+        }
+
         cout << "\033[0;37m-> \033[0;97m";
+
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
         cin >> output;
     }
+
+    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output-1);
 
     Tuile* ret = chantier.prendre_tuile(output-1);
 
