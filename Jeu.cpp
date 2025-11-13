@@ -14,6 +14,16 @@ void Jeu::gameLoop() {
 
     deck = new Deck(nombreJoueurs);
 
+    int tour = 0;
+
+    size_t diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+
+    if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
+        for (size_t i = 0; i<diff; i++) {
+            chantier.ajouter_tuile(deck->tirer_tuile());
+        }
+    }
+
     // Vector2 positionNulle{0,0};
     // for (size_t i = 0; i<deck->get_taille(); i++) {
     //     // Définition du plateau pour la tuile
@@ -30,7 +40,21 @@ void Jeu::gameLoop() {
 
         Tuile* tuileSelected = selectTuile(joueurActuel);
         placeTuile(joueurActuel, tuileSelected);
+
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
+        tour = (tour+1)%nombreJoueurs;
+
+        if (tour == 0) {
+            diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+
+            if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
+                for (size_t i = 0; i<diff; i++) {
+                    chantier.ajouter_tuile(deck->tirer_tuile());
+                }
+            }
+        }
+
+
     }
     finDePartie();
 }
@@ -67,13 +91,13 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     //! TODO implémenter une vraie méthode de séléction de tuile
     // Actuellement ça leak de la mémoire, mais on changera ça plus tard, tkt ^^
 
-    int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-    if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
-        for (size_t i = 0; i<diff; i++) {
-            chantier.ajouter_tuile(deck->tirer_tuile());
-        }
-    }
+    // int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+    //
+    // if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
+    //     for (size_t i = 0; i<diff; i++) {
+    //         chantier.ajouter_tuile(deck->tirer_tuile());
+    //     }
+    // }
 
     int output;
     Vector2 positionNulle{0,0};
