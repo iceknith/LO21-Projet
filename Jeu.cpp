@@ -114,7 +114,7 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
         cin >> output;
     }
 
-    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output-1);
+    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output+1);
 
     Tuile* ret = chantier.prendre_tuile(output-1);
 
