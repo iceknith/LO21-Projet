@@ -120,9 +120,9 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     cout << "\033[0;37m-> \033[0;97m";
     cin >> output;
 
-    while (output <= 0 || output > chantier.get_taille() || (output-1 > joueurs[joueur].get_pierre()) || cin.fail()) {
-        if (output <= 0 || output > chantier.get_taille()){
-            cout << "\033[1;31mLa valeur doit etre entre "<< 1 <<" et " << chantier.get_taille() << endl;
+    while (output <= 0 || output > chantier.get_nombre_tuiles() || (output-1 > joueurs[joueur].get_pierre()) || cin.fail()) {
+        if (output <= 0 || output > chantier.get_nombre_tuiles()){
+            cout << "\033[1;31mLa valeur doit etre entre "<< 1 <<" et " << chantier.get_nombre_tuiles() << endl;
         }
         else if (output-1 > joueurs[joueur].get_pierre()) {
             cout << "\033[1;31mVous n'avez pas assez de pierre pour prendre cette tuile !" << endl;
