@@ -37,40 +37,27 @@ public:
     int get_niveau();
 };
 
-//! Décorateur qui implémente le scoring pour les points Bleus de l'Illustre Architechte
-class ScoreSoloArchitechteBleu : public ScoreSoloArchitechte {
-    int score_bleu(Plateau* plateau);
+//! Décorateur qui implémente le scoring pour l’Illustre architecte Hippodamos (MODE FACILE)
+class ScoreSoloArchitecteHippodamos : public ScoreSoloArchitechte {
+    int score_solo_architechte_hippodamos(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;
 };
 
-//! Décorateur qui implémente le scoring pour les points Rouges de l'Illustre Architechte
-class ScoreSoloArchitechteRouge : public ScoreSoloArchitechte {
-    int score_rouge(Plateau* plateau);
+//! Décorateur qui implémente le scoring pour l’Illustre architecte Metagenes (MODE NORMALE)
+class ScoreSoloArchitecteMetagenes : public ScoreSoloArchitechte {
+    int score_solo_architechte_metagenes(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;
 };
 
-//! Décorateur qui implémente le scoring pour les points Jaunes de l'Illustre Architechte
-class ScoreSoloArchitechteJaune : public ScoreSoloArchitechte {
-    int score_jaune(Plateau* plateau);
+//! Décorateur qui implémente le scoring pour l’Illustre architecte Callicrates (MODE DIFFICILE)
+class ScoreSoloArchitecteBleuCallicrates : public ScoreSoloArchitechte {
+    int score_solo_architechte_callicrates(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;
 };
 
-//! Décorateur qui implémente le scoring pour les points Verts de l'Illustre Architechte
-class ScoreSoloArchitechteVert : public ScoreSoloArchitechte {
-    int score_vert(Plateau* plateau);
-public:
-    int score(Plateau* plateau) override;
-};
-
-//! Décorateur qui implémente le scoring pour les points Violets de l'Illustre Architechte
-class ScoreSoloArchitechteViolet : public ScoreSoloArchitechte {
-    int score_violet(Plateau* plateau);
-public:
-    int score(Plateau* plateau) override;
-};
 
 //! Décorateur qui implémente le scoring pour les points Bleus d'un joueur normal
 class ScoreBleu : public Score{
@@ -198,6 +185,12 @@ namespace ScoreUtils {
      * @return Un entier, la somme des hauteurs de tous les hexagones
      */
     int sum_heights( std::map<Vector2, Hexagone*> m);
+    //! Colcule le nombre de Quartiers et de Places par couleur
+    /*!
+     * @param plateau Pointeur vers le plateau à analyser.
+     * @return Une structure StatsCouleursSoloArchitecte composée des compteur de quartiers et de place pour chque couleur
+     */
+    StatsCouleursSoloArchitecte compteur_couleur(Plateau* plateau);
 
 };
 

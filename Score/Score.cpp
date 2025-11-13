@@ -93,6 +93,67 @@ int ScoreUtils::sum_heights( std::map<Vector2, Hexagone*> m) {
     return resultat;
 }
 
+StatsCouleursSoloArchitecte ScoreUtils::compteur_couleur(Plateau* plateau) {
+    StatsCouleursSoloArchitecte stats;
+
+    for (auto iterateur = plateau->get_iterateur_debut(); iterateur != plateau->get_iterateur_fin(); ++iterateur) {
+        Hexagone* h = iterateur->second;
+        int c = static_cast<int>(h->get_couleur());
+        if (h->get_type()==TypeHexagone::Quartier) stats.quartiers[c]++;
+        if (h->get_type()==TypeHexagone::Place ) {
+            if (c == static_cast<int>(CouleursAkropolis::BLANC))stats.places[c]++;
+            else if (c == static_cast<int>(CouleursAkropolis::VERT))stats.places[c]+=3;
+            else stats.places[c]+=2;
+        }
+    }
+    return stats;
+}
+// =======================
+// Illustre architecte - FACILE - NORMALE - DIFFICILE
+
+int ScoreSoloArchitecteHippodamos::score_solo_architechte_hippodamos(Plateau* plateau) {
+    // Règle FACILE :pour chaque couleur: score = nombre quartiers * nombre de places
+    // exeption : la couleur blanche (car il s'agit de carrières) ne compte pas.
+    // Tous les hexagones partagent la meme hauteur = 1
+    auto stats = compteur_couleur(plateau);
+    int resultat = 0;
+    for (int i =0;i< GameConstants::MAX_COULEUR;i++) {
+        if (static_cast<CouleursAkropolis>(i) != CouleursAkropolis::BLANC) {
+            resultat += stats.quartiers[i]*stats.places[i];
+        }
+    }
+    return resultat;
+}
+
+int ScoreSoloArchitecteMetagenes::score_solo_architechte_metagenes(Plateau* plateau) {
+    // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places + nombre de carrières * 2
+    // Tous les hexagones partagent la meme hauteur = 1
+    auto stats = compteur_couleur(plateau);
+    int resultat = 0;
+    for (int i =0;i< GameConstants::MAX_COULEUR;i++) {
+        if (static_cast<CouleursAkropolis>(i) != CouleursAkropolis::BLANC) {
+            resultat += stats.quartiers[i]*stats.places[i];
+        }
+        else {
+            resultat += stats.quartiers[i]*2;
+        }
+    }
+    return resultat;
+}
+
+int ScoreSoloArchitecteBleuCallicrates::score_solo_architechte_callicrates(Plateau* plateau) {
+    // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places
+    // Tous les hexagones partagent la meme hauteur = 2
+    auto stats = compteur_couleur(plateau);
+    int resultat = 0;
+    for (int i =0;i< GameConstants::MAX_COULEUR;i++) {
+        if (static_cast<CouleursAkropolis>(i) != CouleursAkropolis::BLANC) {
+            resultat += stats.quartiers[i]*stats.places[i]*2;
+        }
+    }
+    return resultat;
+}
+
 // =======================
 // ScoreBleu
 

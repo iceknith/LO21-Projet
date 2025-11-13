@@ -33,6 +33,7 @@ namespace GameConstants {
     // Game rules
     const int MAX_HEXAGON_NEIGHBORS = 6;
     const int HEXAGON_DIRECTIONS = 6;
+    const int MAX_COULEUR = 6;
 }
 
 
@@ -80,7 +81,14 @@ public:
      */
     Vector2 operator-(const Vector2& v) const{return {x - v.x, y - v.y};}
 };
-// position de tous les voisins d'un Hexagone
+// Positions de tous les voisins d'un Hexagone
 static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}};
+
+//Utile pour calculer facilement le score de l'illustre architecte
+struct StatsCouleursSoloArchitecte {
+    int quartiers[GameConstants::MAX_COULEUR] = {0};
+    int places[GameConstants::MAX_COULEUR] = {0};
+};
+
 
 #endif
