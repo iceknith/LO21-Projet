@@ -43,13 +43,18 @@ TuileJeuConcrete::TuileJeuConcrete() {
     positions_enfants[1] = Vector2(0,1);
     positions_enfants[2] = Vector2(1,0);
     int selec = rand()%100;
+    //pour ne jamais avoir plus de 2 carrières par tuile ou plus de 1 place
+    int carriere = 0;
+    int place = 0;
 
     for (size_t i = 0; i<3; i++) {
-        if (selec >= 0 && selec <= 20) {
+        if (selec >= 0 && selec <= 20 && place < 1) {
             enfants[i] = new Place(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
+            place++;
         }
-        else if (selec > 20 && selec <= 60) {
+        else if (selec > 20 && selec <= 60 && carriere < 2) {
             enfants[i] = new Carriere(this, i);
+            carriere++;
         }
         else {
             enfants[i] = new Quartier(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
