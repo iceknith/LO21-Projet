@@ -9,12 +9,15 @@ void print_title() {
 }
 
 void Jeu::gameLoop() {
-    print_title();
+    print_title(); // temporaire
 
     selectGameMode();
     if (modeDeJeu == GameMode::MULTIJOUEUR) selectJoueurs();
-    // Le joueur 1 sera arbitrairement l'utilisateur et 2 sera l'illustre architecte.
-    else nombreJoueurs = 2;
+    // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
+    else {
+        nombreJoueurs = 2;
+        initialisePlateau();
+    }
 
     srand(time(NULL));
     size_t joueurActuel = rand()%nombreJoueurs;
@@ -37,13 +40,6 @@ void Jeu::gameLoop() {
         }
     }
 
-    // Vector2 positionNulle{0,0};
-    // for (size_t i = 0; i<deck->get_taille(); i++) {
-    //     // Définition du plateau pour la tuile
-    //     Plateau plateauTuileSelected;
-    //     plateauTuileSelected.placer(deck->tirer_tuile(), positionNulle);
-    //     affichage->affiche_plateau_actuel(plateauTuileSelected, Vector2(0,0));
-    // }
 
     //! TODO ajouter la logique de pioche du deck dans le chantier
 
@@ -59,14 +55,16 @@ void Jeu::gameLoop() {
 
         // JEU SOLO
         if (modeDeJeu==GameMode::SOLO) {
+            // Utilisateur
             if (joueurActuel ==1) {
                 Tuile* tuileSelected = selectTuile(joueurActuel);
                 placeTuile(joueurActuel, tuileSelected);
             }
+            // Illustre architecte
             else {
-                // si mode de jeu solo && joeur = 2
-                //--> choisi sa tuile et la montre
-                //place cette tuile!
+                Tuile* tuileSelected = selectTuileIllustreArchitecte(joueurActuel);
+                // TODO : le bot peut pas encore placer les tuiles pour lui meme
+                placeTuile(joueurActuel, tuileSelected);
             }
         }
         //___________
@@ -131,12 +129,27 @@ void JeuConsole::selectGameMode()  {
     }
     difficulte = static_cast<Difficulte>(choix-1);
     switch (difficulte){
-        case Difficulte::FACILE: cout << " facile, vous aller afronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
-        case Difficulte::NORMALE: cout << "normale"<< endl;
-        case Difficulte::DIFFICILE: cout << "difficle, bon courage ...  "<< endl;
+        case Difficulte::FACILE:
+            cout << "\033[0;32mFacile\033[0;97m: vous aller affronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
+            break;
+        case Difficulte::NORMALE:
+            cout << "\033[0;33mNormale\033[0;97m: bon courage avec Metagenes"<< endl;
+            break;
+        case Difficulte::DIFFICILE:
+            cout << "\033[0;31mDifficile\033[0;97m: vous n'aurez aucune chance face à Callicrates, balbalbal comment ses regles fonctionnent"<< endl;
+            break;
+        default:
+            cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
+            break;
     }
 }
 
+void Jeu::initialisePlateau() {
+    Vector2 positionNulle{0,0};
+    for (size_t i = 0; i < nombreJoueurs; i++) {
+        joueurs[i].place_tuile(new TuileDepart(i+1), positionNulle);
+    }
+}
 
 void JeuConsole::selectJoueurs() {
     cout << "\033[0;97mCombien de joueurs joueront à cette partie ?"
@@ -155,11 +168,7 @@ void JeuConsole::selectJoueurs() {
 
     cout << "\033[0;36mCette partie se déroulera à " << nombreJoueurs << " joueurs" << endl;
 
-    // Initialisation des plateaux des joueurs
-    Vector2 positionNulle{0,0};
-    for (size_t i = 0; i < nombreJoueurs; i++) {
-        joueurs[i].place_tuile(new TuileDepart(i+1), positionNulle);
-    }
+    initialisePlateau();
 }
 
 
@@ -221,20 +230,33 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     return ret;
 }
 
-Tuile* selectTuileIllustreArchitecte(size_t joueur) {
-    //! TODO
+Tuile* Jeu::selectTuileIllustreArchitecte(size_t joueur) {
+/* Regle:
+ * - Achete la tuile la moin cher ayant une place
+ * - Si aucune place ou pas les moyens -> prend la moin cher
+ */
+    Vector2 positionNulle{0,0};
+    Tuile ** ch = chantier.get_tuiles();
 
-/*
-    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output+1);
+    int nb_tuilles = chantier.get_nombre_tuiles();
 
-    Tuile* ret = chantier.prendre_tuile(output-1);
-
-    return ret;
-    */
+    // Traverse la liste des tuiles, dès qu'une tuile presente une place (et que l'architecte en a les moyen) -> return cette tuile
+    for (size_t i = 0; i<nb_tuilles; i++){
+        for (int j =0; j < 3; j++) {
+            if (ch[i]->get_enfants()[j]->get_type()==TypeHexagone::Place && joueurs[joueur].get_pierre() >= i) {
+                return chantier.prendre_tuile(i);
+            }
+        }
+    }
+    return chantier.prendre_tuile(0);
 }
 
-void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) {
+void Jeu::placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) {
+    // Regle: peut placer ses tuiles n'importe où --> on va les placer les plus proches du centre
     //! TODO
+
+
+
 }
 
 void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
@@ -337,7 +359,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 
 void JeuConsole::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& positionSelectionne) {
     cout << "\033[0;36m-------------------------------------------" << endl
-         << "\033[0;97mOù voulez vous placer cette tuile:" << endl;
+         << "\033[0;97mJoueur "<< joueur+1<<",Où voulez vous placer cette tuile:" << endl;
     affichage->affiche_plateau_actuel(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;

@@ -41,6 +41,9 @@ protected:
 
     // Game loop methodes
 
+    // Initialisation des plateaux des joueurs
+    void initialisePlateau();
+
     //! La méthode chargée de la séléction de joueurs
     virtual void selectJoueurs() {};
 
