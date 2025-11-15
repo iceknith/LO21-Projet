@@ -18,6 +18,19 @@ enum class TypeHexagone {
     Quartier
 };
 
+//! Définit les modes de jeu d'Akropolis
+enum class GameMode {
+    SOLO,
+    MULTIJOUEUR
+};
+
+//! Définit les difficultées du jeu d'Akropolis en solo
+enum class Difficulte {
+    FACILE,
+    NORMALE,
+    DIFFICILE
+};
+
 namespace GameConstants {
     // Constantes de score
     const int VERT_PLACE_MULTIPLIER = 3;

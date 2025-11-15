@@ -15,6 +15,11 @@ namespace constJeu {
 //! La classe responsable de gérer tout le cycle de vie du jeu
 class Jeu {
 protected:
+    //! Le mode de jeu (multijoueur ou solo)
+    GameMode modeDeJeu;
+    //! La difficulté du jeu (mode illustre architecte)
+    Difficulte difficulte;
+
     //! Le nombre de joueurs qui participent au jeu
     size_t nombreJoueurs;
     //! Les joueurs qui jouent dans ce jeu
@@ -39,10 +44,18 @@ protected:
     //! La méthode chargée de la séléction de joueurs
     virtual void selectJoueurs() {};
 
+    //! La méthode chargée de la séléction du mode de jeu
+    virtual void selectGameMode() {};
     //! La méthode chargée de la séléction d'une tuile.
     virtual Tuile* selectTuile(size_t joueur) {};
     //! La méthode chargée du placement d'une tuile séléctionné.
     virtual void placeTuile(size_t joueur, Tuile* tuileSelected) {};
+
+    // ILLUSTRE ARCHI
+    //! La méthode chargée de la séléction d'une tuile de l'illustre architecte
+    Tuile* selectTuileIllustreArchitecte(size_t joueur) ;
+    //! La méthode chargée du placement d'une tuile séléctionné par l'illustre architecte
+    void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected);
 
     //! La méthode chargée de la gestion de la fin de partie
     virtual void finDePartie() {};
@@ -54,6 +67,7 @@ public:
 class JeuConsole : public Jeu {
 protected:
     void selectJoueurs() override;
+    void selectGameMode() override;
     Tuile* selectTuile(size_t joueur) override;
     void placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void finDePartie() override;
@@ -61,7 +75,10 @@ protected:
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
 
-
+/*
+    Tuile* selectTuileIllustreArchitecte(size_t joueur) override;
+    void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) override;
+*/
 public:
     JeuConsole();
 };

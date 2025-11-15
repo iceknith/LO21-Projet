@@ -1,7 +1,20 @@
 #include "Jeu.hpp"
 
+void print_title() {
+    cout <<
+"    _______ __  __ ______ _______ ______ _______ _____   _______ _______ \n"
+"   |   _   |  |/  |   __ \\       |   __ \\       |     |_|_     _|     __|\n"
+"   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
+"   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
+}
+
 void Jeu::gameLoop() {
-    selectJoueurs();
+    print_title();
+
+    selectGameMode();
+    if (modeDeJeu == GameMode::MULTIJOUEUR) selectJoueurs();
+    // Le joueur 1 sera arbitrairement l'utilisateur et 2 sera l'illustre architecte.
+    else nombreJoueurs = 2;
 
     srand(time(NULL));
     size_t joueurActuel = rand()%nombreJoueurs;
@@ -37,11 +50,28 @@ void Jeu::gameLoop() {
     // À décommenter dès que le chantier est implémenté
     //while (!chantier.est_vide()) {
     while (true) {
+        // JEU MULTIJOEUR
+        if (modeDeJeu==GameMode::MULTIJOUEUR)
+        {
+            Tuile* tuileSelected = selectTuile(joueurActuel);
+            placeTuile(joueurActuel, tuileSelected);
+        }
 
-        Tuile* tuileSelected = selectTuile(joueurActuel);
-        placeTuile(joueurActuel, tuileSelected);
-
+        // JEU SOLO
+        if (modeDeJeu==GameMode::SOLO) {
+            if (joueurActuel ==1) {
+                Tuile* tuileSelected = selectTuile(joueurActuel);
+                placeTuile(joueurActuel, tuileSelected);
+            }
+            else {
+                // si mode de jeu solo && joeur = 2
+                //--> choisi sa tuile et la montre
+                //place cette tuile!
+            }
+        }
+        //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
+
         tour = (tour+1)%nombreJoueurs;
 
         if (tour == 0) {
@@ -53,15 +83,60 @@ void Jeu::gameLoop() {
                 }
             }
         }
-
-
     }
+
+
     finDePartie();
 }
 
 JeuConsole::JeuConsole() {
     affichage = new AffichageConsole();
 }
+
+
+void JeuConsole::selectGameMode()  {
+    int choix =0;
+    cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?"
+        << endl << "\033[0;37m-> \033[0;97m";
+    cin >> choix;
+
+    while (cin.fail() || choix <= 0 || choix > 2) {
+        cout << "\033[1;31m --> gamemode inexistant !"
+            << endl << "\033[0;37m-> \033[0;97m";
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choix;
+
+    }
+    modeDeJeu = static_cast<GameMode>(choix -1);
+
+    if (modeDeJeu == GameMode::MULTIJOUEUR) { return;}
+    // choix difficulté
+    cout << "\033[0;36mVous avez selectionner le mode solo, vous allez affronter l'illustre architechte! " << endl;
+
+    cout << "\033[0;97m - FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
+        << endl << "\033[0;37m-> \033[0;97m";
+    cin >> choix;
+
+    while (cin.fail() || choix <= 0 || choix > 3) {
+        cout << "\033[1;31m --> difficulté  inexistante !"
+            << endl << "\033[0;37m-> \033[0;97m";
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choix;
+    }
+    difficulte = static_cast<Difficulte>(choix-1);
+    switch (difficulte){
+        case Difficulte::FACILE: cout << " facile, vous aller afronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
+        case Difficulte::NORMALE: cout << "normale"<< endl;
+        case Difficulte::DIFFICILE: cout << "difficle, bon courage ...  "<< endl;
+    }
+}
+
 
 void JeuConsole::selectJoueurs() {
     cout << "\033[0;97mCombien de joueurs joueront à cette partie ?"
@@ -86,6 +161,7 @@ void JeuConsole::selectJoueurs() {
         joueurs[i].place_tuile(new TuileDepart(i+1), positionNulle);
     }
 }
+
 
 Tuile* JeuConsole::selectTuile(size_t joueur) {
     //! TODO implémenter une vraie méthode de séléction de tuile
@@ -143,6 +219,22 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     Tuile* ret = chantier.prendre_tuile(output-1);
 
     return ret;
+}
+
+Tuile* selectTuileIllustreArchitecte(size_t joueur) {
+    //! TODO
+
+/*
+    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output+1);
+
+    Tuile* ret = chantier.prendre_tuile(output-1);
+
+    return ret;
+    */
+}
+
+void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) {
+    //! TODO
 }
 
 void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
