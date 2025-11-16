@@ -5,12 +5,11 @@
 #include "Plateau.hpp"
 
 
-bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
+bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlacement) {
     // On peut placer si on est:
     // - Si on peut placer toutes les tuiles, à leurs positions locales
     // - Sur un niveau commun
     // - Sur plus d'une tuile
-    //! TODO implémenter une condition, qui regarde si on est adjascente à une tuile lorsqu'on place à la hauteur 0
 
     // Définition des variables
     int hauteur = 0;
@@ -23,9 +22,7 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
 
     bool conditionTuileValidee = (tuile_base == nullptr); // Si on n'as pas de tuile, la condition d'être sur plusieurs tuiles est déjà validée
 
-    int adjacent =0;// compte le nombre d'hexagone adjacent a notre position
-
-
+    bool asAdjacent = forcePlacement; // garde en mémoire si la condition d'adjascence est valide
 
     // Iteration à travers toute les positions, pour voir si elles sont légales
     for (int i = 0; i < tuile.get_nombre_enfant(); i++){
@@ -47,28 +44,22 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position) {
             // On ne check pas la condition tuile, car si tuile_base, sa hauteur est au moins 1, donc la condition hauteur se déclenchera avant
         }
 
-        //On regarde si notre hexagone est adjascente à une tuile lorsqu'on place à la hauteur 0
-        for (int j = 0; j < 6; ++j) {
-            if (plateau.find(positionHex + PositionContourHexagone[j]) != plateau.end()) {
-                ++adjacent;
+        if (hauteur == 0 && !asAdjacent) {
+            //On regarde si notre hexagone est adjascente à une tuile lorsqu'on place à la hauteur 0
+            for (int j = 0; j < 6; ++j) {
+                if (plateau.find(positionHex + adjascenceHex[j]) != plateau.end()) {
+                    asAdjacent = true;
+                }
             }
         }
     }
 
-    // Si hexagone sans adjacent et n'est pas la premiere tuile alors mauvais placement
-    if (adjacent ==0) {
-        if (tuile.get_id()!=0) {
-            return true;  // WARNING: techniquement correcte mais faux avec l'affichage console actuelle (une fois l'affichage corrigé --> mettre 'false')
-
-        }
-    }
-
-    return conditionTuileValidee;
+    return conditionTuileValidee && asAdjacent;
 }
 
-bool Plateau::placer(Tuile* tuile, const Vector2 &position) {
+bool Plateau::placer(Tuile* tuile, const Vector2 &position, bool forcePlacement) {
     // Si on ne peut pas placer, retourner False
-    if (!peut_placer(*tuile, position)) return false;
+    if (!peut_placer(*tuile, position, forcePlacement)) return false;
 
     // Changement de la hauteur de la tuile
     int hauteur = 1;

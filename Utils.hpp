@@ -95,7 +95,14 @@ public:
     Vector2 operator-(const Vector2& v) const{return {x - v.x, y - v.y};}
 };
 // Positions de tous les voisins d'un Hexagone
-static const Vector2 PositionContourHexagone[6] = { {0,1}, {1,0}, {1,-1}, {0,-1},{-1,0},{-1,1}};
+static const Vector2 adjascenceHex[6]{
+    Vector2(-1, 0), // Haut Gauche
+    Vector2(-1, +1), // Bas Gauche
+    Vector2(0, -1), // Haut Millieu
+    Vector2(0, +1), // Bas Millieu
+    Vector2(+1, -1), // Haut Droite
+    Vector2(+1, 0) // Bas Droite
+};
 
 //Utile pour calculer facilement le score de l'illustre architecte
 struct StatsCouleursSoloArchitecte {

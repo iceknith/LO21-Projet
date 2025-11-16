@@ -39,11 +39,11 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
     string couleurString = highlighted ? couleursConsoleHighlighted[couleur] : couleursConsole[couleur];
 
     // Haut Gauche
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[0])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[0])) {
         affichage[1] += " " + couleurString + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
-        if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2]))
+        if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[2]))
             affichage[0] += " " + couleurString + " ";
         else
             affichage[0] += " " + couleurString + hauteurTuileTxt;
@@ -53,11 +53,11 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
         affichage[1] += "/" + couleurString + hauteurTuileTxt;
     }
     // Bas Gauche
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[1])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[1])) {
         affichage[2] += " " + couleurString + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
-        if (get_tuile()->is_in_positions_enfants(locPos + adjascence[3]))
+        if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[3]))
             affichage[3] += " " + couleurString + " ";
         else
             affichage[3] += " " + couleurString + hauteurTuileTxt;
@@ -67,14 +67,14 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
         affichage[3] += "\\" + couleurString + hauteurTuileTxt;
     }
     // Haut Centre
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[2])) {
         affichage[0] += "   ";
     }
     else {
         affichage[0] += "-" + hauteurTuileTxt + "-";
     }
     // Bas Centre
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[3])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[3])) {
         affichage[3] += "   ";
     }
     else {
@@ -86,11 +86,11 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
     affichage[2] += centreL2;
 
     // Haut Droite
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[4])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[4])) {
         affichage[1] += " " + couleurConsoleOutline + " ";
 
         // Ne pas afficher le coin si il y as une tuile en haut également
-        if (get_tuile()->is_in_positions_enfants(locPos + adjascence[2]))
+        if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[2]))
             affichage[0] += " " + couleurConsoleOutline + " ";
         else
             affichage[0] += hauteurTuileTxt + couleurConsoleOutline + " ";
@@ -100,11 +100,11 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
         affichage[1] += hauteurTuileTxt + couleurConsoleOutline + "\\";
     }
     // Bas Droite
-    if (get_tuile()->is_in_positions_enfants(locPos + adjascence[5])) {
+    if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[5])) {
         affichage[2] += " " + couleurConsoleOutline + " ";
 
         // Ne pas afficher le coin si il y as une tuile en bas également
-        if (get_tuile()->is_in_positions_enfants(locPos + adjascence[3]))
+        if (get_tuile()->is_in_positions_enfants(locPos + adjascenceHex[3]))
             affichage[3] += " " + couleurConsoleOutline + " ";
         else
             affichage[3] += hauteurTuileTxt + couleurConsoleOutline + " ";

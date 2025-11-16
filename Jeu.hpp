@@ -23,7 +23,7 @@ protected:
     //! Le nombre de joueurs qui participent au jeu
     size_t nombreJoueurs;
     //! Les joueurs qui jouent dans ce jeu
-    Joueur joueurs[constJeu::nombreJoueursMax];
+    Joueur* joueurs[constJeu::nombreJoueursMax];
     //! Le deck du jeu
     /*
      * Le deck du jeu
@@ -50,15 +50,9 @@ protected:
     //! La méthode chargée de la séléction du mode de jeu
     virtual void selectGameMode() {};
     //! La méthode chargée de la séléction d'une tuile.
-    virtual Tuile* selectTuile(size_t joueur) {};
+    virtual Tuile* selectTuile(size_t joueur) {return nullptr;}
     //! La méthode chargée du placement d'une tuile séléctionné.
     virtual void placeTuile(size_t joueur, Tuile* tuileSelected) {};
-
-    // ILLUSTRE ARCHI
-    //! La méthode chargée de la séléction d'une tuile de l'illustre architecte
-    Tuile* selectTuileIllustreArchitecte(size_t joueur) ;
-    //! La méthode chargée du placement d'une tuile séléctionné par l'illustre architecte
-    void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected);
 
     //! La méthode chargée de la gestion de la fin de partie
     virtual void finDePartie() {};

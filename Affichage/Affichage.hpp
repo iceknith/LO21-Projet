@@ -39,7 +39,7 @@ public:
 };
 
 //! Ensemble de fonctions utiles à l'affichage console
-namespace AffichageConsoleUtils {
+namespace constAffichageConsoleHex {
     //! Implémente replace, sauf qu'il 'skip' les charactères identiques à charactere_non_remplace
     /*!
      *

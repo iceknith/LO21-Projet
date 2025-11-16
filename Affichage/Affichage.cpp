@@ -1,6 +1,5 @@
 #include "Affichage.hpp"
 using namespace constAffichageConsoleHex;
-using namespace AffichageConsoleUtils;
 
 // L'affichage se fera sous la forme
 //  /1 1 1\
@@ -105,15 +104,16 @@ void AffichageConsole::affiche_plateau_actuel(Plateau &plateau, bool selectHexag
 
 void AffichageConsole::affiche_joueur_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
     affiche_plateau_actuel(joueur.get_plateau(), selectHexagone, selectedHexagone);
+    cout << "\033[0;37m " << joueur.get_pierre() << " pierre(s)" << endl;
 }
 
-Vector2 AffichageConsoleUtils::axialToScreen(Vector2 v) {
+Vector2 constAffichageConsoleHex::axialToScreen(Vector2 v) {
     float col = v.x / 2 * largeurHex;
     float ligne = (v.y + v.x / 2) * hauteurHex;
     return Vector2{col, ligne};
 }
 
-void AffichageConsoleUtils::replace_sauf_charactere(string &text_original, size_t pos, size_t len,
+void constAffichageConsoleHex::replace_sauf_charactere(string &text_original, size_t pos, size_t len,
                                                     const std::string &text_nouveau, char charactere_non_remplace)  {
     size_t endSize = min(text_original.length(), pos + min(len, text_nouveau.size()));
     for (size_t i = pos; i < endSize; i++){

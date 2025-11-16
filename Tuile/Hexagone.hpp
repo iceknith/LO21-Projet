@@ -21,15 +21,6 @@ namespace constAffichageConsoleHex {
     const size_t decalagePetiteLigne = 1;
 
     // Affichage
-    const Vector2 adjascence[6]{
-        Vector2(-1, 0), // Haut Gauche
-        Vector2(-1, +1), // Bas Gauche
-        Vector2(0, -1), // Haut Millieu
-        Vector2(0, +1), // Bas Millieu
-        Vector2(+1, -1), // Haut Droite
-        Vector2(+1, 0) // Bas Droite
-    };
-
     const string couleurConsoleOutline = "\033[0;37m";
 
     const string couleursConsole[6]{

@@ -36,7 +36,7 @@ int ScoreUtils::get_iteration_with_hauteur_filtres ( Plateau* plateau, TypeHexag
 map<Vector2, Hexagone*> ScoreUtils::get_hexagone_voisins( Plateau* plateau, Vector2 position) {
     std::map<Vector2, Hexagone*> voisins;
     for (int i = 0; i < GameConstants::HEXAGON_DIRECTIONS; ++i) {
-        Vector2 npos = position + PositionContourHexagone[i];
+        Vector2 npos = position + adjascenceHex[i];
         if (plateau->hexagone_existe(npos))
             voisins.emplace(npos, plateau->obtenir_hexagone(npos));
     }
@@ -55,7 +55,7 @@ std::map<Vector2, Hexagone*> ScoreUtils::flood_fill_collect(const std::map<Vecto
 
     // Explore recursivement les directions autour
     for (int d = 0; d < GameConstants::MAX_HEXAGON_NEIGHBORS; ++d) {
-        Vector2 npos = positionDepart + PositionContourHexagone[d];
+        Vector2 npos = positionDepart + adjascenceHex[d];
         if (selection.find(npos) != selection.end() && visite.find(npos) == visite.end()) {
             auto recursion = flood_fill_collect(selection, visite, npos);
             voisinnage.insert(recursion.begin(), recursion.end());
@@ -246,7 +246,7 @@ int ScoreJaune::score_jaune(Plateau* plateau) {
     for (const auto& [pos, hex]:Hex) {
         voisin_jaune = false;
         for(int d=0;d<GameConstants::MAX_HEXAGON_NEIGHBORS;d++) {
-            Vector2 position_contour = pos+PositionContourHexagone[d];
+            Vector2 position_contour = pos+adjascenceHex[d];
             if (plateau->hexagone_existe(position_contour) ) {
                 if ((plateau->obtenir_hexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE) && plateau->obtenir_hexagone(position_contour)->get_type() == TypeHexagone::Quartier) {
                     voisin_jaune = true;
@@ -376,7 +376,7 @@ int ScoreJauneVariante::score_jaune_variante(Plateau* plateau) {
         quartier_voisin_jaune = false;
         place_voisin_jaune = false;
         for (int d=0;d<GameConstants::MAX_HEXAGON_NEIGHBORS;d++) {
-            Vector2 position_contour = pos+PositionContourHexagone[d];
+            Vector2 position_contour = pos+adjascenceHex[d];
             if (plateau->hexagone_existe(position_contour)) {
                 if (plateau->obtenir_hexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE)
                 {

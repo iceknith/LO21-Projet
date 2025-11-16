@@ -4,6 +4,7 @@
 #include "../Score/Score.hpp"
 #include "../Tuile/Tuile.hpp"
 #include "../Utils.hpp"
+#include "../Chantier/Chantier.hpp"
 
 //! La classe abstraite Joueur, qui implémente n'importe quel Joueur
 /*!
@@ -16,18 +17,18 @@ protected:
     int pierre = 0;
     //! Le Plateau du joueur
     Plateau plateauJoueur;
-    //! Si le joueur joue tout seul
-    /*!
-      Si le joueur joue tout seul. \n
-      Cet attribut indique au moteur de jeu, si il as à attendre des inputs de la part du joueur
-    */
-    bool joueToutSeul;
 
 public:
     //! Constructeur du joueur
     Joueur();
+    //! Si le joueur joue tout seul
+    /*!
+      Si le joueur joue tout seul. \n
+      Cette méthode indique au moteur de jeu, si il as à attendre des inputs de la part du joueur
+    */
+    virtual bool get_joue_tout_seul() const {return false;}
     //! Retourne le Score calculé du Joueur
-    int get_score() {return 0;} // Le score est implémenté avec les joueurs concrèts
+    virtual int get_score() {return 0;} // Le score est implémenté avec les joueurs concrèts
     //! Retourne la quantité de pierres du Joueur
     int get_pierre() {return pierre;}
     //! Set la quantité de pierres du Joueur
@@ -42,13 +43,13 @@ public:
      * @param coordonées le Vector2 qui donne la position de la Tuile
      * @return Si la tuile as été placé ou non
      */
-    bool place_tuile(Tuile* tuile, Vector2& coordonees) {return plateauJoueur.placer(tuile, coordonees);}
+    bool place_tuile(Tuile* tuile, Vector2& coordonees, bool forcePlacement = false) {return plateauJoueur.placer(tuile, coordonees, forcePlacement);}
     //! La fonction appelée lorsque le joueur joueToutSeul
     /*!
      *
      * @param chantier un tableau de Tuile, représentant le chantier
      */
-    void jouer(Tuile* chantier) {}
+    virtual void jouer(Chantier chantier) {}
 };
 
 //! Une impléméntation concrète d'un Joueur humain
@@ -63,8 +64,14 @@ protected:
     bool joueToutSeul = false;
 public:
     //! Retourne le Score calculé du Joueur
-    int get_score();
+    int get_score() override {return scoreJoueur->score(&plateauJoueur);}
+    bool get_joue_tout_seul() const override {return false;}
+
 };
+
+namespace IllustreArchitechteConsts {
+    const int board_max_width = 15;
+}
 
 class IllustreArchitecte : public Joueur {
 protected:
@@ -75,16 +82,19 @@ protected:
     //! L'illustre Architechte étant un automate, il joue tout seul
     bool joueToutSeul = true;
     //! Choisit une tuile à partir du chantier
-    Tuile choisir_tuile(Tuile* chantier);
+    Tuile* choisir_tuile(Chantier chantier);
     //! Trouve un emplacement vide et valide pour placer une tuile
-    Vector2 trouver_emplacement_tuile(Tuile& tuile);
+    Vector2 trouver_emplacement_tuile(Tuile &tuile);
 public:
     //! Le setteur du niveau
     void set_niveau(int niveau);
     //! Le getteur du niveau
     int get_niveau();
     //! La fonction appelée pour faire jouer l'Illustre Architechte
-    void jouer(Tuile* chantier);
+    void jouer(Chantier chantier) override;
+
+    bool get_joue_tout_seul() const override {return true;}
+    int get_score() override {return score->score(&plateauJoueur);}
 };
 
 #endif //LO21_PROJET_PLAYERS_HPP

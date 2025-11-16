@@ -12,60 +12,48 @@ void Jeu::gameLoop() {
     print_title(); // temporaire
 
     selectGameMode();
-    if (modeDeJeu == GameMode::MULTIJOUEUR) selectJoueurs();
+    size_t joueurActuel;
+    if (modeDeJeu == GameMode::MULTIJOUEUR){
+        selectJoueurs();
+        srand(time(NULL));
+        joueurActuel = rand()%nombreJoueurs;
+    }
     // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
     else {
         nombreJoueurs = 2;
+        joueurs[0] = new JoueurSimple();
+        joueurs[1] = new IllustreArchitecte();
+        joueurActuel = 1;
         initialisePlateau();
     }
 
-    srand(time(NULL));
-    size_t joueurActuel = rand()%nombreJoueurs;
-
     for (size_t i = 0; i<nombreJoueurs; i++) {
-        joueurs[(joueurActuel+i)%nombreJoueurs].set_pierre(i+1);
+        joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
     }
 
     chantier.set_nombre_joueurs(nombreJoueurs);
-
     deck = new Deck(nombreJoueurs);
 
     int tour = 0;
+    int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-    size_t diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-    if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
-        for (size_t i = 0; i<diff; i++) {
-            chantier.ajouter_tuile(deck->tirer_tuile());
-        }
+    if (diff > 0) {
+        chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
     }
 
-
-    //! TODO ajouter la logique de pioche du deck dans le chantier
-
-    // À décommenter dès que le chantier est implémenté
-    //while (!chantier.est_vide()) {
-    while (true) {
-        // JEU MULTIJOEUR
-        if (modeDeJeu==GameMode::MULTIJOUEUR)
+    while (!chantier.est_vide()) {
+        // Joueur manuel
+        if (!joueurs[joueurActuel]->get_joue_tout_seul())
         {
             Tuile* tuileSelected = selectTuile(joueurActuel);
             placeTuile(joueurActuel, tuileSelected);
         }
 
-        // JEU SOLO
-        if (modeDeJeu==GameMode::SOLO) {
-            // Utilisateur
-            if (joueurActuel ==1) {
-                Tuile* tuileSelected = selectTuile(joueurActuel);
-                placeTuile(joueurActuel, tuileSelected);
-            }
-            // Illustre architecte
-            else {
-                Tuile* tuileSelected = selectTuileIllustreArchitecte(joueurActuel);
-                // TODO : le bot peut pas encore placer les tuiles pour lui meme
-                placeTuile(joueurActuel, tuileSelected);
-            }
+        // Illustre architechte
+        else {
+            joueurs[joueurActuel]->jouer(chantier);
+            affichage->affiche_joueur_actuel(*joueurs[joueurActuel]);
+            cout << "\033[0;97mVoici le plateau de l'Illustre Architechte." << endl;
         }
         //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
@@ -75,10 +63,8 @@ void Jeu::gameLoop() {
         if (tour == 0) {
             diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-            if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
-                for (size_t i = 0; i<diff; i++) {
-                    chantier.ajouter_tuile(deck->tirer_tuile());
-                }
+            if (diff > 0) {
+                chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
             }
         }
     }
@@ -90,7 +76,6 @@ void Jeu::gameLoop() {
 JeuConsole::JeuConsole() {
     affichage = new AffichageConsole();
 }
-
 
 void JeuConsole::selectGameMode()  {
     int choix =0;
@@ -147,7 +132,7 @@ void JeuConsole::selectGameMode()  {
 void Jeu::initialisePlateau() {
     Vector2 positionNulle{0,0};
     for (size_t i = 0; i < nombreJoueurs; i++) {
-        joueurs[i].place_tuile(new TuileDepart(i+1), positionNulle);
+        joueurs[i]->place_tuile(new TuileDepart(i+1), positionNulle, true);
     }
 }
 
@@ -168,22 +153,11 @@ void JeuConsole::selectJoueurs() {
 
     cout << "\033[0;36mCette partie se déroulera à " << nombreJoueurs << " joueurs" << endl;
 
+    for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
     initialisePlateau();
 }
 
-
 Tuile* JeuConsole::selectTuile(size_t joueur) {
-    //! TODO implémenter une vraie méthode de séléction de tuile
-    // Actuellement ça leak de la mémoire, mais on changera ça plus tard, tkt ^^
-
-    // int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-    //
-    // if (chantier.get_nombre_tuiles()<chantier.get_taille()) {
-    //     for (size_t i = 0; i<diff; i++) {
-    //         chantier.ajouter_tuile(deck->tirer_tuile());
-    //     }
-    // }
-
     int output;
     Vector2 positionNulle{0,0};
     Tuile ** ch = chantier.get_tuiles();
@@ -193,23 +167,23 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     for (size_t i = 0; i<nb_tuilles; i++) {
         // Définition du plateau pour la tuile
         Plateau plateauTuileSelected;
-        plateauTuileSelected.placer(*(ch+i), positionNulle);
+        plateauTuileSelected.placer(*(ch+i), positionNulle, true);
         cout<<"\033[0;97mTuile n°"<<i+1<< " (cout en pierre = "<< i << ") : "<<endl;
         affichage->affiche_plateau_actuel(plateauTuileSelected);
 
     }
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
-    affichage->affiche_joueur_actuel(joueurs[joueur]);
+    affichage->affiche_joueur_actuel(*joueurs[joueur]);
 
-    cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ? (Nombre de pierre en votre possession : "<< joueurs[joueur].get_pierre() << ")" << endl;
+    cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ?" << endl;
     cout << "\033[0;37m-> \033[0;97m";
     cin >> output;
 
-    while (output <= 0 || output > chantier.get_nombre_tuiles() || (output-1 > joueurs[joueur].get_pierre()) || cin.fail()) {
+    while (output <= 0 || output > chantier.get_nombre_tuiles() || (output-1 > joueurs[joueur]->get_pierre()) || cin.fail()) {
         if (output <= 0 || output > chantier.get_nombre_tuiles()){
             cout << "\033[1;31mLa valeur doit etre entre "<< 1 <<" et " << chantier.get_nombre_tuiles() << endl;
         }
-        else if (output-1 > joueurs[joueur].get_pierre()) {
+        else if (output-1 > joueurs[joueur]->get_pierre()) {
             cout << "\033[1;31mVous n'avez pas assez de pierre pour prendre cette tuile !" << endl;
         }
 
@@ -223,40 +197,10 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
         cin >> output;
     }
 
-    joueurs[joueur].set_pierre(joueurs[joueur].get_pierre()-output+1);
-
+    joueurs[joueur]->set_pierre(joueurs[joueur]->get_pierre()-output+1);
     Tuile* ret = chantier.prendre_tuile(output-1);
 
     return ret;
-}
-
-Tuile* Jeu::selectTuileIllustreArchitecte(size_t joueur) {
-/* Regle:
- * - Achete la tuile la moin cher ayant une place
- * - Si aucune place ou pas les moyens -> prend la moin cher
- */
-    Vector2 positionNulle{0,0};
-    Tuile ** ch = chantier.get_tuiles();
-
-    int nb_tuilles = chantier.get_nombre_tuiles();
-
-    // Traverse la liste des tuiles, dès qu'une tuile presente une place (et que l'architecte en a les moyen) -> return cette tuile
-    for (size_t i = 0; i<nb_tuilles; i++){
-        for (int j =0; j < 3; j++) {
-            if (ch[i]->get_enfants()[j]->get_type()==TypeHexagone::Place && joueurs[joueur].get_pierre() >= i) {
-                return chantier.prendre_tuile(i);
-            }
-        }
-    }
-    return chantier.prendre_tuile(0);
-}
-
-void Jeu::placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) {
-    // Regle: peut placer ses tuiles n'importe où --> on va les placer les plus proches du centre
-    //! TODO
-
-
-
 }
 
 void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
@@ -265,7 +209,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
     // Définition du plateau pour la tuile
     Vector2 positionNulle{0,0};
     Plateau plateauTuileSelected;
-    plateauTuileSelected.placer(tuileSelected, positionNulle);
+    plateauTuileSelected.placer(tuileSelected, positionNulle, true);
 
     afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
     cout << "\033[0;37mPour afficher les commandes disponibles, tapez help" << endl;
@@ -295,7 +239,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
         else if (output == "tg" || output == "td") {
             tuileSelected->tourne_tuile(output == "tg");
             plateauTuileSelected = Plateau();
-            plateauTuileSelected.placer(tuileSelected, positionNulle);
+            plateauTuileSelected.placer(tuileSelected, positionNulle, true);
             afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mh") {
@@ -325,26 +269,25 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
             afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "p") {
-            if (joueurs[joueur].get_plateau().peut_placer(*tuileSelected, positionSelectionne)) {
+            if (joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, positionSelectionne)) {
                 cout << "\033[1;32mPosition valide :" << endl;
 
-                Joueur tempJoueur = joueurs[joueur];
-                tempJoueur.place_tuile(tuileSelected, positionSelectionne);
-                affichage->affiche_joueur_actuel(tempJoueur);
+                Joueur *tempJoueur = joueurs[joueur];
+                tempJoueur->place_tuile(tuileSelected, positionSelectionne);
+                affichage->affiche_joueur_actuel(*tempJoueur);
 
                 cout << "\033[0;97mTapez \033[1;32my\033[0;97m pour confirmer ce placement !" << endl
                     << "\033[0;37m-> \033[0;97m";
                 cin >> output;
                 if (output == "y") {
                     cout << "\033[1;32mPlacement validé !" << endl;
-                    joueurs[joueur].place_tuile(tuileSelected, positionSelectionne);
+                    joueurs[joueur]->place_tuile(tuileSelected, positionSelectionne);
                     valide = true;
                 }
                 else {
                     cout << "\033[0;37mPlacement annulé" << endl;
                     afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
                 }
-
             }
             else {
                 cout << "\033[1;31mPosition invalide !" << endl;
@@ -363,11 +306,12 @@ void JeuConsole::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& p
     affichage->affiche_plateau_actuel(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;
-    affichage->affiche_joueur_actuel(joueurs[joueur], positionSelectionne);
+    affichage->affiche_joueur_actuel(*joueurs[joueur], positionSelectionne);
 }
 
 void JeuConsole::finDePartie() {
     cout << "\033[1;93mPartie Finie !";
+    //TODO: calculer le gagnant
 }
 
 

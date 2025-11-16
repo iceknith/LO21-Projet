@@ -37,7 +37,7 @@ public:
      * @param position La position à laquelle on essaye de placer la Tuile
      * @return si l'emplacement est valide (check également si les condition de placement des Hexagones sont validés)
      */
-    bool peut_placer(Tuile& tuile, const Vector2& position);
+    bool peut_placer(Tuile& tuile, const Vector2& position, bool forcePlacement = false);
     //! Place une tuile à des coordonées spécifiques
     /*!
      *
@@ -45,7 +45,7 @@ public:
      * @param position La position où l'on essaye de placer la Tuile
      * @return si le placement s'est bien effectué ou non
      */
-    bool placer(Tuile* tuile, const Vector2& position);
+    bool placer(Tuile* tuile, const Vector2& position, bool forcePlacement = false);
 
     //! Retourne un itérateur sur le plateau, mis au début de celui-ci
     map<Vector2, Hexagone*>::iterator get_iterateur_debut() {return plateau.begin();};
