@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['typehexagone_0',['TypeHexagone',['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf',1,'Utils.hpp']]]
+  ['difficulte_0',['Difficulte',['../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555',1,'Utils.hpp']]]
 ];

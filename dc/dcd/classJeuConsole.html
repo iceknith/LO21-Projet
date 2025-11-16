@@ -101,6 +101,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:aafb6a953e5bcdb9a4c485ef99f7d57af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dcd/classJeuConsole.html#aafb6a953e5bcdb9a4c485ef99f7d57af">selectJoueurs</a> () override</td></tr>
 <tr class="memdesc:aafb6a953e5bcdb9a4c485ef99f7d57af"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction de joueurs.  <a href="../../dc/dcd/classJeuConsole.html#aafb6a953e5bcdb9a4c485ef99f7d57af">More...</a><br /></td></tr>
 <tr class="separator:aafb6a953e5bcdb9a4c485ef99f7d57af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40f310fb97b7d0479f38fefb2ad34616"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dcd/classJeuConsole.html#a40f310fb97b7d0479f38fefb2ad34616">selectGameMode</a> () override</td></tr>
+<tr class="memdesc:a40f310fb97b7d0479f38fefb2ad34616"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du mode de jeu.  <a href="../../dc/dcd/classJeuConsole.html#a40f310fb97b7d0479f38fefb2ad34616">More...</a><br /></td></tr>
+<tr class="separator:a40f310fb97b7d0479f38fefb2ad34616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae35089d42fd5254b8470ff13800872a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dcd/classJeuConsole.html#ae35089d42fd5254b8470ff13800872a7">selectTuile</a> (size_t joueur) override</td></tr>
 <tr class="memdesc:ae35089d42fd5254b8470ff13800872a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../dc/dcd/classJeuConsole.html#ae35089d42fd5254b8470ff13800872a7">More...</a><br /></td></tr>
 <tr class="separator:ae35089d42fd5254b8470ff13800872a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,28 +116,40 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3c6a684e11f87bc5e1e02dfe6237cc0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dcd/classJeuConsole.html#a3c6a684e11f87bc5e1e02dfe6237cc0d">afficheJoueur</a> (size_t joueur, <a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> &amp;tuileSelected, <a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> &amp;positionSelectionne)</td></tr>
 <tr class="memdesc:a3c6a684e11f87bc5e1e02dfe6237cc0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche toutes les informations au joueur lors du placement de tuile.  <a href="../../dc/dcd/classJeuConsole.html#a3c6a684e11f87bc5e1e02dfe6237cc0d">More...</a><br /></td></tr>
 <tr class="separator:a3c6a684e11f87bc5e1e02dfe6237cc0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">selectJoueurs</a> ()</td></tr>
-<tr class="memdesc:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction de joueurs.  <a href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">More...</a><br /></td></tr>
-<tr class="separator:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">selectTuile</a> (size_t joueur)</td></tr>
-<tr class="memdesc:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">More...</a><br /></td></tr>
-<tr class="separator:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96bb9bbb891577eefe2841903f818a3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)</td></tr>
-<tr class="memdesc:a96bb9bbb891577eefe2841903f818a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">More...</a><br /></td></tr>
-<tr class="separator:a96bb9bbb891577eefe2841903f818a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95da0a848aac22798ed42a10046299e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a95da0a848aac22798ed42a10046299e3">finDePartie</a> ()</td></tr>
-<tr class="memdesc:a95da0a848aac22798ed42a10046299e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la gestion de la fin de partie.  <a href="../../d1/de1/classJeu.html#a95da0a848aac22798ed42a10046299e3">More...</a><br /></td></tr>
-<tr class="separator:a95da0a848aac22798ed42a10046299e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classJeu"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classJeu')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d1/de1/classJeu.html">Jeu</a></td></tr>
+<tr class="memitem:ac85dba09db028d74505a1baa4180eb45 inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ac85dba09db028d74505a1baa4180eb45">initialisePlateau</a> ()</td></tr>
+<tr class="separator:ac85dba09db028d74505a1baa4180eb45 inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95c9be75f0ed37f698b4f559f5ab12fe inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">selectJoueurs</a> ()</td></tr>
+<tr class="memdesc:a95c9be75f0ed37f698b4f559f5ab12fe inherit pro_methods_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction de joueurs.  <a href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">More...</a><br /></td></tr>
+<tr class="separator:a95c9be75f0ed37f698b4f559f5ab12fe inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e22761e033c591cd5b8efeb0baa0bf inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a86e22761e033c591cd5b8efeb0baa0bf">selectGameMode</a> ()</td></tr>
+<tr class="memdesc:a86e22761e033c591cd5b8efeb0baa0bf inherit pro_methods_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du mode de jeu.  <a href="../../d1/de1/classJeu.html#a86e22761e033c591cd5b8efeb0baa0bf">More...</a><br /></td></tr>
+<tr class="separator:a86e22761e033c591cd5b8efeb0baa0bf inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1be151eb5297d46b2d174e3d2d3b8e inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">selectTuile</a> (size_t joueur)</td></tr>
+<tr class="memdesc:a8b1be151eb5297d46b2d174e3d2d3b8e inherit pro_methods_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">More...</a><br /></td></tr>
+<tr class="separator:a8b1be151eb5297d46b2d174e3d2d3b8e inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96bb9bbb891577eefe2841903f818a3f inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)</td></tr>
+<tr class="memdesc:a96bb9bbb891577eefe2841903f818a3f inherit pro_methods_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">More...</a><br /></td></tr>
+<tr class="separator:a96bb9bbb891577eefe2841903f818a3f inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95da0a848aac22798ed42a10046299e3 inherit pro_methods_classJeu"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a95da0a848aac22798ed42a10046299e3">finDePartie</a> ()</td></tr>
+<tr class="memdesc:a95da0a848aac22798ed42a10046299e3 inherit pro_methods_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la gestion de la fin de partie.  <a href="../../d1/de1/classJeu.html#a95da0a848aac22798ed42a10046299e3">More...</a><br /></td></tr>
+<tr class="separator:a95da0a848aac22798ed42a10046299e3 inherit pro_methods_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classJeu"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classJeu')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../d1/de1/classJeu.html">Jeu</a></td></tr>
+<tr class="memitem:a0e405bdc7357a5810d26794c9deb4d15 inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589de">GameMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15">modeDeJeu</a></td></tr>
+<tr class="memdesc:a0e405bdc7357a5810d26794c9deb4d15 inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mode de jeu (multijoueur ou solo)  <a href="../../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15">More...</a><br /></td></tr>
+<tr class="separator:a0e405bdc7357a5810d26794c9deb4d15 inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311013d02c077b41dcfb1571d1cee276 inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555">Difficulte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a311013d02c077b41dcfb1571d1cee276">difficulte</a></td></tr>
+<tr class="memdesc:a311013d02c077b41dcfb1571d1cee276 inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">La difficulté du jeu (mode illustre architecte)  <a href="../../d1/de1/classJeu.html#a311013d02c077b41dcfb1571d1cee276">More...</a><br /></td></tr>
+<tr class="separator:a311013d02c077b41dcfb1571d1cee276 inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad57abd13a38c6a2f984ace537fcfdc4e inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ad57abd13a38c6a2f984ace537fcfdc4e">nombreJoueurs</a></td></tr>
 <tr class="memdesc:ad57abd13a38c6a2f984ace537fcfdc4e inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre de joueurs qui participent au jeu.  <a href="../../d1/de1/classJeu.html#ad57abd13a38c6a2f984ace537fcfdc4e">More...</a><br /></td></tr>
 <tr class="separator:ad57abd13a38c6a2f984ace537fcfdc4e inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a7ac1ce45cab61d9fa39bcb7d2b172b inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d07/classJoueur.html">Joueur</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a8a7ac1ce45cab61d9fa39bcb7d2b172b">joueurs</a> [<a class="el" href="../../dd/d95/namespaceconstJeu.html#a40761edea300ca8870a0c5c103aae3ef">constJeu::nombreJoueursMax</a>]</td></tr>
-<tr class="memdesc:a8a7ac1ce45cab61d9fa39bcb7d2b172b inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les joueurs qui jouent dans ce jeu.  <a href="../../d1/de1/classJeu.html#a8a7ac1ce45cab61d9fa39bcb7d2b172b">More...</a><br /></td></tr>
-<tr class="separator:a8a7ac1ce45cab61d9fa39bcb7d2b172b inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c764d654281bb74fd85fcb427f24834 inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d07/classJoueur.html">Joueur</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834">joueurs</a> [<a class="el" href="../../dd/d95/namespaceconstJeu.html#a40761edea300ca8870a0c5c103aae3ef">constJeu::nombreJoueursMax</a>]</td></tr>
+<tr class="memdesc:a1c764d654281bb74fd85fcb427f24834 inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les joueurs qui jouent dans ce jeu.  <a href="../../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834">More...</a><br /></td></tr>
+<tr class="separator:a1c764d654281bb74fd85fcb427f24834 inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a932a2099de9284593a38f5ffaa554ee2 inherit pro_attribs_classJeu"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df2/classDeck.html">Deck</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a932a2099de9284593a38f5ffaa554ee2">deck</a></td></tr>
 <tr class="memdesc:a932a2099de9284593a38f5ffaa554ee2 inherit pro_attribs_classJeu"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le deck du jeu.  <a href="../../d1/de1/classJeu.html#a932a2099de9284593a38f5ffaa554ee2">More...</a><br /></td></tr>
 <tr class="separator:a932a2099de9284593a38f5ffaa554ee2 inherit pro_attribs_classJeu"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,6 +286,33 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a40f310fb97b7d0479f38fefb2ad34616" name="a40f310fb97b7d0479f38fefb2ad34616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40f310fb97b7d0479f38fefb2ad34616">&#9670;&#160;</a></span>selectGameMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JeuConsole::selectGameMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="../../d1/de1/classJeu.html#a86e22761e033c591cd5b8efeb0baa0bf">Jeu</a>.</p>
+
+</div>
+</div>
 <a id="aafb6a953e5bcdb9a4c485ef99f7d57af" name="aafb6a953e5bcdb9a4c485ef99f7d57af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafb6a953e5bcdb9a4c485ef99f7d57af">&#9670;&#160;</a></span>selectJoueurs()</h2>
 
@@ -321,7 +363,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >TODO implémenter une vraie méthode de séléction de tuile</p>
 
 <p>Reimplemented from <a class="el" href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">Jeu</a>.</p>
 
