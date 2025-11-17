@@ -18,8 +18,7 @@ public:
     Deck(int nombre_joueurs) {
 
         if (nombre_joueurs == 1) {
-            //taille = 23;
-            taille = 5;
+            taille = 23;
         }
         else if (nombre_joueurs == 2) {
             taille = 36;
