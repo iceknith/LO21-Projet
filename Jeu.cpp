@@ -13,19 +13,21 @@ void print_title() {
 void Jeu::gameLoop() {
     selectGameMode();
     size_t joueurActuel;
+    size_t premierJoueur;
     if (modeDeJeu == GameMode::MULTIJOUEUR){
         selectJoueurs();
         srand(time(NULL));
-        joueurActuel = rand()%nombreJoueurs;
+        premierJoueur = rand()%nombreJoueurs;
     }
     // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
     else {
         nombreJoueurs = 2;
         joueurs[0] = new JoueurSimple();
         joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
-        joueurActuel = 0;
+        premierJoueur = 0;
         initialisePlateau();
     }
+    joueurActuel = premierJoueur;
 
     // Initialisation de la règle de score
     selectReglesScore();
@@ -62,9 +64,9 @@ void Jeu::gameLoop() {
         }
         //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
-        nombre_tours += joueurActuel == 0;
+        nombre_tours += joueurActuel == premierJoueur;
 
-        if (joueurActuel == 0) {
+        if (joueurActuel == premierJoueur) {
             diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
             if (diff > 0 && deck->get_nombre_tuiles() >= diff) {
@@ -255,7 +257,6 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
 
     joueurs[joueur]->set_pierre(joueurs[joueur]->get_pierre()-output+1);
     Tuile* ret = chantier.prendre_tuile(output-1);
-    cout << output-1;
     return ret;
 }
 
@@ -383,7 +384,7 @@ void JeuConsole::finDePartie(multimap<int, size_t> scores) {
 
     for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
         i++;
-        string placeSuffixe = i == 1 ? "er" : "ième";
+        string placeSuffixe = i == 1 ? "er" : "ème";
         if (modeDeJeu == GameMode::MULTIJOUEUR) {
             cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second + 1
                 << " avec " << scoreIterator->first << " points !" << endl;

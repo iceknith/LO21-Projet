@@ -7,15 +7,25 @@ void Joueur::set_score(Score *score) {
 
 Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
     bool continueRecherche = true;
-    float y = 0;
-    Vector2 pos{0,0};
+    //var parity = hex.col&1
+    //var q = hex.col
+    //var r = hex.row - (hex.col - parity) / 2
+    int row = -2;
+    int col;
+    Vector2 pos;
     while (continueRecherche) {
-        for (pos.x = 0; pos.x < IllustreArchitechteConsts::board_max_width; pos.x++) {
-            continueRecherche = !plateauJoueur.peut_placer(tuile, pos);
-            if (!continueRecherche) break;
+        row++;
+        for (col = -1; col < IllustreArchitechteConsts::board_max_width; col++) {
+            pos.x = col;
+            pos.y = row - col/2;
+
+            if (!plateauJoueur.hexagone_existe(pos)
+                && plateauJoueur.peut_placer(tuile, pos)) {
+                continueRecherche = false;
+                break;
+            }
         }
-        pos.y++;
-        if (pos.y > 100) {
+        if (row > 100) {
             throw "Error: l'Illustre Architechte ne trouve pas d'emplacement";
         }
     }
@@ -29,6 +39,7 @@ Tuile* IllustreArchitecte::choisir_tuile(Chantier &chantier) {
 void IllustreArchitecte::jouer(Chantier &chantier) {
     Tuile *tuile = choisir_tuile(chantier);
     Vector2 position = trouver_emplacement_tuile(*tuile);
+    cout << position.x << " " << position.y << endl;
     place_tuile(tuile, position);
 }
 
