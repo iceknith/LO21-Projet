@@ -35,7 +35,6 @@ void Tuile::tourne_tuile(bool sens_horaire) {
 }
 
 TuileJeuConcrete::TuileJeuConcrete() {
-
     id = nextID++;
 
     nombre_enfants = 3;
@@ -63,18 +62,17 @@ TuileJeuConcrete::TuileJeuConcrete() {
     }
 }
 
-TuileDepart::TuileDepart(int identifiant) {
-
-    id = -identifiant;
+TuileDepart::TuileDepart() {
+    id = nextID++;
 
     nombre_enfants = 4;
     positions_enfants[0] = Vector2(0,0);
     positions_enfants[1] = Vector2(0,1);
     positions_enfants[2] = Vector2(-1,0);
     positions_enfants[3] = Vector2(1,-1);
-    enfants[0] = new Place(this, 0, CouleursAkropolis::ROUGE);
+    enfants[0] = new Place(this, 0, CouleursAkropolis::BLEU);
     enfants[1] = new Carriere(this, 1);
-    enfants[2] = new Quartier(this, 2, CouleursAkropolis::VIOLET);
+    enfants[2] = new Carriere(this, 2);
     enfants[3] = new Carriere(this, 3);
 }
 

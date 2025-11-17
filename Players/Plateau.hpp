@@ -45,7 +45,7 @@ public:
      * @param position La position où l'on essaye de placer la Tuile
      * @return si le placement s'est bien effectué ou non
      */
-    bool placer(Tuile* tuile, const Vector2& position, bool forcePlacement = false);
+    bool placer(Tuile* tuile, const Vector2& position, bool forcePlacement = false, Joueur *joueur = nullptr);
 
     //! Retourne un itérateur sur le plateau, mis au début de celui-ci
     map<Vector2, Hexagone*>::iterator get_iterateur_debut() {return plateau.begin();};

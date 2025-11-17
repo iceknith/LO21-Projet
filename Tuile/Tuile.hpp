@@ -72,7 +72,7 @@ public :
 //! Représente une Tuile de Départ de jeu, ne peut pas être placée lors d'une partie
 class TuileDepart : public Tuile {
 public:
-    TuileDepart(int identifiant);
+    TuileDepart();
 };
 
 //! Représente une Tuile de jeu classique

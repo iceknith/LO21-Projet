@@ -23,7 +23,7 @@ void Jeu::gameLoop() {
         nombreJoueurs = 2;
         joueurs[0] = new JoueurSimple();
         joueurs[1] = new IllustreArchitecte();
-        joueurActuel = 1;
+        joueurActuel = 0;
         initialisePlateau();
     }
 
@@ -52,8 +52,7 @@ void Jeu::gameLoop() {
         // Illustre architechte
         else {
             joueurs[joueurActuel]->jouer(chantier);
-            affichage->affiche_joueur_actuel(*joueurs[joueurActuel]);
-            cout << "\033[0;97mVoici le plateau de l'Illustre Architechte." << endl;
+            afficheTourAutomatique(joueurActuel);
         }
         //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
@@ -132,7 +131,7 @@ void JeuConsole::selectGameMode()  {
 void Jeu::initialisePlateau() {
     Vector2 positionNulle{0,0};
     for (size_t i = 0; i < nombreJoueurs; i++) {
-        joueurs[i]->place_tuile(new TuileDepart(i+1), positionNulle, true);
+        joueurs[i]->place_tuile(new TuileDepart(), positionNulle, true);
     }
 }
 
@@ -162,6 +161,7 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     Vector2 positionNulle{0,0};
     Tuile ** ch = chantier.get_tuiles();
 
+    cout << "\033[0;36m-------------------------------------------" << endl;
 
     int nb_tuilles = chantier.get_nombre_tuiles();
     for (size_t i = 0; i<nb_tuilles; i++) {
@@ -309,9 +309,16 @@ void JeuConsole::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& p
     affichage->affiche_joueur_actuel(*joueurs[joueur], positionSelectionne);
 }
 
+void JeuConsole::afficheTourAutomatique(size_t joueur) {
+    cout << "\033[0;36m-------------------------------------------" << endl
+        << "\033[0;97mVoici le plateau de l'Illustre Architechte:" << endl;
+    affichage->affiche_joueur_actuel(*joueurs[joueur]);
+
+}
+
+
 void JeuConsole::finDePartie() {
     cout << "\033[1;93mPartie Finie !";
     //TODO: calculer le gagnant
 }
-
 

@@ -45,7 +45,7 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlace
         }
 
         if (hauteur == 0 && !asAdjacent) {
-            //On regarde si notre hexagone est adjascente à une tuile lorsqu'on place à la hauteur 0
+            //On regarde si notre hexagone est adjascent à une tuile lorsqu'on place à la hauteur 0
             for (int j = 0; j < 6; ++j) {
                 if (plateau.find(positionHex + adjascenceHex[j]) != plateau.end()) {
                     asAdjacent = true;
@@ -54,10 +54,10 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlace
         }
     }
 
-    return conditionTuileValidee && asAdjacent;
+    return conditionTuileValidee && (asAdjacent || hauteur != 0);
 }
 
-bool Plateau::placer(Tuile* tuile, const Vector2 &position, bool forcePlacement) {
+bool Plateau::placer(Tuile* tuile, const Vector2 &position, bool forcePlacement, Joueur *joueur) {
     // Si on ne peut pas placer, retourner False
     if (!peut_placer(*tuile, position, forcePlacement)) return false;
 
@@ -73,10 +73,15 @@ bool Plateau::placer(Tuile* tuile, const Vector2 &position, bool forcePlacement)
         Vector2 positionLocaleHex = tuile->get_positions_enfants()[i];
         Vector2 positionHex = position + positionLocaleHex;
 
+        // Appliquer la fonction quand recouvert de l'hexagone recouvert
+        if (joueur != nullptr && hauteur > 1) {
+            plateau[positionHex]->quand_recouvert(joueur);
+        }
+
         // Placement de l'hexagone
         plateau[positionHex] = hex;
     }
 
-    // Sinon, retourner True
+    // retourner True car on l'as placee
     return true;
 }

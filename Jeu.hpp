@@ -53,6 +53,8 @@ protected:
     virtual Tuile* selectTuile(size_t joueur) {return nullptr;}
     //! La méthode chargée du placement d'une tuile séléctionné.
     virtual void placeTuile(size_t joueur, Tuile* tuileSelected) {};
+    //! La méthode chargée de gérer l'affichage d'un tour automatique
+    virtual void afficheTourAutomatique(size_t joueur) {};
 
     //! La méthode chargée de la gestion de la fin de partie
     virtual void finDePartie() {};
@@ -67,6 +69,7 @@ protected:
     void selectGameMode() override;
     Tuile* selectTuile(size_t joueur) override;
     void placeTuile(size_t joueur, Tuile* tuileSelected) override;
+    void afficheTourAutomatique(size_t joueur) override;
     void finDePartie() override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile

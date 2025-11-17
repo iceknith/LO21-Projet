@@ -1,5 +1,6 @@
 #include "Tuile.hpp" // hexagone.hpp est inclut dans tuile.hpp
 #include "Hexagone.hpp"
+#include "../Players/Players.hpp"
 
 int Hexagone::get_hauteur() const {
     return tuileParent->get_hauteur();
@@ -115,4 +116,10 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
     }
 
     return affichage;
+}
+
+void Carriere::quand_recouvert(Joueur *joueur_qui_recouvre) const {
+    Hexagone::quand_recouvert(joueur_qui_recouvre);
+
+    joueur_qui_recouvre->ajouter_pierre(pierre_count);
 }

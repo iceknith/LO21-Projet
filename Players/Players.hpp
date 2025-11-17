@@ -43,7 +43,7 @@ public:
      * @param coordonées le Vector2 qui donne la position de la Tuile
      * @return Si la tuile as été placé ou non
      */
-    bool place_tuile(Tuile* tuile, Vector2& coordonees, bool forcePlacement = false) {return plateauJoueur.placer(tuile, coordonees, forcePlacement);}
+    bool place_tuile(Tuile* tuile, Vector2& coordonees, bool forcePlacement = false) {return plateauJoueur.placer(tuile, coordonees, forcePlacement, this);}
     //! La fonction appelée lorsque le joueur joueToutSeul
     /*!
      *

@@ -167,7 +167,9 @@ public:
 /*!
   Un Hexagone, qui lorsque recouvert, donne une pierre au joueur actuel
 */
-class Carriere : public Hexagone{
+class Carriere : public Hexagone {
+protected:
+    static const int pierre_count = 1;
 public:
     using Hexagone::Hexagone;
     // On supprime l'ancienne définition de Carrière, car on ne peut pas changer la couleur d'une carrière
@@ -181,6 +183,7 @@ public:
     }
 
     const string get_text() const override {return "Carriere";}
+    void quand_recouvert(Joueur* joueur_qui_recouvre) const override;
 };
 
 //! La classe Quartier
