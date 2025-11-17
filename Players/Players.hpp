@@ -17,10 +17,12 @@ protected:
     int pierre = 0;
     //! Le Plateau du joueur
     Plateau plateauJoueur;
+    //! Le Score du joueur, va être utilisé pour calculer le score du joueur à la fin de la partie
+    Score* scoreJoueur = nullptr;
 
 public:
     //! Constructeur du joueur
-    Joueur();
+    Joueur() : plateauJoueur() {}
     //! Si le joueur joue tout seul
     /*!
       Si le joueur joue tout seul. \n
@@ -28,7 +30,9 @@ public:
     */
     virtual bool get_joue_tout_seul() const {return false;}
     //! Retourne le Score calculé du Joueur
-    virtual int get_score() {return 0;} // Le score est implémenté avec les joueurs concrèts
+    int get_score() {return scoreJoueur->score(&plateauJoueur);}
+    //! Set le score du joueur
+    void set_score(Score* score);
     //! Retourne la quantité de pierres du Joueur
     int get_pierre() {return pierre;}
     //! Set la quantité de pierres du Joueur
@@ -58,13 +62,9 @@ public:
 */
 class JoueurSimple : public Joueur {
 protected:
-    //! Le Score du joueur, va être utilisé pour calculer le score du joueur à la fin de la partie
-    Score* scoreJoueur;
     //! Le joueur, étant humain, ne joue pas tout seul.
     bool joueToutSeul = false;
 public:
-    //! Retourne le Score calculé du Joueur
-    int get_score() override {return scoreJoueur->score(&plateauJoueur);}
     bool get_joue_tout_seul() const override {return false;}
 
 };
@@ -75,8 +75,6 @@ namespace IllustreArchitechteConsts {
 
 class IllustreArchitecte : public Joueur {
 protected:
-    //! Le Score de l'illustre architechte, il va être utilisé pour calculer son score à la fun de la partie
-    ScoreSoloArchitechte* score;
     //! Le niveau de l'Architechte (va changer les regles)
     int niveau = 0;
     //! L'illustre Architechte étant un automate, il joue tout seul
@@ -86,15 +84,15 @@ protected:
     //! Trouve un emplacement vide et valide pour placer une tuile
     Vector2 trouver_emplacement_tuile(Tuile &tuile);
 public:
+    //! Supprime la fonction setScore de l'illustre architechte, car il gère sa méthode de score totu seul
+    void set_score() = delete;
     //! Le setteur du niveau
     void set_niveau(int niveau);
     //! Le getteur du niveau
     int get_niveau();
     //! La fonction appelée pour faire jouer l'Illustre Architechte
     void jouer(Chantier chantier) override;
-
     bool get_joue_tout_seul() const override {return true;}
-    int get_score() override {return score->score(&plateauJoueur);}
 };
 
 #endif //LO21_PROJET_PLAYERS_HPP

@@ -44,11 +44,12 @@ protected:
     // Initialisation des plateaux des joueurs
     void initialisePlateau();
 
-    //! La méthode chargée de la séléction de joueurs
-    virtual void selectJoueurs() {};
-
     //! La méthode chargée de la séléction du mode de jeu
     virtual void selectGameMode() {};
+    //! La méthode chargée de la séléction de joueurs
+    virtual void selectJoueurs() {};
+    //! La méthode chargée de la séléction des règles de score
+    virtual void selectReglesScore() {};
     //! La méthode chargée de la séléction d'une tuile.
     virtual Tuile* selectTuile(size_t joueur) {return nullptr;}
     //! La méthode chargée du placement d'une tuile séléctionné.
@@ -56,8 +57,11 @@ protected:
     //! La méthode chargée de gérer l'affichage d'un tour automatique
     virtual void afficheTourAutomatique(size_t joueur) {};
 
+    //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
+    map<int, size_t> calculerScores();
+
     //! La méthode chargée de la gestion de la fin de partie
-    virtual void finDePartie() {};
+    virtual void finDePartie(map<int, size_t> scores) {};
 
 public:
     virtual void gameLoop();
@@ -65,12 +69,13 @@ public:
 
 class JeuConsole : public Jeu {
 protected:
-    void selectJoueurs() override;
     void selectGameMode() override;
+    void selectJoueurs() override;
+    void selectReglesScore() override;
     Tuile* selectTuile(size_t joueur) override;
     void placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override;
-    void finDePartie() override;
+    void finDePartie(map<int, size_t> scores) override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);

@@ -397,3 +397,22 @@ int ScoreJauneVariante::score(Plateau* plateau) {
     s += score_jaune_variante(plateau);
     return s;
 }
+
+// Fonctions de création de score
+Score* getScoreSimple() {
+    Score *scoreBleu = new ScoreBleu();
+    Score *scoreRouge = new ScoreRouge(scoreBleu);
+    Score *scoreVert = new ScoreVert(scoreRouge);
+    Score *scoreViolet = new ScoreViolet(scoreVert);
+    Score *scoreJaune = new ScoreViolet(scoreViolet);
+    return scoreJaune;
+}
+
+Score* getScoreVariante() {
+    Score *scoreBleu = new ScoreVioletVariante();
+    Score *scoreRouge = new ScoreVioletVariante(scoreBleu);
+    Score *scoreVert = new ScoreVioletVariante(scoreRouge);
+    Score *scoreViolet = new ScoreVioletVariante(scoreVert);
+    Score *scoreJaune = new ScoreVioletVariante(scoreViolet);
+    return scoreJaune;
+}

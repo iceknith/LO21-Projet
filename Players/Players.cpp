@@ -1,7 +1,8 @@
 #include "Players.hpp"
 
-Joueur::Joueur() {
-    plateauJoueur = Plateau();
+void Joueur::set_score(Score *score) {
+    if (scoreJoueur != nullptr) free(scoreJoueur);
+    scoreJoueur = score;
 }
 
 Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {

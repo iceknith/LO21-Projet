@@ -12,13 +12,14 @@
 class Score {
 protected:
     //! Le score décoré
-    Score * scoreDecore = nullptr;
+    Score* scoreDecore = nullptr;
 public:
     Score() = default;
     Score(Score* scoreDecore) : scoreDecore(scoreDecore) {}
-    virtual ~Score() = default;
+    virtual ~Score() { free(scoreDecore);}
     //! La fonction de calcul de Score
     virtual int score(Plateau* plateau) {return 0;}
+    int owo() {return 1;}
 };
 
 //! Classe de Score de l'Illustre Architechte, utilisée pour calculer le score de l'Illustre Architechte à partir d'un plateau
@@ -63,13 +64,17 @@ public:
 class ScoreBleu : public Score{
     int score_bleu(Plateau* plateau);
 public:
+    ScoreBleu() : Score() {}
+    explicit ScoreBleu(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Rouges d'un joueur normal
-class ScoreRouge : public Score{
+class ScoreRouge : public Score {
     int score_rouge(Plateau* plateau);
 public:
+    ScoreRouge() : Score() {}
+    explicit ScoreRouge(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -77,6 +82,8 @@ public:
 class ScoreVert : public Score{
     int score_vert(Plateau* plateau);
 public:
+    ScoreVert() : Score() {}
+    explicit ScoreVert(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -84,6 +91,8 @@ public:
 class ScoreViolet : public Score{
     int score_violet(Plateau* plateau);
 public:
+    ScoreViolet() : Score() {}
+    explicit ScoreViolet(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -91,6 +100,8 @@ public:
 class ScoreJaune : public Score{
     int score_jaune(Plateau* plateau);
 public:
+    ScoreJaune() : Score() {}
+    explicit ScoreJaune(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -99,6 +110,8 @@ public:
 class ScoreBleuVariante : public Score{
     int score_bleu_variante(Plateau* plateau);
 public:
+    ScoreBleuVariante() : Score() {}
+    explicit ScoreBleuVariante(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -106,6 +119,8 @@ public:
 class ScoreRougeVariante : public Score{
     int score_rouge_variante(Plateau* plateau);
 public:
+    ScoreRougeVariante() : Score() {}
+    explicit ScoreRougeVariante(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -113,6 +128,8 @@ public:
 class ScoreVertVariante : public Score{
     int score_vert_variante(Plateau* plateau);
 public:
+    ScoreVertVariante() : Score() {}
+    explicit ScoreVertVariante(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -120,6 +137,8 @@ public:
 class ScoreVioletVariante : public Score{
     int score_violet_variante(Plateau* plateau);
 public:
+    ScoreVioletVariante() : Score() {}
+    explicit ScoreVioletVariante(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -127,6 +146,8 @@ public:
 class ScoreJauneVariante : public Score{
     int score_jaune_variante(Plateau* plateau);
 public:
+    ScoreJauneVariante() : Score() {}
+    explicit ScoreJauneVariante(Score* scoreDecore) : Score(scoreDecore) {}
     int score (Plateau* plateau) override;
 };
 
@@ -194,5 +215,10 @@ namespace ScoreUtils {
 
 };
 
+//! Responsable de la création du score simple pour les joueurs
+Score* getScoreSimple();
+
+//! Responsable de la création du score avancé pour les joueurs
+Score* getScoreVariante();
 
 #endif //LO21_PROJET_SCORE_HPP

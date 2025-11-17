@@ -8,9 +8,9 @@ void print_title() {
 "   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
 }
 
-void Jeu::gameLoop() {
-    print_title(); // temporaire
+// Jeu //
 
+void Jeu::gameLoop() {
     selectGameMode();
     size_t joueurActuel;
     if (modeDeJeu == GameMode::MULTIJOUEUR){
@@ -27,6 +27,10 @@ void Jeu::gameLoop() {
         initialisePlateau();
     }
 
+    // Initialisation de la règle de score
+    selectReglesScore();
+
+    // Initialisation du nombre de pierres
     for (size_t i = 0; i<nombreJoueurs; i++) {
         joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
     }
@@ -68,15 +72,31 @@ void Jeu::gameLoop() {
         }
     }
 
-
-    finDePartie();
+    finDePartie(calculerScores());
 }
+
+void Jeu::initialisePlateau() {
+    Vector2 positionNulle{0,0};
+    for (size_t i = 0; i < nombreJoueurs; i++) {
+        joueurs[i]->place_tuile(new TuileDepart(), positionNulle, true);
+    }
+}
+
+map<int, size_t> Jeu::calculerScores() {
+    map<int, size_t> scores{};
+    for (size_t i = 0; i < nombreJoueurs; i++) scores[joueurs[i]->get_score()] = i;
+    return scores;
+}
+
+// Jeu console //
 
 JeuConsole::JeuConsole() {
     affichage = new AffichageConsole();
 }
 
 void JeuConsole::selectGameMode()  {
+    print_title();
+
     int choix =0;
     cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?"
         << endl << "\033[0;37m-> \033[0;97m";
@@ -128,20 +148,13 @@ void JeuConsole::selectGameMode()  {
     }
 }
 
-void Jeu::initialisePlateau() {
-    Vector2 positionNulle{0,0};
-    for (size_t i = 0; i < nombreJoueurs; i++) {
-        joueurs[i]->place_tuile(new TuileDepart(), positionNulle, true);
-    }
-}
-
 void JeuConsole::selectJoueurs() {
     cout << "\033[0;97mCombien de joueurs joueront à cette partie ?"
         << endl << "\033[0;37m-> \033[0;97m";
     cin >> nombreJoueurs;
 
-    while (cin.fail() || nombreJoueurs <= 0 || nombreJoueurs > 4) {
-        cout << "\033[1;31mLe nombre de joueur doit être un entier entre 1 et 4 !"
+    while (cin.fail() || nombreJoueurs < 2 || nombreJoueurs > 4) {
+        cout << "\033[1;31mLe nombre de joueur doit être un entier entre 2 et 4 !"
             << endl << "\033[0;37m-> \033[0;97m";
         // Enlève l'état d'erreur
         cin.clear();
@@ -153,6 +166,42 @@ void JeuConsole::selectJoueurs() {
     cout << "\033[0;36mCette partie se déroulera à " << nombreJoueurs << " joueurs" << endl;
 
     for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
+    initialisePlateau();
+}
+
+void JeuConsole::selectReglesScore() {
+    string choixRegles;
+    cout << "\033[0;97mAvec quelles règles de score voulez-vous jouer ?" << endl
+        << "SIMPLE ( s ) / VARIANTE ( v )"
+         << endl << "\033[0;37m-> \033[0;97m";
+    cin >> choixRegles;
+
+    while (cin.fail() || (choixRegles != "s" && choixRegles != "v")) {
+        cout << "\033[1;31mLes règles ne peuvent que être: SIMPLE ( s ) / AVANCÉES ( a ) !"
+             << endl << "\033[0;37m-> \033[0;97m";
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choixRegles;
+    }
+
+    Score* score;
+    if (choixRegles == "s") {
+        cout << "\033[0;36mCette partie se déroulera avec les règles de score simple" << endl;
+        score = getScoreSimple();
+    }
+    else if (choixRegles == "v") {
+        cout << "\033[0;36mCette partie se déroulera avec les règles de score de la variante" << endl;
+        score = getScoreVariante();
+    }
+    else {
+        cout << "\033[1;31mErreur, règles de score inconnues !" << endl;
+    }
+
+    if (modeDeJeu == GameMode::SOLO) joueurs[0]->set_score(score);
+    else for (size_t i = 0; i < nombreJoueurs; i++) joueurs[i]->set_score(score);
+
     initialisePlateau();
 }
 
@@ -316,9 +365,22 @@ void JeuConsole::afficheTourAutomatique(size_t joueur) {
 
 }
 
+void JeuConsole::finDePartie(map<int, size_t> scores) {
+    cout << "\033[1;93mPartie Finie, voici les gagnants :" << endl << endl;
 
-void JeuConsole::finDePartie() {
-    cout << "\033[1;93mPartie Finie !";
-    //TODO: calculer le gagnant
+    size_t i = 0;
+    for (auto scoreIterator = scores.begin(); scoreIterator != scores.end(); scoreIterator++) {
+        i++;
+        string placeSuffixe = i == 1 ? "ier" : "ième";
+        if (modeDeJeu == GameMode::MULTIJOUEUR) {
+            cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second
+                << " avec " << scoreIterator->first << " points !" << endl;
+        }
+        else {
+            string nom = scoreIterator->second == 0 ? "vous" : "l'Illustre Architechte";
+            cout << "En " << i << placeSuffixe << "," << nom
+                << " avec " << scoreIterator->first << " points !" << endl;
+        }
+    }
 }
 
