@@ -7,13 +7,12 @@ var searchData=
   ['scorejaunevariante_4',['ScoreJauneVariante',['../dc/dd0/classScoreJauneVariante.html',1,'']]],
   ['scorerouge_5',['ScoreRouge',['../db/d18/classScoreRouge.html',1,'']]],
   ['scorerougevariante_6',['ScoreRougeVariante',['../d2/d5e/classScoreRougeVariante.html',1,'']]],
-  ['scoresoloarchitechte_7',['ScoreSoloArchitechte',['../d0/d34/classScoreSoloArchitechte.html',1,'']]],
-  ['scoresoloarchitectebleucallicrates_8',['ScoreSoloArchitecteBleuCallicrates',['../da/d36/classScoreSoloArchitecteBleuCallicrates.html',1,'']]],
-  ['scoresoloarchitectehippodamos_9',['ScoreSoloArchitecteHippodamos',['../dc/d9a/classScoreSoloArchitecteHippodamos.html',1,'']]],
-  ['scoresoloarchitectemetagenes_10',['ScoreSoloArchitecteMetagenes',['../d1/dc8/classScoreSoloArchitecteMetagenes.html',1,'']]],
-  ['scorevert_11',['ScoreVert',['../df/dca/classScoreVert.html',1,'']]],
-  ['scorevertvariante_12',['ScoreVertVariante',['../db/da3/classScoreVertVariante.html',1,'']]],
-  ['scoreviolet_13',['ScoreViolet',['../df/d68/classScoreViolet.html',1,'']]],
-  ['scorevioletvariante_14',['ScoreVioletVariante',['../dd/d84/classScoreVioletVariante.html',1,'']]],
-  ['statscouleurssoloarchitecte_15',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]]
+  ['scoresoloarchitectecallicrates_7',['ScoreSoloArchitecteCallicrates',['../dd/d21/classScoreSoloArchitecteCallicrates.html',1,'']]],
+  ['scoresoloarchitectehippodamos_8',['ScoreSoloArchitecteHippodamos',['../dc/d9a/classScoreSoloArchitecteHippodamos.html',1,'']]],
+  ['scoresoloarchitectemetagenes_9',['ScoreSoloArchitecteMetagenes',['../d1/dc8/classScoreSoloArchitecteMetagenes.html',1,'']]],
+  ['scorevert_10',['ScoreVert',['../df/dca/classScoreVert.html',1,'']]],
+  ['scorevertvariante_11',['ScoreVertVariante',['../db/da3/classScoreVertVariante.html',1,'']]],
+  ['scoreviolet_12',['ScoreViolet',['../df/d68/classScoreViolet.html',1,'']]],
+  ['scorevioletvariante_13',['ScoreVioletVariante',['../dd/d84/classScoreVioletVariante.html',1,'']]],
+  ['statscouleurssoloarchitecte_14',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]]
 ];

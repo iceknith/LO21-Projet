@@ -7,6 +7,6 @@ var searchData=
   ['deck_2ecpp_4',['Deck.cpp',['../df/db8/Deck_8cpp.html',1,'']]],
   ['deck_2ehpp_5',['Deck.hpp',['../d1/dd3/Deck_8hpp.html',1,'']]],
   ['difficile_6',['DIFFICILE',['../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555ac40b243de268837634b1bfbae182931f',1,'Utils.hpp']]],
-  ['difficulte_7',['difficulte',['../d1/de1/classJeu.html#a311013d02c077b41dcfb1571d1cee276',1,'Jeu']]],
+  ['difficulte_7',['difficulte',['../d9/d17/classIllustreArchitecte.html#a04bd373d70469469cb4b918685ece037',1,'IllustreArchitecte']]],
   ['difficulte_8',['Difficulte',['../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555',1,'Utils.hpp']]]
 ];
