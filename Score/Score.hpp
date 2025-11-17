@@ -14,7 +14,7 @@ protected:
     //! Le score décoré
     Score* scoreDecore = nullptr;
 public:
-    Score() = default;
+    Score() {};
     Score(Score* scoreDecore) : scoreDecore(scoreDecore) {}
     virtual ~Score() { free(scoreDecore);}
     //! La fonction de calcul de Score
@@ -22,38 +22,22 @@ public:
     int owo() {return 1;}
 };
 
-//! Classe de Score de l'Illustre Architechte, utilisée pour calculer le score de l'Illustre Architechte à partir d'un plateau
-/*!
- * Classe de Score de l'Illustre Architechte, utilisée pour calculer le score de l'Illustre Architechte à partir d'un plateau
- * Est une classe abstraite, mais également un décorateur.
- */
-class ScoreSoloArchitechte : public Score {
-protected:
-    //! Le niveau de l'Illustre Architechte, sera utilisé pour calculer son score
-    int niveau = 0;
-public:
-    //! Le setteur de niveau de l'Illustre Architechte
-    virtual void set_niveau(int niveau);
-    //! Le getteur de niveau de l'Illustre Architechte
-    int get_niveau();
-};
-
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Hippodamos (MODE FACILE)
-class ScoreSoloArchitecteHippodamos : public ScoreSoloArchitechte {
+class ScoreSoloArchitecteHippodamos : public Score {
     int score_solo_architechte_hippodamos(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Metagenes (MODE NORMALE)
-class ScoreSoloArchitecteMetagenes : public ScoreSoloArchitechte {
+class ScoreSoloArchitecteMetagenes : public Score {
     int score_solo_architechte_metagenes(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Callicrates (MODE DIFFICILE)
-class ScoreSoloArchitecteBleuCallicrates : public ScoreSoloArchitechte {
+class ScoreSoloArchitecteCallicrates : public Score {
     int score_solo_architechte_callicrates(Plateau* plateau);
 public:
     int score(Plateau* plateau) override;

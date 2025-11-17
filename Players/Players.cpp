@@ -22,12 +22,28 @@ Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
     return pos;
 }
 
-Tuile* IllustreArchitecte::choisir_tuile(Chantier chantier) {
+Tuile* IllustreArchitecte::choisir_tuile(Chantier &chantier) {
     return chantier.prendre_tuile(0);
 }
 
-void IllustreArchitecte::jouer(Chantier chantier) {
+void IllustreArchitecte::jouer(Chantier &chantier) {
     Tuile *tuile = choisir_tuile(chantier);
     Vector2 position = trouver_emplacement_tuile(*tuile);
     place_tuile(tuile, position);
+}
+
+IllustreArchitecte::IllustreArchitecte(Difficulte difficulte) : difficulte(difficulte) {
+    switch (difficulte) {
+        case Difficulte::FACILE:
+            scoreJoueur = new ScoreSoloArchitecteHippodamos();
+            break;
+        case Difficulte::NORMALE:
+            scoreJoueur = new ScoreSoloArchitecteMetagenes();
+            break;
+        case Difficulte::DIFFICILE:
+            scoreJoueur = new ScoreSoloArchitecteCallicrates();
+            break;
+        default:
+            break;
+    }
 }

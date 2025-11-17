@@ -22,7 +22,7 @@ void Jeu::gameLoop() {
     else {
         nombreJoueurs = 2;
         joueurs[0] = new JoueurSimple();
-        joueurs[1] = new IllustreArchitecte();
+        joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
         joueurActuel = 0;
         initialisePlateau();
     }
@@ -35,17 +35,19 @@ void Jeu::gameLoop() {
         joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
     }
 
+    deck = new Deck(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
     chantier.set_nombre_joueurs(nombreJoueurs);
-    deck = new Deck(nombreJoueurs);
 
-    int tour = 0;
+    nombre_tours = 1;
+    max_nombre_tours = deck->get_taille()/(chantier.get_taille()-1);
+
     int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-    if (diff > 0) {
+    if (diff > 0 && deck->get_nombre_tuiles() >= diff) {
         chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
     }
 
-    while (!chantier.est_vide()) {
+    while (chantier.get_nombre_tuiles() > 1) {
         // Joueur manuel
         if (!joueurs[joueurActuel]->get_joue_tout_seul())
         {
@@ -60,13 +62,12 @@ void Jeu::gameLoop() {
         }
         //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
+        nombre_tours += joueurActuel == 0;
 
-        tour = (tour+1)%nombreJoueurs;
-
-        if (tour == 0) {
+        if (joueurActuel == 0) {
             diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-            if (diff > 0) {
+            if (diff > 0 && deck->get_nombre_tuiles() >= diff) {
                 chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
             }
         }
@@ -82,9 +83,9 @@ void Jeu::initialisePlateau() {
     }
 }
 
-map<int, size_t> Jeu::calculerScores() {
-    map<int, size_t> scores{};
-    for (size_t i = 0; i < nombreJoueurs; i++) scores[joueurs[i]->get_score()] = i;
+multimap<int, size_t> Jeu::calculerScores() {
+    multimap<int, size_t> scores{};
+    for (size_t i = 0; i < nombreJoueurs; i++) scores.insert(make_pair(joueurs[i]->get_score(), i));
     return scores;
 }
 
@@ -117,35 +118,6 @@ void JeuConsole::selectGameMode()  {
     if (modeDeJeu == GameMode::MULTIJOUEUR) { return;}
     // choix difficulté
     cout << "\033[0;36mVous avez selectionner le mode solo, vous allez affronter l'illustre architechte! " << endl;
-
-    cout << "\033[0;97m - FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
-        << endl << "\033[0;37m-> \033[0;97m";
-    cin >> choix;
-
-    while (cin.fail() || choix <= 0 || choix > 3) {
-        cout << "\033[1;31m --> difficulté  inexistante !"
-            << endl << "\033[0;37m-> \033[0;97m";
-        // Enlève l'état d'erreur
-        cin.clear();
-        // Ignore les "mauvais" charactères
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cin >> choix;
-    }
-    difficulte = static_cast<Difficulte>(choix-1);
-    switch (difficulte){
-        case Difficulte::FACILE:
-            cout << "\033[0;32mFacile\033[0;97m: vous aller affronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
-            break;
-        case Difficulte::NORMALE:
-            cout << "\033[0;33mNormale\033[0;97m: bon courage avec Metagenes"<< endl;
-            break;
-        case Difficulte::DIFFICILE:
-            cout << "\033[0;31mDifficile\033[0;97m: vous n'aurez aucune chance face à Callicrates, balbalbal comment ses regles fonctionnent"<< endl;
-            break;
-        default:
-            cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
-            break;
-    }
 }
 
 void JeuConsole::selectJoueurs() {
@@ -167,6 +139,39 @@ void JeuConsole::selectJoueurs() {
 
     for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
     initialisePlateau();
+}
+
+Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
+    int choix;
+    cout << "\033[0;97m - FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
+         << endl << "\033[0;37m-> \033[0;97m";
+    cin >> choix;
+
+    while (cin.fail() || choix <= 0 || choix > 3) {
+        cout << "\033[1;31m --> difficulté  inexistante !"
+             << endl << "\033[0;37m-> \033[0;97m";
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choix;
+    }
+    Difficulte difficulte = static_cast<Difficulte>(choix-1);
+    switch (difficulte){
+        case Difficulte::FACILE:
+            cout << "\033[0;32mFacile\033[0;97m: vous aller affronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
+            break;
+        case Difficulte::NORMALE:
+            cout << "\033[0;33mNormale\033[0;97m: bon courage avec Metagenes"<< endl;
+            break;
+        case Difficulte::DIFFICILE:
+            cout << "\033[0;31mDifficile\033[0;97m: vous n'aurez aucune chance face à Callicrates, balbalbal comment ses regles fonctionnent"<< endl;
+            break;
+        default:
+            cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
+            break;
+    }
+    return difficulte;
 }
 
 void JeuConsole::selectReglesScore() {
@@ -210,7 +215,9 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     Vector2 positionNulle{0,0};
     Tuile ** ch = chantier.get_tuiles();
 
-    cout << "\033[0;36m-------------------------------------------" << endl;
+    cout << "\033[0;36m------------------" << endl
+        << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
+        << "------------------" << endl << endl;
 
     int nb_tuilles = chantier.get_nombre_tuiles();
     for (size_t i = 0; i<nb_tuilles; i++) {
@@ -248,11 +255,15 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
 
     joueurs[joueur]->set_pierre(joueurs[joueur]->get_pierre()-output+1);
     Tuile* ret = chantier.prendre_tuile(output-1);
-
+    cout << output-1;
     return ret;
 }
 
 void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
+    cout << "\033[0;36m------------------" << endl
+         << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
+         << "------------------" << endl;
+
     Vector2 positionSelectionne{0,0};
 
     // Définition du plateau pour la tuile
@@ -365,15 +376,16 @@ void JeuConsole::afficheTourAutomatique(size_t joueur) {
 
 }
 
-void JeuConsole::finDePartie(map<int, size_t> scores) {
+void JeuConsole::finDePartie(multimap<int, size_t> scores) {
     cout << "\033[1;93mPartie Finie, voici les gagnants :" << endl << endl;
 
     size_t i = 0;
-    for (auto scoreIterator = scores.begin(); scoreIterator != scores.end(); scoreIterator++) {
+
+    for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
         i++;
-        string placeSuffixe = i == 1 ? "ier" : "ième";
+        string placeSuffixe = i == 1 ? "er" : "ième";
         if (modeDeJeu == GameMode::MULTIJOUEUR) {
-            cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second
+            cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second + 1
                 << " avec " << scoreIterator->first << " points !" << endl;
         }
         else {
@@ -383,4 +395,3 @@ void JeuConsole::finDePartie(map<int, size_t> scores) {
         }
     }
 }
-

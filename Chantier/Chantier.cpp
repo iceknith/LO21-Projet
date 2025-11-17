@@ -6,9 +6,9 @@
 
 //Retire la tuile d'indice index du chantier pour la retourner 
 Tuile* Chantier::prendre_tuile(int index){
-    nombreTuiles--;
     Tuile *result = tuiles[index];
-    tuiles[index] = tuiles[nombreTuiles];
+    nombreTuiles--;
+    for (size_t i = 0; i < nombreTuiles; i++) tuiles[i] = tuiles[i+1];
     return result;
 };
 

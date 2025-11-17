@@ -125,6 +125,13 @@ int ScoreSoloArchitecteHippodamos::score_solo_architechte_hippodamos(Plateau* pl
     return resultat;
 }
 
+int ScoreSoloArchitecteHippodamos::score(Plateau* plateau) {
+    int s = 0;
+    if (scoreDecore) s += scoreDecore->score(plateau);
+    s += score_solo_architechte_hippodamos(plateau);
+    return s;
+}
+
 int ScoreSoloArchitecteMetagenes::score_solo_architechte_metagenes(Plateau* plateau) {
     // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places + nombre de carrières * 2
     // Tous les hexagones partagent la meme hauteur = 1
@@ -141,7 +148,14 @@ int ScoreSoloArchitecteMetagenes::score_solo_architechte_metagenes(Plateau* plat
     return resultat;
 }
 
-int ScoreSoloArchitecteBleuCallicrates::score_solo_architechte_callicrates(Plateau* plateau) {
+int ScoreSoloArchitecteMetagenes::score(Plateau* plateau) {
+    int s = 0;
+    if (scoreDecore) s += scoreDecore->score(plateau);
+    s += score_solo_architechte_metagenes(plateau);
+    return s;
+}
+
+int ScoreSoloArchitecteCallicrates::score_solo_architechte_callicrates(Plateau* plateau) {
     // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places
     // Tous les hexagones partagent la meme hauteur = 2
     auto stats = compteur_couleur(plateau);
@@ -152,6 +166,13 @@ int ScoreSoloArchitecteBleuCallicrates::score_solo_architechte_callicrates(Plate
         }
     }
     return resultat;
+}
+
+int ScoreSoloArchitecteCallicrates::score(Plateau* plateau) {
+    int s = 0;
+    if (scoreDecore) s += scoreDecore->score(plateau);
+    s += score_solo_architechte_callicrates(plateau);
+    return s;
 }
 
 // =======================

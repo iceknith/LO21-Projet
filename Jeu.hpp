@@ -17,8 +17,11 @@ class Jeu {
 protected:
     //! Le mode de jeu (multijoueur ou solo)
     GameMode modeDeJeu;
-    //! La difficulté du jeu (mode illustre architecte)
-    Difficulte difficulte;
+
+    //! Le nombre de tours joués
+    size_t nombre_tours;
+    //! Le nombre maximum de tours à jouer
+    size_t max_nombre_tours;
 
     //! Le nombre de joueurs qui participent au jeu
     size_t nombreJoueurs;
@@ -48,6 +51,8 @@ protected:
     virtual void selectGameMode() {};
     //! La méthode chargée de la séléction de joueurs
     virtual void selectJoueurs() {};
+    //! La méthode chargée de la séléction du niveau de l'Illustre Architechte
+    virtual Difficulte selectNiveauIllustreArchitechte() {return Difficulte::NORMALE;}
     //! La méthode chargée de la séléction des règles de score
     virtual void selectReglesScore() {};
     //! La méthode chargée de la séléction d'une tuile.
@@ -58,10 +63,10 @@ protected:
     virtual void afficheTourAutomatique(size_t joueur) {};
 
     //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
-    map<int, size_t> calculerScores();
+    multimap<int, size_t> calculerScores();
 
     //! La méthode chargée de la gestion de la fin de partie
-    virtual void finDePartie(map<int, size_t> scores) {};
+    virtual void finDePartie(multimap<int, size_t> scores) {};
 
 public:
     virtual void gameLoop();
@@ -71,11 +76,12 @@ class JeuConsole : public Jeu {
 protected:
     void selectGameMode() override;
     void selectJoueurs() override;
+    Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
     Tuile* selectTuile(size_t joueur) override;
     void placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override;
-    void finDePartie(map<int, size_t> scores) override;
+    void finDePartie(multimap<int, size_t> scores) override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);

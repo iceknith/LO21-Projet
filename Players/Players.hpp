@@ -53,7 +53,7 @@ public:
      *
      * @param chantier un tableau de Tuile, représentant le chantier
      */
-    virtual void jouer(Chantier chantier) {}
+    virtual void jouer(Chantier &chantier) {}
 };
 
 //! Une impléméntation concrète d'un Joueur humain
@@ -66,7 +66,6 @@ protected:
     bool joueToutSeul = false;
 public:
     bool get_joue_tout_seul() const override {return false;}
-
 };
 
 namespace IllustreArchitechteConsts {
@@ -75,23 +74,22 @@ namespace IllustreArchitechteConsts {
 
 class IllustreArchitecte : public Joueur {
 protected:
-    //! Le niveau de l'Architechte (va changer les regles)
-    int niveau = 0;
-    //! L'illustre Architechte étant un automate, il joue tout seul
-    bool joueToutSeul = true;
+    //! Le niveau de l'Architechte (va influencer les règles de score)
+    Difficulte difficulte = Difficulte::NORMALE;
     //! Choisit une tuile à partir du chantier
-    Tuile* choisir_tuile(Chantier chantier);
+    Tuile* choisir_tuile(Chantier &chantier);
     //! Trouve un emplacement vide et valide pour placer une tuile
     Vector2 trouver_emplacement_tuile(Tuile &tuile);
 public:
+    IllustreArchitecte(Difficulte difficulte);
     //! Supprime la fonction setScore de l'illustre architechte, car il gère sa méthode de score totu seul
     void set_score() = delete;
     //! Le setteur du niveau
     void set_niveau(int niveau);
     //! Le getteur du niveau
-    int get_niveau();
+    Difficulte get_difficulte() const {return difficulte;}
     //! La fonction appelée pour faire jouer l'Illustre Architechte
-    void jouer(Chantier chantier) override;
+    void jouer(Chantier &chantier) override;
     bool get_joue_tout_seul() const override {return true;}
 };
 
