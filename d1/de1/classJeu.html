@@ -71,10 +71,13 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="../../dd/d41/classJeu-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Jeu Class Reference</div></div>
+  <div class="headertitle"><div class="title">Jeu Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -95,40 +98,45 @@ Inheritance diagram for Jeu:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af351c88f258d3c1d9607902a9fba4972"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#af351c88f258d3c1d9607902a9fba4972">gameLoop</a> ()</td></tr>
+<tr class="memitem:af351c88f258d3c1d9607902a9fba4972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#af351c88f258d3c1d9607902a9fba4972">gameLoop</a> ()</td></tr>
 <tr class="separator:af351c88f258d3c1d9607902a9fba4972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3183656c8617b3f8c9366c2141de164e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d1/de1/classJeu.html">Jeu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3183656c8617b3f8c9366c2141de164e">getJeu</a> ()</td></tr>
+<tr class="memdesc:a3183656c8617b3f8c9366c2141de164e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le jeu instantié, si il existe, sinon retourne nullptr.  <a href="../../d1/de1/classJeu.html#a3183656c8617b3f8c9366c2141de164e">More...</a><br /></td></tr>
+<tr class="separator:a3183656c8617b3f8c9366c2141de164e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac85dba09db028d74505a1baa4180eb45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ac85dba09db028d74505a1baa4180eb45">initialisePlateau</a> ()</td></tr>
 <tr class="separator:ac85dba09db028d74505a1baa4180eb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86e22761e033c591cd5b8efeb0baa0bf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a86e22761e033c591cd5b8efeb0baa0bf">selectGameMode</a> ()</td></tr>
-<tr class="memdesc:a86e22761e033c591cd5b8efeb0baa0bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du mode de jeu.  <a href="../../d1/de1/classJeu.html#a86e22761e033c591cd5b8efeb0baa0bf">More...</a><br /></td></tr>
-<tr class="separator:a86e22761e033c591cd5b8efeb0baa0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">selectJoueurs</a> ()</td></tr>
-<tr class="memdesc:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction de joueurs.  <a href="../../d1/de1/classJeu.html#a95c9be75f0ed37f698b4f559f5ab12fe">More...</a><br /></td></tr>
-<tr class="separator:a95c9be75f0ed37f698b4f559f5ab12fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a5e338bf8148fa74111caecfdd8b389"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555">Difficulte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a6a5e338bf8148fa74111caecfdd8b389">selectNiveauIllustreArchitechte</a> ()</td></tr>
-<tr class="memdesc:a6a5e338bf8148fa74111caecfdd8b389"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du niveau de l'Illustre Architechte.  <a href="../../d1/de1/classJeu.html#a6a5e338bf8148fa74111caecfdd8b389">More...</a><br /></td></tr>
-<tr class="separator:a6a5e338bf8148fa74111caecfdd8b389"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b4cfdb1334d1a1b782fc6223fcd1cde"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3b4cfdb1334d1a1b782fc6223fcd1cde">selectReglesScore</a> ()</td></tr>
-<tr class="memdesc:a3b4cfdb1334d1a1b782fc6223fcd1cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction des règles de score.  <a href="../../d1/de1/classJeu.html#a3b4cfdb1334d1a1b782fc6223fcd1cde">More...</a><br /></td></tr>
-<tr class="separator:a3b4cfdb1334d1a1b782fc6223fcd1cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">selectTuile</a> (size_t joueur)</td></tr>
-<tr class="memdesc:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a8b1be151eb5297d46b2d174e3d2d3b8e">More...</a><br /></td></tr>
-<tr class="separator:a8b1be151eb5297d46b2d174e3d2d3b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96bb9bbb891577eefe2841903f818a3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)</td></tr>
-<tr class="memdesc:a96bb9bbb891577eefe2841903f818a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f">More...</a><br /></td></tr>
-<tr class="separator:a96bb9bbb891577eefe2841903f818a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c40cc4fef54a10b9883a2a565b32ade"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1c40cc4fef54a10b9883a2a565b32ade">afficheTourAutomatique</a> (size_t joueur)</td></tr>
-<tr class="memdesc:a1c40cc4fef54a10b9883a2a565b32ade"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de gérer l'affichage d'un tour automatique.  <a href="../../d1/de1/classJeu.html#a1c40cc4fef54a10b9883a2a565b32ade">More...</a><br /></td></tr>
-<tr class="separator:a1c40cc4fef54a10b9883a2a565b32ade"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1766b8825c6715ad5de19dc4efda4c9e"><td class="memItemLeft" align="right" valign="top">multimap&lt; int, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1766b8825c6715ad5de19dc4efda4c9e">calculerScores</a> ()</td></tr>
-<tr class="memdesc:a1766b8825c6715ad5de19dc4efda4c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de calculer les score des gagnants, la map associe score : joueur.  <a href="../../d1/de1/classJeu.html#a1766b8825c6715ad5de19dc4efda4c9e">More...</a><br /></td></tr>
-<tr class="separator:a1766b8825c6715ad5de19dc4efda4c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ee480961bf8046a71fc33ce87f53432"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a2ee480961bf8046a71fc33ce87f53432">finDePartie</a> (multimap&lt; int, size_t &gt; scores)</td></tr>
-<tr class="memdesc:a2ee480961bf8046a71fc33ce87f53432"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la gestion de la fin de partie.  <a href="../../d1/de1/classJeu.html#a2ee480961bf8046a71fc33ce87f53432">More...</a><br /></td></tr>
-<tr class="separator:a2ee480961bf8046a71fc33ce87f53432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af744518c3a4ffad7b35a5f3f1637f75c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#af744518c3a4ffad7b35a5f3f1637f75c">selectGameMode</a> ()=0</td></tr>
+<tr class="memdesc:af744518c3a4ffad7b35a5f3f1637f75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du mode de jeu.  <a href="../../d1/de1/classJeu.html#af744518c3a4ffad7b35a5f3f1637f75c">More...</a><br /></td></tr>
+<tr class="separator:af744518c3a4ffad7b35a5f3f1637f75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6926f896511e1ce524c983f490ba4e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#aa6926f896511e1ce524c983f490ba4e3">selectJoueurs</a> ()=0</td></tr>
+<tr class="memdesc:aa6926f896511e1ce524c983f490ba4e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction de joueurs.  <a href="../../d1/de1/classJeu.html#aa6926f896511e1ce524c983f490ba4e3">More...</a><br /></td></tr>
+<tr class="separator:aa6926f896511e1ce524c983f490ba4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd841ce31cad5eee72f26e81a2f42bd"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555">Difficulte</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a2cd841ce31cad5eee72f26e81a2f42bd">selectNiveauIllustreArchitechte</a> ()=0</td></tr>
+<tr class="memdesc:a2cd841ce31cad5eee72f26e81a2f42bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du niveau de l'Illustre Architechte.  <a href="../../d1/de1/classJeu.html#a2cd841ce31cad5eee72f26e81a2f42bd">More...</a><br /></td></tr>
+<tr class="separator:a2cd841ce31cad5eee72f26e81a2f42bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">selectReglesScore</a> ()=0</td></tr>
+<tr class="memdesc:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction des règles de score.  <a href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">More...</a><br /></td></tr>
+<tr class="separator:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a869fb9d2c8cac06ac33dbe192b42bb27">selectTuile</a> (size_t joueur)=0</td></tr>
+<tr class="memdesc:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a869fb9d2c8cac06ac33dbe192b42bb27">More...</a><br /></td></tr>
+<tr class="separator:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0861f2644ba9a230203b038a5d3dc0a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)=0</td></tr>
+<tr class="memdesc:a0861f2644ba9a230203b038a5d3dc0a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8">More...</a><br /></td></tr>
+<tr class="separator:a0861f2644ba9a230203b038a5d3dc0a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d0fc1ebfd551950cebce62996657b52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52">afficheTourAutomatique</a> (size_t joueur)=0</td></tr>
+<tr class="memdesc:a6d0fc1ebfd551950cebce62996657b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de gérer l'affichage d'un tour automatique.  <a href="../../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52">More...</a><br /></td></tr>
+<tr class="separator:a6d0fc1ebfd551950cebce62996657b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ad947fcf184da8524ab16c30cbb1575"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3ad947fcf184da8524ab16c30cbb1575">finDePartie</a> (multimap&lt; int, size_t &gt; scores)=0</td></tr>
+<tr class="memdesc:a3ad947fcf184da8524ab16c30cbb1575"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la gestion de la fin de partie.  <a href="../../d1/de1/classJeu.html#a3ad947fcf184da8524ab16c30cbb1575">More...</a><br /></td></tr>
+<tr class="separator:a3ad947fcf184da8524ab16c30cbb1575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2187a662105833b02f97c5694a281f57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a2187a662105833b02f97c5694a281f57">Jeu</a> ()=default</td></tr>
+<tr class="separator:a2187a662105833b02f97c5694a281f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -156,10 +164,48 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a1446f5e8d3a00e7c6f00b89139110984"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dca/classAffichage.html">Affichage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1446f5e8d3a00e7c6f00b89139110984">affichage</a></td></tr>
 <tr class="memdesc:a1446f5e8d3a00e7c6f00b89139110984"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'affichage du jeu.  <a href="../../d1/de1/classJeu.html#a1446f5e8d3a00e7c6f00b89139110984">More...</a><br /></td></tr>
 <tr class="separator:a1446f5e8d3a00e7c6f00b89139110984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a55cee6351977d6ce71fa6cc278d398b6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d1/de1/classJeu.html">Jeu</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a55cee6351977d6ce71fa6cc278d398b6">jeu</a> = nullptr</td></tr>
+<tr class="memdesc:a55cee6351977d6ce71fa6cc278d398b6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d1/de1/classJeu.html" title="La classe responsable de gérer tout le cycle de vie du jeu.">Jeu</a> est un singleton.  <a href="../../d1/de1/classJeu.html#a55cee6351977d6ce71fa6cc278d398b6">More...</a><br /></td></tr>
+<tr class="separator:a55cee6351977d6ce71fa6cc278d398b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1766b8825c6715ad5de19dc4efda4c9e"><td class="memItemLeft" align="right" valign="top">multimap&lt; int, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1766b8825c6715ad5de19dc4efda4c9e">calculerScores</a> ()</td></tr>
+<tr class="memdesc:a1766b8825c6715ad5de19dc4efda4c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de calculer les score des gagnants, la map associe score : joueur.  <a href="../../d1/de1/classJeu.html#a1766b8825c6715ad5de19dc4efda4c9e">More...</a><br /></td></tr>
+<tr class="separator:a1766b8825c6715ad5de19dc4efda4c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2187a662105833b02f97c5694a281f57" name="a2187a662105833b02f97c5694a281f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2187a662105833b02f97c5694a281f57">&#9670;&#160;</a></span>Jeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jeu::Jeu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1c40cc4fef54a10b9883a2a565b32ade" name="a1c40cc4fef54a10b9883a2a565b32ade"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c40cc4fef54a10b9883a2a565b32ade">&#9670;&#160;</a></span>afficheTourAutomatique()</h2>
+<a id="a6d0fc1ebfd551950cebce62996657b52" name="a6d0fc1ebfd551950cebce62996657b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d0fc1ebfd551950cebce62996657b52">&#9670;&#160;</a></span>afficheTourAutomatique()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -177,12 +223,12 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a827a7b25b6ff31ae75209729e08f0692">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a827a7b25b6ff31ae75209729e08f0692">JeuConsole</a>.</p>
 
 </div>
 </div>
@@ -204,15 +250,15 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a2ee480961bf8046a71fc33ce87f53432" name="a2ee480961bf8046a71fc33ce87f53432"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee480961bf8046a71fc33ce87f53432">&#9670;&#160;</a></span>finDePartie()</h2>
+<a id="a3ad947fcf184da8524ab16c30cbb1575" name="a3ad947fcf184da8524ab16c30cbb1575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ad947fcf184da8524ab16c30cbb1575">&#9670;&#160;</a></span>finDePartie()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,12 +276,12 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a293a77c7a2048c556cb832f77ae412ce">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a293a77c7a2048c556cb832f77ae412ce">JeuConsole</a>.</p>
 
 </div>
 </div>
@@ -244,9 +290,6 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Jeu::gameLoop </td>
@@ -255,9 +298,29 @@ Protected Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3183656c8617b3f8c9366c2141de164e" name="a3183656c8617b3f8c9366c2141de164e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3183656c8617b3f8c9366c2141de164e">&#9670;&#160;</a></span>getJeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../d1/de1/classJeu.html">Jeu</a> * Jeu::getJeu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -289,8 +352,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a96bb9bbb891577eefe2841903f818a3f" name="a96bb9bbb891577eefe2841903f818a3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96bb9bbb891577eefe2841903f818a3f">&#9670;&#160;</a></span>placeTuile()</h2>
+<a id="a0861f2644ba9a230203b038a5d3dc0a8" name="a0861f2644ba9a230203b038a5d3dc0a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0861f2644ba9a230203b038a5d3dc0a8">&#9670;&#160;</a></span>placeTuile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,17 +381,17 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d">JeuConsole</a>.</p>
 
 </div>
 </div>
-<a id="a86e22761e033c591cd5b8efeb0baa0bf" name="a86e22761e033c591cd5b8efeb0baa0bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86e22761e033c591cd5b8efeb0baa0bf">&#9670;&#160;</a></span>selectGameMode()</h2>
+<a id="af744518c3a4ffad7b35a5f3f1637f75c" name="af744518c3a4ffad7b35a5f3f1637f75c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af744518c3a4ffad7b35a5f3f1637f75c">&#9670;&#160;</a></span>selectGameMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,17 +408,17 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a40f310fb97b7d0479f38fefb2ad34616">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a40f310fb97b7d0479f38fefb2ad34616">JeuConsole</a>.</p>
 
 </div>
 </div>
-<a id="a95c9be75f0ed37f698b4f559f5ab12fe" name="a95c9be75f0ed37f698b4f559f5ab12fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95c9be75f0ed37f698b4f559f5ab12fe">&#9670;&#160;</a></span>selectJoueurs()</h2>
+<a id="aa6926f896511e1ce524c983f490ba4e3" name="aa6926f896511e1ce524c983f490ba4e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6926f896511e1ce524c983f490ba4e3">&#9670;&#160;</a></span>selectJoueurs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -372,17 +435,17 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#aafb6a953e5bcdb9a4c485ef99f7d57af">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#aafb6a953e5bcdb9a4c485ef99f7d57af">JeuConsole</a>.</p>
 
 </div>
 </div>
-<a id="a6a5e338bf8148fa74111caecfdd8b389" name="a6a5e338bf8148fa74111caecfdd8b389"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a5e338bf8148fa74111caecfdd8b389">&#9670;&#160;</a></span>selectNiveauIllustreArchitechte()</h2>
+<a id="a2cd841ce31cad5eee72f26e81a2f42bd" name="a2cd841ce31cad5eee72f26e81a2f42bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cd841ce31cad5eee72f26e81a2f42bd">&#9670;&#160;</a></span>selectNiveauIllustreArchitechte()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -399,17 +462,17 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a9deb71bdd2bb5ecf5129ff3e485e009f">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a9deb71bdd2bb5ecf5129ff3e485e009f">JeuConsole</a>.</p>
 
 </div>
 </div>
-<a id="a3b4cfdb1334d1a1b782fc6223fcd1cde" name="a3b4cfdb1334d1a1b782fc6223fcd1cde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b4cfdb1334d1a1b782fc6223fcd1cde">&#9670;&#160;</a></span>selectReglesScore()</h2>
+<a id="a5b38799517d1c35a7eb6d0b6b9c53c00" name="a5b38799517d1c35a7eb6d0b6b9c53c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b38799517d1c35a7eb6d0b6b9c53c00">&#9670;&#160;</a></span>selectReglesScore()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -426,17 +489,17 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a22d9dbef57222dfee986270cf30ae52b">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a22d9dbef57222dfee986270cf30ae52b">JeuConsole</a>.</p>
 
 </div>
 </div>
-<a id="a8b1be151eb5297d46b2d174e3d2d3b8e" name="a8b1be151eb5297d46b2d174e3d2d3b8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b1be151eb5297d46b2d174e3d2d3b8e">&#9670;&#160;</a></span>selectTuile()</h2>
+<a id="a869fb9d2c8cac06ac33dbe192b42bb27" name="a869fb9d2c8cac06ac33dbe192b42bb27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a869fb9d2c8cac06ac33dbe192b42bb27">&#9670;&#160;</a></span>selectTuile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -454,12 +517,12 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#ae35089d42fd5254b8470ff13800872a7">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#ae35089d42fd5254b8470ff13800872a7">JeuConsole</a>.</p>
 
 </div>
 </div>
@@ -524,6 +587,28 @@ Protected Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55cee6351977d6ce71fa6cc278d398b6" name="a55cee6351977d6ce71fa6cc278d398b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55cee6351977d6ce71fa6cc278d398b6">&#9670;&#160;</a></span>jeu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/de1/classJeu.html">Jeu</a> * Jeu::jeu = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

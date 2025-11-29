@@ -8,7 +8,7 @@ var searchData=
   ['place_5ftuile_5',['place_tuile',['../dd/d07/classJoueur.html#a8d224331463ad8fbeb51b8b7f07c0485',1,'Joueur']]],
   ['placer_6',['placer',['../d7/db5/classPlateau.html#a03efba908af5746e414cbb1411b2b34e',1,'Plateau']]],
   ['places_7',['places',['../d1/d19/structStatsCouleursSoloArchitecte.html#afee4beb6396e8da9a7a7b86d5ff2c0c6',1,'StatsCouleursSoloArchitecte']]],
-  ['placetuile_8',['placeTuile',['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()'],['../d1/de1/classJeu.html#a96bb9bbb891577eefe2841903f818a3f',1,'Jeu::placeTuile()']]],
+  ['placetuile_8',['placeTuile',['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()'],['../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8',1,'Jeu::placeTuile()']]],
   ['plateau_9',['Plateau',['../d7/db5/classPlateau.html',1,'']]],
   ['plateau_10',['plateau',['../d7/db5/classPlateau.html#ac1aff6cd910fdb5c2bb7a260acdb48c3',1,'Plateau']]],
   ['plateau_11',['Plateau',['../d7/db5/classPlateau.html#a0a018077715440adf1cd7cc967e14dcb',1,'Plateau']]],
