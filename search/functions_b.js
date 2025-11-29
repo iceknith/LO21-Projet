@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['peut_5fetre_5fplacee_0',['peut_etre_placee',['../d4/dfc/classHexagone.html#afc8d977bc9a643d9a845f76c44d93e04',1,'Hexagone']]],
-  ['peut_5fplacer_1',['peut_placer',['../d7/db5/classPlateau.html#a71a8a113eb2c9d3f87ecc71b4e930229',1,'Plateau']]],
-  ['place_5ftuile_2',['place_tuile',['../dd/d07/classJoueur.html#a8d224331463ad8fbeb51b8b7f07c0485',1,'Joueur']]],
-  ['placer_3',['placer',['../d7/db5/classPlateau.html#a03efba908af5746e414cbb1411b2b34e',1,'Plateau']]],
-  ['placetuile_4',['placeTuile',['../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8',1,'Jeu::placeTuile()'],['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()']]],
-  ['plateau_5',['Plateau',['../d7/db5/classPlateau.html#a0a018077715440adf1cd7cc967e14dcb',1,'Plateau']]],
-  ['prendre_5ftuile_6',['prendre_tuile',['../df/d51/classChantier.html#a375a70e8695e40e3754f450a5da19b8d',1,'Chantier']]],
-  ['print_5ftitle_7',['print_title',['../d4/d29/Jeu_8cpp.html#a0d07fdb703241f00ec96b4861dd3fd94',1,'Jeu.cpp']]]
+  ['operator_21_3d_0',['operator!=',['../d7/d88/classTuile.html#ad6a1427ea9fb51b85e8ef2620b4391e1',1,'Tuile']]],
+  ['operator_2b_1',['operator+',['../d8/d0d/classVector2.html#a18759ffa878ab208dbe092ae07e70b6f',1,'Vector2']]],
+  ['operator_2d_2',['operator-',['../d8/d0d/classVector2.html#a37653598d7dd2e823c7af55bc50b92bb',1,'Vector2']]],
+  ['operator_3c_3',['operator&lt;',['../d8/d0d/classVector2.html#a569bd5994787fb2ff4554fea86cd8fc3',1,'Vector2']]],
+  ['operator_3d_3d_4',['operator==',['../d7/d88/classTuile.html#ada86d55fe2fb7759513594ea1ff51ef1',1,'Tuile::operator==()'],['../d8/d0d/classVector2.html#a77b638de6b16a80d4c4be0c21fe2b481',1,'Vector2::operator==()']]],
+  ['owo_5',['owo',['../d7/d48/classScore.html#af2a73f2083f99145a49c9f1313c025df',1,'Score']]]
 ];
