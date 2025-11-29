@@ -15,9 +15,9 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlace
     int hauteur = 0;
     Tuile* tuile_base = nullptr;
 
-    if (hexagone_existe(position)){
-        hauteur = obtenir_hexagone(position)->get_hauteur();
-        tuile_base = obtenir_hexagone(position)->get_tuile();
+    if (hasHexagone(position)){
+        hauteur = getHexagone(position)->get_hauteur();
+        tuile_base = getHexagone(position)->get_tuile();
     }
 
     bool conditionTuileValidee = (tuile_base == nullptr); // Si on n'as pas de tuile, la condition d'être sur plusieurs tuiles est déjà validée
@@ -25,12 +25,11 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlace
     bool asAdjacent = forcePlacement; // garde en mémoire si la condition d'adjascence est valide
 
     // Iteration à travers toute les positions, pour voir si elles sont légales
-    for (int i = 0; i < tuile.get_nombre_enfant(); i++){
-        Vector2 positionLocaleHex = tuile.get_positions_enfants()[i];
-        Vector2 positionHex = position + positionLocaleHex;
+    for (auto iterTuile : tuile){
+        Vector2 positionHex = position + iterTuile.first;
 
-        if (hexagone_existe(positionHex)){
-            Hexagone* h = obtenir_hexagone(positionHex);
+        if (hasHexagone(positionHex)){
+            Hexagone* h = getHexagone(positionHex);
             // Condition hauteur
             if (hauteur != h->get_hauteur()) return false;
             // Condition Tuile - Si !conditionTuileValidee, tuile_base != nullptr
@@ -47,8 +46,9 @@ bool Plateau::peut_placer(Tuile &tuile, const Vector2 &position, bool forcePlace
         if (hauteur == 0 && !asAdjacent) {
             //On regarde si notre hexagone est adjascent à une tuile lorsqu'on place à la hauteur 0
             for (int j = 0; j < 6; ++j) {
-                if (plateau.find(positionHex + adjascenceHex[j]) != plateau.end()) {
+                if (hasHexagone(positionHex + adjascenceHex[j])) {
                     asAdjacent = true;
+                    break;
                 }
             }
         }
@@ -63,23 +63,21 @@ bool Plateau::placer(Tuile* tuile, const Vector2 &position, bool forcePlacement,
 
     // Changement de la hauteur de la tuile
     int hauteur = 1;
-    if (hexagone_existe(position)) hauteur = obtenir_hexagone(position)->get_hauteur() + 1;
+    if (hasHexagone(position)) hauteur = getHexagone(position)->get_hauteur() + 1;
     tuile->set_hauteur(hauteur);
 
-    // Iteration à travers toute les positions, pour voir si elles sont légales
-    for (int i = 0; i < tuile->get_nombre_enfant(); i++) {
+    // Iteration à travers toute les positions, pour placer l'hexagone à cet endroit
+    for (auto iterTuile : *tuile) {
         // Récupération des hexagone et de leurs positions
-        Hexagone* hex = tuile->get_enfants()[i];
-        Vector2 positionLocaleHex = tuile->get_positions_enfants()[i];
-        Vector2 positionHex = position + positionLocaleHex;
+        Vector2 positionHex = position + iterTuile.first;
 
         // Appliquer la fonction quand recouvert de l'hexagone recouvert
         if (joueur != nullptr && hauteur > 1) {
-            plateau[positionHex]->quand_recouvert(joueur);
+            container[positionHex]->quand_recouvert(joueur);
         }
 
         // Placement de l'hexagone
-        plateau[positionHex] = hex;
+        container[positionHex] = iterTuile.second;
     }
 
     // retourner True car on l'as placee

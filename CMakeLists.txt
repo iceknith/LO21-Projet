@@ -5,10 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(LO21-Projet main.cpp
         Tests/Tests.cpp
-        Tuile/Tuile.cpp
-        Tuile/Hexagone.cpp
+        HexagoneContainer/Tuile.cpp
+        Hexagone/Hexagone.cpp
         Players/Players.hpp
-        Players/Plateau.cpp
+        HexagoneContainer/Plateau.cpp
         Score/Score.cpp
         Affichage/Affichage.cpp
         Chantier/Chantier.cpp
@@ -18,4 +18,5 @@ add_executable(LO21-Projet main.cpp
         Players/Players.cpp
         Jeu.cpp
         Jeu.hpp
+        HexagoneContainer/HexagoneContainer.cpp
 )

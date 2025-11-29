@@ -1,6 +1,6 @@
 #include "Tests.hpp"
 #include <iostream>
-#include "../Players/Plateau.hpp"
+#include "../HexagoneContainer/Plateau.hpp"
 void assertTests(){
     /*
      * Insérer des asserts sous la forme suivante :

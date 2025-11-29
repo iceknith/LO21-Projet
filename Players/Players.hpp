@@ -2,7 +2,7 @@
 #define LO21_PROJET_PLAYERS_HPP
 
 #include "../Score/Score.hpp"
-#include "../Tuile/Tuile.hpp"
+#include "../HexagoneContainer/Tuile.hpp"
 #include "../Utils.hpp"
 #include "../Chantier/Chantier.hpp"
 

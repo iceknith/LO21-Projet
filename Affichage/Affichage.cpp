@@ -21,17 +21,13 @@ using namespace constAffichageConsoleHex;
 // \1     1/
 //  \1 1 1/
 
-void AffichageConsole::affiche_plateau_actuel(Plateau &plateau, bool selectHexagone, Vector2 selectedHexagone) {
-    // trouve les bornes de l'affichage
-    const auto iterateur_debut = plateau.get_iterateur_debut();
-    const auto iterateur_fin = plateau.get_iterateur_fin();
-
-    Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : iterateur_debut->first);
+void AffichageConsole::affiche_container(HexagoneContainer& container, bool selectHexagone, Vector2 selectedHexagone) {
+    Vector2 posInit = axialToScreen(selectHexagone ? selectedHexagone : container.begin()->first);
     Vector2 posFin = posInit;
     float highestVectX = posInit.x;
 
-    for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
-        Vector2 pos = axialToScreen(iterateur->first);
+    for (auto iter : container) {
+        Vector2 pos = axialToScreen(iter.first);
 
         if (pos.x < posInit.x) posInit.x = pos.x;
         else if (pos.x > posFin.x) posFin.x = pos.x;
@@ -68,11 +64,11 @@ void AffichageConsole::affiche_plateau_actuel(Plateau &plateau, bool selectHexag
 
     // Affichage de chaque carreau
     bool selectedHexEstAffiche = false;
-    for (auto iterateur = iterateur_debut; iterateur != iterateur_fin; iterateur++) {
-        Vector2 pos = axialToScreen(iterateur->first) - posInit;
-        bool highlighted = selectHexagone && selectedHexagone == iterateur->first;
+    for (auto iter : container) {
+        Vector2 pos = axialToScreen(iter.first) - posInit;
+        bool highlighted = selectHexagone && selectedHexagone == iter.first;
         if (highlighted) selectedHexEstAffiche = true;
-        vector<string> affichageHex = iterateur->second->affiche_console(highlighted);
+        vector<string> affichageHex = iter.second->affiche_console(highlighted);
 
         /*
         canvas[pos.y].replace(pos.x+decalagePetiteLigne, affichageHex[0].size(), affichageHex[0]);
@@ -103,7 +99,7 @@ void AffichageConsole::affiche_plateau_actuel(Plateau &plateau, bool selectHexag
 }
 
 void AffichageConsole::affiche_joueur_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
-    affiche_plateau_actuel(joueur.get_plateau(), selectHexagone, selectedHexagone);
+    affiche_container(joueur.get_plateau(), selectHexagone, selectedHexagone);
     cout << "\033[0;37m " << joueur.get_pierre() << " pierre(s)" << endl;
 }
 
