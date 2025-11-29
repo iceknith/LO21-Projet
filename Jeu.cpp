@@ -10,6 +10,8 @@ void print_title() {
 
 // Jeu //
 
+Jeu* Jeu::jeu = nullptr;
+
 void Jeu::gameLoop() {
     selectGameMode();
     size_t joueurActuel;
@@ -395,4 +397,15 @@ void JeuConsole::finDePartie(multimap<int, size_t> scores) {
                 << " avec " << scoreIterator->first << " points !" << endl;
         }
     }
+}
+
+Jeu *JeuConsole::getJeu() {
+    if (jeu == nullptr) jeu = new JeuConsole();
+    return jeu;
+}
+
+Jeu *JeuGUI::getJeu() {
+    // À décomenter lorsque JeuConsole aura un constructeur
+    //if (jeu == nullptr) jeu = new JeuGUI();
+    return jeu;
 }

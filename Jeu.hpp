@@ -14,7 +14,13 @@ namespace constJeu {
 
 //! La classe responsable de gérer tout le cycle de vie du jeu
 class Jeu {
+private:
+    //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
+    multimap<int, size_t> calculerScores();
+
 protected:
+    //! Jeu est un singleton
+    static Jeu* jeu;
     //! Le mode de jeu (multijoueur ou solo)
     GameMode modeDeJeu;
 
@@ -46,34 +52,36 @@ protected:
 
     // Initialisation des plateaux des joueurs
     void initialisePlateau();
-
     //! La méthode chargée de la séléction du mode de jeu
-    virtual void selectGameMode() {};
+    virtual void selectGameMode() = 0;
     //! La méthode chargée de la séléction de joueurs
-    virtual void selectJoueurs() {};
+    virtual void selectJoueurs() = 0;
     //! La méthode chargée de la séléction du niveau de l'Illustre Architechte
-    virtual Difficulte selectNiveauIllustreArchitechte() {return Difficulte::NORMALE;}
+    virtual Difficulte selectNiveauIllustreArchitechte() = 0;
     //! La méthode chargée de la séléction des règles de score
-    virtual void selectReglesScore() {};
+    virtual void selectReglesScore() = 0;
     //! La méthode chargée de la séléction d'une tuile.
-    virtual Tuile* selectTuile(size_t joueur) {return nullptr;}
+    virtual Tuile* selectTuile(size_t joueur) = 0;
     //! La méthode chargée du placement d'une tuile séléctionné.
-    virtual void placeTuile(size_t joueur, Tuile* tuileSelected) {};
+    virtual void placeTuile(size_t joueur, Tuile* tuileSelected) = 0;
     //! La méthode chargée de gérer l'affichage d'un tour automatique
-    virtual void afficheTourAutomatique(size_t joueur) {};
-
-    //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
-    multimap<int, size_t> calculerScores();
+    virtual void afficheTourAutomatique(size_t joueur) = 0;
 
     //! La méthode chargée de la gestion de la fin de partie
-    virtual void finDePartie(multimap<int, size_t> scores) {};
+    virtual void finDePartie(multimap<int, size_t> scores) = 0;
 
+    Jeu() = default;
 public:
-    virtual void gameLoop();
+    void gameLoop();
+
+    //! Retourne le jeu instantié, si il existe, sinon retourne nullptr
+    static Jeu* getJeu() {return jeu;}
 };
 
 class JeuConsole : public Jeu {
-protected:
+private:
+    JeuConsole();
+
     void selectGameMode() override;
     void selectJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
@@ -85,19 +93,19 @@ protected:
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
-
 /*
     Tuile* selectTuileIllustreArchitecte(size_t joueur) override;
     void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) override;
 */
 public:
-    JeuConsole();
+    static Jeu* getJeu();
 };
 
 class JeuGUI : public Jeu {
-
+private:
+    JeuGUI() = default;
+public:
+    static Jeu* getJeu();
 };
-
-
 
 #endif
