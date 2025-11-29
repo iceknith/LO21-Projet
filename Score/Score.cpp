@@ -4,10 +4,10 @@ using namespace ScoreUtils;
 
 map<Vector2, Hexagone*> ScoreUtils::get_hexagone_filtres(Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur ){
     std::map<Vector2, Hexagone*> result;
-    for (auto iter : *plateau) {
-        Hexagone* h = iter.second;
+    for (auto iterateur = plateau->get_iterateur_debut(); iterateur != plateau->get_iterateur_fin(); ++iterateur) {
+        Hexagone* h = iterateur->second;
         if (h->get_type() == type && h->get_couleur() == couleur) {
-            result.emplace(iter.first, h);
+            result.emplace(iterateur->first, h);
         }
     }
     return result;
@@ -15,8 +15,8 @@ map<Vector2, Hexagone*> ScoreUtils::get_hexagone_filtres(Plateau* plateau, TypeH
 
 int ScoreUtils::get_iteration_filtres(Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur) {
     int result = 0;
-    for (auto iter : *plateau) {
-        Hexagone* h = iter.second;
+    for (auto iterateur = plateau->get_iterateur_debut(); iterateur != plateau->get_iterateur_fin(); ++iterateur) {
+        Hexagone* h = iterateur->second;
         if (h->get_type() == type && h->get_couleur() == couleur) {
             result++;
         }
@@ -37,8 +37,8 @@ map<Vector2, Hexagone*> ScoreUtils::get_hexagone_voisins( Plateau* plateau, Vect
     std::map<Vector2, Hexagone*> voisins;
     for (int i = 0; i < GameConstants::HEXAGON_DIRECTIONS; ++i) {
         Vector2 npos = position + adjascenceHex[i];
-        if (plateau->hasHexagone(npos))
-            voisins.emplace(npos, plateau->getHexagone(npos));
+        if (plateau->hexagone_existe(npos))
+            voisins.emplace(npos, plateau->obtenir_hexagone(npos));
     }
     return voisins;
 }
@@ -96,8 +96,8 @@ int ScoreUtils::sum_heights( std::map<Vector2, Hexagone*> m) {
 StatsCouleursSoloArchitecte ScoreUtils::compteur_couleur(Plateau* plateau) {
     StatsCouleursSoloArchitecte stats;
 
-    for (auto iter : *plateau) {
-        Hexagone* h = iter.second;
+    for (auto iterateur = plateau->get_iterateur_debut(); iterateur != plateau->get_iterateur_fin(); ++iterateur) {
+        Hexagone* h = iterateur->second;
         int c = static_cast<int>(h->get_couleur());
         if (h->get_type()==TypeHexagone::Quartier) stats.quartiers[c]++;
         if (h->get_type()==TypeHexagone::Place ) {
@@ -268,8 +268,8 @@ int ScoreJaune::score_jaune(Plateau* plateau) {
         voisin_jaune = false;
         for(int d=0;d<GameConstants::MAX_HEXAGON_NEIGHBORS;d++) {
             Vector2 position_contour = pos+adjascenceHex[d];
-            if (plateau->hasHexagone(position_contour) ) {
-                if ((plateau->getHexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE) && plateau->getHexagone(position_contour)->get_type() == TypeHexagone::Quartier) {
+            if (plateau->hexagone_existe(position_contour) ) {
+                if ((plateau->obtenir_hexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE) && plateau->obtenir_hexagone(position_contour)->get_type() == TypeHexagone::Quartier) {
                     voisin_jaune = true;
                 }
             }
@@ -398,11 +398,11 @@ int ScoreJauneVariante::score_jaune_variante(Plateau* plateau) {
         place_voisin_jaune = false;
         for (int d=0;d<GameConstants::MAX_HEXAGON_NEIGHBORS;d++) {
             Vector2 position_contour = pos+adjascenceHex[d];
-            if (plateau->hasHexagone(position_contour)) {
-                if (plateau->getHexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE)
+            if (plateau->hexagone_existe(position_contour)) {
+                if (plateau->obtenir_hexagone(position_contour)->get_couleur() == CouleursAkropolis::JAUNE)
                 {
-                    if ( plateau->getHexagone(position_contour)->get_type() == TypeHexagone::Quartier) quartier_voisin_jaune = true;
-                    else if ( plateau->getHexagone(position_contour)->get_type() == TypeHexagone::Place) place_voisin_jaune = true;
+                    if ( plateau->obtenir_hexagone(position_contour)->get_type() == TypeHexagone::Quartier) quartier_voisin_jaune = true;
+                    else if ( plateau->obtenir_hexagone(position_contour)->get_type() == TypeHexagone::Place) place_voisin_jaune = true;
                 }
             }
         }

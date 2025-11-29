@@ -1,7 +1,7 @@
 #ifndef LO21_PROJET_DECK_HPP
 #define LO21_PROJET_DECK_HPP
 
-#include "../HexagoneContainer/Tuile.hpp"
+#include "../Tuile/Tuile.hpp"
 
 const int max_tuiles_dans_deck = 61;
 

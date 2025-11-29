@@ -19,7 +19,7 @@ Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
             pos.x = col;
             pos.y = row - col/2;
 
-            if (!plateauJoueur.hasHexagone(pos)
+            if (!plateauJoueur.hexagone_existe(pos)
                 && plateauJoueur.peut_placer(tuile, pos)) {
                 continueRecherche = false;
                 break;

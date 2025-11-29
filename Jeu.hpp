@@ -92,7 +92,7 @@ private:
     void finDePartie(multimap<int, size_t> scores) override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
-    void afficheJoueur(size_t joueur, Tuile& tuileSelected, Vector2& positionSelectionne);
+    void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
 /*
     Tuile* selectTuileIllustreArchitecte(size_t joueur) override;
     void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) override;

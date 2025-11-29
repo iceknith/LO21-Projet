@@ -217,7 +217,7 @@ void JeuConsole::selectReglesScore() {
 Tuile* JeuConsole::selectTuile(size_t joueur) {
     int output;
     Vector2 positionNulle{0,0};
-    Tuile** ch = chantier.get_tuiles();
+    Tuile ** ch = chantier.get_tuiles();
 
     cout << "\033[0;36m------------------" << endl
         << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
@@ -226,9 +226,11 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     int nb_tuilles = chantier.get_nombre_tuiles();
     for (size_t i = 0; i<nb_tuilles; i++) {
         // Définition du plateau pour la tuile
+        Plateau plateauTuileSelected;
+        plateauTuileSelected.placer(*(ch+i), positionNulle, true);
         cout<<"\033[0;97mTuile n°"<<i+1<< " (cout en pierre = "<< i << ") : "<<endl;
-        Tuile t = *ch[i];
-        affichage->affiche_container(t);
+        affichage->affiche_plateau_actuel(plateauTuileSelected);
+
     }
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
     affichage->affiche_joueur_actuel(*joueurs[joueur]);
@@ -269,8 +271,10 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 
     // Définition du plateau pour la tuile
     Vector2 positionNulle{0,0};
+    Plateau plateauTuileSelected;
+    plateauTuileSelected.placer(tuileSelected, positionNulle, true);
 
-    afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+    afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
     cout << "\033[0;37mPour afficher les commandes disponibles, tapez help" << endl;
 
     bool valide = false;
@@ -296,34 +300,36 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
                 ;
         }
         else if (output == "tg" || output == "td") {
-            tuileSelected->tourne(output == "tg");
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            tuileSelected->tourne_tuile(output == "tg");
+            plateauTuileSelected = Plateau();
+            plateauTuileSelected.placer(tuileSelected, positionNulle, true);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mh") {
             positionSelectionne.y += -1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mhg") {
             positionSelectionne.x += -1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mhd") {
             positionSelectionne.x += 1;
             positionSelectionne.y += -1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mb") {
             positionSelectionne.y += 1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mbg") {
             positionSelectionne.x += -1;
             positionSelectionne.y += 1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "mbd") {
             positionSelectionne.x += 1;
-            afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+            afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
         }
         else if (output == "p") {
             if (joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, positionSelectionne)) {
@@ -343,7 +349,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
                 }
                 else {
                     cout << "\033[0;37mPlacement annulé" << endl;
-                    afficheJoueur(joueur, *tuileSelected, positionSelectionne);
+                    afficheJoueur(joueur, plateauTuileSelected, positionSelectionne);
                 }
             }
             else {
@@ -357,10 +363,10 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
     }
 }
 
-void JeuConsole::afficheJoueur(size_t joueur, Tuile &tuileSelected, Vector2& positionSelectionne) {
+void JeuConsole::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& positionSelectionne) {
     cout << "\033[0;36m-------------------------------------------" << endl
          << "\033[0;97mJoueur "<< joueur+1<<",Où voulez vous placer cette tuile:" << endl;
-    affichage->affiche_container(tuileSelected, Vector2(0,0));
+    affichage->affiche_plateau_actuel(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;
     affichage->affiche_joueur_actuel(*joueurs[joueur], positionSelectionne);

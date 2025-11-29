@@ -1,7 +1,7 @@
 #ifndef LO21_PROJET_SCORE_HPP
 #define LO21_PROJET_SCORE_HPP
 
-#include "../HexagoneContainer/Plateau.hpp"
+#include "../Players/Plateau.hpp"
 #include <set>
 
 //! Classe de Score, utilisée pour calculer le score d'un joueur à partir d'un plateau

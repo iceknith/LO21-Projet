@@ -1,0 +1,78 @@
+#include <iostream>
+#include "Tuile.hpp"
+
+using namespace std;
+
+// Initialize le nextID
+int Tuile::nextID = 0;
+
+Tuile::Tuile() {
+
+}
+
+bool Tuile::is_in_positions_enfants(Vector2 pos) const {
+    for (int i = 0; i < nombre_enfants; i++) {
+        if (positions_enfants[i] == pos) return true;
+    }
+    return false;
+}
+
+void Tuile::tourne_tuile(bool sens_horaire) {
+    for (size_t i = 0; i < nombre_enfants; i++) {
+        // Convertir les coordonées axiales en coordonées cubiques
+        float q = positions_enfants[i].x;
+        float r = positions_enfants[i].y;
+        float s = -q-r;
+
+        // Tourner les coordonées et reconvertir en axial
+        if (sens_horaire) {
+            positions_enfants[i] = Vector2(-r, -s);
+        }
+        else {
+            positions_enfants[i] = Vector2(-s, -q);
+        }
+    }
+}
+
+TuileJeuConcrete::TuileJeuConcrete() {
+    id = nextID++;
+
+    nombre_enfants = 3;
+    positions_enfants[0] = Vector2(0,0);
+    positions_enfants[1] = Vector2(0,1);
+    positions_enfants[2] = Vector2(1,0);
+    int selec = rand()%100;
+    //pour ne jamais avoir plus de 2 carrières par tuile ou plus de 1 place
+    int carriere = 0;
+    int place = 0;
+
+    for (size_t i = 0; i<3; i++) {
+        if (selec >= 0 && selec <= 20 && place < 1) {
+            enfants[i] = new Place(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
+            place++;
+        }
+        else if (selec > 20 && selec <= 60 && carriere < 2) {
+            enfants[i] = new Carriere(this, i);
+            carriere++;
+        }
+        else {
+            enfants[i] = new Quartier(this, i, static_cast<CouleursAkropolis>((rand()%5)+1));
+        }
+        selec = rand()%100;
+    }
+}
+
+TuileDepart::TuileDepart() {
+    id = nextID++;
+
+    nombre_enfants = 4;
+    positions_enfants[0] = Vector2(0,0);
+    positions_enfants[1] = Vector2(0,1);
+    positions_enfants[2] = Vector2(-1,0);
+    positions_enfants[3] = Vector2(1,-1);
+    enfants[0] = new Place(this, 0, CouleursAkropolis::BLEU);
+    enfants[1] = new Carriere(this, 1);
+    enfants[2] = new Carriere(this, 2);
+    enfants[3] = new Carriere(this, 3);
+}
+
