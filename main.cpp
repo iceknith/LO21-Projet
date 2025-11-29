@@ -3,9 +3,11 @@
 
 #include "main.hpp"
 #include "Tests/Tests.hpp"
+#include <QApplication>
+#include <QPushButton>
 using namespace std;
 
-int main() {
+int main(int argc, char *argv[]) {
     assertTests();
     JeuConsole::getJeu()->gameLoop();
 

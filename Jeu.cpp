@@ -1,12 +1,5 @@
 #include "Jeu.hpp"
 
-void print_title() {
-    cout <<
-"    _______ __  __ ______ _______ ______ _______ _____   _______ _______ \n"
-"   |   _   |  |/  |   __ \\       |   __ \\       |     |_|_     _|     __|\n"
-"   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
-"   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
-}
 
 // Jeu //
 
@@ -100,7 +93,7 @@ JeuConsole::JeuConsole() {
 }
 
 void JeuConsole::selectGameMode()  {
-    print_title();
+    JeuConsole::afficheTitre();
 
     int choix =0;
     cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?"
@@ -399,9 +392,59 @@ void JeuConsole::finDePartie(multimap<int, size_t> scores) {
     }
 }
 
+void JeuConsole::afficheTitre() {
+    cout <<
+"    _______ __  __ ______ _______ ______ _______ _____   _______ _______ \n"
+"   |   _   |  |/  |   __ \\       |   __ \\       |     |_|_     _|     __|\n"
+"   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
+"   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
+}
+
 Jeu *JeuConsole::getJeu() {
     if (jeu == nullptr) jeu = new JeuConsole();
     return jeu;
+}
+
+// Jeu Application //
+
+
+JeuApplication::JeuApplication() {
+    affichage = new AffichageConsole();
+}
+
+void JeuApplication::selectGameMode()  {
+
+}
+
+void JeuApplication::selectJoueurs() {
+
+}
+
+Difficulte JeuApplication::selectNiveauIllustreArchitechte() {
+
+}
+
+void JeuApplication::selectReglesScore() {
+
+}
+
+Tuile* JeuApplication::selectTuile(size_t joueur) {
+
+}
+
+void JeuApplication::placeTuile(size_t joueur, Tuile* tuileSelected) {
+
+}
+
+void JeuApplication::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& positionSelectionne) {
+
+}
+
+void JeuApplication::afficheTourAutomatique(size_t joueur) {
+
+}
+
+void JeuApplication::finDePartie(multimap<int, size_t> scores) {
 }
 
 Jeu *JeuGUI::getJeu() {

@@ -93,10 +93,30 @@ private:
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
-/*
-    Tuile* selectTuileIllustreArchitecte(size_t joueur) override;
-    void placeTuileIllustreArchitecte(size_t joueur, Tuile* tuileSelected) override;
-*/
+
+    void afficheTitre();
+public:
+    static Jeu* getJeu();
+};
+
+class JeuApplication : public Jeu {
+private:
+    JeuApplication();
+
+    void selectGameMode() override;
+    void selectJoueurs() override;
+    Difficulte selectNiveauIllustreArchitechte() override;
+    void selectReglesScore() override;
+    Tuile* selectTuile(size_t joueur) override;
+    void placeTuile(size_t joueur, Tuile* tuileSelected) override;
+    void afficheTourAutomatique(size_t joueur) override;
+    void finDePartie(multimap<int, size_t> scores) override;
+
+    //! Affiche toutes les informations au joueur lors du placement de tuile
+    void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
+
+
+
 public:
     static Jeu* getJeu();
 };
