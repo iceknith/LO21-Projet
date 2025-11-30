@@ -27,10 +27,10 @@ private:
     QProgressBar * nbTuilesDeck;  // progression de la pioche
     QLabel * Chantier;              //texte "Chantier"
     QLabel * Joueur1;                   //texte "Partie du joueur 1"
-    QLabel * Joueur2;                   //texte "Partie du joueur 1"
-    QLabel * Joueur3;                   //texte "Partie du joueur 1"
-    QLabel * Joueur4;                   //texte "Partie du joueur 1"
-    QLabel * Architecte;                   //texte "Partie du joueur 1"
+    QLabel * Joueur2;                   //texte "Partie du joueur 2"
+    QLabel * Joueur3;                   //texte "Partie du joueur 3"
+    QLabel * Joueur4;                   //texte "Partie du joueur 4"
+    QLabel * Architecte;                   //texte "Partie de l'Illustre Architecte"
     QHBoxLayout * layoutInformations;
     vector<VueTuile *> vuetuiles;
 private slots:
@@ -39,4 +39,5 @@ private slots:
 };
 
 #endif // VUEPARTIE_H
+
 
