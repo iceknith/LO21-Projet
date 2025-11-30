@@ -405,50 +405,45 @@ Jeu *JeuConsole::getJeu() {
     return jeu;
 }
 
-// Jeu Application //
-
-
-JeuApplication::JeuApplication() {
-    affichage = new AffichageConsole();
-}
-
-void JeuApplication::selectGameMode()  {
-
-}
-
-void JeuApplication::selectJoueurs() {
-
-}
-
-Difficulte JeuApplication::selectNiveauIllustreArchitechte() {
-
-}
-
-void JeuApplication::selectReglesScore() {
-
-}
-
-Tuile* JeuApplication::selectTuile(size_t joueur) {
-
-}
-
-void JeuApplication::placeTuile(size_t joueur, Tuile* tuileSelected) {
-
-}
-
-void JeuApplication::afficheJoueur(size_t joueur, Plateau &tuileSelected, Vector2& positionSelectionne) {
-
-}
-
-void JeuApplication::afficheTourAutomatique(size_t joueur) {
-
-}
-
-void JeuApplication::finDePartie(multimap<int, size_t> scores) {
-}
+// Jeu GUI //
 
 Jeu *JeuGUI::getJeu() {
     // À décomenter lorsque JeuConsole aura un constructeur
     //if (jeu == nullptr) jeu = new JeuGUI();
     return jeu;
+}
+void JeuGUI::ecranDemarrage() {
+    // TODO ecran titre / Home Screen
+}
+void JeuGUI::selectGameMode(){
+    // QDialog
+    // TODO selection mode de jeu
+    modeDeJeu = GameMode::MULTIJOUEUR;
+}
+void JeuGUI::selectJoueurs(){
+    // QDialog
+    // TODO selection joueurs
+    nombreJoueurs = 2;
+    joueurs[0] = new JoueurSimple();
+    joueurs[1] = new JoueurSimple();
+    initialisePlateau();
+}
+Tuile* JeuGUI::selectTuile(size_t joueur){
+    // TODO selectionTuile
+}
+void JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected){
+    // TODO
+}
+Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
+    // TODO selection difficulté de jeu
+    return Difficulte::FACILE;
+}
+void JeuGUI::selectReglesScore() {
+    // TODO
+}
+void JeuGUI::afficheTourAutomatique(size_t joueur) {
+    // TODO
+}
+void JeuGUI::finDePartie(multimap<int, size_t> scores) {
+    // TODO
 }

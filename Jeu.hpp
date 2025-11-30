@@ -6,6 +6,7 @@
 #include "Affichage/Affichage.hpp"
 #include "Chantier/Chantier.hpp"
 #include "Chantier/Deck.hpp"
+#include "GUI/GUI.hpp"
 
 
 namespace constJeu {
@@ -99,33 +100,25 @@ public:
     static Jeu* getJeu();
 };
 
-class JeuApplication : public Jeu {
-private:
-    JeuApplication();
-
-    void selectGameMode() override;
-    void selectJoueurs() override;
-    Difficulte selectNiveauIllustreArchitechte() override;
-    void selectReglesScore() override;
-    Tuile* selectTuile(size_t joueur) override;
-    void placeTuile(size_t joueur, Tuile* tuileSelected) override;
-    void afficheTourAutomatique(size_t joueur) override;
-    void finDePartie(multimap<int, size_t> scores) override;
-
-    //! Affiche toutes les informations au joueur lors du placement de tuile
-    void afficheJoueur(size_t joueur, Plateau& tuileSelected, Vector2& positionSelectionne);
-
-
-
-public:
-    static Jeu* getJeu();
-};
-
 class JeuGUI : public Jeu {
 private:
-    JeuGUI() = default;
+    Application* fenetre;
+
+    JeuGUI() {
+        fenetre = new Application();
+        fenetre->show();
+    }
 public:
     static Jeu* getJeu();
+    void ecranDemarrage();
+    void selectGameMode() override;
+    void selectJoueurs() override;
+    Tuile* selectTuile(size_t joueur) override;
+    void placeTuile(size_t joueur, Tuile* tuileSelected) override;
+    Difficulte selectNiveauIllustreArchitechte() override;
+    void selectReglesScore() override;
+    void afficheTourAutomatique(size_t joueur) override;
+    void finDePartie(multimap<int, size_t> scores) override;
 };
 
 #endif

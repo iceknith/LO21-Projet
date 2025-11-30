@@ -3,8 +3,10 @@
 
 #include "../Utils.hpp"
 #include "../Players/Players.hpp"
+#include "../GUI/GUI.hpp"
 #include <vector>
 
+// Affichage //
 
 class Affichage {
 
@@ -18,6 +20,8 @@ public:
     void affiche_joueur_actuel(Joueur& joueur) {affiche_joueur_actuel(joueur, false, Vector2());};
     void affiche_joueur_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_joueur_actuel(joueur, true, selectedHexagone);};
 };
+
+// Affichage console //
 
 class AffichageConsole : public Affichage{
     static AffichageConsole* instance;
@@ -55,6 +59,25 @@ namespace constAffichageConsoleHex {
     //! Convertion entre les coordonées axiales et les coordonées de l'écran
     Vector2 axialToScreen (Vector2 v);
 }
+
+// Affichage graphique //
+
+class AffichageGUI : public Affichage {
+    Application* fenetre;
+
+public:
+    AffichageGUI();
+
+protected:
+    void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+};
+
+//! Ensemble de fonctions utiles à l'affichage graphique
+namespace constAffichageGUI {
+    void debugTextures();
+}
+
 
 
 #endif //LO21_PROJET_AFFICHAGE_HPP

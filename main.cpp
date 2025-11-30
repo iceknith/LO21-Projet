@@ -3,13 +3,28 @@
 
 #include "main.hpp"
 #include "Tests/Tests.hpp"
-#include <QApplication>
-#include <QPushButton>
-using namespace std;
+#include "GUI/GUI.hpp"
 
 int main(int argc, char *argv[]) {
-    assertTests();
+
+
+    QApplication app(argc, argv);
+
+    Application game;
+
+
+
+    game.resize(1024, 768);
+
+
+    game.show();
+    return app.exec();
+
+
     JeuConsole::getJeu()->gameLoop();
+    assertTests();
 
     return 0;
+
+
 }

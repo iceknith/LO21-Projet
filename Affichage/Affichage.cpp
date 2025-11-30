@@ -1,6 +1,8 @@
 #include "Affichage.hpp"
 using namespace constAffichageConsoleHex;
 
+// Affichage console //
+
 // L'affichage se fera sous la forme
 //  /1 1 1\
 // /1 Mar-1\
@@ -121,4 +123,15 @@ void constAffichageConsoleHex::replace_sauf_charactere(string &text_original, si
             text_original[i] = text_nouveau[i - pos];
         }
     }
+}
+
+// Affichage graphique //
+
+void constAffichageGUI::debugTextures() {
+    qDebug() << "=== LISTE DES RESSOURCES DISPONIBLES ===";
+    QDirIterator it(":", QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        qDebug() << it.next();
+    }
+    qDebug() << "========================================";
 }

@@ -27,6 +27,9 @@ add_executable(LO21-Projet main.cpp
         Players/Players.cpp
         Jeu.cpp
         Jeu.hpp
+        assets.qrc
+        GUI/GUI.cpp
+        GUI/GUI.hpp
 )
 
 # Lier executable aux bibliothèques qt
