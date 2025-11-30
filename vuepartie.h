@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <vector>
-#include "..\..\LO21-Projet\Jeu.hpp"
+#include "Jeu.hpp"
 
 class QLabel;
 class QLineEdit;
@@ -39,3 +39,4 @@ private slots:
 };
 
 #endif // VUEPARTIE_H
+
