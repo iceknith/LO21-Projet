@@ -48,11 +48,11 @@ public:
      * @param index l'index de la tuile à prendre
      * @return La Tuile selectionée
      */
-    Tuile* prendre_tuile(int index);
+    Tuile* prendre_tuile(size_t index);
     //! Ajoute une Tuile à la fin du chantier
     void ajouter_tuile(Tuile* tuile);
     //! Ajoute des Tuile à la fin du chantier
-    void ajouter_tuile(Tuile* tuile, int nombre);
+    void ajouter_tuile(Tuile* tuile, size_t nombre);
 };
 
 

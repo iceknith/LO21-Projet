@@ -5,10 +5,10 @@
 #include "Chantier.hpp"
 
 //Retire la tuile d'indice index du chantier pour la retourner 
-Tuile* Chantier::prendre_tuile(int index){
+Tuile* Chantier::prendre_tuile(size_t index){
     Tuile *result = tuiles[index];
     nombreTuiles--;
-    for (size_t i = 0; i < nombreTuiles; i++) tuiles[i] = tuiles[i+1];
+    for (size_t i = index; i < nombreTuiles; i++) tuiles[i] = tuiles[i+1];
     return result;
 };
 
@@ -21,10 +21,10 @@ void Chantier::ajouter_tuile(Tuile* tuile){
 };
 
 //Ajoute plusieurs tuiles à la fin du tableau
-void Chantier::ajouter_tuile(Tuile* tuile, int nombre){
+void Chantier::ajouter_tuile(Tuile* tuile, size_t nombre){
     if (nombreTuiles >= taille) {throw "Ajout de trop de tuiles";}
 
-    for (int i = 0; i < nombre; i++) {
+    for (size_t i = 0; i < nombre; i++) {
         tuiles[nombreTuiles] = tuile;
         tuile++;
         nombreTuiles++;
