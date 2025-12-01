@@ -13,126 +13,124 @@ class Score {
 protected:
     //! Le score décoré
     Score* scoreDecore = nullptr;
+    //! Le calcul du score local (propre à ce score spécifique)
+    virtual int scoreLocal(Plateau* plateau) =0;
 public:
-    Score() {};
-    Score(Score* scoreDecore) : scoreDecore(scoreDecore) {}
+    Score() = default;
+    explicit Score(Score* scoreDecore) : scoreDecore(scoreDecore) {}
     virtual ~Score() { free(scoreDecore);}
     //! La fonction de calcul de Score
-    virtual int score(Plateau* plateau) {return 0;}
-    int owo() {return 1;}
+    int score(Plateau* plateau);
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Hippodamos (MODE FACILE)
 class ScoreSoloArchitecteHippodamos : public Score {
-    int score_solo_architechte_hippodamos(Plateau* plateau);
-public:
-    int score(Plateau* plateau) override;
+protected:
+    int scoreLocal(Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Metagenes (MODE NORMALE)
 class ScoreSoloArchitecteMetagenes : public Score {
-    int score_solo_architechte_metagenes(Plateau* plateau);
-public:
-    int score(Plateau* plateau) override;
+protected:
+    int scoreLocal(Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Callicrates (MODE DIFFICILE)
 class ScoreSoloArchitecteCallicrates : public Score {
-    int score_solo_architechte_callicrates(Plateau* plateau);
-public:
-    int score(Plateau* plateau) override;
+protected:
+    int scoreLocal(Plateau* plateau) override;
 };
 
 
 //! Décorateur qui implémente le scoring pour les points Bleus d'un joueur normal
 class ScoreBleu : public Score{
-    int score_bleu(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreBleu() : Score() {}
     explicit ScoreBleu(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Rouges d'un joueur normal
 class ScoreRouge : public Score {
-    int score_rouge(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreRouge() : Score() {}
     explicit ScoreRouge(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Verts d'un joueur normal
 class ScoreVert : public Score{
-    int score_vert(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreVert() : Score() {}
     explicit ScoreVert(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Violets d'un joueur normal
 class ScoreViolet : public Score{
-    int score_violet(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreViolet() : Score() {}
     explicit ScoreViolet(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Jaunes d'un joueur normal
 class ScoreJaune : public Score{
-    int score_jaune(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreJaune() : Score() {}
     explicit ScoreJaune(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 
 //! Décorateur qui implémente le scoring pour les points Bleus d'un joueur avec variante
 class ScoreBleuVariante : public Score{
-    int score_bleu_variante(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreBleuVariante() : Score() {}
     explicit ScoreBleuVariante(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Rouges d'un joueur avec variante
 class ScoreRougeVariante : public Score{
-    int score_rouge_variante(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreRougeVariante() : Score() {}
     explicit ScoreRougeVariante(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Verts d'un joueur avec variante
 class ScoreVertVariante : public Score{
-    int score_vert_variante(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreVertVariante() : Score() {}
     explicit ScoreVertVariante(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Violets d'un joueur avec variante
 class ScoreVioletVariante : public Score{
-    int score_violet_variante(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreVioletVariante() : Score() {}
     explicit ScoreVioletVariante(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Décorateur qui implémente le scoring pour les points Jaunes d'un joueur avec variante
 class ScoreJauneVariante : public Score{
-    int score_jaune_variante(Plateau* plateau);
+protected:
+    int scoreLocal(Plateau* plateau) override;
 public:
     ScoreJauneVariante() : Score() {}
     explicit ScoreJauneVariante(Score* scoreDecore) : Score(scoreDecore) {}
-    int score (Plateau* plateau) override;
 };
 
 //! Ensemble de fonctions utiles au calcul du score

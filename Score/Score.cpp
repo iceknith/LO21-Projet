@@ -108,10 +108,18 @@ StatsCouleursSoloArchitecte ScoreUtils::compteur_couleur(Plateau* plateau) {
     }
     return stats;
 }
+
+
+int Score::score(Plateau* plateau) {
+    int s = scoreDecore ? scoreDecore->score(plateau) : 0;
+    s += scoreLocal(plateau);
+    return s;
+}
+
 // =======================
 // Illustre architecte - FACILE - NORMALE - DIFFICILE
 
-int ScoreSoloArchitecteHippodamos::score_solo_architechte_hippodamos(Plateau* plateau) {
+int ScoreSoloArchitecteHippodamos::scoreLocal(Plateau* plateau) {
     // Règle FACILE :pour chaque couleur: score = nombre quartiers * nombre de places
     // exeption : la couleur blanche (car il s'agit de carrières) ne compte pas.
     // Tous les hexagones partagent la meme hauteur = 1
@@ -125,14 +133,7 @@ int ScoreSoloArchitecteHippodamos::score_solo_architechte_hippodamos(Plateau* pl
     return resultat;
 }
 
-int ScoreSoloArchitecteHippodamos::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_solo_architechte_hippodamos(plateau);
-    return s;
-}
-
-int ScoreSoloArchitecteMetagenes::score_solo_architechte_metagenes(Plateau* plateau) {
+int ScoreSoloArchitecteMetagenes::scoreLocal(Plateau* plateau) {
     // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places + nombre de carrières * 2
     // Tous les hexagones partagent la meme hauteur = 1
     auto stats = compteur_couleur(plateau);
@@ -148,14 +149,7 @@ int ScoreSoloArchitecteMetagenes::score_solo_architechte_metagenes(Plateau* plat
     return resultat;
 }
 
-int ScoreSoloArchitecteMetagenes::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_solo_architechte_metagenes(plateau);
-    return s;
-}
-
-int ScoreSoloArchitecteCallicrates::score_solo_architechte_callicrates(Plateau* plateau) {
+int ScoreSoloArchitecteCallicrates::scoreLocal(Plateau* plateau) {
     // Règle NORMALE :pour chaque couleur: score = nombre quartiers * nombre de places
     // Tous les hexagones partagent la meme hauteur = 2
     auto stats = compteur_couleur(plateau);
@@ -168,34 +162,19 @@ int ScoreSoloArchitecteCallicrates::score_solo_architechte_callicrates(Plateau* 
     return resultat;
 }
 
-int ScoreSoloArchitecteCallicrates::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_solo_architechte_callicrates(plateau);
-    return s;
-}
-
 // =======================
 // ScoreBleu
 
-int ScoreBleu::score_bleu(Plateau* plateau) {
+int ScoreBleu::scoreLocal(Plateau* plateau) {
     // Règle bleue : (somme des hauteurs du plus grand groupe de quartiers bleus) * (nombre de places bleues)
     int quartier = ScoreUtils::sum_heights(ScoreUtils::get_largest_hexagone_voisinnage_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::BLEU));
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::BLEU);
     return quartier*place;
 }
-
-int ScoreBleu::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_bleu(plateau);
-    return s;
-}
-
 // =======================
 // ScoreRouge
 
-int ScoreRouge::score_rouge(Plateau* plateau) {
+int ScoreRouge::scoreLocal(Plateau* plateau) {
     // Règle rouge : (somme des hauteurs des quartiers rouges adjacents au vide) * (nombre de places rouges)
     int quartier = 0;
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::ROUGE);
@@ -207,35 +186,20 @@ int ScoreRouge::score_rouge(Plateau* plateau) {
     }
     return quartier*place;
 }
-
-int ScoreRouge::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_rouge(plateau);
-    return s;
-}
-
 // =======================
 // ScoreVert
 
-int ScoreVert::score_vert(Plateau* plateau) {
+int ScoreVert::scoreLocal(Plateau* plateau) {
     // Règle vert : (somme des hauteurs des quartiers verts) * (nombre de places vertes * 3)
     int place = ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VERT)*GameConstants::VERT_PLACE_MULTIPLIER;
     int quartier = ScoreUtils::get_iteration_with_hauteur_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::VERT);
     return place*quartier;
 }
 
-int ScoreVert::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_vert(plateau);
-    return s;
-}
-
 // =======================
 // ScoreViolet
 
-int ScoreViolet::score_violet(Plateau* plateau) {
+int ScoreViolet::scoreLocal(Plateau* plateau) {
     // Règle violet : (somme des hauteurs des quartiers violets non adjacents au vide) * (nombre de places violets)
     int quartier = 0;
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VIOLET);
@@ -248,17 +212,10 @@ int ScoreViolet::score_violet(Plateau* plateau) {
     return quartier*place;
 }
 
-int ScoreViolet::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_violet(plateau);
-    return s;
-}
-
 // =======================
 // ScoreJaune
 
-int ScoreJaune::score_jaune(Plateau* plateau) {
+int ScoreJaune::scoreLocal(Plateau* plateau) {
     // Règle jaune : (somme des hauteurs des quartiers jaunes non adjacents à un autre quartier jaune) * (nombre de places jaunes)
     int quartier = 0;
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::JAUNE);
@@ -279,17 +236,11 @@ int ScoreJaune::score_jaune(Plateau* plateau) {
     return quartier*place;
 }
 
-int ScoreJaune::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_jaune(plateau);
-    return s;
-}
 
 // =======================
 // Variante: ScoreBleuVariante
 
-int ScoreBleuVariante::score_bleu_variante(Plateau* plateau) {
+int ScoreBleuVariante::scoreLocal(Plateau* plateau) {
     // Règle bleueVariante : (somme des hauteurs du plus grand groupe de quartiers bleus) * (nombre de places bleues) * (2 si ce plus grand groupe de quartiers bleus >= 10)
     int quartier =0;
     auto voisinnage = ScoreUtils::get_largest_hexagone_voisinnage_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::BLEU);
@@ -299,17 +250,10 @@ int ScoreBleuVariante::score_bleu_variante(Plateau* plateau) {
     return quartier*place;
 }
 
-int ScoreBleuVariante::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_bleu_variante(plateau);
-    return s;
-}
-
 // =======================
 // Variante: ScoreRougeVariante
 
-int ScoreRougeVariante::score_rouge_variante(Plateau* plateau) {
+int ScoreRougeVariante::scoreLocal(Plateau* plateau) {
     // Règle rougeVariante : (somme des hauteurs des quartiers rouges adjacents au vide (*2 sur hauteur si le quartier rouge est adjacent à 3 ou 4 vide ) ) * (nombre de places rouges)
     int tmp=0;
     int quartier = 0;
@@ -329,17 +273,10 @@ int ScoreRougeVariante::score_rouge_variante(Plateau* plateau) {
     return quartier*place;
 }
 
-int ScoreRougeVariante::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_rouge_variante(plateau);
-    return s;
-}
-
 // =======================
 // Variante: ScoreVertVariante
 
-int ScoreVertVariante::score_vert_variante(Plateau* plateau) {
+int ScoreVertVariante::scoreLocal(Plateau* plateau) {
     // Règle vertVariante : (somme des hauteurs des quartiers verts (*2 si quartier vert est adjacent à un espace vide entouré ) ) * (nombre de places vertes * 3)
     // TODO : implementer regle vert variante
     // en attendant: uniquement regle de base
@@ -348,17 +285,10 @@ int ScoreVertVariante::score_vert_variante(Plateau* plateau) {
     return place*quartier;
 }
 
-int ScoreVertVariante::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_vert_variante(plateau);
-    return s;
-}
-
 // =======================
 // Variante: ScoreVioletVariante
 
-int ScoreVioletVariante::score_violet_variante(Plateau* plateau) {
+int ScoreVioletVariante::scoreLocal(Plateau* plateau) {
     // Règle violetVariante : (somme des hauteurs des quartiers violets non adjacents au vide (*2 si le quartier à une hauteur > 1 ) ) * (nombre de places violets)
     int quartier = 0;
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VIOLET);
@@ -377,17 +307,10 @@ int ScoreVioletVariante::score_violet_variante(Plateau* plateau) {
     return quartier*place;
 }
 
-int ScoreVioletVariante::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_violet_variante(plateau);
-    return s;
-}
-
 // =======================
 // Variante: ScoreJauneVariante
 
-int ScoreJauneVariante::score_jaune_variante(Plateau* plateau) {
+int ScoreJauneVariante::scoreLocal(Plateau* plateau) {
     // Règle jauneVariante : (somme des hauteurs des quartiers jaunes non adjacents à un autre quartier jaune (*2 si le quartier est adjacent à une place jaune) ) * (nombre de places jaunes)
     int quartier = 0;
     int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::JAUNE);
@@ -410,13 +333,6 @@ int ScoreJauneVariante::score_jaune_variante(Plateau* plateau) {
         else if (!quartier_voisin_jaune ) quartier+= hex->get_hauteur();
     }
     return quartier*place;
-}
-
-int ScoreJauneVariante::score(Plateau* plateau) {
-    int s = 0;
-    if (scoreDecore) s += scoreDecore->score(plateau);
-    s += score_jaune_variante(plateau);
-    return s;
 }
 
 // Fonctions de création de score
