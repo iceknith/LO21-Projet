@@ -3,15 +3,15 @@
 
 #include "../HexagoneContainer/Tuile.hpp"
 
-const int max_tuiles_par_chantier = 5;
+const size_t max_tuiles_par_chantier = 5;
 
 //! La classe implémentant le Chantier, permettant aux Joueur de piocher des Tuile
 class Chantier {
 private:
     //! La taille maximale du Chantier (est dépendante du nombre de joueurs)
-    int taille = 0;
+    size_t taille = 0;
     //! le nombre de tuiles actuellement dans le Chantier
-    int nombreTuiles = 0;
+    size_t nombreTuiles = 0;
     //! Le tableau enregistrant toutes les tuiles sur tout le Chantier
     Tuile* tuiles[max_tuiles_par_chantier];
 public:
@@ -31,15 +31,13 @@ public:
         }
     };
     //! Setteur de la taille du chantier
-    void set_taille(int tailles) {this->taille = min(max(tailles, 0), max_tuiles_par_chantier);} // Clamp entre 0 et max_tuiles_par_chantier
+    void set_taille(size_t newTaille) {taille = min(max(newTaille, (size_t) 0), max_tuiles_par_chantier);} // Clamp entre 0 et max_tuiles_par_chantier
     //! Getteur de la taille du chantier
-    int get_taille() {return taille;}
+    size_t get_taille() {return taille;}
     //! Getteur du nombres de tuiles dans le chantier
-    int get_nombre_tuiles() {return nombreTuiles;}
+    size_t get_nombre_tuiles() {return nombreTuiles;}
     //! Si le chantier est vide
     bool est_vide() {return nombreTuiles <= 0;}
-    //! Getteur des tuiles du chantier
-    Tuile** get_tuiles() {return tuiles;}
     //! Retire la tuile, à l'index indiqué, du chantier
     /*!
      * Retire la tuile, à l'index indiqué, du chantier
@@ -53,6 +51,29 @@ public:
     void ajouter_tuile(Tuile* tuile);
     //! Ajoute des Tuile à la fin du chantier
     void ajouter_tuile(Tuile* tuile, size_t nombre);
+
+
+
+    //! Iterateur de Chantier
+    class iterator {
+        size_t indx = 0;
+        const Chantier& c;
+        iterator(size_t index, const Chantier& chantier) : indx(index), c{chantier} {};
+        friend Chantier;
+    public:
+        iterator& operator++() {++indx; return *this;}
+        iterator& operator--() {--indx; return *this;}
+        [[nodiscard]] Tuile* operator*() const {return c.tuiles[indx];}
+        [[nodiscard]] bool operator !=(iterator other) const {return indx != other.indx;}
+    };
+
+    [[nodiscard]] iterator begin() {return iterator{0, *this};}
+    [[nodiscard]] iterator end() {return iterator{taille, *this};}
+    // Itérateur const
+    [[nodiscard]] iterator begin() const {return iterator{0, *this};}
+    [[nodiscard]] iterator end() const {return iterator{taille, *this};}
+    [[nodiscard]] iterator cbegin() const {return iterator{0, *this};}
+    [[nodiscard]] iterator cend() const {return iterator{taille, *this};}
 };
 
 

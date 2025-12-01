@@ -217,18 +217,17 @@ void JeuConsole::selectReglesScore() {
 Tuile* JeuConsole::selectTuile(size_t joueur) {
     int output;
     Vector2 positionNulle{0,0};
-    Tuile** ch = chantier.get_tuiles();
 
     cout << "\033[0;36m------------------" << endl
         << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
         << "------------------" << endl << endl;
 
-    int nb_tuilles = chantier.get_nombre_tuiles();
-    for (size_t i = 0; i<nb_tuilles; i++) {
+    int i = 0;
+    for (auto iter : chantier) {
         // Définition du plateau pour la tuile
         cout<<"\033[0;97mTuile n°"<<i+1<< " (cout en pierre = "<< i << ") : "<<endl;
-        Tuile t = *ch[i];
-        affichage->affiche_container(t);
+        i++;
+        affichage->affiche_container(*iter);
     }
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
     affichage->affiche_joueur_actuel(*joueurs[joueur]);
