@@ -24,6 +24,6 @@ var searchData=
   ['set_5fnombre_5fjoueurs_21',['set_nombre_joueurs',['../df/d51/classChantier.html#adc9af9ebd92763c6e564ad99b05e689e',1,'Chantier']]],
   ['set_5fpierre_22',['set_pierre',['../dd/d07/classJoueur.html#a555b03e154cba8df9c50a972fce8d9cc',1,'Joueur']]],
   ['set_5fscore_23',['set_score',['../dd/d07/classJoueur.html#a8cac142b38f18fd15d75f4ca49572051',1,'Joueur::set_score()'],['../d9/d17/classIllustreArchitecte.html#aa1995a065b5d3249bfafcd729d11c4ff',1,'IllustreArchitecte::set_score()']]],
-  ['set_5ftaille_24',['set_taille',['../df/d51/classChantier.html#af87920985db3fce76376de7e466b6611',1,'Chantier']]],
+  ['set_5ftaille_24',['set_taille',['../df/d51/classChantier.html#a21284aab58c5fb9f683261a074dd6234',1,'Chantier']]],
   ['sum_5fheights_25',['sum_heights',['../da/dd1/namespaceScoreUtils.html#aa413551b5b9f833c4f6a2ae1163b58b7',1,'ScoreUtils']]]
 ];
