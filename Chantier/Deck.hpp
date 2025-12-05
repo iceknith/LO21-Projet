@@ -32,7 +32,7 @@ public:
 
         nombreTuiles = taille;
 
-        tuiles = new TuileJeuConcrete[taille];
+        tuiles = new TuileJeu[taille];
     };
     //! Getteur de la taille maximale du Deck
     int get_taille() {return taille;};

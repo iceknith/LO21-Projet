@@ -230,7 +230,7 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
         affichage->affiche_container(*iter);
     }
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
-    affichage->affiche_joueur_actuel(*joueurs[joueur]);
+    affichage->affiche_joueur(*joueurs[joueur]);
 
     cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ?" << endl;
     cout << "\033[0;37m-> \033[0;97m";
@@ -330,7 +330,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 
                 Joueur *tempJoueur = joueurs[joueur];
                 tempJoueur->place_tuile(tuileSelected, positionSelectionne);
-                affichage->affiche_joueur_actuel(*tempJoueur);
+                affichage->affiche_joueur(*tempJoueur);
 
                 cout << "\033[0;97mTapez \033[1;32my\033[0;97m pour confirmer ce placement !" << endl
                     << "\033[0;37m-> \033[0;97m";
@@ -362,13 +362,13 @@ void JeuConsole::afficheJoueur(size_t joueur, Tuile &tuileSelected, Vector2& pos
     affichage->affiche_container(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;
-    affichage->affiche_joueur_actuel(*joueurs[joueur], positionSelectionne);
+    affichage->affiche_joueur(*joueurs[joueur], positionSelectionne);
 }
 
 void JeuConsole::afficheTourAutomatique(size_t joueur) {
     cout << "\033[0;36m-------------------------------------------" << endl
         << "\033[0;97mVoici le plateau de l'Illustre Architechte:" << endl;
-    affichage->affiche_joueur_actuel(*joueurs[joueur]);
+    affichage->affiche_joueur(*joueurs[joueur]);
 
 }
 

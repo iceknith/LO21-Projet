@@ -28,7 +28,7 @@ public:
       Si le joueur joue tout seul. \n
       Cette méthode indique au moteur de jeu, si il as à attendre des inputs de la part du joueur
     */
-    virtual bool get_joue_tout_seul() const {return false;}
+    virtual bool get_joue_tout_seul() const = 0;
     //! Retourne le Score calculé du Joueur
     int get_score() {return scoreJoueur->score(&plateauJoueur);}
     //! Set le score du joueur

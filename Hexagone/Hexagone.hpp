@@ -121,7 +121,7 @@ public :
      Et est surchargée à chaque implémentation concrète de l'Hexagone.
      \return Le texte à afficher au centre de l'hexagone dans l'affichage console
     */
-    virtual const string get_text() const {};
+    virtual const string get_text() const = 0;
 
     //! Retourne l'affichage console de l'hexagone actuel
     /*!

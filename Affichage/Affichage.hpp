@@ -9,14 +9,14 @@
 class Affichage {
 
 protected:
-    virtual void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) {};
-    virtual void affiche_container(HexagoneContainer& container, bool selectHexagone, Vector2 selectedHexagone) {};
+    virtual void affiche_joueur(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) = 0;
+    virtual void affiche_container(HexagoneContainer& container, bool selectHexagone, Vector2 selectedHexagone) = 0;
 
 public:
     void affiche_container(HexagoneContainer& container) { affiche_container(container, false, Vector2());};
     void affiche_container(HexagoneContainer& container, Vector2 selectedHexagone) {affiche_container(container, true, selectedHexagone);};
-    void affiche_joueur_actuel(Joueur& joueur) {affiche_joueur_actuel(joueur, false, Vector2());};
-    void affiche_joueur_actuel(Joueur& joueur, Vector2 selectedHexagone) {affiche_joueur_actuel(joueur, true, selectedHexagone);};
+    void affiche_joueur(Joueur& joueur) { affiche_joueur(joueur, false, Vector2());};
+    void affiche_joueur(Joueur& joueur, Vector2 selectedHexagone) { affiche_joueur(joueur, true, selectedHexagone);};
 };
 
 class AffichageConsole : public Affichage{
@@ -25,7 +25,7 @@ class AffichageConsole : public Affichage{
     const int hexW = 9; // colonnes
 
 protected:
-    void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_joueur(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
     void affiche_container(HexagoneContainer& hexagoneContainer, bool selectHexagone, Vector2 selectedHexagone) override;
 
 public:

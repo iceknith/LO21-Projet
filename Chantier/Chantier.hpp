@@ -14,6 +14,9 @@ private:
     size_t nombreTuiles = 0;
     //! Le tableau enregistrant toutes les tuiles sur tout le Chantier
     Tuile* tuiles[max_tuiles_par_chantier];
+
+    //! Setteur de la taille du chantier
+    void set_taille(size_t newTaille) {taille = min(max(newTaille, (size_t) 0), max_tuiles_par_chantier);} // Clamp entre 0 et max_tuiles_par_chantier
 public:
     //! Calcule la taille du chantier selon le nombre de joueurs
     void set_nombre_joueurs(int nombre_joueurs){
@@ -30,14 +33,12 @@ public:
             this->set_taille(5);
         }
     };
-    //! Setteur de la taille du chantier
-    void set_taille(size_t newTaille) {taille = min(max(newTaille, (size_t) 0), max_tuiles_par_chantier);} // Clamp entre 0 et max_tuiles_par_chantier
     //! Getteur de la taille du chantier
-    size_t get_taille() {return taille;}
+    size_t get_taille() const {return taille;}
     //! Getteur du nombres de tuiles dans le chantier
-    size_t get_nombre_tuiles() {return nombreTuiles;}
+    size_t get_nombre_tuiles() const {return nombreTuiles;}
     //! Si le chantier est vide
-    bool est_vide() {return nombreTuiles <= 0;}
+    bool est_vide() const {return nombreTuiles <= 0;}
     //! Retire la tuile, à l'index indiqué, du chantier
     /*!
      * Retire la tuile, à l'index indiqué, du chantier

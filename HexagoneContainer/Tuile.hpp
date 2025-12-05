@@ -57,18 +57,12 @@ public:
     TuileDepart();
 };
 
-//! Représente une Tuile de jeu classique
-class TuileJeu : public Tuile {
-public:
-    TuileJeu() : Tuile() {};
-};
-
 //! Implémentation concrète de la tuile de Jeu de base
-class TuileJeuConcrete : public TuileJeu {
+class TuileJeu : public Tuile {
 private:
     const static Vector2 positionEnfants[3];
 public:
-    TuileJeuConcrete();
+    TuileJeu();
 };
 
 #endif

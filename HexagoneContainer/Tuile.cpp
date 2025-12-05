@@ -10,13 +10,13 @@ Tuile::Tuile() : HexagoneContainer() {
     id = nextID++;
 }
 
-const Vector2 TuileJeuConcrete::positionEnfants[3] = {
+const Vector2 TuileJeu::positionEnfants[3] = {
         Vector2(0,0),
         Vector2(1,0),
         Vector2(0,1),
 };
 
-TuileJeuConcrete::TuileJeuConcrete() : TuileJeu() {
+TuileJeu::TuileJeu() : Tuile() {
     id = nextID++;
 
     int selec = rand()%100;

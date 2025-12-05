@@ -98,7 +98,7 @@ void AffichageConsole::affiche_container(HexagoneContainer& container, bool sele
     }
 }
 
-void AffichageConsole::affiche_joueur_actuel(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
+void AffichageConsole::affiche_joueur(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
     affiche_container(joueur.get_plateau(), selectHexagone, selectedHexagone);
     cout << "\033[0;37m " << joueur.get_pierre() << " pierre(s)" << endl;
 }
