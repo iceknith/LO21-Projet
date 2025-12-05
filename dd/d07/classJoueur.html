@@ -73,7 +73,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="../../df/d55/classJoueur-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Joueur Class Reference</div></div>
+  <div class="headertitle"><div class="title">Joueur Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -97,9 +97,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:add6c98be3020651d84f6d75ccc1d867e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d07/classJoueur.html#add6c98be3020651d84f6d75ccc1d867e">Joueur</a> ()</td></tr>
 <tr class="memdesc:add6c98be3020651d84f6d75ccc1d867e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur du joueur.  <a href="../../dd/d07/classJoueur.html#add6c98be3020651d84f6d75ccc1d867e">More...</a><br /></td></tr>
 <tr class="separator:add6c98be3020651d84f6d75ccc1d867e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a698341c22b6dc3253dcb833f1613deca"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d07/classJoueur.html#a698341c22b6dc3253dcb833f1613deca">get_joue_tout_seul</a> () const</td></tr>
-<tr class="memdesc:a698341c22b6dc3253dcb833f1613deca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Si le joueur joue tout seul.  <a href="../../dd/d07/classJoueur.html#a698341c22b6dc3253dcb833f1613deca">More...</a><br /></td></tr>
-<tr class="separator:a698341c22b6dc3253dcb833f1613deca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e052bb1eb9f0928b88bfb86d281c3ea"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d07/classJoueur.html#a0e052bb1eb9f0928b88bfb86d281c3ea">get_joue_tout_seul</a> () const =0</td></tr>
+<tr class="memdesc:a0e052bb1eb9f0928b88bfb86d281c3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Si le joueur joue tout seul.  <a href="../../dd/d07/classJoueur.html#a0e052bb1eb9f0928b88bfb86d281c3ea">More...</a><br /></td></tr>
+<tr class="separator:a0e052bb1eb9f0928b88bfb86d281c3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae46d462bc45eddb50bf617f0e3cf18de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d07/classJoueur.html#ae46d462bc45eddb50bf617f0e3cf18de">get_score</a> ()</td></tr>
 <tr class="memdesc:ae46d462bc45eddb50bf617f0e3cf18de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le <a class="el" href="../../d7/d48/classScore.html" title="Classe de Score, utilisée pour calculer le score d&#39;un joueur à partir d&#39;un plateau.">Score</a> calculé du <a class="el" href="../../dd/d07/classJoueur.html" title="La classe abstraite Joueur, qui implémente n&#39;importe quel Joueur.">Joueur</a>.  <a href="../../dd/d07/classJoueur.html#ae46d462bc45eddb50bf617f0e3cf18de">More...</a><br /></td></tr>
 <tr class="separator:ae46d462bc45eddb50bf617f0e3cf18de"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -192,8 +192,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a698341c22b6dc3253dcb833f1613deca" name="a698341c22b6dc3253dcb833f1613deca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a698341c22b6dc3253dcb833f1613deca">&#9670;&#160;</a></span>get_joue_tout_seul()</h2>
+<a id="a0e052bb1eb9f0928b88bfb86d281c3ea" name="a0e052bb1eb9f0928b88bfb86d281c3ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e052bb1eb9f0928b88bfb86d281c3ea">&#9670;&#160;</a></span>get_joue_tout_seul()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,14 +210,14 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p >Si le joueur joue tout seul. <br  />
 Cette méthode indique au moteur de jeu, si il as à attendre des inputs de la part du joueur </p>
 
-<p>Reimplemented in <a class="el" href="../../d6/dfa/classJoueurSimple.html#a7ce1c777cd56d96f3d6757455e5ff36b">JoueurSimple</a>, and <a class="el" href="../../d9/d17/classIllustreArchitecte.html#ab73f8b7fd378e0aa762fd7da8ce5e74d">IllustreArchitecte</a>.</p>
+<p>Implemented in <a class="el" href="../../d6/dfa/classJoueurSimple.html#a7ce1c777cd56d96f3d6757455e5ff36b">JoueurSimple</a>, and <a class="el" href="../../d9/d17/classIllustreArchitecte.html#ab73f8b7fd378e0aa762fd7da8ce5e74d">IllustreArchitecte</a>.</p>
 
 </div>
 </div>
