@@ -2,6 +2,7 @@
 #define LO21_PROJET_CHANTIER_HPP
 
 #include "../HexagoneContainer/Tuile.hpp"
+#include "../Serialization/Serializable.hpp"
 
 const size_t max_tuiles_par_chantier = 5;
 
