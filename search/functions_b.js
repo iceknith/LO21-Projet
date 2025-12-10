@@ -7,5 +7,7 @@ var searchData=
   ['operator_2d_4',['operator-',['../d8/d0d/classVector2.html#a37653598d7dd2e823c7af55bc50b92bb',1,'Vector2']]],
   ['operator_2d_2d_5',['operator--',['../d1/dc5/classChantier_1_1iterator.html#adddebd6a5d65d4c8e7a6377f343a8266',1,'Chantier::iterator']]],
   ['operator_3c_6',['operator&lt;',['../d8/d0d/classVector2.html#a569bd5994787fb2ff4554fea86cd8fc3',1,'Vector2']]],
-  ['operator_3d_3d_7',['operator==',['../d7/d88/classTuile.html#ada86d55fe2fb7759513594ea1ff51ef1',1,'Tuile::operator==()'],['../d8/d0d/classVector2.html#a77b638de6b16a80d4c4be0c21fe2b481',1,'Vector2::operator==()']]]
+  ['operator_3c_3c_7',['operator&lt;&lt;',['../dc/d99/Serialization_8cpp.html#a133b55195b2e9cbc675a9c0078055a9f',1,'operator&lt;&lt;(QDataStream &amp;stream, const SerializationContext &amp;context):&#160;Serialization.cpp'],['../dc/d99/Serialization_8cpp.html#af61207065b101538d3c08c2c2af62491',1,'operator&lt;&lt;(QDataStream &amp;stream, const SerializationContext::Record &amp;record):&#160;Serialization.cpp']]],
+  ['operator_3d_3d_8',['operator==',['../d7/d88/classTuile.html#ada86d55fe2fb7759513594ea1ff51ef1',1,'Tuile::operator==()'],['../d8/d0d/classVector2.html#a77b638de6b16a80d4c4be0c21fe2b481',1,'Vector2::operator==()']]],
+  ['operator_3e_3e_9',['operator&gt;&gt;',['../dc/d99/Serialization_8cpp.html#a53b39d664230e91d707490d4ab769427',1,'operator&gt;&gt;(QDataStream &amp;stream, SerializationContext &amp;context):&#160;Serialization.cpp'],['../dc/d99/Serialization_8cpp.html#a6e1361ae0f6a2ff9cf05843ca62d3811',1,'operator&gt;&gt;(QDataStream &amp;stream, SerializationContext::Record &amp;record):&#160;Serialization.cpp']]]
 ];

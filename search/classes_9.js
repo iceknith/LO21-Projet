@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['tuile_0',['Tuile',['../d7/d88/classTuile.html',1,'']]],
-  ['tuiledepart_1',['TuileDepart',['../db/d42/classTuileDepart.html',1,'']]],
-  ['tuilejeu_2',['TuileJeu',['../d4/dec/classTuileJeu.html',1,'']]]
+  ['score_0',['Score',['../d7/d48/classScore.html',1,'']]],
+  ['scorebleu_1',['ScoreBleu',['../d2/d58/classScoreBleu.html',1,'']]],
+  ['scorebleuvariante_2',['ScoreBleuVariante',['../d7/d8b/classScoreBleuVariante.html',1,'']]],
+  ['scorejaune_3',['ScoreJaune',['../db/dc9/classScoreJaune.html',1,'']]],
+  ['scorejaunevariante_4',['ScoreJauneVariante',['../dc/dd0/classScoreJauneVariante.html',1,'']]],
+  ['scorerouge_5',['ScoreRouge',['../db/d18/classScoreRouge.html',1,'']]],
+  ['scorerougevariante_6',['ScoreRougeVariante',['../d2/d5e/classScoreRougeVariante.html',1,'']]],
+  ['scoresoloarchitectecallicrates_7',['ScoreSoloArchitecteCallicrates',['../dd/d21/classScoreSoloArchitecteCallicrates.html',1,'']]],
+  ['scoresoloarchitectehippodamos_8',['ScoreSoloArchitecteHippodamos',['../dc/d9a/classScoreSoloArchitecteHippodamos.html',1,'']]],
+  ['scoresoloarchitectemetagenes_9',['ScoreSoloArchitecteMetagenes',['../d1/dc8/classScoreSoloArchitecteMetagenes.html',1,'']]],
+  ['scorevert_10',['ScoreVert',['../df/dca/classScoreVert.html',1,'']]],
+  ['scorevertvariante_11',['ScoreVertVariante',['../db/da3/classScoreVertVariante.html',1,'']]],
+  ['scoreviolet_12',['ScoreViolet',['../df/d68/classScoreViolet.html',1,'']]],
+  ['scorevioletvariante_13',['ScoreVioletVariante',['../dd/d84/classScoreVioletVariante.html',1,'']]],
+  ['serializable_14',['Serializable',['../d6/dcb/classSerializable.html',1,'']]],
+  ['serializablefactory_15',['SerializableFactory',['../d8/d20/classSerializableFactory.html',1,'']]],
+  ['serializationcontext_16',['SerializationContext',['../d3/d88/classSerializationContext.html',1,'']]],
+  ['statscouleurssoloarchitecte_17',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]]
 ];

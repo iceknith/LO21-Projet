@@ -5,5 +5,7 @@ var searchData=
   ['cbegin_2',['cbegin',['../df/d51/classChantier.html#ac384bee025dda7e9478b78c2555fcec1',1,'Chantier::cbegin()'],['../dc/d32/classHexagoneContainer.html#a0e326428005cb2cce5237e6e730f0b87',1,'HexagoneContainer::cbegin()']]],
   ['cend_3',['cend',['../df/d51/classChantier.html#a204311bc0dc672f855b6b6d4808ea328',1,'Chantier::cend()'],['../dc/d32/classHexagoneContainer.html#afe7bb89cde5b4eaedecd1f150a4f26e1',1,'HexagoneContainer::cend()']]],
   ['choisir_5ftuile_4',['choisir_tuile',['../d9/d17/classIllustreArchitecte.html#a091e69895af70dc2dde75c76bebf2dea',1,'IllustreArchitecte']]],
-  ['compteur_5fcouleur_5',['compteur_couleur',['../da/dd1/namespaceScoreUtils.html#a0849ac4ae47c2646c50002b0dabb783c',1,'ScoreUtils']]]
+  ['classname_5',['className',['../d6/dcb/classSerializable.html#a8f8478c37ff67375ea42b798658439be',1,'Serializable']]],
+  ['compteur_5fcouleur_6',['compteur_couleur',['../da/dd1/namespaceScoreUtils.html#a0849ac4ae47c2646c50002b0dabb783c',1,'ScoreUtils']]],
+  ['createserializable_7',['createSerializable',['../d8/d20/classSerializableFactory.html#a4abe3261a5e8403a344c67965dffb29f',1,'SerializableFactory']]]
 ];

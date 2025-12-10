@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['taille_0',['taille',['../df/d51/classChantier.html#ab34d27f6344be39158e530e09fbe4c78',1,'Chantier::taille()'],['../d6/df2/classDeck.html#a932f17f31b3ada9c8ef96d11721b9ce9',1,'Deck::taille()']]],
-  ['tuileparent_1',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
-  ['tuiles_2',['tuiles',['../df/d51/classChantier.html#ae30cabb664d3b3f9deeeb7afa78272c5',1,'Chantier::tuiles()'],['../d6/df2/classDeck.html#a635e4d00815683285f28ca8be8c036fc',1,'Deck::tuiles()']]]
+  ['scoredecore_0',['scoreDecore',['../d7/d48/classScore.html#a3b57d7afaf21a727c6637b319ae5b675',1,'Score']]],
+  ['scorejoueur_1',['scoreJoueur',['../dd/d07/classJoueur.html#a31142ed18f56d3e993e050a79246f89c',1,'Joueur']]],
+  ['serializeddata_2',['serializedData',['../d9/ded/structSerializationContext_1_1Record.html#abc90fb67a2b34a05e7721bb703da425e',1,'SerializationContext::Record']]]
 ];
