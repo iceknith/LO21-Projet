@@ -19,6 +19,7 @@ All documentation about Doxygen can be found at : \sa https://www.doxygen.nl/man
 #include "Players/Players.hpp"
 #include "Score/Score.hpp"
 #include "Tuile/Tuile.hpp"
+#include "GUI/GUI.hpp"
 */
 #include "Jeu.hpp"
 #include "Serialization/Serialization.hpp"

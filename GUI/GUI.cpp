@@ -1,7 +1,12 @@
 #include "GUI.hpp"
 
 
+
+
 Application::Application() {
+
+
+
     //initialisation, QVBoxLayout --> pour gerer l'emplacement de tous nos prochains elements (verticalement)
     QVBoxLayout *layoutPrincipal = new QVBoxLayout(this);
     layoutPrincipal->setContentsMargins(0,0,0,0); // Colle aux bords
@@ -26,10 +31,6 @@ Application::Application() {
 
 
 
-
-
-
-
     layoutHaut->addWidget(currentPlayerLabel);
     layoutHaut->addWidget(vueChantier, 2);
 
@@ -48,16 +49,6 @@ Application::Application() {
     panneauStats->setStyleSheet("background-color: grey;");
     QVBoxLayout *layoutStats = new QVBoxLayout(panneauStats);
 
-    layoutStats->addWidget(new QLabel("Pierres: XXX"));
-    layoutStats->addWidget(new QLabel("Score Totale: XXX"));
-    layoutStats->addWidget(new QLabel("Score rouge = XXX"));
-    layoutStats->addWidget(new QLabel("Score bleu = XXX"));
-    layoutStats->addWidget(new QLabel("Score jaune = XXX"));
-    layoutStats->addWidget(new QLabel("Score violet = XXX"));
-    layoutStats->addWidget(new QLabel("Score vert = XXX"));
-    layoutStats->addStretch(); // Pousse les boutons vers le bas
-    layoutStats->addWidget(new QPushButton("Passer le tour"));
-    layoutStats->addWidget(new QPushButton("Quitter"));
 
 
     // Affichage map hexagonale
@@ -70,9 +61,58 @@ Application::Application() {
     layoutBas ->addWidget(panneauStats,2);
     layoutBas ->addWidget(scenePlateau,8);
     layoutPrincipal->addWidget(zoneBas, 4);
+
 }
 
-// VUE HEXAGONE
+HexagonObjet::HexagonObjet(){
+    QPolygonF points;
+    double rayon = GUIConstants::HEX_SIZE;
+
+    for (int i=0;i<6;++i) {
+        double angle = (60*i)*(M_PI/180);
+
+        double x = rayon * std::cos(angle);
+        double y = rayon * std::sin(angle);
+
+        points << QPointF(x, y);
+    }
+    this->setPolygon(points);
+
+    // Apparance
+    this->setBrush(QBrush(Qt::lightGray)); // FOND
+    this->setPen(QPen(Qt::gray,3));// CONTOURS
+
+    //permet reception click souris
+    setAcceptHoverEvents(true);
+}
+
+void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
+    double rayon = GUIConstants::HEX_SIZE;
+
+
+    double hauteur = rayon * std::sqrt(3.0);
+    double largeur = rayon * 1.5;
 
 
 
+    double ecartVertical = hauteur;
+
+    for (int ligne = 0; ligne < size; ++ligne) {
+        for (int col = 0; col < size; ++col) {
+
+            HexagonObjet* hex = new HexagonObjet();
+
+            // Calcul des positions
+            double x = col * largeur;
+            double y = ligne * ecartVertical;
+
+            // Decalage (QUINCONCE)
+            if (col % 2 != 0) {
+                y += hauteur / 2.0;
+            }
+
+            hex->setPos(x, y);
+            scene->addItem(hex);
+        }
+    }
+}

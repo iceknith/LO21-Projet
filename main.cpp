@@ -6,31 +6,31 @@
 using namespace std;
 
 
-
-
-#include "GUI/GUI.hpp"
-
 int main(int argc, char *argv[]) {
-
-
     QApplication app(argc, argv);
-
-    Application game;
-
-
-
-    game.resize(1024, 768);
+    // MA SCENE
+    QGraphicsScene scene;
 
 
-    game.show();
+    constGUI::backgroundMap(10,&scene);
+
+    //---------------------
+    // MA VUE = camera
+    CameraMap VUE(&scene);
+    VUE.resize(800,800);
+    VUE.show();
+
     return app.exec();
+}
 
-/*
+
+
+    /*
 int main() {
     assertTests();
     JeuConsole::getJeu()->gameLoop();
+*/
 
-    */
     /*
     Deck d{3};
     Affichage* a = new AffichageConsole();
@@ -50,6 +50,5 @@ int main() {
 
     Deck d2 = *dynamic_cast<Deck*>(s2.deserialize(0));
     for(size_t i = 0; i < d.get_taille(); i++) a->affiche_container(*d2.getTuiles()[i]);
-    */
-    return 0;
-}
+
+    return 0;*/

@@ -51,6 +51,12 @@ namespace GameConstants {
     const int MAX_COULEUR = 6;
 }
 
+namespace GUIConstants {
+    // Constantes de score
+    const int HEX_SIZE = 50; // en pixels
+
+}
+
 
 //! Représente un Vecteur 2D
 class Vector2 : public Serializable {
