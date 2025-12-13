@@ -27,6 +27,7 @@ void Jeu::gameLoop() {
             joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
             premierJoueur = 0;
         }
+        selectNomsJoueurs();
         joueurActuel = premierJoueur;
 
         initialisePlateau();
@@ -244,6 +245,28 @@ void JeuConsole::selectJoueurs() {
     for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
 }
 
+void JeuConsole::selectNomsJoueurs() {
+    for (size_t i = 0; i < (modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs); i++) {
+        string nomJoueur;
+        string placeSuffixe = i == 0 ? "er" : "ème";
+        cout << "\033[0;97mQuel est le nom du " << i+1 << placeSuffixe << " joueur ?"
+             << endl << "\033[0;37m-> \033[0;97m";
+        cin >> nomJoueur;
+
+        while (cin.fail()) {
+            cout << "\033[1;31mErreur, veuillez réessayer !"
+                 << endl << "\033[0;37m-> \033[0;97m";
+            // Enlève l'état d'erreur
+            cin.clear();
+            // Ignore les "mauvais" charactères
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> nomJoueur;
+        }
+
+        dynamic_cast<JoueurSimple*>(joueurs[i])->setNomJoueur(nomJoueur);
+    }
+}
+
 Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
     int choix;
     cout << "\033[0;97m - FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
@@ -307,8 +330,11 @@ void JeuConsole::selectReglesScore() {
         cout << "\033[1;31mErreur, règles de score inconnues !" << endl;
     }
 
-    if (modeDeJeu == GameMode::SOLO) joueurs[0]->set_score(score);
-    else for (size_t i = 0; i < nombreJoueurs; i++) joueurs[i]->set_score(score);
+    if (modeDeJeu == GameMode::SOLO)
+        dynamic_cast<JoueurSimple*>(joueurs[0])->set_score(score);
+    else
+        for (size_t i = 0; i < nombreJoueurs; i++)
+            dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
 }
 
 int JeuConsole::selectTuile(size_t joueur) {
@@ -329,7 +355,7 @@ int JeuConsole::selectTuile(size_t joueur) {
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
     affichage->affiche_joueur(*joueurs[joueur]);
 
-    cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ?" << endl;
+    cout << "\033[0;97m" << joueurs[joueur]->getNomJoueur() <<" quelle tuile voulez vous selectionner ?" << endl;
     cout << "\033[0;37m( -1 ) pour quitter le programme et sauvegarder la partie." << endl;
     cout << "\033[0;37m-> \033[0;97m";
     cin >> output;
@@ -460,7 +486,7 @@ bool JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 
 void JeuConsole::afficheJoueur(size_t joueur, Tuile &tuileSelected, Vector2& positionSelectionne) {
     cout << "\033[0;36m-------------------------------------------" << endl
-         << "\033[0;97mJoueur "<< joueur+1<<",Où voulez vous placer cette tuile:" << endl;
+         << "\033[0;97m"<<joueurs[joueur]->getNomJoueur()<<", Où voulez vous placer cette tuile:" << endl;
     affichage->affiche_container(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;
@@ -516,6 +542,7 @@ void JeuConsole::titleScreen() {
          "   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
          "   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
 }
+
 
 Jeu *JeuGUI::getJeu() {
     // À décomenter lorsque JeuConsole aura un constructeur

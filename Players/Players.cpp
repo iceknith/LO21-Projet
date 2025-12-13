@@ -1,13 +1,14 @@
 #include "Players.hpp"
 #include "../Serialization/Serialization.hpp"
 
-void Joueur::set_score(Score *score) {
+void JoueurSimple::set_score(Score *score) {
     if (scoreJoueur != nullptr) free(scoreJoueur);
     scoreJoueur = score;
 }
 
 void Joueur::serialize(QVariantMap &data, SerializationContext *context) const {
     data["pierre"] = pierre;
+    data["nomJoueur"] = QString::fromStdString(nomJoueur);
     data["score"] = context->serialize(scoreJoueur);
 
     QVariantMap plateauMap;
@@ -17,6 +18,7 @@ void Joueur::serialize(QVariantMap &data, SerializationContext *context) const {
 
 void Joueur::deserialize(const QVariantMap &data, SerializationContext *context) {
     pierre = data["pierre"].value<int>();
+    nomJoueur = data["nomJoueur"].value<QString>().toStdString();
     scoreJoueur = dynamic_cast<Score*>(context->deserialize(data["score"]));
     plateauJoueur.deserialize(data["plateau"].value<QVariantMap>(), context);
 }
@@ -63,12 +65,15 @@ IllustreArchitecte::IllustreArchitecte(Difficulte difficulte) : difficulte(diffi
     switch (difficulte) {
         case Difficulte::FACILE:
             scoreJoueur = new ScoreSoloArchitecteHippodamos();
+            nomJoueur = "Hippodamos";
             break;
         case Difficulte::NORMALE:
             scoreJoueur = new ScoreSoloArchitecteMetagenes();
+            nomJoueur = "Metagenes";
             break;
         case Difficulte::DIFFICILE:
             scoreJoueur = new ScoreSoloArchitecteCallicrates();
+            nomJoueur = "Callicrates";
             break;
         default:
             break;

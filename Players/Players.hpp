@@ -19,6 +19,8 @@ protected:
     Plateau plateauJoueur;
     //! Le Score du joueur, va être utilisé pour calculer le score du joueur à la fin de la partie
     Score* scoreJoueur = nullptr;
+    //! Le nom du joueur
+    string nomJoueur;
 
 public:
     //! Constructeur du joueur
@@ -31,10 +33,10 @@ public:
     virtual bool get_joue_tout_seul() const = 0;
     //! Retourne le Score calculé du Joueur
     int get_score() {return scoreJoueur->score(&plateauJoueur);}
-    //! Set le score du joueur
-    void set_score(Score* score);
     //! Retourne la quantité de pierres du Joueur
     int get_pierre() {return pierre;}
+    //! Retourne le nom du joueur
+    const string& getNomJoueur() const {return nomJoueur;}
     //! Set la quantité de pierres du Joueur
     void set_pierre(int pierre) {this->pierre = max(0, pierre);}
     //! Ajoute des pierres au Joueur
@@ -71,6 +73,11 @@ protected:
     bool joueToutSeul = false;
 public:
     bool get_joue_tout_seul() const override {return false;}
+
+    //! Set le nom du joueur
+    void setNomJoueur(const string& nom) {nomJoueur = nom;}
+    //! Set le score du joueur
+    void set_score(Score* score);
 
     //! Implémentation concrète de ClassName
     string className() override {return "JoueurSimple";}

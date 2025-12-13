@@ -63,7 +63,6 @@ QDataStream &operator<<(QDataStream &stream, const SerializationContext::Record 
 
 QDataStream &operator>>(QDataStream &stream, SerializationContext &context) {
     stream >> context.recordList;
-    for (auto it : context.recordList) cout << it.type << endl;
     return stream;
 }
 

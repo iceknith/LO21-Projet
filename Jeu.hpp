@@ -65,6 +65,8 @@ protected:
     virtual void selectGameMode() = 0;
     //! La méthode chargée de la séléction de joueurs
     virtual void selectJoueurs() = 0;
+    //! La méthode chargée de la séléction des noms des joueurs
+    virtual void selectNomsJoueurs() = 0;
     //! La méthode chargée de la séléction du niveau de l'Illustre Architechte
     virtual Difficulte selectNiveauIllustreArchitechte() = 0;
     //! La méthode chargée de la séléction des règles de score
@@ -109,6 +111,7 @@ private:
     bool selectChargerPartie() override;
     void selectGameMode() override;
     void selectJoueurs() override;
+    void selectNomsJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
     int selectTuile(size_t joueur) override;
