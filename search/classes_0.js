@@ -1,5 +1,7 @@
 var searchData=
 [
   ['affichage_0',['Affichage',['../d9/dca/classAffichage.html',1,'']]],
-  ['affichageconsole_1',['AffichageConsole',['../d1/d3c/classAffichageConsole.html',1,'']]]
+  ['affichageconsole_1',['AffichageConsole',['../d1/d3c/classAffichageConsole.html',1,'']]],
+  ['affichagegui_2',['AffichageGUI',['../de/d5c/classAffichageGUI.html',1,'']]],
+  ['application_3',['Application',['../d5/d4c/classApplication.html',1,'']]]
 ];

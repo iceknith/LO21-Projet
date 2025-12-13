@@ -5,7 +5,7 @@ var searchData=
   ['recordlist_2',['recordList',['../d3/d88/classSerializationContext.html#a664ee9b26c7aa8a59214c3b6cbbdcd54',1,'SerializationContext']]],
   ['recordmap_3',['recordMap',['../d3/d88/classSerializationContext.html#ada936da0a87bf4647ede50193a7087cb',1,'SerializationContext']]],
   ['replace_5fsauf_5fcharactere_4',['replace_sauf_charactere',['../d3/d75/namespaceconstAffichageConsoleHex.html#a0615d3d625f970f3b15cec04001fdff3',1,'constAffichageConsoleHex']]],
-  ['rotation_5',['rotation',['../dc/d32/classHexagoneContainer.html#a75e969b97c43542738f1146081c6c3bb',1,'HexagoneContainer']]],
+  ['rotation_5',['rotation',['../dc/d32/classHexagoneContainer.html#a75e969b97c43542738f1146081c6c3bb',1,'HexagoneContainer::rotation()'],['../d7/d88/classTuile.html#a6faf78d10578ff30dae61ba4f41bfd15',1,'Tuile::rotation()']]],
   ['rouge_6',['ROUGE',['../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252cea92b33cebaccf73541ab06eca48a31e42',1,'Utils.hpp']]],
   ['rouge_5fvariante_5fbonus_5fmax_5fedges_7',['ROUGE_VARIANTE_BONUS_MAX_EDGES',['../de/d62/namespaceGameConstants.html#a5d487aea69a7f733003abad1adfab058',1,'GameConstants']]],
   ['rouge_5fvariante_5fbonus_5fmin_5fedges_8',['ROUGE_VARIANTE_BONUS_MIN_EDGES',['../de/d62/namespaceGameConstants.html#a92670a1b925050e779eaf8c84f56271c',1,'GameConstants']]],
