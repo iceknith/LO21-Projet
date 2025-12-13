@@ -4,18 +4,18 @@ var searchData=
   ['peut_5fplacer_1',['peut_placer',['../d7/db5/classPlateau.html#a71a8a113eb2c9d3f87ecc71b4e930229',1,'Plateau']]],
   ['pierre_2',['pierre',['../dd/d07/classJoueur.html#ad54ce85c9f6130df62f6af546d33ab2c',1,'Joueur']]],
   ['pierre_5fcount_3',['pierre_count',['../dc/dfe/classCarriere.html#a5cbb3e1f27b6b3af430096a910d172a0',1,'Carriere']]],
-  ['place_4',['Place',['../d9/d58/classPlace.html',1,'Place'],['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdafa7b9cf007806ed854cd12ab800c8a982b',1,'Place():&#160;Utils.hpp']]],
+  ['place_4',['Place',['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdafa7b9cf007806ed854cd12ab800c8a982b',1,'Place():&#160;Utils.hpp'],['../d9/d58/classPlace.html',1,'Place']]],
   ['place_5ftuile_5',['place_tuile',['../dd/d07/classJoueur.html#a8d224331463ad8fbeb51b8b7f07c0485',1,'Joueur']]],
   ['placer_6',['placer',['../d7/db5/classPlateau.html#a03efba908af5746e414cbb1411b2b34e',1,'Plateau']]],
   ['places_7',['places',['../d1/d19/structStatsCouleursSoloArchitecte.html#afee4beb6396e8da9a7a7b86d5ff2c0c6',1,'StatsCouleursSoloArchitecte']]],
-  ['placetuile_8',['placeTuile',['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()'],['../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8',1,'Jeu::placeTuile()']]],
-  ['plateau_9',['Plateau',['../d7/db5/classPlateau.html',1,'Plateau'],['../d7/db5/classPlateau.html#a07026170529dd928238ee45de0a797d7',1,'Plateau::Plateau()']]],
+  ['placetuile_8',['placeTuile',['../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8',1,'Jeu::placeTuile()'],['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()']]],
+  ['plateau_9',['Plateau',['../d7/db5/classPlateau.html#a07026170529dd928238ee45de0a797d7',1,'Plateau::Plateau()'],['../d7/db5/classPlateau.html',1,'Plateau']]],
   ['plateau_2ecpp_10',['Plateau.cpp',['../dd/d2c/Plateau_8cpp.html',1,'']]],
   ['plateau_2ehpp_11',['Plateau.hpp',['../d0/d47/Plateau_8hpp.html',1,'']]],
   ['plateaujoueur_12',['plateauJoueur',['../dd/d07/classJoueur.html#aa00702edc61257a89fd1ecb7498a53eb',1,'Joueur']]],
   ['players_2ecpp_13',['Players.cpp',['../dc/d0f/Players_8cpp.html',1,'']]],
   ['players_2ehpp_14',['Players.hpp',['../d3/de9/Players_8hpp.html',1,'']]],
   ['positionenfants_15',['positionEnfants',['../d4/dec/classTuileJeu.html#ac151eed2a6c5a3085f42a4eecfdd6c75',1,'TuileJeu']]],
-  ['prendre_5ftuile_16',['prendre_tuile',['../df/d51/classChantier.html#ab7603d2b41161abc95bff277df26a491',1,'Chantier']]],
-  ['print_5ftitle_17',['print_title',['../d4/d29/Jeu_8cpp.html#a0d07fdb703241f00ec96b4861dd3fd94',1,'Jeu.cpp']]]
+  ['premierjoueur_16',['premierJoueur',['../d1/de1/classJeu.html#aec7015ed4c239225e8341e0130625596',1,'Jeu']]],
+  ['prendre_5ftuile_17',['prendre_tuile',['../df/d51/classChantier.html#ab7603d2b41161abc95bff277df26a491',1,'Chantier']]]
 ];

@@ -6,6 +6,5 @@ var searchData=
   ['placer_3',['placer',['../d7/db5/classPlateau.html#a03efba908af5746e414cbb1411b2b34e',1,'Plateau']]],
   ['placetuile_4',['placeTuile',['../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8',1,'Jeu::placeTuile()'],['../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d',1,'JeuConsole::placeTuile()']]],
   ['plateau_5',['Plateau',['../d7/db5/classPlateau.html#a07026170529dd928238ee45de0a797d7',1,'Plateau']]],
-  ['prendre_5ftuile_6',['prendre_tuile',['../df/d51/classChantier.html#ab7603d2b41161abc95bff277df26a491',1,'Chantier']]],
-  ['print_5ftitle_7',['print_title',['../d4/d29/Jeu_8cpp.html#a0d07fdb703241f00ec96b4861dd3fd94',1,'Jeu.cpp']]]
+  ['prendre_5ftuile_6',['prendre_tuile',['../df/d51/classChantier.html#ab7603d2b41161abc95bff277df26a491',1,'Chantier']]]
 ];

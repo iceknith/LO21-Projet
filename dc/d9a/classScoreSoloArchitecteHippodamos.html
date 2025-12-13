@@ -86,7 +86,8 @@ Inheritance diagram for ScoreSoloArchitecteHippodamos:</div>
  <div class="center">
   <img src="../../dc/d9a/classScoreSoloArchitecteHippodamos.png" usemap="#ScoreSoloArchitecteHippodamos_map" alt=""/>
   <map id="ScoreSoloArchitecteHippodamos_map" name="ScoreSoloArchitecteHippodamos_map">
-<area href="../../d7/d48/classScore.html" title="Classe de Score, utilisée pour calculer le score d&#39;un joueur à partir d&#39;un plateau." alt="Score" shape="rect" coords="0,0,198,24"/>
+<area href="../../d7/d48/classScore.html" title="Classe de Score, utilisée pour calculer le score d&#39;un joueur à partir d&#39;un plateau." alt="Score" shape="rect" coords="0,56,198,80"/>
+<area href="../../d6/dcb/classSerializable.html" alt="Serializable" shape="rect" coords="0,0,198,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -95,6 +96,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:aabbb4e4862a482c109508920f1506c91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9a/classScoreSoloArchitecteHippodamos.html#aabbb4e4862a482c109508920f1506c91">scoreLocal</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau) override</td></tr>
 <tr class="memdesc:aabbb4e4862a482c109508920f1506c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le calcul du score local (propre à ce score spécifique)  <a href="../../dc/d9a/classScoreSoloArchitecteHippodamos.html#aabbb4e4862a482c109508920f1506c91">More...</a><br /></td></tr>
 <tr class="separator:aabbb4e4862a482c109508920f1506c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af21d4624fdae9f4e1f5c23053db9aa05"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9a/classScoreSoloArchitecteHippodamos.html#af21d4624fdae9f4e1f5c23053db9aa05">className</a> () override</td></tr>
+<tr class="memdesc:af21d4624fdae9f4e1f5c23053db9aa05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation concrète de ClassName.  <a href="../../dc/d9a/classScoreSoloArchitecteHippodamos.html#af21d4624fdae9f4e1f5c23053db9aa05">More...</a><br /></td></tr>
+<tr class="separator:af21d4624fdae9f4e1f5c23053db9aa05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad19442fcb81f358f3c14ed4582351ca"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d48/classScore.html#aad19442fcb81f358f3c14ed4582351ca">scoreLocal</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau)=0</td></tr>
 <tr class="memdesc:aad19442fcb81f358f3c14ed4582351ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le calcul du score local (propre à ce score spécifique)  <a href="../../d7/d48/classScore.html#aad19442fcb81f358f3c14ed4582351ca">More...</a><br /></td></tr>
 <tr class="separator:aad19442fcb81f358f3c14ed4582351ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,12 +115,51 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a547b8b5c6cee8fcc4a4ce95c27ee9c6e inherit pub_methods_classScore"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d48/classScore.html#a547b8b5c6cee8fcc4a4ce95c27ee9c6e">score</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau)</td></tr>
 <tr class="memdesc:a547b8b5c6cee8fcc4a4ce95c27ee9c6e inherit pub_methods_classScore"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction de calcul de <a class="el" href="../../d7/d48/classScore.html" title="Classe de Score, utilisée pour calculer le score d&#39;un joueur à partir d&#39;un plateau.">Score</a>.  <a href="../../d7/d48/classScore.html#a547b8b5c6cee8fcc4a4ce95c27ee9c6e">More...</a><br /></td></tr>
 <tr class="separator:a547b8b5c6cee8fcc4a4ce95c27ee9c6e inherit pub_methods_classScore"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901efb8a10f210f96103bd62f3f21b6c inherit pub_methods_classScore"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d48/classScore.html#a901efb8a10f210f96103bd62f3f21b6c">serialize</a> (QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) const override</td></tr>
+<tr class="memdesc:a901efb8a10f210f96103bd62f3f21b6c inherit pub_methods_classScore"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation concrète de la sérialisation.  <a href="../../d7/d48/classScore.html#a901efb8a10f210f96103bd62f3f21b6c">More...</a><br /></td></tr>
+<tr class="separator:a901efb8a10f210f96103bd62f3f21b6c inherit pub_methods_classScore"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af39dc0029388fe0c0a6d010814c397e6 inherit pub_methods_classScore"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d48/classScore.html#af39dc0029388fe0c0a6d010814c397e6">deserialize</a> (const QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) override</td></tr>
+<tr class="memdesc:af39dc0029388fe0c0a6d010814c397e6 inherit pub_methods_classScore"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation concrète de la désérialisation.  <a href="../../d7/d48/classScore.html#af39dc0029388fe0c0a6d010814c397e6">More...</a><br /></td></tr>
+<tr class="separator:af39dc0029388fe0c0a6d010814c397e6 inherit pub_methods_classScore"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63435ab7dcb7163407b7330e3be7236f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a63435ab7dcb7163407b7330e3be7236f">serialize</a> (QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) const =0</td></tr>
+<tr class="separator:a63435ab7dcb7163407b7330e3be7236f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8d57290f2871efb63b24e0c1a46248"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a1f8d57290f2871efb63b24e0c1a46248">deserialize</a> (const QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context)=0</td></tr>
+<tr class="separator:a1f8d57290f2871efb63b24e0c1a46248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84b47c0afe5c1cadd565ded03dffa934"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a84b47c0afe5c1cadd565ded03dffa934">className</a> ()=0</td></tr>
+<tr class="separator:a84b47c0afe5c1cadd565ded03dffa934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classScore"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classScore')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../d7/d48/classScore.html">Score</a></td></tr>
 <tr class="memitem:a3b57d7afaf21a727c6637b319ae5b675 inherit pro_attribs_classScore"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d48/classScore.html">Score</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d48/classScore.html#a3b57d7afaf21a727c6637b319ae5b675">scoreDecore</a> = nullptr</td></tr>
 <tr class="memdesc:a3b57d7afaf21a727c6637b319ae5b675 inherit pro_attribs_classScore"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le score décoré  <a href="../../d7/d48/classScore.html#a3b57d7afaf21a727c6637b319ae5b675">More...</a><br /></td></tr>
 <tr class="separator:a3b57d7afaf21a727c6637b319ae5b675 inherit pro_attribs_classScore"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="af21d4624fdae9f4e1f5c23053db9aa05" name="af21d4624fdae9f4e1f5c23053db9aa05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af21d4624fdae9f4e1f5c23053db9aa05">&#9670;&#160;</a></span>className()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string ScoreSoloArchitecteHippodamos::className </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d6/dcb/classSerializable.html#a84b47c0afe5c1cadd565ded03dffa934">Serializable</a>.</p>
+
+</div>
+</div>
 <a id="aabbb4e4862a482c109508920f1506c91" name="aabbb4e4862a482c109508920f1506c91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aabbb4e4862a482c109508920f1506c91">&#9670;&#160;</a></span>scoreLocal()</h2>
 

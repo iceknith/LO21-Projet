@@ -73,6 +73,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -91,15 +92,26 @@ Inheritance diagram for Jeu:</div>
  <div class="center">
   <img src="../../d1/de1/classJeu.png" usemap="#Jeu_map" alt=""/>
   <map id="Jeu_map" name="Jeu_map">
-<area href="../../dc/dcd/classJeuConsole.html" alt="JeuConsole" shape="rect" coords="0,56,79,80"/>
-<area href="../../da/d36/classJeuGUI.html" alt="JeuGUI" shape="rect" coords="89,56,168,80"/>
+<area href="../../d6/dcb/classSerializable.html" alt="Serializable" shape="rect" coords="44,0,123,24"/>
+<area href="../../dc/dcd/classJeuConsole.html" alt="JeuConsole" shape="rect" coords="0,112,79,136"/>
+<area href="../../da/d36/classJeuGUI.html" alt="JeuGUI" shape="rect" coords="89,112,168,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a9cd19e73df169d7f09397be61ba8548c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a9cd19e73df169d7f09397be61ba8548c">~Jeu</a> ()</td></tr>
+<tr class="separator:a9cd19e73df169d7f09397be61ba8548c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af351c88f258d3c1d9607902a9fba4972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#af351c88f258d3c1d9607902a9fba4972">gameLoop</a> ()</td></tr>
 <tr class="separator:af351c88f258d3c1d9607902a9fba4972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b6e2179d3c59c52ba02b2be89d57b5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a06b6e2179d3c59c52ba02b2be89d57b5">className</a> () override</td></tr>
+<tr class="separator:a06b6e2179d3c59c52ba02b2be89d57b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63435ab7dcb7163407b7330e3be7236f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a63435ab7dcb7163407b7330e3be7236f">serialize</a> (QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) const =0</td></tr>
+<tr class="separator:a63435ab7dcb7163407b7330e3be7236f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8d57290f2871efb63b24e0c1a46248"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a1f8d57290f2871efb63b24e0c1a46248">deserialize</a> (const QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context)=0</td></tr>
+<tr class="separator:a1f8d57290f2871efb63b24e0c1a46248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84b47c0afe5c1cadd565ded03dffa934"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dcb/classSerializable.html#a84b47c0afe5c1cadd565ded03dffa934">className</a> ()=0</td></tr>
+<tr class="separator:a84b47c0afe5c1cadd565ded03dffa934"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -111,6 +123,12 @@ Static Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac85dba09db028d74505a1baa4180eb45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ac85dba09db028d74505a1baa4180eb45">initialisePlateau</a> ()</td></tr>
 <tr class="separator:ac85dba09db028d74505a1baa4180eb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d5b50eb1c277260c00b4bc6602cb5c5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a4d5b50eb1c277260c00b4bc6602cb5c5">titleScreen</a> ()=0</td></tr>
+<tr class="memdesc:a4d5b50eb1c277260c00b4bc6602cb5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée d'afficher l'écran d'acceuil.  <a href="../../d1/de1/classJeu.html#a4d5b50eb1c277260c00b4bc6602cb5c5">More...</a><br /></td></tr>
+<tr class="separator:a4d5b50eb1c277260c00b4bc6602cb5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba1230b3d4ab4862045d31c44968261"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#afba1230b3d4ab4862045d31c44968261">selectChargerPartie</a> ()=0</td></tr>
+<tr class="memdesc:afba1230b3d4ab4862045d31c44968261"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de demander à l'utilisateur si il veut charger une partie précédente.  <a href="../../d1/de1/classJeu.html#afba1230b3d4ab4862045d31c44968261">More...</a><br /></td></tr>
+<tr class="separator:afba1230b3d4ab4862045d31c44968261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af744518c3a4ffad7b35a5f3f1637f75c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#af744518c3a4ffad7b35a5f3f1637f75c">selectGameMode</a> ()=0</td></tr>
 <tr class="memdesc:af744518c3a4ffad7b35a5f3f1637f75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction du mode de jeu.  <a href="../../d1/de1/classJeu.html#af744518c3a4ffad7b35a5f3f1637f75c">More...</a><br /></td></tr>
 <tr class="separator:af744518c3a4ffad7b35a5f3f1637f75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,29 +153,53 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3ad947fcf184da8524ab16c30cbb1575"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3ad947fcf184da8524ab16c30cbb1575">finDePartie</a> (multimap&lt; int, size_t &gt; scores)=0</td></tr>
 <tr class="memdesc:a3ad947fcf184da8524ab16c30cbb1575"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la gestion de la fin de partie.  <a href="../../d1/de1/classJeu.html#a3ad947fcf184da8524ab16c30cbb1575">More...</a><br /></td></tr>
 <tr class="separator:a3ad947fcf184da8524ab16c30cbb1575"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2187a662105833b02f97c5694a281f57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a2187a662105833b02f97c5694a281f57">Jeu</a> ()=default</td></tr>
-<tr class="separator:a2187a662105833b02f97c5694a281f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa94a3e0dd19d7eac8b85525d80f1d46a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#aa94a3e0dd19d7eac8b85525d80f1d46a">serialize</a> (QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) const override</td></tr>
+<tr class="memdesc:aa94a3e0dd19d7eac8b85525d80f1d46a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation concrète de la sérialisation.  <a href="../../d1/de1/classJeu.html#aa94a3e0dd19d7eac8b85525d80f1d46a">More...</a><br /></td></tr>
+<tr class="separator:aa94a3e0dd19d7eac8b85525d80f1d46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8eaadbaadcc111bfe29553f65872eab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#aa8eaadbaadcc111bfe29553f65872eab">deserialize</a> (const QVariantMap &amp;data, <a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *context) override</td></tr>
+<tr class="memdesc:aa8eaadbaadcc111bfe29553f65872eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implémentation concrète de la désérialisation.  <a href="../../d1/de1/classJeu.html#aa8eaadbaadcc111bfe29553f65872eab">More...</a><br /></td></tr>
+<tr class="separator:aa8eaadbaadcc111bfe29553f65872eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc5795ee00edf75516d3dfe65be3e6d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#acc5795ee00edf75516d3dfe65be3e6d6">Jeu</a> ()</td></tr>
+<tr class="separator:acc5795ee00edf75516d3dfe65be3e6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a3e7e67d3abca604a1d0892d2e39774b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3e7e67d3abca604a1d0892d2e39774b5">chargerPartie</a> ()</td></tr>
+<tr class="memdesc:a3e7e67d3abca604a1d0892d2e39774b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de charger la dernière partie.  <a href="../../d1/de1/classJeu.html#a3e7e67d3abca604a1d0892d2e39774b5">More...</a><br /></td></tr>
+<tr class="separator:a3e7e67d3abca604a1d0892d2e39774b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1aa743aafdea16b274cd1d8d26d9dc"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a8f1aa743aafdea16b274cd1d8d26d9dc">sauvegarderPartie</a> ()</td></tr>
+<tr class="memdesc:a8f1aa743aafdea16b274cd1d8d26d9dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de sauvegarder la partie actuelle.  <a href="../../d1/de1/classJeu.html#a8f1aa743aafdea16b274cd1d8d26d9dc">More...</a><br /></td></tr>
+<tr class="separator:a8f1aa743aafdea16b274cd1d8d26d9dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a0e405bdc7357a5810d26794c9deb4d15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589de">GameMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15">modeDeJeu</a></td></tr>
 <tr class="memdesc:a0e405bdc7357a5810d26794c9deb4d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le mode de jeu (multijoueur ou solo)  <a href="../../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15">More...</a><br /></td></tr>
 <tr class="separator:a0e405bdc7357a5810d26794c9deb4d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad69bc4c87be8ab80bf29e8576a505150"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ad69bc4c87be8ab80bf29e8576a505150">nombre_tours</a></td></tr>
-<tr class="memdesc:ad69bc4c87be8ab80bf29e8576a505150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre de tours joués.  <a href="../../d1/de1/classJeu.html#ad69bc4c87be8ab80bf29e8576a505150">More...</a><br /></td></tr>
-<tr class="separator:ad69bc4c87be8ab80bf29e8576a505150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a135e9b4aa781077c127064196cdff2a9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a135e9b4aa781077c127064196cdff2a9">max_nombre_tours</a></td></tr>
-<tr class="memdesc:a135e9b4aa781077c127064196cdff2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre maximum de tours à jouer.  <a href="../../d1/de1/classJeu.html#a135e9b4aa781077c127064196cdff2a9">More...</a><br /></td></tr>
-<tr class="separator:a135e9b4aa781077c127064196cdff2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a090a1fc4bfe29c48d97903990196c9a7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a090a1fc4bfe29c48d97903990196c9a7">nombreTours</a></td></tr>
+<tr class="memdesc:a090a1fc4bfe29c48d97903990196c9a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre de tours joués.  <a href="../../d1/de1/classJeu.html#a090a1fc4bfe29c48d97903990196c9a7">More...</a><br /></td></tr>
+<tr class="separator:a090a1fc4bfe29c48d97903990196c9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5088d78ecd4bfb62edc3f2b9f045348b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b">maxNombreTours</a></td></tr>
+<tr class="memdesc:a5088d78ecd4bfb62edc3f2b9f045348b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre maximum de tours à jouer.  <a href="../../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b">More...</a><br /></td></tr>
+<tr class="separator:a5088d78ecd4bfb62edc3f2b9f045348b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad57abd13a38c6a2f984ace537fcfdc4e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ad57abd13a38c6a2f984ace537fcfdc4e">nombreJoueurs</a></td></tr>
 <tr class="memdesc:ad57abd13a38c6a2f984ace537fcfdc4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le nombre de joueurs qui participent au jeu.  <a href="../../d1/de1/classJeu.html#ad57abd13a38c6a2f984ace537fcfdc4e">More...</a><br /></td></tr>
 <tr class="separator:ad57abd13a38c6a2f984ace537fcfdc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c764d654281bb74fd85fcb427f24834"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d07/classJoueur.html">Joueur</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834">joueurs</a> [<a class="el" href="../../dd/d95/namespaceconstJeu.html#a40761edea300ca8870a0c5c103aae3ef">constJeu::nombreJoueursMax</a>]</td></tr>
 <tr class="memdesc:a1c764d654281bb74fd85fcb427f24834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les joueurs qui jouent dans ce jeu.  <a href="../../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834">More...</a><br /></td></tr>
 <tr class="separator:a1c764d654281bb74fd85fcb427f24834"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a932a2099de9284593a38f5ffaa554ee2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df2/classDeck.html">Deck</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a932a2099de9284593a38f5ffaa554ee2">deck</a></td></tr>
-<tr class="memdesc:a932a2099de9284593a38f5ffaa554ee2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le deck du jeu.  <a href="../../d1/de1/classJeu.html#a932a2099de9284593a38f5ffaa554ee2">More...</a><br /></td></tr>
-<tr class="separator:a932a2099de9284593a38f5ffaa554ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2160e7b393674468d9f0cb3b936c28ac"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a2160e7b393674468d9f0cb3b936c28ac">joueurActuel</a></td></tr>
+<tr class="memdesc:a2160e7b393674468d9f0cb3b936c28ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le joueur actuel.  <a href="../../d1/de1/classJeu.html#a2160e7b393674468d9f0cb3b936c28ac">More...</a><br /></td></tr>
+<tr class="separator:a2160e7b393674468d9f0cb3b936c28ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7015ed4c239225e8341e0130625596"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#aec7015ed4c239225e8341e0130625596">premierJoueur</a></td></tr>
+<tr class="memdesc:aec7015ed4c239225e8341e0130625596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le premier joueur.  <a href="../../d1/de1/classJeu.html#aec7015ed4c239225e8341e0130625596">More...</a><br /></td></tr>
+<tr class="separator:aec7015ed4c239225e8341e0130625596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbc48fc80558a2d6b1cc44c59d6154fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d42/classTuileDepart.html">TuileDepart</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#acbc48fc80558a2d6b1cc44c59d6154fd">tuileDepart</a></td></tr>
+<tr class="memdesc:acbc48fc80558a2d6b1cc44c59d6154fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">La tuile de depart des joueurs.  <a href="../../d1/de1/classJeu.html#acbc48fc80558a2d6b1cc44c59d6154fd">More...</a><br /></td></tr>
+<tr class="separator:acbc48fc80558a2d6b1cc44c59d6154fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c962762e8307ac9847b6ab35c1e9329"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/df2/classDeck.html">Deck</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a3c962762e8307ac9847b6ab35c1e9329">deck</a></td></tr>
+<tr class="memdesc:a3c962762e8307ac9847b6ab35c1e9329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le deck du jeu.  <a href="../../d1/de1/classJeu.html#a3c962762e8307ac9847b6ab35c1e9329">More...</a><br /></td></tr>
+<tr class="separator:a3c962762e8307ac9847b6ab35c1e9329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a161a4d38b099436e718cb320ee9756c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d51/classChantier.html">Chantier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a161a4d38b099436e718cb320ee9756c0">chantier</a></td></tr>
 <tr class="memdesc:a161a4d38b099436e718cb320ee9756c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le chantier du jeu.  <a href="../../d1/de1/classJeu.html#a161a4d38b099436e718cb320ee9756c0">More...</a><br /></td></tr>
 <tr class="separator:a161a4d38b099436e718cb320ee9756c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,8 +220,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a1766b8825c6715ad5de19dc4efda4c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2187a662105833b02f97c5694a281f57" name="a2187a662105833b02f97c5694a281f57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2187a662105833b02f97c5694a281f57">&#9670;&#160;</a></span>Jeu()</h2>
+<a id="acc5795ee00edf75516d3dfe65be3e6d6" name="acc5795ee00edf75516d3dfe65be3e6d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc5795ee00edf75516d3dfe65be3e6d6">&#9670;&#160;</a></span>Jeu()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,9 +238,26 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9cd19e73df169d7f09397be61ba8548c" name="a9cd19e73df169d7f09397be61ba8548c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cd19e73df169d7f09397be61ba8548c">&#9670;&#160;</a></span>~Jeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Jeu::~Jeu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -254,6 +313,96 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3e7e67d3abca604a1d0892d2e39774b5" name="a3e7e67d3abca604a1d0892d2e39774b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e7e67d3abca604a1d0892d2e39774b5">&#9670;&#160;</a></span>chargerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jeu::chargerPartie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06b6e2179d3c59c52ba02b2be89d57b5" name="a06b6e2179d3c59c52ba02b2be89d57b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b6e2179d3c59c52ba02b2be89d57b5">&#9670;&#160;</a></span>className()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Jeu::className </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d6/dcb/classSerializable.html#a84b47c0afe5c1cadd565ded03dffa934">Serializable</a>.</p>
+
+</div>
+</div>
+<a id="aa8eaadbaadcc111bfe29553f65872eab" name="aa8eaadbaadcc111bfe29553f65872eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8eaadbaadcc111bfe29553f65872eab">&#9670;&#160;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jeu::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const QVariantMap &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d6/dcb/classSerializable.html#a1f8d57290f2871efb63b24e0c1a46248">Serializable</a>.</p>
 
 </div>
 </div>
@@ -387,6 +536,58 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d">JeuConsole</a>.</p>
+
+</div>
+</div>
+<a id="a8f1aa743aafdea16b274cd1d8d26d9dc" name="a8f1aa743aafdea16b274cd1d8d26d9dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1aa743aafdea16b274cd1d8d26d9dc">&#9670;&#160;</a></span>sauvegarderPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jeu::sauvegarderPartie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afba1230b3d4ab4862045d31c44968261" name="afba1230b3d4ab4862045d31c44968261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba1230b3d4ab4862045d31c44968261">&#9670;&#160;</a></span>selectChargerPartie()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Jeu::selectChargerPartie </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a43788c181645151a2259028e903bf6fc">JeuConsole</a>.</p>
 
 </div>
 </div>
@@ -526,6 +727,71 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa94a3e0dd19d7eac8b85525d80f1d46a" name="aa94a3e0dd19d7eac8b85525d80f1d46a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa94a3e0dd19d7eac8b85525d80f1d46a">&#9670;&#160;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Jeu::serialize </td>
+          <td>(</td>
+          <td class="paramtype">QVariantMap &amp;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/d88/classSerializationContext.html">SerializationContext</a> *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="../../d6/dcb/classSerializable.html#a63435ab7dcb7163407b7330e3be7236f">Serializable</a>.</p>
+
+</div>
+</div>
+<a id="a4d5b50eb1c277260c00b4bc6602cb5c5" name="a4d5b50eb1c277260c00b4bc6602cb5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d5b50eb1c277260c00b4bc6602cb5c5">&#9670;&#160;</a></span>titleScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Jeu::titleScreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#ad646d0a6fe3f3837df11e52465ffedef">JeuConsole</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a1446f5e8d3a00e7c6f00b89139110984" name="a1446f5e8d3a00e7c6f00b89139110984"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1446f5e8d3a00e7c6f00b89139110984">&#9670;&#160;</a></span>affichage</h2>
@@ -571,8 +837,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a932a2099de9284593a38f5ffaa554ee2" name="a932a2099de9284593a38f5ffaa554ee2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a932a2099de9284593a38f5ffaa554ee2">&#9670;&#160;</a></span>deck</h2>
+<a id="a3c962762e8307ac9847b6ab35c1e9329" name="a3c962762e8307ac9847b6ab35c1e9329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c962762e8307ac9847b6ab35c1e9329">&#9670;&#160;</a></span>deck</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -581,7 +847,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d6/df2/classDeck.html">Deck</a>* Jeu::deck</td>
+          <td class="memname"><a class="el" href="../../d6/df2/classDeck.html">Deck</a> Jeu::deck</td>
         </tr>
       </table>
   </td>
@@ -615,6 +881,28 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2160e7b393674468d9f0cb3b936c28ac" name="a2160e7b393674468d9f0cb3b936c28ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2160e7b393674468d9f0cb3b936c28ac">&#9670;&#160;</a></span>joueurActuel</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Jeu::joueurActuel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1c764d654281bb74fd85fcb427f24834" name="a1c764d654281bb74fd85fcb427f24834"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1c764d654281bb74fd85fcb427f24834">&#9670;&#160;</a></span>joueurs</h2>
 
@@ -637,8 +925,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a135e9b4aa781077c127064196cdff2a9" name="a135e9b4aa781077c127064196cdff2a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a135e9b4aa781077c127064196cdff2a9">&#9670;&#160;</a></span>max_nombre_tours</h2>
+<a id="a5088d78ecd4bfb62edc3f2b9f045348b" name="a5088d78ecd4bfb62edc3f2b9f045348b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5088d78ecd4bfb62edc3f2b9f045348b">&#9670;&#160;</a></span>maxNombreTours</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -647,7 +935,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t Jeu::max_nombre_tours</td>
+          <td class="memname">size_t Jeu::maxNombreTours</td>
         </tr>
       </table>
   </td>
@@ -681,28 +969,6 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad69bc4c87be8ab80bf29e8576a505150" name="ad69bc4c87be8ab80bf29e8576a505150"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad69bc4c87be8ab80bf29e8576a505150">&#9670;&#160;</a></span>nombre_tours</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t Jeu::nombre_tours</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ad57abd13a38c6a2f984ace537fcfdc4e" name="ad57abd13a38c6a2f984ace537fcfdc4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad57abd13a38c6a2f984ace537fcfdc4e">&#9670;&#160;</a></span>nombreJoueurs</h2>
 
@@ -714,6 +980,72 @@ Private Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">size_t Jeu::nombreJoueurs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a090a1fc4bfe29c48d97903990196c9a7" name="a090a1fc4bfe29c48d97903990196c9a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a090a1fc4bfe29c48d97903990196c9a7">&#9670;&#160;</a></span>nombreTours</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Jeu::nombreTours</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec7015ed4c239225e8341e0130625596" name="aec7015ed4c239225e8341e0130625596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7015ed4c239225e8341e0130625596">&#9670;&#160;</a></span>premierJoueur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Jeu::premierJoueur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbc48fc80558a2d6b1cc44c59d6154fd" name="acbc48fc80558a2d6b1cc44c59d6154fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbc48fc80558a2d6b1cc44c59d6154fd">&#9670;&#160;</a></span>tuileDepart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d42/classTuileDepart.html">TuileDepart</a>* Jeu::tuileDepart</td>
         </tr>
       </table>
   </td>

@@ -7,7 +7,7 @@ var searchData=
   ['affichejoueur_4',['afficheJoueur',['../dc/dcd/classJeuConsole.html#a6adbf3231c904d2745c1460d6b53e6a7',1,'JeuConsole']]],
   ['affichetourautomatique_5',['afficheTourAutomatique',['../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52',1,'Jeu::afficheTourAutomatique()'],['../dc/dcd/classJeuConsole.html#a827a7b25b6ff31ae75209729e08f0692',1,'JeuConsole::afficheTourAutomatique()']]],
   ['ajouter_5fpierre_6',['ajouter_pierre',['../dd/d07/classJoueur.html#af76c56726209959ed6ab7df700777884',1,'Joueur']]],
-  ['ajouter_5ftuile_7',['ajouter_tuile',['../df/d51/classChantier.html#a4058ca66b5823c39b9060a724f7c8c1d',1,'Chantier::ajouter_tuile(Tuile *tuile)'],['../df/d51/classChantier.html#a59830edb06b0675532fb361443b4c7d4',1,'Chantier::ajouter_tuile(Tuile *tuile, size_t nombre)']]],
+  ['ajouter_5ftuile_7',['ajouter_tuile',['../df/d51/classChantier.html#aa9526aca25a6e6d1a145db1a39544b40',1,'Chantier::ajouter_tuile(TuileJeu *tuile)'],['../df/d51/classChantier.html#a60a4da652cd58aa0b172004b2a1e8b36',1,'Chantier::ajouter_tuile(TuileJeu **tuile, size_t nombre)']]],
   ['asserttests_8',['assertTests',['../d0/d76/Tests_8cpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp'],['../dc/d9d/Tests_8hpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp']]],
   ['asserttestsscore_9',['assertTestsScore',['../d0/d76/Tests_8cpp.html#a1df0098b34e447a85ffd547a1c4b0b96',1,'Tests.cpp']]],
   ['axialtoscreen_10',['axialToScreen',['../d3/d75/namespaceconstAffichageConsoleHex.html#ae2437478323f1e2a2f8ce657f87d898f',1,'constAffichageConsoleHex']]]
