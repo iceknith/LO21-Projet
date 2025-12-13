@@ -1,8 +1,24 @@
 #include "Players.hpp"
+#include "../Serialization/Serialization.hpp"
 
 void Joueur::set_score(Score *score) {
     if (scoreJoueur != nullptr) free(scoreJoueur);
     scoreJoueur = score;
+}
+
+void Joueur::serialize(QVariantMap &data, SerializationContext *context) const {
+    data["pierre"] = pierre;
+    data["score"] = context->serialize(scoreJoueur);
+
+    QVariantMap plateauMap;
+    plateauJoueur.serialize(plateauMap, context);
+    data["plateau"] = plateauMap;
+}
+
+void Joueur::deserialize(const QVariantMap &data, SerializationContext *context) {
+    pierre = data["pierre"].value<int>();
+    scoreJoueur = dynamic_cast<Score*>(context->deserialize(data["score"]));
+    plateauJoueur.deserialize(data["plateau"].value<QVariantMap>(), context);
 }
 
 Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
@@ -57,4 +73,14 @@ IllustreArchitecte::IllustreArchitecte(Difficulte difficulte) : difficulte(diffi
         default:
             break;
     }
+}
+
+void IllustreArchitecte::serialize(QVariantMap &data, SerializationContext *context) const {
+    Joueur::serialize(data, context);
+    data["difficulte"] = static_cast<int>(difficulte);
+}
+
+void IllustreArchitecte::deserialize(const QVariantMap &data, SerializationContext *context) {
+    Joueur::deserialize(data, context);
+    difficulte = static_cast<Difficulte>(data["difficulte"].value<int>());
 }

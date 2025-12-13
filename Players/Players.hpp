@@ -11,7 +11,7 @@
   La classe qui va représenter à la fois
   chaque joueur humain, mais à la fois chaque joueur non humain (dont l'IllustreArchitechte)
 */
-class Joueur {
+class Joueur : public Serializable{
 protected:
     //! Le nombre de pierres du Joueur
     int pierre = 0;
@@ -54,6 +54,11 @@ public:
      * @param chantier un tableau de Tuile, représentant le chantier
      */
     virtual void jouer(Chantier &chantier) {}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 //! Une impléméntation concrète d'un Joueur humain
@@ -66,6 +71,9 @@ protected:
     bool joueToutSeul = false;
 public:
     bool get_joue_tout_seul() const override {return false;}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "JoueurSimple";}
 };
 
 namespace IllustreArchitechteConsts {
@@ -81,16 +89,23 @@ protected:
     //! Trouve un emplacement vide et valide pour placer une tuile
     Vector2 trouver_emplacement_tuile(Tuile &tuile);
 public:
+    IllustreArchitecte() : IllustreArchitecte(Difficulte::NORMALE) {}
     IllustreArchitecte(Difficulte difficulte);
     //! Supprime la fonction setScore de l'illustre architechte, car il gère sa méthode de score totu seul
     void set_score() = delete;
-    //! Le setteur du niveau
-    void set_niveau(int niveau);
     //! Le getteur du niveau
     Difficulte get_difficulte() const {return difficulte;}
     //! La fonction appelée pour faire jouer l'Illustre Architechte
     void jouer(Chantier &chantier) override;
     bool get_joue_tout_seul() const override {return true;}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "IllustreArchitecte";}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 #endif //LO21_PROJET_PLAYERS_HPP

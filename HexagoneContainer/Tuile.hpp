@@ -48,6 +48,11 @@ public :
      * @return si this != t
      */
     bool operator!=(const Tuile& t) const {return get_id() != t.get_id();}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 //! Représente une Tuile de Départ de jeu, ne peut pas être placée lors d'une partie
@@ -55,6 +60,9 @@ class TuileDepart : public Tuile {
 private:
 public:
     TuileDepart();
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "TuileDepart";}
 };
 
 //! Implémentation concrète de la tuile de Jeu de base
@@ -63,6 +71,9 @@ private:
     const static Vector2 positionEnfants[3];
 public:
     TuileJeu();
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "TuileJeu";}
 };
 
 #endif

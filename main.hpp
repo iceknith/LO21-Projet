@@ -21,5 +21,7 @@ All documentation about Doxygen can be found at : \sa https://www.doxygen.nl/man
 #include "Tuile/Tuile.hpp"
 */
 #include "Jeu.hpp"
+#include "Serialization/Serialization.hpp"
+#include <QFile>
 
 #endif //LO21_PROJET_MAIN_HPP

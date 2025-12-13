@@ -1,4 +1,5 @@
 #include "Score.hpp"
+#include "../Serialization/Serialization.hpp"
 
 using namespace ScoreUtils;
 
@@ -114,6 +115,14 @@ int Score::score(Plateau* plateau) {
     int s = scoreDecore ? scoreDecore->score(plateau) : 0;
     s += scoreLocal(plateau);
     return s;
+}
+
+void Score::serialize(QVariantMap &data, SerializationContext *context) const {
+    data["scoreDecore"] = context->serialize(scoreDecore);
+}
+
+void Score::deserialize(const QVariantMap &data, SerializationContext *context) {
+    scoreDecore = dynamic_cast<Score*>(context->deserialize(data["scoreDecore"]));
 }
 
 // =======================

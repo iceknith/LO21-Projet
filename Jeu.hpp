@@ -10,10 +10,11 @@
 
 namespace constJeu {
     const size_t nombreJoueursMax{4};
+    const QString saveFilePath = "save.dat";
 }
 
 //! La classe responsable de gérer tout le cycle de vie du jeu
-class Jeu {
+class Jeu : public Serializable {
 private:
     //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
     multimap<int, size_t> calculerScores();
@@ -25,20 +26,23 @@ protected:
     GameMode modeDeJeu;
 
     //! Le nombre de tours joués
-    size_t nombre_tours;
+    size_t nombreTours;
     //! Le nombre maximum de tours à jouer
-    size_t max_nombre_tours;
+    size_t maxNombreTours;
 
     //! Le nombre de joueurs qui participent au jeu
     size_t nombreJoueurs;
     //! Les joueurs qui jouent dans ce jeu
     Joueur* joueurs[constJeu::nombreJoueursMax];
+    //! Le joueur actuel
+    size_t joueurActuel;
+    //! Le premier joueur
+    size_t premierJoueur;
+
+    //! La tuile de depart des joueurs
+    TuileDepart* tuileDepart;
     //! Le deck du jeu
-    /*
-     * Le deck du jeu
-     * Il s'agit d'un pointeur, car le deck n'est initialisé que après que les joueurs ont été séléctionnés
-     */
-    Deck* deck;
+    Deck deck;
     //! Le chantier du jeu
     Chantier chantier;
     //! L'affichage du jeu.
@@ -48,10 +52,15 @@ protected:
     */
     Affichage* affichage;
 
+
     // Game loop methodes
 
     // Initialisation des plateaux des joueurs
     void initialisePlateau();
+    //! La méthode chargée d'afficher l'écran d'acceuil
+    virtual void titleScreen()=0;
+    //! La méthode chargée de demander à l'utilisateur si il veut charger une partie précédente
+    virtual bool selectChargerPartie()=0;
     //! La méthode chargée de la séléction du mode de jeu
     virtual void selectGameMode() = 0;
     //! La méthode chargée de la séléction de joueurs
@@ -70,18 +79,34 @@ protected:
     //! La méthode chargée de la gestion de la fin de partie
     virtual void finDePartie(multimap<int, size_t> scores) = 0;
 
-    Jeu() = default;
+    //! La méthode chargée de charger la dernière partie
+    static void chargerPartie();
+    //! La méthode chargée de sauvegarder la partie actuelle
+    static void sauvegarderPartie();
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
+
+    Jeu() : deck(), chantier() {tuileDepart = new TuileDepart();}
 public:
+    ~Jeu();
+
     void gameLoop();
 
     //! Retourne le jeu instantié, si il existe, sinon retourne nullptr
     static Jeu* getJeu() {return jeu;}
+
+    string className() override {return "Jeu";}
 };
 
 class JeuConsole : public Jeu {
 private:
     JeuConsole();
 
+    void titleScreen() override;
+    bool selectChargerPartie() override;
     void selectGameMode() override;
     void selectJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;

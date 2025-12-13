@@ -1,6 +1,8 @@
 #ifndef LO21_PROJET_UTILS_HPP
 #define LO21_PROJET_UTILS_HPP
 
+#include "Serialization/Serializable.hpp"
+
 //! Définit les couleurs des tuiles d'Akropolis
 enum CouleursAkropolis {
     BLANC,
@@ -20,15 +22,15 @@ enum class TypeHexagone {
 
 //! Définit les modes de jeu d'Akropolis
 enum class GameMode {
-    SOLO,
-    MULTIJOUEUR
+    SOLO = 0,
+    MULTIJOUEUR = 1
 };
 
 //! Définit les difficultées du jeu d'Akropolis en solo
 enum class Difficulte {
-    FACILE,
-    NORMALE,
-    DIFFICILE
+    FACILE = 0,
+    NORMALE = 1,
+    DIFFICILE = 2
 };
 
 namespace GameConstants {
@@ -51,7 +53,7 @@ namespace GameConstants {
 
 
 //! Représente un Vecteur 2D
-class Vector2 {
+class Vector2 : public Serializable {
 public:
     //! La coordonée X du Vecteur
     /*! La coordonée X du Vecteur */
@@ -93,6 +95,13 @@ public:
      * Soit A et B deux vecteurs : A + B = (A.X + B.X, A.y + B.y)
      */
     Vector2 operator-(const Vector2& v) const{return {x - v.x, y - v.y};}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override {data["x"] = x; data["y"] = y;}
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override {x = data["x"].value<float>(); y = data["y"].value<float>();};
+    //! Implémentation concrète de class name
+    std::string className() override {return "Vector2";};
 };
 // Positions de tous les voisins d'un Hexagone
 static const Vector2 adjascenceHex[6]{

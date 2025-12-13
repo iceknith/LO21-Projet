@@ -59,7 +59,7 @@ namespace constAffichageConsoleHex {
   Il s'agit d'une classe abstraite, qui est héritée par d'autres classes
   Comme Place, Carriere ou Quartier
 */
-class Hexagone {
+class Hexagone : public Serializable {
 protected:
     //! La couleur de cet hexagone
     CouleursAkropolis couleur;
@@ -71,8 +71,9 @@ protected:
     //! Setteur de la position locale de cet hexagone dans la tuile
     void set_local_position(Vector2 newLocalPos) {localPos = newLocalPos;}
 
-    friend HexagoneContainer;
+    friend HexagoneContainer; friend Tuile;
 public :
+    Hexagone() : Hexagone(nullptr, {}, CouleursAkropolis::BLANC) {};
     Hexagone(Tuile* tuile_parent, const Vector2& localPos, CouleursAkropolis couleur) :
             tuileParent(tuile_parent), localPos(localPos), couleur(couleur) {};
     ~Hexagone() = default;
@@ -133,6 +134,11 @@ public :
 
     //! Retourne le type de l'hexagone
     virtual TypeHexagone get_type() const {return TypeHexagone::Hexagone;}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 //! La classe Place
@@ -157,6 +163,13 @@ public:
     int get_etoiles() const {return etoiles;};
 
     const string get_text() const override {return "Place";}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
+    //! Implémentation concrète de ClassName
+    string className() override {return "Place";}
 };
 
 //! La classe Carriere
@@ -180,6 +193,9 @@ public:
 
     const string get_text() const override {return "Carriere";}
     void quand_recouvert(Joueur* joueur_qui_recouvre) const override;
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "Carriere";}
 };
 
 //! La classe Quartier
@@ -196,6 +212,9 @@ public:
     }
 
     const string get_text() const override {return "Quartier";}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "Quartier";}
 };
 
 

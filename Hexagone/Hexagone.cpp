@@ -110,8 +110,30 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
     return affichage;
 }
 
+void Hexagone::serialize(QVariantMap &data, SerializationContext *context) const {
+    data["couleur"] = couleur;
+    QVariantMap  vectData;
+    localPos.serialize(vectData, context);
+    data["localPos"] = vectData;
+}
+
+void Hexagone::deserialize(const QVariantMap &data, SerializationContext *context) {
+    couleur = data["couleur"].value<CouleursAkropolis>();
+    localPos.deserialize(data["localPos"].value<QVariantMap>(), context);
+}
+
 void Carriere::quand_recouvert(Joueur *joueur_qui_recouvre) const {
     Hexagone::quand_recouvert(joueur_qui_recouvre);
 
     joueur_qui_recouvre->ajouter_pierre(pierre_count);
+}
+
+void Place::serialize(QVariantMap &data, SerializationContext *context) const {
+    Hexagone::serialize(data, context);
+    data["etoiles"] = etoiles;
+}
+
+void Place::deserialize(const QVariantMap &data, SerializationContext *context) {
+    Hexagone::deserialize(data, context);
+    etoiles = data["etoiles"].value<int>();
 }

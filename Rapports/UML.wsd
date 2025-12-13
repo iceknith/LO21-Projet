@@ -254,8 +254,8 @@ Chantier "1" *-- "1..*" Tuile
 
 class Jeu {
     # modeDeJeu : GameMode
-    # nombre_tours : size_t
-    # max_nombre_tours : size_t
+    # nombreTours : size_t
+    # maxNombreTours : size_t
     # nombreJoueurs : size_t
     # joueurs : Joueur* [nombreJoueursMax]
     # deck : Deck*

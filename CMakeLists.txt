@@ -28,7 +28,6 @@ add_executable(LO21-Projet main.cpp
         Jeu.cpp
         Jeu.hpp
         HexagoneContainer/HexagoneContainer.cpp
-        Serialization/Serializable.cpp
         Serialization/Serializable.hpp
         Serialization/Serialization.cpp
         Serialization/Serialization.hpp

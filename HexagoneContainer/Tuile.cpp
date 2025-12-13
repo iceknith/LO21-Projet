@@ -8,6 +8,20 @@ int Tuile::nextID = 0;
 
 Tuile::Tuile() : HexagoneContainer() {
     id = nextID++;
+    hauteur = 0;
+}
+
+void Tuile::serialize(QVariantMap &data, SerializationContext *context) const {
+    HexagoneContainer::serialize(data, context);
+    data["hauteur"] = hauteur;
+    data["id"] = id;
+}
+
+void Tuile::deserialize(const QVariantMap &data, SerializationContext *context) {
+    HexagoneContainer::deserialize(data, context);
+    hauteur = data["hauteur"].value<int>();
+    id = data["int"].value<int>();
+    for (auto it:container) it.second->tuileParent = this;
 }
 
 const Vector2 TuileJeu::positionEnfants[3] = {

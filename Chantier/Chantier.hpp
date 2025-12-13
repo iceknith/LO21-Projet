@@ -7,14 +7,14 @@
 const size_t max_tuiles_par_chantier = 5;
 
 //! La classe implémentant le Chantier, permettant aux Joueur de piocher des Tuile
-class Chantier {
+class Chantier : public Serializable{
 private:
     //! La taille maximale du Chantier (est dépendante du nombre de joueurs)
     size_t taille = 0;
     //! le nombre de tuiles actuellement dans le Chantier
     size_t nombreTuiles = 0;
     //! Le tableau enregistrant toutes les tuiles sur tout le Chantier
-    Tuile* tuiles[max_tuiles_par_chantier];
+    TuileJeu* tuiles[max_tuiles_par_chantier]{};
 
     //! Setteur de la taille du chantier
     void set_taille(size_t newTaille) {taille = min(max(newTaille, (size_t) 0), max_tuiles_par_chantier);} // Clamp entre 0 et max_tuiles_par_chantier
@@ -50,9 +50,9 @@ public:
      */
     Tuile* prendre_tuile(size_t index);
     //! Ajoute une Tuile à la fin du chantier
-    void ajouter_tuile(Tuile* tuile);
+    void ajouter_tuile(TuileJeu* tuile);
     //! Ajoute des Tuile à la fin du chantier
-    void ajouter_tuile(Tuile* tuile, size_t nombre);
+    void ajouter_tuile(TuileJeu** tuile, size_t nombre);
 
 
 
@@ -76,6 +76,14 @@ public:
     [[nodiscard]] iterator end() const {return iterator{taille, *this};}
     [[nodiscard]] iterator cbegin() const {return iterator{0, *this};}
     [[nodiscard]] iterator cend() const {return iterator{taille, *this};}
+
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
+    //! Implémentation concrète de class name
+    std::string className() override {return "Chantier";};
 };
 
 

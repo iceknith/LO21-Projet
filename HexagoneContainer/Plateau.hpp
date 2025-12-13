@@ -28,6 +28,9 @@ public:
      * @return si le placement s'est bien effectué ou non
      */
     bool placer(Tuile* tuile, const Vector2& position, bool forcePlacement = false, Joueur *joueur = nullptr);
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "Plateau";}
 };
 
 

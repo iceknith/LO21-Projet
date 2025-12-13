@@ -1,57 +1,58 @@
+#include <QFile>
+#include <QFileInfo>
 #include "Jeu.hpp"
-
-void print_title() {
-    cout <<
-"    _______ __  __ ______ _______ ______ _______ _____   _______ _______ \n"
-"   |   _   |  |/  |   __ \\       |   __ \\       |     |_|_     _|     __|\n"
-"   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
-"   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
-}
+#include "Serialization/Serialization.hpp"
 
 // Jeu //
 
 Jeu* Jeu::jeu = nullptr;
 
 void Jeu::gameLoop() {
-    selectGameMode();
-    size_t joueurActuel;
-    size_t premierJoueur;
-    if (modeDeJeu == GameMode::MULTIJOUEUR){
-        selectJoueurs();
-        srand(time(NULL));
-        premierJoueur = rand()%nombreJoueurs;
-    }
-    // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
+    titleScreen();
+    // Si on charge une partie existante
+    QFileInfo saveFileInfo{constJeu::saveFilePath};
+    if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) chargerPartie();
+    // Sinon, on fait la configuration de la partie
     else {
-        nombreJoueurs = 2;
-        joueurs[0] = new JoueurSimple();
-        joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
-        premierJoueur = 0;
+        selectGameMode();
+        if (modeDeJeu == GameMode::MULTIJOUEUR){
+            selectJoueurs();
+            srand(time(NULL));
+            premierJoueur = rand()%nombreJoueurs;
+        }
+            // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
+        else {
+            nombreJoueurs = 2;
+            joueurs[0] = new JoueurSimple();
+            joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
+            premierJoueur = 0;
+        }
+        joueurActuel = premierJoueur;
+
         initialisePlateau();
-    }
-    joueurActuel = premierJoueur;
 
-    // Initialisation de la règle de score
-    selectReglesScore();
+        // Initialisation de la règle de score
+        selectReglesScore();
 
-    // Initialisation du nombre de pierres
-    for (size_t i = 0; i<nombreJoueurs; i++) {
-        joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
-    }
+        // Initialisation du nombre de pierres
+        for (size_t i = 0; i<nombreJoueurs; i++) {
+            joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
+        }
+        deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
+        chantier.set_nombre_joueurs(nombreJoueurs);
 
-    deck = new Deck(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
-    chantier.set_nombre_joueurs(nombreJoueurs);
+        nombreTours = 1;
+        maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
 
-    nombre_tours = 1;
-    max_nombre_tours = deck->get_taille()/(chantier.get_taille()-1);
+        int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-    int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-    if (diff > 0 && deck->get_nombre_tuiles() >= diff) {
-        chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
+        if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
+            chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
+        }
     }
 
     while (chantier.get_nombre_tuiles() > 1) {
+        sauvegarderPartie();
         // Joueur manuel
         if (!joueurs[joueurActuel]->get_joue_tout_seul())
         {
@@ -66,13 +67,13 @@ void Jeu::gameLoop() {
         }
         //___________
         joueurActuel = (joueurActuel + 1)%nombreJoueurs;
-        nombre_tours += joueurActuel == premierJoueur;
+        nombreTours += joueurActuel == premierJoueur;
 
         if (joueurActuel == premierJoueur) {
-            diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+            int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
 
-            if (diff > 0 && deck->get_nombre_tuiles() >= diff) {
-                chantier.ajouter_tuile(deck->tirer_tuile(diff), diff);
+            if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
+                chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
             }
         }
     }
@@ -83,7 +84,7 @@ void Jeu::gameLoop() {
 void Jeu::initialisePlateau() {
     Vector2 positionNulle{0,0};
     for (size_t i = 0; i < nombreJoueurs; i++) {
-        joueurs[i]->place_tuile(new TuileDepart(), positionNulle, true);
+        joueurs[i]->place_tuile(tuileDepart, positionNulle, true);
     }
 }
 
@@ -93,15 +94,95 @@ multimap<int, size_t> Jeu::calculerScores() {
     return scores;
 }
 
+Jeu::~Jeu() {
+    delete tuileDepart;
+    delete affichage;
+}
+
+void Jeu::serialize(QVariantMap &data, SerializationContext *context) const {
+    data["modeDeJeu"] = static_cast<int>(modeDeJeu);
+    data["nombreTours"] = static_cast<qsizetype>(nombreTours);
+    data["maxNombreTours"] = static_cast<qsizetype>(maxNombreTours);
+    data["nombreJoueurs"] = static_cast<qsizetype>(nombreJoueurs);
+    data["joueurActuel"] = static_cast<qsizetype>(joueurActuel);
+    data["premierJoueur"] = static_cast<qsizetype>(premierJoueur);
+
+    // On commence par le deck, vu que c'est lui qui est responsable de toutes les tuilesJeu
+    QVariantMap deckData;
+    deck.serialize(deckData, context);
+    data["deck"] = deckData;
+
+    // Ensuite, en deuxième, on sérialize la tuile de départ
+    data["tuileDepart"] = context->serialize(tuileDepart);
+
+    // Finalement, on peut faire les autres dans l'ordre qu'on veut
+    int i = 0;
+    for (auto joueur : joueurs)
+        data[QString::number(i++)] = context->serialize(joueur);
+
+    QVariantMap chantierData;
+    chantier.serialize(chantierData, context);
+    data["chantier"] = chantierData;
+}
+
+void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
+    modeDeJeu = static_cast<GameMode>(data["modeDeJeu"].value<int>());
+    nombreTours = static_cast<size_t>(data["nombreTours"].value<qsizetype>());
+    maxNombreTours = static_cast<size_t>(data["maxNombreTours"].value<qsizetype>());
+    nombreJoueurs = static_cast<size_t>(data["nombreJoueurs"].value<qsizetype>());
+    joueurActuel = static_cast<size_t>(data["joueurActuel"].value<qsizetype>());
+    premierJoueur = static_cast<size_t>(data["premierJoueur"].value<qsizetype>());
+
+    // On commence par le deck, vu que c'est lui qui est responsable de toutes les tuilesJeu
+    deck.deserialize(data["deck"].value<QVariantMap>(), context);
+
+    // Ensuite, en deuxième, on sérialize la tuile de départ
+    delete tuileDepart;
+    tuileDepart = dynamic_cast<TuileDepart*>(context->deserialize(data["tuileDepart"]));
+
+    // Finalement, on peut faire les autres dans l'ordre qu'on veut
+    for (auto joueur : joueurs) delete joueur;
+    for (int i = 0; i < nombreJoueurs; i++)
+        joueurs[i] = dynamic_cast<Joueur*>(context->deserialize(data[QString::number(i)]));
+
+    chantier.deserialize(data["chantier"].value<QVariantMap>(), context);
+}
+
+void Jeu::chargerPartie() {
+    SerializationContext s{};
+    QFile file{constJeu::saveFilePath};
+    if (file.open(QIODevice::ReadOnly)) {
+        QDataStream in(&file);
+        in >> s;
+        file.close();
+    }
+    // Sinon dire qu'on as pas réussi à ouvrir le fichier
+    else throw exception();
+    // Deserialiser le jeu (stocké à l'indice 0)
+    s.deserialize(0);
+}
+
+void Jeu::sauvegarderPartie() {
+    SerializationContext s{};
+    QFile file{constJeu::saveFilePath};
+    // Sérialiser le Jeu (qu'on stockera donc à l'indice 0)
+    s.serialize(getJeu());
+    if (file.open(QIODevice::WriteOnly)) {
+        QDataStream out(&file);
+        out << s;
+        file.close();
+    }
+    // Sinon dire qu'on as pas réussi à ouvrir le fichier
+    else throw exception();
+}
+
 // Jeu console //
 
-JeuConsole::JeuConsole() {
+JeuConsole::JeuConsole() : Jeu() {
     affichage = new AffichageConsole();
 }
 
 void JeuConsole::selectGameMode()  {
-    print_title();
-
     int choix =0;
     cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?"
         << endl << "\033[0;37m-> \033[0;97m";
@@ -142,7 +223,6 @@ void JeuConsole::selectJoueurs() {
     cout << "\033[0;36mCette partie se déroulera à " << nombreJoueurs << " joueurs" << endl;
 
     for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
-    initialisePlateau();
 }
 
 Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
@@ -210,8 +290,6 @@ void JeuConsole::selectReglesScore() {
 
     if (modeDeJeu == GameMode::SOLO) joueurs[0]->set_score(score);
     else for (size_t i = 0; i < nombreJoueurs; i++) joueurs[i]->set_score(score);
-
-    initialisePlateau();
 }
 
 Tuile* JeuConsole::selectTuile(size_t joueur) {
@@ -219,7 +297,7 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     Vector2 positionNulle{0,0};
 
     cout << "\033[0;36m------------------" << endl
-        << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
+         << "--- Tour " << (nombreTours < 10 ? "0" : "") << nombreTours << "/" << maxNombreTours << " ---" << endl
         << "------------------" << endl << endl;
 
     int i = 0;
@@ -261,7 +339,7 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
 
 void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
     cout << "\033[0;36m------------------" << endl
-         << "--- Tour " << (nombre_tours < 10 ? "0" : "") << nombre_tours << "/" << max_nombre_tours << " ---" << endl
+         << "--- Tour " << (nombreTours < 10 ? "0" : "") << nombreTours << "/" << maxNombreTours << " ---" << endl
          << "------------------" << endl;
 
     Vector2 positionSelectionne{0,0};
@@ -395,6 +473,24 @@ void JeuConsole::finDePartie(multimap<int, size_t> scores) {
 Jeu *JeuConsole::getJeu() {
     if (jeu == nullptr) jeu = new JeuConsole();
     return jeu;
+}
+
+bool JeuConsole::selectChargerPartie() {
+    string reponse;
+    cout << "\033[0;97mVoulez-vous recharger la dernière partie ?" << endl
+         << "Yes ( y ) / No ( n )"
+         << endl << "\033[0;37m-> \033[0;97m";
+    cin >> reponse;
+
+    return reponse == "y" || reponse == "yes" || reponse == "Yes";
+}
+
+void JeuConsole::titleScreen() {
+    cout <<
+         "    _______ __  __ ______ _______ ______ _______ _____   _______ _______ \n"
+         "   |   _   |  |/  |   __ \\       |   __ \\       |     |_|_     _|     __|\n"
+         "   |       |     <|      <   -   |    __/   -   |       |_|   |_|__     |\n"
+         "   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
 }
 
 Jeu *JeuGUI::getJeu() {

@@ -10,8 +10,9 @@
 class SerializationContext {
 public:
     // Serialize un pointeur
-    size_t serialize(Serializable* object );
-    Serializable* deserialize(const size_t index);
+    QVariant serialize(Serializable* object);
+    Serializable* deserialize(const QVariant& index);
+    qsizetype currentSerializationIndex() const {return recordList.count() - 1;}
 
     friend QDataStream& operator<<(QDataStream& stream, const SerializationContext& context);
     friend QDataStream& operator>>(QDataStream& stream, SerializationContext& context);
@@ -19,7 +20,7 @@ public:
 private:
     struct Record
     {
-        Serializable* object;
+        Serializable* object = nullptr;
         string type;
         QVariantMap serializedData;
 
@@ -30,7 +31,7 @@ private:
     //! La liste des pointeurs enregistrés
     QList<Record> recordList;
     //! Une hashmap associant le pointeur d'un serializable à son index dans le record
-    QHash<Serializable*, size_t> recordMap;
+    QHash<Serializable*, qsizetype> recordMap;
 };
 
 

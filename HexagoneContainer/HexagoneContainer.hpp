@@ -6,7 +6,7 @@
 #include "../Utils.hpp"
 #include "../Hexagone/Hexagone.hpp"
 
-class HexagoneContainer {
+class HexagoneContainer : public Serializable{
 private:
 protected:
     //! La map associant une coordonée vectorielle à un hexagone.
@@ -14,7 +14,7 @@ protected:
     float rotation;
 public:
     HexagoneContainer() = default;
-    virtual ~HexagoneContainer() = default;
+    virtual ~HexagoneContainer() {cout << "suppression " << endl;};
     // TODO faire le destructeur de HexagoneContainer
 
     //! Retourne si il existe un hexagone aux coordonées entreées
@@ -49,6 +49,11 @@ public:
     auto cbegin() const {return container.begin();}
     //! Retourne la position fianle de l'itérateur const du container
     auto cend() const {return container.end();}
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 

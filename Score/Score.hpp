@@ -9,7 +9,7 @@
  * Classe de Score, utilisée pour calculer le score d'un joueur à partir d'un plateau
  * Est une classe abstraite, mais également un décorateur.
  */
-class Score {
+class Score : public Serializable{
 protected:
     //! Le score décoré
     Score* scoreDecore = nullptr;
@@ -21,24 +21,38 @@ public:
     virtual ~Score() { free(scoreDecore);}
     //! La fonction de calcul de Score
     int score(Plateau* plateau);
+
+    //! Implémentation concrète de la sérialisation
+    void serialize(QVariantMap& data, SerializationContext* context) const override;
+    //! Implémentation concrète de la désérialisation
+    void deserialize(const QVariantMap& data, SerializationContext* context) override;
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Hippodamos (MODE FACILE)
 class ScoreSoloArchitecteHippodamos : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreSoloArchitecteHippodamos";}
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Metagenes (MODE NORMALE)
 class ScoreSoloArchitecteMetagenes : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreSoloArchitecteMetagenes";}
 };
 
 //! Décorateur qui implémente le scoring pour l’Illustre architecte Callicrates (MODE DIFFICILE)
 class ScoreSoloArchitecteCallicrates : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreSoloArchitecteCallicrates";}
 };
 
 
@@ -49,6 +63,9 @@ protected:
 public:
     ScoreBleu() : Score() {}
     explicit ScoreBleu(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreBleu";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Rouges d'un joueur normal
@@ -58,6 +75,9 @@ protected:
 public:
     ScoreRouge() : Score() {}
     explicit ScoreRouge(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreRouge";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Verts d'un joueur normal
@@ -67,6 +87,9 @@ protected:
 public:
     ScoreVert() : Score() {}
     explicit ScoreVert(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreVert";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Violets d'un joueur normal
@@ -76,6 +99,9 @@ protected:
 public:
     ScoreViolet() : Score() {}
     explicit ScoreViolet(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreViolet";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Jaunes d'un joueur normal
@@ -85,6 +111,9 @@ protected:
 public:
     ScoreJaune() : Score() {}
     explicit ScoreJaune(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreJaune";}
 };
 
 
@@ -95,6 +124,9 @@ protected:
 public:
     ScoreBleuVariante() : Score() {}
     explicit ScoreBleuVariante(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreBleuVariante";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Rouges d'un joueur avec variante
@@ -104,6 +136,9 @@ protected:
 public:
     ScoreRougeVariante() : Score() {}
     explicit ScoreRougeVariante(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreRougeVariante";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Verts d'un joueur avec variante
@@ -113,6 +148,9 @@ protected:
 public:
     ScoreVertVariante() : Score() {}
     explicit ScoreVertVariante(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreVertVariante";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Violets d'un joueur avec variante
@@ -122,6 +160,9 @@ protected:
 public:
     ScoreVioletVariante() : Score() {}
     explicit ScoreVioletVariante(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreVioletVariante";}
 };
 
 //! Décorateur qui implémente le scoring pour les points Jaunes d'un joueur avec variante
@@ -131,6 +172,9 @@ protected:
 public:
     ScoreJauneVariante() : Score() {}
     explicit ScoreJauneVariante(Score* scoreDecore) : Score(scoreDecore) {}
+
+    //! Implémentation concrète de ClassName
+    string className() override {return "ScoreJauneVariante";}
 };
 
 //! Ensemble de fonctions utiles au calcul du score
