@@ -7,12 +7,16 @@ var searchData=
   ['jeu_4',['Jeu',['../d1/de1/classJeu.html#acc5795ee00edf75516d3dfe65be3e6d6',1,'Jeu']]],
   ['jeu_2ecpp_5',['Jeu.cpp',['../d4/d29/Jeu_8cpp.html',1,'']]],
   ['jeu_2ehpp_6',['Jeu.hpp',['../d4/d7b/Jeu_8hpp.html',1,'']]],
-  ['jeuconsole_7',['JeuConsole',['../dc/dcd/classJeuConsole.html#ae342a6282692956ca326faa8446c81db',1,'JeuConsole::JeuConsole()'],['../dc/dcd/classJeuConsole.html',1,'JeuConsole']]],
-  ['jeugui_8',['JeuGUI',['../da/d36/classJeuGUI.html#aac96bc90e4f0ed1f514bb63dab9ee6cc',1,'JeuGUI::JeuGUI()'],['../da/d36/classJeuGUI.html',1,'JeuGUI']]],
+  ['jeuconsole_7',['JeuConsole',['../dc/dcd/classJeuConsole.html',1,'JeuConsole'],['../dc/dcd/classJeuConsole.html#ae342a6282692956ca326faa8446c81db',1,'JeuConsole::JeuConsole()']]],
+  ['jeugui_8',['JeuGUI',['../da/d36/classJeuGUI.html#a526affbdb666ebb0e298e8040278d27c',1,'JeuGUI::JeuGUI()'],['../da/d36/classJeuGUI.html',1,'JeuGUI']]],
   ['jouer_9',['jouer',['../dd/d07/classJoueur.html#a1f03b0fed47d610f453e4ae1ae066cd5',1,'Joueur::jouer()'],['../d9/d17/classIllustreArchitecte.html#a03695ed96195274c516d862d03c9b0e7',1,'IllustreArchitecte::jouer()']]],
   ['jouetoutseul_10',['joueToutSeul',['../d6/dfa/classJoueurSimple.html#a8ff329e57e48b14547ba4af0a8249a5f',1,'JoueurSimple']]],
-  ['joueur_11',['Joueur',['../dd/d07/classJoueur.html',1,'Joueur'],['../dd/d07/classJoueur.html#add6c98be3020651d84f6d75ccc1d867e',1,'Joueur::Joueur()']]],
-  ['joueuractuel_12',['joueurActuel',['../d1/de1/classJeu.html#a2160e7b393674468d9f0cb3b936c28ac',1,'Jeu']]],
-  ['joueurs_13',['joueurs',['../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834',1,'Jeu']]],
-  ['joueursimple_14',['JoueurSimple',['../d6/dfa/classJoueurSimple.html',1,'']]]
+  ['joueur_11',['Joueur',['../dd/d07/classJoueur.html#add6c98be3020651d84f6d75ccc1d867e',1,'Joueur::Joueur()'],['../dd/d07/classJoueur.html',1,'Joueur']]],
+  ['joueur1_12',['Joueur1',['../d7/d73/classVuePartie.html#ab2e00883ce80b40c65aa794789401e21',1,'VuePartie']]],
+  ['joueur2_13',['Joueur2',['../d7/d73/classVuePartie.html#ad08debc5f66aa790ab25c4d6ff56a5c9',1,'VuePartie']]],
+  ['joueur3_14',['Joueur3',['../d7/d73/classVuePartie.html#a10195a8ccc4269c867d3e3fa3510d8a8',1,'VuePartie']]],
+  ['joueur4_15',['Joueur4',['../d7/d73/classVuePartie.html#a2c180cf10220de1d19d4871674f22e44',1,'VuePartie']]],
+  ['joueuractuel_16',['joueurActuel',['../d1/de1/classJeu.html#a2160e7b393674468d9f0cb3b936c28ac',1,'Jeu']]],
+  ['joueurs_17',['joueurs',['../d1/de1/classJeu.html#a1c764d654281bb74fd85fcb427f24834',1,'Jeu']]],
+  ['joueursimple_18',['JoueurSimple',['../d6/dfa/classJoueurSimple.html',1,'']]]
 ];
