@@ -10,11 +10,8 @@ var searchData=
   ['tirer_5ftuiles_7',['tirer_tuiles',['../d6/df2/classDeck.html#acf51dd659abc401a9fc85f7194b2e9d3',1,'Deck']]],
   ['titlescreen_8',['titleScreen',['../dc/dcd/classJeuConsole.html#ad646d0a6fe3f3837df11e52465ffedef',1,'JeuConsole::titleScreen()'],['../d1/de1/classJeu.html#a4d5b50eb1c277260c00b4bc6602cb5c5',1,'Jeu::titleScreen()']]],
   ['tourne_9',['tourne',['../dc/d32/classHexagoneContainer.html#aa7d427e1f0da3dd9d4ac53d19d31ffcc',1,'HexagoneContainer']]],
-  ['tourne_5ftuile_10',['tourne_tuile',['../d7/d88/classTuile.html#aa072002000cdc13af93139a3347c03f0',1,'Tuile']]],
-  ['trouver_5femplacement_5ftuile_11',['trouver_emplacement_tuile',['../d9/d17/classIllustreArchitecte.html#ae5308f1a4934d95bf814fb5ab9dbf3b2',1,'IllustreArchitecte']]],
-  ['tuile_12',['Tuile',['../d7/d88/classTuile.html#afb479e0f8dc6b2cfeb656fa901d39c41',1,'Tuile']]],
-  ['tuileclique_13',['TuileClique',['../d7/d73/classVuePartie.html#a60b39cf6e4d1a7b51c3ecda67608dbdd',1,'VuePartie']]],
-  ['tuiledepart_14',['TuileDepart',['../db/d42/classTuileDepart.html#ac98fb0b9bb2aeccdb48fc8eaaed91a61',1,'TuileDepart']]],
-  ['tuilegui_15',['TuileGUI',['../d0/dd3/classTuileGUI.html#a18c544b0649a9f1c001e3e361d5ca855',1,'TuileGUI']]],
-  ['tuilejeu_16',['TuileJeu',['../d4/dec/classTuileJeu.html#ad212ec49fe340185b5a77c3892e1c03d',1,'TuileJeu']]]
+  ['trouver_5femplacement_5ftuile_10',['trouver_emplacement_tuile',['../d9/d17/classIllustreArchitecte.html#ae5308f1a4934d95bf814fb5ab9dbf3b2',1,'IllustreArchitecte']]],
+  ['tuile_11',['Tuile',['../d7/d88/classTuile.html#afb479e0f8dc6b2cfeb656fa901d39c41',1,'Tuile']]],
+  ['tuiledepart_12',['TuileDepart',['../db/d42/classTuileDepart.html#ac98fb0b9bb2aeccdb48fc8eaaed91a61',1,'TuileDepart']]],
+  ['tuilejeu_13',['TuileJeu',['../d4/dec/classTuileJeu.html#ad212ec49fe340185b5a77c3892e1c03d',1,'TuileJeu']]]
 ];

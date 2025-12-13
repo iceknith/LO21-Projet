@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['labelpierres_0',['labelPierres',['../d5/d4c/classApplication.html#a130b595f8d5f4bcba2bf7235fc2d9248',1,'Application']]],
-  ['largeurcentre_1',['largeurCentre',['../d3/d75/namespaceconstAffichageConsoleHex.html#ad1c2459cb2060d8fb56216a8f78739ac',1,'constAffichageConsoleHex']]],
-  ['largeurhex_2',['largeurHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a8d058f2a67cfa42c273b74eaea82fe72',1,'constAffichageConsoleHex']]],
-  ['layoutinformations_3',['layoutInformations',['../d7/d73/classVuePartie.html#a1a4eb97e31a6223d6569c60944e5419b',1,'VuePartie']]]
+  ['max_5fcouleur_0',['MAX_COULEUR',['../de/d62/namespaceGameConstants.html#af83c910b0913622fca546f78a9d15cbb',1,'GameConstants']]],
+  ['max_5fhexagon_5fneighbors_1',['MAX_HEXAGON_NEIGHBORS',['../de/d62/namespaceGameConstants.html#a51219f7a52ac96d57c7557352f53560d',1,'GameConstants']]],
+  ['max_5ftuiles_5fpar_5fchantier_2',['max_tuiles_par_chantier',['../d7/dc0/Chantier_8hpp.html#a3b7d63e6808c80ecf7ab8b71c3ec3ea2',1,'Chantier.hpp']]],
+  ['maxnombretours_3',['maxNombreTours',['../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b',1,'Jeu']]],
+  ['modedejeu_4',['modeDeJeu',['../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15',1,'Jeu']]]
 ];

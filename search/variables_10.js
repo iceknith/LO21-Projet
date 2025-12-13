@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['savefilepath_0',['saveFilePath',['../dd/d95/namespaceconstJeu.html#a43c41120bda1cca6095deed9fdc10672',1,'constJeu']]],
-  ['sceneplateau_1',['scenePlateau',['../d5/d4c/classApplication.html#a8bbf33a85d08cf1947d4311403edc893',1,'Application']]],
-  ['score_2',['score',['../d7/d73/classVuePartie.html#a52848b2002ceb836ef69b8cc10e98bb4',1,'VuePartie']]],
-  ['scoredecore_3',['scoreDecore',['../d7/d48/classScore.html#a3b57d7afaf21a727c6637b319ae5b675',1,'Score']]],
-  ['scorejoueur_4',['scoreJoueur',['../dd/d07/classJoueur.html#a31142ed18f56d3e993e050a79246f89c',1,'Joueur::scoreJoueur()'],['../d7/d73/classVuePartie.html#a213bdc2cf2598eaca22b1718fe3fe2d3',1,'VuePartie::scoreJoueur()']]],
-  ['serializeddata_5',['serializedData',['../d9/ded/structSerializationContext_1_1Record.html#abc90fb67a2b34a05e7721bb703da425e',1,'SerializationContext::Record']]]
+  ['taille_0',['taille',['../df/d51/classChantier.html#ab34d27f6344be39158e530e09fbe4c78',1,'Chantier::taille()'],['../d6/df2/classDeck.html#a2550113b077fd35f6720153b9a207de0',1,'Deck::taille()']]],
+  ['tuile_1',['Tuile',['../d4/dfc/classHexagone.html#ad9001211465a2ec9f5f4fb8b51af150a',1,'Hexagone']]],
+  ['tuiledepart_2',['tuileDepart',['../d1/de1/classJeu.html#acbc48fc80558a2d6b1cc44c59d6154fd',1,'Jeu']]],
+  ['tuileparent_3',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
+  ['tuiles_4',['tuiles',['../df/d51/classChantier.html#a1029255b29825b70ce946266381224d3',1,'Chantier::tuiles()'],['../d6/df2/classDeck.html#a429559b5c6741179aef1b2b5ca1422cd',1,'Deck::tuiles()']]],
+  ['type_5',['type',['../d9/ded/structSerializationContext_1_1Record.html#a5e8c530edd85c6581c0833d4ba6eb2e2',1,'SerializationContext::Record']]]
 ];
