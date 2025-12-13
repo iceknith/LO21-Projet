@@ -141,12 +141,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">selectReglesScore</a> ()=0</td></tr>
 <tr class="memdesc:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction des règles de score.  <a href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">More...</a><br /></td></tr>
 <tr class="separator:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a869fb9d2c8cac06ac33dbe192b42bb27">selectTuile</a> (size_t joueur)=0</td></tr>
-<tr class="memdesc:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a869fb9d2c8cac06ac33dbe192b42bb27">More...</a><br /></td></tr>
-<tr class="separator:a869fb9d2c8cac06ac33dbe192b42bb27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0861f2644ba9a230203b038a5d3dc0a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)=0</td></tr>
-<tr class="memdesc:a0861f2644ba9a230203b038a5d3dc0a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#a0861f2644ba9a230203b038a5d3dc0a8">More...</a><br /></td></tr>
-<tr class="separator:a0861f2644ba9a230203b038a5d3dc0a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a9e1ed1f2ca08a8ec1829ca3a0449c663">selectTuile</a> (size_t joueur)=0</td></tr>
+<tr class="memdesc:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a9e1ed1f2ca08a8ec1829ca3a0449c663">More...</a><br /></td></tr>
+<tr class="separator:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac026b185a9eb0989e9a8049ab1bcf607"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#ac026b185a9eb0989e9a8049ab1bcf607">placeTuile</a> (size_t joueur, <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> *tuileSelected)=0</td></tr>
+<tr class="memdesc:ac026b185a9eb0989e9a8049ab1bcf607"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée du placement d'une tuile séléctionné.  <a href="../../d1/de1/classJeu.html#ac026b185a9eb0989e9a8049ab1bcf607">More...</a><br /></td></tr>
+<tr class="separator:ac026b185a9eb0989e9a8049ab1bcf607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d0fc1ebfd551950cebce62996657b52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52">afficheTourAutomatique</a> (size_t joueur)=0</td></tr>
 <tr class="memdesc:a6d0fc1ebfd551950cebce62996657b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de gérer l'affichage d'un tour automatique.  <a href="../../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52">More...</a><br /></td></tr>
 <tr class="separator:a6d0fc1ebfd551950cebce62996657b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -501,8 +501,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0861f2644ba9a230203b038a5d3dc0a8" name="a0861f2644ba9a230203b038a5d3dc0a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0861f2644ba9a230203b038a5d3dc0a8">&#9670;&#160;</a></span>placeTuile()</h2>
+<a id="ac026b185a9eb0989e9a8049ab1bcf607" name="ac026b185a9eb0989e9a8049ab1bcf607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac026b185a9eb0989e9a8049ab1bcf607">&#9670;&#160;</a></span>placeTuile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -511,7 +511,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Jeu::placeTuile </td>
+          <td class="memname">virtual bool Jeu::placeTuile </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>joueur</em>, </td>
@@ -535,7 +535,7 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a173415005bc963a70a6bfa6b0f49217d">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a44f1565d544e4bf6d7e306ba7b4eb987">JeuConsole</a>.</p>
 
 </div>
 </div>
@@ -699,8 +699,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a869fb9d2c8cac06ac33dbe192b42bb27" name="a869fb9d2c8cac06ac33dbe192b42bb27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a869fb9d2c8cac06ac33dbe192b42bb27">&#9670;&#160;</a></span>selectTuile()</h2>
+<a id="a9e1ed1f2ca08a8ec1829ca3a0449c663" name="a9e1ed1f2ca08a8ec1829ca3a0449c663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e1ed1f2ca08a8ec1829ca3a0449c663">&#9670;&#160;</a></span>selectTuile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -709,7 +709,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="../../d7/d88/classTuile.html">Tuile</a> * Jeu::selectTuile </td>
+          <td class="memname">virtual int Jeu::selectTuile </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>joueur</em></td><td>)</td>
@@ -723,7 +723,7 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#ae35089d42fd5254b8470ff13800872a7">JeuConsole</a>.</p>
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a3b1f551b2157bde846440d6158043588">JeuConsole</a>.</p>
 
 </div>
 </div>
