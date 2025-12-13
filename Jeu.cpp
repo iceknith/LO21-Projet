@@ -56,8 +56,27 @@ void Jeu::gameLoop() {
         // Joueur manuel
         if (!joueurs[joueurActuel]->get_joue_tout_seul())
         {
-            Tuile* tuileSelected = selectTuile(joueurActuel);
-            placeTuile(joueurActuel, tuileSelected);
+            bool placementConfirme = false;
+            while (!placementConfirme) {
+                int tuileIndx = selectTuile(joueurActuel);
+
+                // Si on as décidé de quitter le jeu
+                if (tuileIndx == -1) return;
+
+                // Prendre la tuile séléctionné
+                Tuile* tuileSelected = chantier.get_tuile(tuileIndx);
+                placementConfirme = placeTuile(joueurActuel, tuileSelected);
+                joueurs[joueurActuel]->ajouter_pierre(-tuileIndx);
+
+                // Si le placement est confirmé, enlever la tuile du chantier
+                if (placementConfirme) {
+                    chantier.prendre_tuile(tuileIndx);
+                }
+                // Si le placement est annulé, rajouter le nombre de pierres qu'on as eneve au joueur
+                else {
+                    joueurs[joueurActuel]->ajouter_pierre(tuileIndx);
+                }
+            }
         }
 
         // Illustre architechte
@@ -240,7 +259,7 @@ Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> choix;
     }
-    Difficulte difficulte = static_cast<Difficulte>(choix-1);
+    auto difficulte = static_cast<Difficulte>(choix-1);
     switch (difficulte){
         case Difficulte::FACILE:
             cout << "\033[0;32mFacile\033[0;97m: vous aller affronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
@@ -292,7 +311,7 @@ void JeuConsole::selectReglesScore() {
     else for (size_t i = 0; i < nombreJoueurs; i++) joueurs[i]->set_score(score);
 }
 
-Tuile* JeuConsole::selectTuile(size_t joueur) {
+int JeuConsole::selectTuile(size_t joueur) {
     int output;
     Vector2 positionNulle{0,0};
 
@@ -311,10 +330,14 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
     affichage->affiche_joueur(*joueurs[joueur]);
 
     cout << "\033[0;97m Joueur "<< joueur+1 <<" quelle tuile voulez vous selectionner ?" << endl;
+    cout << "\033[0;37m( -1 ) pour quitter le programme et sauvegarder la partie." << endl;
     cout << "\033[0;37m-> \033[0;97m";
     cin >> output;
 
     while (output <= 0 || output > chantier.get_nombre_tuiles() || (output-1 > joueurs[joueur]->get_pierre()) || cin.fail()) {
+        // Si l'utilisateur souhaite quitter le programme
+        if (output == -1) return output;
+        // Sinon, gérer l'erreur de la façon appropriée
         if (output <= 0 || output > chantier.get_nombre_tuiles()){
             cout << "\033[1;31mLa valeur doit etre entre "<< 1 <<" et " << chantier.get_nombre_tuiles() << endl;
         }
@@ -332,12 +355,10 @@ Tuile* JeuConsole::selectTuile(size_t joueur) {
         cin >> output;
     }
 
-    joueurs[joueur]->set_pierre(joueurs[joueur]->get_pierre()-output+1);
-    Tuile* ret = chantier.prendre_tuile(output-1);
-    return ret;
+    return output-1;
 }
 
-void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
+bool JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
     cout << "\033[0;36m------------------" << endl
          << "--- Tour " << (nombreTours < 10 ? "0" : "") << nombreTours << "/" << maxNombreTours << " ---" << endl
          << "------------------" << endl;
@@ -350,9 +371,8 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
     afficheJoueur(joueur, *tuileSelected, positionSelectionne);
     cout << "\033[0;37mPour afficher les commandes disponibles, tapez help" << endl;
 
-    bool valide = false;
     string output;
-    while (!valide) {
+    while (true) {
         cout << "\033[0;37m-> \033[0;97m";
         cin >> output;
 
@@ -361,6 +381,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
                 << "Vous avez un curseur, qui séléctionne un emplacement pour palcer votre tuile." << endl
                 << endl
                 << "Voici la liste des commandes disponibles:" << endl
+                << "\033[1mr\033[0m  : Revient à la séléction de tuiles" << endl
                 << "\033[1mtg\033[0m  : Tourne la tuile d'un cran sur la gauche" << endl
                 << "\033[1mtd\033[0m  : Tourne la tuile d'un cran sur la droite" << endl
                 << "\033[1mmh\033[0m  : Bouge le curseur en haut" << endl
@@ -371,6 +392,9 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
                 << "\033[1mmbd\033[0m : Bouge le curseur en bas à droite" << endl
                 << "\033[1mp\033[0m   : Tente de placer la tuile à l'emplacement du curseur" << endl
                 ;
+        }
+        else if (output == "r") {
+            return false;
         }
         else if (output == "tg" || output == "td") {
             tuileSelected->tourne(output == "tg");
@@ -416,7 +440,7 @@ void JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
                 if (output == "y") {
                     cout << "\033[1;32mPlacement validé !" << endl;
                     joueurs[joueur]->place_tuile(tuileSelected, positionSelectionne);
-                    valide = true;
+                    return true;
                 }
                 else {
                     cout << "\033[0;37mPlacement annulé" << endl;

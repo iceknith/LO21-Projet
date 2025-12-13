@@ -40,6 +40,8 @@ public:
     size_t get_nombre_tuiles() const {return nombreTuiles;}
     //! Si le chantier est vide
     bool est_vide() const {return nombreTuiles <= 0;}
+    //! Renvoie une référence const à la tuile à l'indice i
+    Tuile* get_tuile(size_t i) const {return tuiles[i];}
     //! Retire la tuile, à l'index indiqué, du chantier
     /*!
      * Retire la tuile, à l'index indiqué, du chantier

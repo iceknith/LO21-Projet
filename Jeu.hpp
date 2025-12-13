@@ -70,9 +70,9 @@ protected:
     //! La méthode chargée de la séléction des règles de score
     virtual void selectReglesScore() = 0;
     //! La méthode chargée de la séléction d'une tuile.
-    virtual Tuile* selectTuile(size_t joueur) = 0;
+    virtual int selectTuile(size_t joueur) = 0;
     //! La méthode chargée du placement d'une tuile séléctionné.
-    virtual void placeTuile(size_t joueur, Tuile* tuileSelected) = 0;
+    virtual bool placeTuile(size_t joueur, Tuile* tuileSelected) = 0;
     //! La méthode chargée de gérer l'affichage d'un tour automatique
     virtual void afficheTourAutomatique(size_t joueur) = 0;
 
@@ -111,8 +111,8 @@ private:
     void selectJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
-    Tuile* selectTuile(size_t joueur) override;
-    void placeTuile(size_t joueur, Tuile* tuileSelected) override;
+    int selectTuile(size_t joueur) override;
+    bool placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override;
     void finDePartie(multimap<int, size_t> scores) override;
 
