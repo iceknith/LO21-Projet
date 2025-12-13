@@ -5,9 +5,32 @@
 #include "Tests/Tests.hpp"
 using namespace std;
 
+
+
+
+#include "GUI/GUI.hpp"
+
+int main(int argc, char *argv[]) {
+
+
+    QApplication app(argc, argv);
+
+    Application game;
+
+
+
+    game.resize(1024, 768);
+
+
+    game.show();
+    return app.exec();
+
+/*
 int main() {
     assertTests();
     JeuConsole::getJeu()->gameLoop();
+
+    */
     /*
     Deck d{3};
     Affichage* a = new AffichageConsole();

@@ -31,8 +31,11 @@ add_executable(LO21-Projet main.cpp
         Serialization/Serializable.hpp
         Serialization/Serialization.cpp
         Serialization/Serialization.hpp
-)
+        GUI/GUI.cpp
+        GUI/GUI.hpp
+        #assets.qrc
 
+)
 
 # Lier executable aux bibliothèques qt
 target_link_libraries(LO21-Projet PRIVATE Qt6::Widgets)

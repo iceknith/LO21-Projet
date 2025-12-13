@@ -134,6 +134,7 @@ private:
     JeuGUI() = default;
 public:
     static Jeu* getJeu();
+
 };
 
 #endif
