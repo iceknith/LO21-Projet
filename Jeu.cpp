@@ -136,9 +136,8 @@ void Jeu::serialize(QVariantMap &data, SerializationContext *context) const {
     data["tuileDepart"] = context->serialize(tuileDepart);
 
     // Finalement, on peut faire les autres dans l'ordre qu'on veut
-    int i = 0;
-    for (auto joueur : joueurs)
-        data[QString::number(i++)] = context->serialize(joueur);
+    for (size_t i = 0; i < nombreJoueurs; i++)
+        data[QString::number(i)] = context->serialize(joueurs[i]);
 
     QVariantMap chantierData;
     chantier.serialize(chantierData, context);
@@ -146,6 +145,9 @@ void Jeu::serialize(QVariantMap &data, SerializationContext *context) const {
 }
 
 void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
+    // Supprimer les joueurs précédents
+    for (auto joueur : joueurs) delete joueur;
+
     modeDeJeu = static_cast<GameMode>(data["modeDeJeu"].value<int>());
     nombreTours = static_cast<size_t>(data["nombreTours"].value<qsizetype>());
     maxNombreTours = static_cast<size_t>(data["maxNombreTours"].value<qsizetype>());
@@ -161,7 +163,6 @@ void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
     tuileDepart = dynamic_cast<TuileDepart*>(context->deserialize(data["tuileDepart"]));
 
     // Finalement, on peut faire les autres dans l'ordre qu'on veut
-    for (auto joueur : joueurs) delete joueur;
     for (int i = 0; i < nombreJoueurs; i++)
         joueurs[i] = dynamic_cast<Joueur*>(context->deserialize(data[QString::number(i)]));
 

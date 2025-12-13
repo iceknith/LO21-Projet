@@ -23,21 +23,21 @@ protected:
     //! Jeu est un singleton
     static Jeu* jeu;
     //! Le mode de jeu (multijoueur ou solo)
-    GameMode modeDeJeu;
+    GameMode modeDeJeu = GameMode::SOLO;
 
     //! Le nombre de tours joués
-    size_t nombreTours;
+    size_t nombreTours = 0;
     //! Le nombre maximum de tours à jouer
-    size_t maxNombreTours;
+    size_t maxNombreTours = 0;
 
     //! Le nombre de joueurs qui participent au jeu
-    size_t nombreJoueurs;
+    size_t nombreJoueurs = 0;
     //! Les joueurs qui jouent dans ce jeu
     Joueur* joueurs[constJeu::nombreJoueursMax];
     //! Le joueur actuel
-    size_t joueurActuel;
+    size_t joueurActuel = 0;
     //! Le premier joueur
-    size_t premierJoueur;
+    size_t premierJoueur = 0;
 
     //! La tuile de depart des joueurs
     TuileDepart* tuileDepart;
