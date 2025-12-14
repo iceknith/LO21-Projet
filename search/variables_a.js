@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['max_5fcouleur_0',['MAX_COULEUR',['../de/d62/namespaceGameConstants.html#af83c910b0913622fca546f78a9d15cbb',1,'GameConstants']]],
-  ['max_5fhexagon_5fneighbors_1',['MAX_HEXAGON_NEIGHBORS',['../de/d62/namespaceGameConstants.html#a51219f7a52ac96d57c7557352f53560d',1,'GameConstants']]],
-  ['max_5ftuiles_5fpar_5fchantier_2',['max_tuiles_par_chantier',['../d7/dc0/Chantier_8hpp.html#a3b7d63e6808c80ecf7ab8b71c3ec3ea2',1,'Chantier.hpp']]],
-  ['maxnombretours_3',['maxNombreTours',['../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b',1,'Jeu']]],
-  ['mode_5fde_5fjeu_4',['mode_de_jeu',['../d6/d1a/classMainWindow.html#ad26e46a5b1e3f99ea46fd0fd55c1e777',1,'MainWindow']]],
-  ['modedejeu_5',['modeDeJeu',['../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15',1,'Jeu']]]
+  ['nextid_0',['nextID',['../d7/d88/classTuile.html#a63c3b12021b48b208011f34de1860b4b',1,'Tuile']]],
+  ['nombrejoueurs_1',['nombreJoueurs',['../d1/de1/classJeu.html#ad57abd13a38c6a2f984ace537fcfdc4e',1,'Jeu']]],
+  ['nombrejoueursmax_2',['nombreJoueursMax',['../dd/d95/namespaceconstJeu.html#a40761edea300ca8870a0c5c103aae3ef',1,'constJeu']]],
+  ['nombretours_3',['nombreTours',['../d1/de1/classJeu.html#a090a1fc4bfe29c48d97903990196c9a7',1,'Jeu']]],
+  ['nombretuiles_4',['nombreTuiles',['../df/d51/classChantier.html#abefa1198f791023d5ebe61122c17af27',1,'Chantier::nombreTuiles()'],['../d6/df2/classDeck.html#ac9523619303bfd9d62abf010ca5529b4',1,'Deck::nombreTuiles()']]],
+  ['nomjoueur_5',['nomJoueur',['../dd/d07/classJoueur.html#ac9de73063d1f35b745e0e8e78f91f0e7',1,'Joueur']]]
 ];

@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['variante_0',['Variante',['../d6/d1a/classMainWindow.html#a49d74e269a7ecf470d10b4884c79fa56',1,'MainWindow']]],
-  ['vert_5fplace_5fmultiplier_1',['VERT_PLACE_MULTIPLIER',['../de/d62/namespaceGameConstants.html#a0de74cd727d04497d8cd46863d4af29b',1,'GameConstants']]],
-  ['violet_5fvariante_5fbonus_5fmultiplier_2',['VIOLET_VARIANTE_BONUS_MULTIPLIER',['../de/d62/namespaceGameConstants.html#aa4d01dc7655165dffd575ce8c42ad3bc',1,'GameConstants']]],
-  ['violet_5fvariante_5fhauteur_5fthreshold_3',['VIOLET_VARIANTE_HAUTEUR_THRESHOLD',['../de/d62/namespaceGameConstants.html#aaf2cc63e9a276a64446f1a34d6684e27',1,'GameConstants']]],
-  ['vuemap_4',['vueMap',['../d2/dc8/classEcranJeu.html#af02935dcf3ac94da2c1ddddb07b2b1d5',1,'EcranJeu']]]
+  ['window_0',['window',['../da/d36/classJeuGUI.html#a4ce8c607b56fce77ad7d47ed4e37ef09',1,'JeuGUI']]]
 ];
