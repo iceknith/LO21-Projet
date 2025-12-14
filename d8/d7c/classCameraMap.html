@@ -70,6 +70,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="../../d8/dd7/classCameraMap-members.html">List of all members</a>  </div>
@@ -85,6 +86,13 @@ Inheritance diagram for CameraMap:</div>
   <img src="../../d8/d7c/classCameraMap.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
+Signals</h2></td></tr>
+<tr class="memitem:a08ad9e9bad1e72894f8dc2ad381af3ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#a08ad9e9bad1e72894f8dc2ad381af3ee">mouseMoved</a> (QPointF mousePos)</td></tr>
+<tr class="separator:a08ad9e9bad1e72894f8dc2ad381af3ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a341b92f5dd03948b21d5e4ca3c90ec83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#a341b92f5dd03948b21d5e4ca3c90ec83">mousePressed</a> (QPointF mousePos)</td></tr>
+<tr class="separator:a341b92f5dd03948b21d5e4ca3c90ec83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae6e7ea42c8424c7c6440cd2e7a75106d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#ae6e7ea42c8424c7c6440cd2e7a75106d">CameraMap</a> (QGraphicsScene *scene)</td></tr>
@@ -94,6 +102,10 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2d3a7da3752518757a6217bdf5ee77ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#a2d3a7da3752518757a6217bdf5ee77ff">wheelEvent</a> (QWheelEvent *event) override</td></tr>
 <tr class="separator:a2d3a7da3752518757a6217bdf5ee77ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7917aa51ba93e7e28bb6a793c8665e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#a8c7917aa51ba93e7e28bb6a793c8665e">mouseMoveEvent</a> (QMouseEvent *event) override</td></tr>
+<tr class="separator:a8c7917aa51ba93e7e28bb6a793c8665e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca09d31a6b917509bebe64f237395725"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d7c/classCameraMap.html#aca09d31a6b917509bebe64f237395725">mousePressEvent</a> (QMouseEvent *event) override</td></tr>
+<tr class="separator:aca09d31a6b917509bebe64f237395725"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae6e7ea42c8424c7c6440cd2e7a75106d" name="ae6e7ea42c8424c7c6440cd2e7a75106d"></a>
@@ -115,6 +127,110 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a08ad9e9bad1e72894f8dc2ad381af3ee" name="a08ad9e9bad1e72894f8dc2ad381af3ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08ad9e9bad1e72894f8dc2ad381af3ee">&#9670;&#160;</a></span>mouseMoved</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraMap::mouseMoved </td>
+          <td>(</td>
+          <td class="paramtype">QPointF&#160;</td>
+          <td class="paramname"><em>mousePos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c7917aa51ba93e7e28bb6a793c8665e" name="a8c7917aa51ba93e7e28bb6a793c8665e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7917aa51ba93e7e28bb6a793c8665e">&#9670;&#160;</a></span>mouseMoveEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraMap::mouseMoveEvent </td>
+          <td>(</td>
+          <td class="paramtype">QMouseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a341b92f5dd03948b21d5e4ca3c90ec83" name="a341b92f5dd03948b21d5e4ca3c90ec83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a341b92f5dd03948b21d5e4ca3c90ec83">&#9670;&#160;</a></span>mousePressed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraMap::mousePressed </td>
+          <td>(</td>
+          <td class="paramtype">QPointF&#160;</td>
+          <td class="paramname"><em>mousePos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca09d31a6b917509bebe64f237395725" name="aca09d31a6b917509bebe64f237395725"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca09d31a6b917509bebe64f237395725">&#9670;&#160;</a></span>mousePressEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CameraMap::mousePressEvent </td>
+          <td>(</td>
+          <td class="paramtype">QMouseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2d3a7da3752518757a6217bdf5ee77ff" name="a2d3a7da3752518757a6217bdf5ee77ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d3a7da3752518757a6217bdf5ee77ff">&#9670;&#160;</a></span>wheelEvent()</h2>
 
@@ -134,7 +250,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

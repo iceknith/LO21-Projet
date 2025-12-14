@@ -72,6 +72,7 @@ $(function() {
   <div class="summary">
 <a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../dc/d88/classEcranJeu-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">EcranJeu Class Reference</div></div>
@@ -90,8 +91,8 @@ Inheritance diagram for EcranJeu:</div>
 Signals</h2></td></tr>
 <tr class="memitem:a353c3ce72056526b4ab84a034eb395ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a353c3ce72056526b4ab84a034eb395ba">selectionTuileFinished</a> (int tuileSelected)</td></tr>
 <tr class="separator:a353c3ce72056526b4ab84a034eb395ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3751dccd2ebd07b57cc8ad7d040bd052"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a3751dccd2ebd07b57cc8ad7d040bd052">selectionPlacement</a> (QPointF placement)</td></tr>
-<tr class="separator:a3751dccd2ebd07b57cc8ad7d040bd052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad749289e7bd5c660d1698cf3176ac8f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#ad749289e7bd5c660d1698cf3176ac8f1">selectionPlacementFinished</a> (<a class="el" href="../../d8/d0d/classVector2.html">Vector2</a> placement)</td></tr>
+<tr class="separator:ad749289e7bd5c660d1698cf3176ac8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,10 +102,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac1bd9df24bd696fd8968d0ad3d738193"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a904ae1e32a2214bf76282a7984e00b6f"><td class="memItemLeft" align="right" valign="top">QLabel **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a904ae1e32a2214bf76282a7984e00b6f">getLabelsChantier</a> ()</td></tr>
 <tr class="separator:a904ae1e32a2214bf76282a7984e00b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94c60b47fd95da299612c4c989b69d3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a94c60b47fd95da299612c4c989b69d3d">setSelectedTuile</a> (QGraphicsItemGroup *newSelectedTuile)</td></tr>
+<tr class="separator:a94c60b47fd95da299612c4c989b69d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2489f87499efa579c0d58785d8378273"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a2489f87499efa579c0d58785d8378273">removeSelectedTuile</a> ()</td></tr>
+<tr class="separator:a2489f87499efa579c0d58785d8378273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd10bb8b526b79e718f0b0784caaf81c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#acd10bb8b526b79e718f0b0784caaf81c">EcranJeu</a> ()</td></tr>
 <tr class="separator:acd10bb8b526b79e718f0b0784caaf81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83d34b6d67ed92b6df2a00d5997e81f5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a83d34b6d67ed92b6df2a00d5997e81f5">~EcranJeu</a> ()</td></tr>
 <tr class="separator:a83d34b6d67ed92b6df2a00d5997e81f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af009c31cc9c7d95fc52919ae4b37266f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#af009c31cc9c7d95fc52919ae4b37266f">onPlateauCameraMapMouseMoved</a> (QPointF mousePos)</td></tr>
+<tr class="separator:af009c31cc9c7d95fc52919ae4b37266f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9210d621ef21c553279a91fb1bd3d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#ada9210d621ef21c553279a91fb1bd3d9">onPlateauCameraMapMousePressed</a> (QPointF mousePos)</td></tr>
+<tr class="separator:ada9210d621ef21c553279a91fb1bd3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -124,6 +136,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:af02935dcf3ac94da2c1ddddb07b2b1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f739c66f1711324b6fd1db075ae5d98"><td class="memItemLeft" align="right" valign="top">QGraphicsScene *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a1f739c66f1711324b6fd1db075ae5d98">sceneMap</a></td></tr>
 <tr class="separator:a1f739c66f1711324b6fd1db075ae5d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35327de676cee13a458daf6859d91935"><td class="memItemLeft" align="right" valign="top">QGraphicsItemGroup *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dc8/classEcranJeu.html#a35327de676cee13a458daf6859d91935">selectedTuile</a> = nullptr</td></tr>
+<tr class="separator:a35327de676cee13a458daf6859d91935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acd10bb8b526b79e718f0b0784caaf81c" name="acd10bb8b526b79e718f0b0784caaf81c"></a>
@@ -221,8 +235,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3751dccd2ebd07b57cc8ad7d040bd052" name="a3751dccd2ebd07b57cc8ad7d040bd052"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3751dccd2ebd07b57cc8ad7d040bd052">&#9670;&#160;</a></span>selectionPlacement</h2>
+<a id="af009c31cc9c7d95fc52919ae4b37266f" name="af009c31cc9c7d95fc52919ae4b37266f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af009c31cc9c7d95fc52919ae4b37266f">&#9670;&#160;</a></span>onPlateauCameraMapMouseMoved()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,9 +245,86 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EcranJeu::selectionPlacement </td>
+          <td class="memname">void EcranJeu::onPlateauCameraMapMouseMoved </td>
           <td>(</td>
           <td class="paramtype">QPointF&#160;</td>
+          <td class="paramname"><em>mousePos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ada9210d621ef21c553279a91fb1bd3d9" name="ada9210d621ef21c553279a91fb1bd3d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9210d621ef21c553279a91fb1bd3d9">&#9670;&#160;</a></span>onPlateauCameraMapMousePressed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EcranJeu::onPlateauCameraMapMousePressed </td>
+          <td>(</td>
+          <td class="paramtype">QPointF&#160;</td>
+          <td class="paramname"><em>mousePos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2489f87499efa579c0d58785d8378273" name="a2489f87499efa579c0d58785d8378273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2489f87499efa579c0d58785d8378273">&#9670;&#160;</a></span>removeSelectedTuile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EcranJeu::removeSelectedTuile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad749289e7bd5c660d1698cf3176ac8f1" name="ad749289e7bd5c660d1698cf3176ac8f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad749289e7bd5c660d1698cf3176ac8f1">&#9670;&#160;</a></span>selectionPlacementFinished</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EcranJeu::selectionPlacementFinished </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d8/d0d/classVector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>placement</em></td><td>)</td>
           <td></td>
         </tr>
@@ -269,6 +360,24 @@ Private Attributes</h2></td></tr>
 <span class="mlabels"><span class="mlabel">signal</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94c60b47fd95da299612c4c989b69d3d" name="a94c60b47fd95da299612c4c989b69d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94c60b47fd95da299612c4c989b69d3d">&#9670;&#160;</a></span>setSelectedTuile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EcranJeu::setSelectedTuile </td>
+          <td>(</td>
+          <td class="paramtype">QGraphicsItemGroup *&#160;</td>
+          <td class="paramname"><em>newSelectedTuile</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -395,6 +504,28 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">QGraphicsScene* EcranJeu::sceneMap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a35327de676cee13a458daf6859d91935" name="a35327de676cee13a458daf6859d91935"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35327de676cee13a458daf6859d91935">&#9670;&#160;</a></span>selectedTuile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QGraphicsItemGroup* EcranJeu::selectedTuile = nullptr</td>
         </tr>
       </table>
   </td>

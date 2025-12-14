@@ -14,5 +14,5 @@ var searchData=
   ['asserttests_11',['assertTests',['../d0/d76/Tests_8cpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp'],['../dc/d9d/Tests_8hpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp']]],
   ['asserttestsscore_12',['assertTestsScore',['../d0/d76/Tests_8cpp.html#a1df0098b34e447a85ffd547a1c4b0b96',1,'Tests.cpp']]],
   ['axialtopixel_13',['axialToPixel',['../d1/d25/namespaceconstGUI.html#a4b993a5d378fb21f62c779b7609d88f2',1,'constGUI']]],
-  ['axialtoscreen_14',['axialToScreen',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3ea546b0a413059490e1ffe1bd7147cb',1,'constAffichageConsoleHex::axialToScreen()'],['../d7/d3f/namespaceconstAffichageGraphiqueeHex.html#a3ea546b0a413059490e1ffe1bd7147cb',1,'constAffichageGraphiqueeHex::axialToScreen()']]]
+  ['axialtoscreen_14',['axialToScreen',['../d3/d75/namespaceconstAffichageConsoleHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageConsoleHex::axialToScreen()'],['../d3/dca/namespaceconstAffichageGraphiqueHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageGraphiqueHex::axialToScreen()']]]
 ];

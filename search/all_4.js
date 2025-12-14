@@ -15,14 +15,15 @@ var searchData=
   ['ecranselectionnombrejoueurs_12',['EcranSelectionNombreJoueurs',['../d0/dbe/classEcranSelectionNombreJoueurs.html',1,'']]],
   ['ecranselectionnombrejoueurs_13',['ecranSelectionNombreJoueurs',['../d6/d1a/classMainWindow.html#aef8ef5c167681d7166a13480b8d72da7',1,'MainWindow']]],
   ['ecranselectionnombrejoueurs_14',['EcranSelectionNombreJoueurs',['../d0/dbe/classEcranSelectionNombreJoueurs.html#a9662dd582097bf478545aaf80f38f10e',1,'EcranSelectionNombreJoueurs']]],
-  ['ecranselectionsauvegarde_15',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html',1,'EcranSelectionSauvegarde'],['../de/d9c/classEcranSelectionSauvegarde.html#a01ab62ceec928e04daf4d1187ccf969e',1,'EcranSelectionSauvegarde::EcranSelectionSauvegarde()']]],
+  ['ecranselectionsauvegarde_15',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html',1,'']]],
   ['ecranselectionsauvegarde_16',['ecranSelectionSauvegarde',['../d6/d1a/classMainWindow.html#aac9a169a49773a1405f8faa374459b3f',1,'MainWindow']]],
-  ['ecrantitre_17',['EcranTitre',['../d0/d72/classEcranTitre.html#ae93cbe479f0d31ab038f52e316394547',1,'EcranTitre::EcranTitre()'],['../d0/d72/classEcranTitre.html',1,'EcranTitre']]],
+  ['ecranselectionsauvegarde_17',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html#a01ab62ceec928e04daf4d1187ccf969e',1,'EcranSelectionSauvegarde']]],
   ['ecrantitre_18',['ecranTitre',['../d6/d1a/classMainWindow.html#ad95f1de0e6d3612050ebcad4b8d5af52',1,'MainWindow']]],
-  ['emptyhexlineb_19',['emptyHexLineB',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3eef6083b6b26377d53e31e313765be8',1,'constAffichageConsoleHex']]],
-  ['emptyhexlines_20',['emptyHexLineS',['../d3/d75/namespaceconstAffichageConsoleHex.html#a981f53256b830f6e427d730bfb33c002',1,'constAffichageConsoleHex']]],
-  ['emptyselectedhex_21',['emptySelectedHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a75e8aa4d329b16142d0a030daafd6989',1,'constAffichageConsoleHex']]],
-  ['end_22',['end',['../df/d51/classChantier.html#aa9bee9c5223edfbfcdd5ff6ad7bb231c',1,'Chantier::end()'],['../df/d51/classChantier.html#a5f90c313e0c27bd7362fb2daf9eab415',1,'Chantier::end() const'],['../dc/d32/classHexagoneContainer.html#a3ddc0427a6a6775fa0e710a034c098c1',1,'HexagoneContainer::end()'],['../dc/d32/classHexagoneContainer.html#a15174135f03d44ade9f699ada383a16d',1,'HexagoneContainer::end() const']]],
-  ['est_5fvide_23',['est_vide',['../df/d51/classChantier.html#a71cf801583fcc32d96d4515ee03e5163',1,'Chantier']]],
-  ['etoiles_24',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
+  ['ecrantitre_19',['EcranTitre',['../d0/d72/classEcranTitre.html',1,'EcranTitre'],['../d0/d72/classEcranTitre.html#ae93cbe479f0d31ab038f52e316394547',1,'EcranTitre::EcranTitre()']]],
+  ['emptyhexlineb_20',['emptyHexLineB',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3eef6083b6b26377d53e31e313765be8',1,'constAffichageConsoleHex']]],
+  ['emptyhexlines_21',['emptyHexLineS',['../d3/d75/namespaceconstAffichageConsoleHex.html#a981f53256b830f6e427d730bfb33c002',1,'constAffichageConsoleHex']]],
+  ['emptyselectedhex_22',['emptySelectedHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a75e8aa4d329b16142d0a030daafd6989',1,'constAffichageConsoleHex']]],
+  ['end_23',['end',['../df/d51/classChantier.html#aa9bee9c5223edfbfcdd5ff6ad7bb231c',1,'Chantier::end()'],['../df/d51/classChantier.html#a5f90c313e0c27bd7362fb2daf9eab415',1,'Chantier::end() const'],['../dc/d32/classHexagoneContainer.html#a3ddc0427a6a6775fa0e710a034c098c1',1,'HexagoneContainer::end()'],['../dc/d32/classHexagoneContainer.html#a15174135f03d44ade9f699ada383a16d',1,'HexagoneContainer::end() const']]],
+  ['est_5fvide_24',['est_vide',['../df/d51/classChantier.html#a71cf801583fcc32d96d4515ee03e5163',1,'Chantier']]],
+  ['etoiles_25',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
 ];
