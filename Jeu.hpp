@@ -153,7 +153,7 @@ private:
     void selectReglesScore() override {}
     int selectTuile(size_t joueur) override { return 0; } // Temporaire
     bool placeTuile(size_t joueur, Tuile* tuileSelected) override { return true; } // Temporaire
-    void afficheTourAutomatique(size_t joueur) override {}
+    void afficheTourAutomatique(size_t joueur) override;
     void finDePartie(multimap<int, size_t> scores) override {}
 
 public:

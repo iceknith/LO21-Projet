@@ -1,7 +1,41 @@
 #include "GUI.hpp"
 
+// Hexagones //
 
+HexagonObjet::HexagonObjet(){
+    QPolygonF points;
+    double rayon = GUIConstants::HEX_SIZE;
 
+    for (int i=0;i<6;++i) {
+        double angle = (60*i)*(M_PI/180);
+
+        double x = rayon * std::cos(angle);
+        double y = rayon * std::sin(angle);
+
+        points << QPointF(x, y);
+    }
+    this->setPolygon(points);
+
+    // Apparance
+    this->setBrush(Qt::white); // FOND
+    this->setPen(QPen(Qt::gray,3));// CONTOURS
+
+    //permet reception click souris
+    setAcceptHoverEvents(true);
+}
+
+CameraMap::CameraMap(QGraphicsScene* scene) : QGraphicsView(scene) {
+
+    //Retire les barres de defilement
+    this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    //Zoom
+    setRenderHint(QPainter::Antialiasing);
+    setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+}
+
+// QT - ECRANS //
 
 EcranTitre::EcranTitre() {
     // Mise en page verticale
@@ -13,19 +47,24 @@ EcranTitre::EcranTitre() {
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
 
     // Bouton start
-    QPushButton* bouton = new QPushButton("PLAY");
-    bouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
+    QPushButton* StartBouton = new QPushButton("NOUVELLE PARTIE");
+    QPushButton* LoadBouton = new QPushButton("CHARGER PARTIE");
+    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
+    LoadBouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
 
     // mise en page
     layout->addStretch();
     layout->addWidget(texte);
-    layout->addSpacing(20);
-    layout->addWidget(bouton);
+    layout->addSpacing(50);
+    layout->addWidget(StartBouton);
+    layout->addWidget(LoadBouton);
     layout->addStretch();
 
-    // Quand on clique sur le bouton => émet le signal "clickSurJouer"
-    connect(bouton, &QPushButton::clicked, this, &EcranTitre::startGame);
+    connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
+    connect(LoadBouton, &QPushButton::clicked, this, &EcranTitre::startGame);//loadGame
 }
+
+
 
 EcranJeu::EcranJeu() {
 // Layout Principal (Vertical)
@@ -75,6 +114,8 @@ EcranJeu::EcranJeu() {
 }
 
 
+// Ecran main (gameManager) //
+
 MainWindow::MainWindow() {
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0,0,0,0);
@@ -99,42 +140,67 @@ MainWindow::MainWindow() {
 
 void MainWindow::lancerLeJeu() {
     qDebug() << "Changement d'écran -> Jeu !";
-    // On tourne la page : on affiche l'écran jeu
     pile->setCurrentWidget(jeu);
 }
 
 
+void MainWindow::mettreAJourPlateau(HexagoneContainer& plateau) {
+QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
+    scene->clear(); // On efface tout l'ancien affichage
 
-HexagonObjet::HexagonObjet(){
-    QPolygonF points;
+    int tailleFond = 10; // TODO taille evolutive du background
+    int offsetCentre = tailleFond / 2; // place le plateau au milieu de l'ecran
+
+    // Contraintes graphiques
     double rayon = GUIConstants::HEX_SIZE;
+    double hauteur = rayon * std::sqrt(3.0);
+    double largeur = rayon * 1.5;
+    double ecartVertical = hauteur;
 
-    for (int i=0;i<6;++i) {
-        double angle = (60*i)*(M_PI/180);
+    //boucle de dessin
+    for (int ligne = 0; ligne < tailleFond; ++ligne) {
+        for (int col = 0; col < tailleFond; ++col) {
+            HexagonObjet* hex = new HexagonObjet();
+            hex->setZValue(0);
+            double x = col * largeur;
+            double y = ligne * ecartVertical;
+            // Decalage (QUINCONCE)
+            if (col % 2 != 0) {
+                y += hauteur / 2.0;
+            }
+            // Si hexagone existe
+            Vector2 coordLogique = constGUI::grilleToAxial(col, ligne, offsetCentre);
+            auto it = plateau.getHexagone(coordLogique);
+            if (it != nullptr) {
+                hex->setBrush(QBrush(constGUI::couleurAkropolisToQt(it->get_couleur())));
+                // TODO: afficher si hexagone est place ou pas
+            }
+            //sinon: trace hexagone de fond
+            else {
 
-        double x = rayon * std::cos(angle);
-        double y = rayon * std::sin(angle);
+                // TODO: regarder si l'hexagone est a coté du plateau pour le mettre interactif ou pas
 
-        points << QPointF(x, y);
+                //hex->interactif = false;
+                hex->setBrush(QBrush(Qt::darkGray));
+            }
+
+            hex->setPos(x, y);
+            scene->addItem(hex);
+        }
     }
-    this->setPolygon(points);
 
-    // Apparance
-    this->setBrush(QBrush(Qt::lightGray)); // FOND
-    this->setPen(QPen(Qt::gray,3));// CONTOURS
-
-    //permet reception click souris
-    setAcceptHoverEvents(true);
 }
 
+
+
+// constGUI //
+
+// Obselete
 void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
     double rayon = GUIConstants::HEX_SIZE;
 
-
     double hauteur = rayon * std::sqrt(3.0);
     double largeur = rayon * 1.5;
-
-
 
     double ecartVertical = hauteur;
 
@@ -142,7 +208,9 @@ void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
         for (int col = 0; col < size; ++col) {
 
             HexagonObjet* hex = new HexagonObjet();
-
+            hex->setZValue(0);
+            //hex->interactif = false;
+            hex->setBrush(QBrush(Qt::darkGray));
             // Calcul des positions
             double x = col * largeur;
             double y = ligne * ecartVertical;
@@ -156,4 +224,28 @@ void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
             scene->addItem(hex);
         }
     }
+}
+
+QBrush constGUI::couleurAkropolisToQt(CouleursAkropolis couleur){
+    switch(couleur) {
+        case CouleursAkropolis::BLEU: return QBrush(Qt::blue);
+        case CouleursAkropolis::JAUNE: return QBrush(Qt::yellow);
+        case CouleursAkropolis::ROUGE: return QBrush(Qt::red);
+        case CouleursAkropolis::VIOLET: return QBrush(Qt::magenta);
+        case CouleursAkropolis::VERT: return QBrush(Qt::green);
+        default: return QBrush(Qt::white);
+    }
+}
+
+Vector2 constGUI::grilleToAxial(int col, int ligne, int offsetCentre) {
+
+    int q_offset = col - offsetCentre;
+    int r_offset = ligne - offsetCentre;
+
+    Vector2 resultat;
+
+    resultat.x=q_offset;;
+    resultat.y=r_offset - (q_offset - (q_offset & 1)) / 2;
+
+    return resultat;
 }

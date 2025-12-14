@@ -2,7 +2,7 @@
 #ifndef LO21_PROJET_GUI_HPP
 #define LO21_PROJET_GUI_HPP
 
-
+// JE NE SUIS PAS SUR QU'ILS SOIENT TOUS UTILES!
 #include <QApplication>
 #include <QPushButton>
 #include <QWidget>
@@ -27,25 +27,35 @@
 #include <cmath>
 #include <QDebug>
 #include <QTimer>
+#include <QLineEdit>
 
 #include "../Utils.hpp"
 #include <QStackedWidget>
-// VUE DE LA MAP
-class CameraMap : public QGraphicsView {
+#include "../HexagoneContainer/HexagoneContainer.hpp"
+
+// Hexagones //
+
+// Hexagone
+class HexagonObjet :public QObject, public QGraphicsPolygonItem {
+    // QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
+    Q_OBJECT //  obligatoire pour les siganux
 public:
+    bool interactif = true;
+    HexagonObjet();
 
-    CameraMap(QGraphicsScene* scene) : QGraphicsView(scene) {
-        // this->setDragMode(QGraphicsView::ScrollHandDrag);
-
-        //Retire les barres de defilement
-        this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-        //Zoom
-        setRenderHint(QPainter::Antialiasing);
-        setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
+        if (interactif) {
+            qDebug() << "Hexagone";
+            emit hexagoneClique();
+            setBrush(Qt::green);
+        }
     }
+    signals:
+        void hexagoneClique();
+};
 
+// QGraphicsView: nous permet d' afficher tout nous hexagones et qui permet de zommer et plus ... (je reviendrais refaire aux propre tout les comms)
+class CameraMap : public QGraphicsView {
 protected:
     // On capture le scroll de la souris
     void wheelEvent(QWheelEvent *event) override {
@@ -57,17 +67,28 @@ protected:
             scale(1.0 / zoomScale, 1.0 / zoomScale);
         }
     }
+public:
+    CameraMap(QGraphicsScene* scene);
 };
 
+// QT - ECRANS //
 
 class EcranTitre : public QWidget {
     Q_OBJECT
 public:
     EcranTitre();
-
     signals:
         void startGame();
 };
+
+class EcranSaisieNoms : public QWidget {
+
+};
+
+class EcranChoixRegles : public QWidget {
+
+};
+
 
 class EcranJeu : public QWidget {
 public:
@@ -86,6 +107,8 @@ public:
     EcranJeu(); // Constructeur
 };
 
+// Ecran main (gameManager) //
+
 class MainWindow : public QWidget {
     Q_OBJECT
 public:
@@ -95,36 +118,12 @@ public:
 
 
     MainWindow();
-
+    void mettreAJourPlateau(HexagoneContainer& plateau);
     void lancerLeJeu();
 };
 
 
 
-// QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
-class HexagonObjet :public QObject, public QGraphicsPolygonItem {
-    Q_OBJECT//  obligatoire pour les siganux
-
-public:
-    CouleursAkropolis couelur = CouleursAkropolis::BLANC;
-    TypeHexagone type = TypeHexagone::Hexagone;
-    bool interactif = true;
-    HexagonObjet();
-
-    void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
-        if (interactif) {
-            qDebug() << "Clic reçu sur un hexagone !";
-
-            // emmet signal
-            emit hexagoneClique();
-            setBrush(Qt::green);
-        }
-    }
-
-    signals:
-        //
-        void hexagoneClique();
-};
 
 
 
@@ -132,6 +131,12 @@ public:
 
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
+
+    QBrush couleurAkropolisToQt(CouleursAkropolis couleur);
+
+    QPointF axialToPixel(int q, int r);
+
+    Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
 }
 
 #endif //LO21_PROJET_GUI_HPP

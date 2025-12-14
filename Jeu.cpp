@@ -553,13 +553,45 @@ Jeu* JeuGUI::getJeu(MainWindow* app) { // ATTENTIIN
     return jeu;
 }
 
-// Constructeur
 JeuGUI::JeuGUI(MainWindow* app) : Jeu() {
     this->fenetre = app;
-    // On peut aussi initialiser l'affichage ici si besoin
+}
+void JeuGUI::titleScreen() {
+    //fenetre->afficherEcran(fenetre->titre);
+
 }
 
-// --- LA FONCTION MAGIQUE ---
-void JeuGUI::titleScreen() {
+/*
+void JeuGUI::selectGameMode() {
+}*/
 
+/*
+void JeuGUI::selectJoueurs() {
+}*/
+
+/*
+void JeuGUI::selectNomsJoueurs() {
+
+}*/
+
+/*
+void JeuGUI::selectReglesScore() {
+}*/
+
+void JeuGUI::afficheTourAutomatique(size_t joueurIndex) {
+    //recupere joueur actuelle
+    Joueur* j = joueurs[joueurIndex];
+
+    // mise à jour des labels
+    fenetre->jeu->labelNom->setText("Joueur: " + QString::fromStdString(j->getNomJoueur()));
+    fenetre->jeu->labelPierre->setText("Pierres: " + QString::number(j->get_pierre()));
+    fenetre->jeu->labelScore->setText("Score: " + QString::number(j->get_score()));
+
+    // mise à jour de la map
+    fenetre->mettreAJourPlateau(j->get_plateau());
+
+    // mise à jour du CHANTIER
+    // TODO
+
+    //QApplication::processEvents();
 }
