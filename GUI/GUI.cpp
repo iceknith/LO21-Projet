@@ -188,12 +188,15 @@ EcranJeu::EcranJeu() {
     labelsChantier = new QLabel*[max_tuiles_par_chantier];
     for (int i = 0; i < max_tuiles_par_chantier; i++) {
         sceneChantier[i] = new QGraphicsScene(zoneChantier);
-        auto* viewSceneChantier = new QGraphicsView(sceneChantier[i], zoneChantier);
+        auto* viewSceneChantier = new ChantierQGraphicsView(sceneChantier[i], zoneChantier);
         layoutChantier->addWidget(viewSceneChantier,  0, i);
 
         labelsChantier[i] = new QLabel(QString::number(i), zoneChantier);
         labelsChantier[i]->setAlignment(Qt::AlignCenter);
         layoutChantier->addWidget(labelsChantier[i],  1, i);
+
+        connect(viewSceneChantier, &ChantierQGraphicsView::onClicked,
+                this, [=](){emit selectionTuileFinished(i);});
     }
 
 

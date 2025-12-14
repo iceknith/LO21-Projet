@@ -590,9 +590,7 @@ bool JeuGUI::selectChargerPartie() {
     bool resultat = false;
     QObject::connect(window->getEcranSelectionSauvegarde(),
                      &EcranSelectionSauvegarde::selectionFinished,
-                     [&](bool chargeSauvegarde){
-        cout << (QThread::currentThread() == QApplication::instance()->thread()) << endl;
-        resultat = chargeSauvegarde;});
+                     [&](bool chargeSauvegarde){resultat = chargeSauvegarde;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
@@ -639,6 +637,7 @@ void JeuGUI::afficheSceneJeu() {
 }
 
 int JeuGUI::selectTuile(size_t joueur) {
+    // Dessiner le plateau du joueur et le chantier
     QMetaObject::invokeMethod(qApp, [=]() {
         affichageJoueur->Affichage::affiche_joueur(*joueurs[joueur]);
         }, Qt::QueuedConnection);
@@ -649,11 +648,20 @@ int JeuGUI::selectTuile(size_t joueur) {
                 affichageChantier[i++]->Affichage::affiche_container(*tuile);
         }, Qt::QueuedConnection);
 
+    int resultat = -1;
+    QObject::connect(window->getEcranJeu(),
+                         &EcranJeu::selectionTuileFinished,
+                         [&](int tuileSelectionne){resultat = tuileSelectionne;});
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
     QWidget::connect(window->getEcranJeu(),
                      SIGNAL(selectionTuileFinished(int)),
                      &SignalWaitLoop, SLOT(quit()));
-    SignalWaitLoop.exec();
+
+    do {
+        SignalWaitLoop.exec();
+    } while (resultat > joueurs[joueur]->get_pierre());
+
     return 0;
 }
