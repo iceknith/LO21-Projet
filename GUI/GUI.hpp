@@ -147,19 +147,28 @@ class EcranSelectionNombreJoueurs : public QWidget {
 };
 
 class EcranSaisieNoms : public QWidget {
-
+    Q_OBJECT
+private:
+public:
+    EcranSaisieNoms();
+    signals:
+        void selectionFinished(int nombreDeJoueurs);
 };
 
 class EcranDifficulteArchitechte : public QWidget {
-
+    Q_OBJECT
+        public:
+    EcranDifficulteArchitechte();
+    signals:
+    void selectionFinished(Difficulte difficulte);
 };
 
 class EcranChoixRegles : public QWidget {
     Q_OBJECT
     public:
-    EcranChoixRegles() = default;
+    EcranChoixRegles();
     signals:
-    void reglesChoisies(bool avecVariante);
+    void selectionFinished(bool avecVariante);
 };
 
 class EcanVictoire : public QWidget {

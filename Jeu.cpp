@@ -622,7 +622,7 @@ void JeuGUI::selectGameMode() {
     else qDebug() << "Mode de jeu: MULTIJOUEUR";
 }
 
-/*
+
 void JeuGUI::selectJoueurs() {
 
     window->showEcran(window->getEcranSelectionNombreJoueurs());
@@ -642,10 +642,8 @@ void JeuGUI::selectJoueurs() {
     qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
 }
 
-/*
-void JeuGUI::selectNomsJoueurs() {
 
-}*/
+
 
 /*
 void JeuGUI::selectReglesScore() {

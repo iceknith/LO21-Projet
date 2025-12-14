@@ -184,6 +184,74 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
             this, [this](){emit selectionFinished(4);});
 }
 
+/*
+EcranSaisieNoms::EcranSaisieNoms() {
+
+}*/
+
+EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
+    // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
+    QBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    layout->addStretch();
+    layout->addWidget(texte);
+    texte->setAlignment(Qt::AlignCenter);
+
+
+    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
+
+    QPushButton* facile = new QPushButton("Hippodamos");
+    QPushButton* normale = new QPushButton("Metagenes");
+    QPushButton* difficile = new QPushButton("Callicrates");
+    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
+    normale->setStyleSheet("font-size: 23px; padding: 15px; background: orange;");
+    difficile->setStyleSheet("font-size: 26px; padding: 10px; background: red;");
+
+    layout->addStretch();
+    BouttonLayout->addWidget(facile);
+    BouttonLayout->addWidget(normale);
+    BouttonLayout->addWidget(difficile);
+    layout->addLayout(BouttonLayout);
+    layout->addStretch();
+
+    connect(facile, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(Difficulte::FACILE);});
+    connect(normale, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(Difficulte::NORMALE);});
+    connect(difficile, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(Difficulte::DIFFICILE);});
+}
+
+EcranChoixRegles::EcranChoixRegles() {
+    // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
+    QBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    layout->addStretch();
+    layout->addWidget(texte);
+    texte->setAlignment(Qt::AlignCenter);
+
+    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
+
+    QPushButton* facile = new QPushButton("CLASSIQUE");
+    QPushButton* normale = new QPushButton("VARIANTE");
+
+    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
+    normale->setStyleSheet("font-size: 20px; padding: 15px; background: orange;");
+
+    layout->addStretch();
+    BouttonLayout->addWidget(facile);
+    BouttonLayout->addWidget(normale);
+
+    layout->addLayout(BouttonLayout);
+    layout->addStretch();
+
+    connect(facile, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(0);});
+    connect(normale, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(1);});
+}
 
 //==================
 EcranJeu::EcranJeu() {
