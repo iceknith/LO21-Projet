@@ -9,8 +9,7 @@ var searchData=
   ['max_5ftuiles_5fpar_5fchantier_6',['max_tuiles_par_chantier',['../d7/dc0/Chantier_8hpp.html#a3b7d63e6808c80ecf7ab8b71c3ec3ea2',1,'Chantier.hpp']]],
   ['maxnombretours_7',['maxNombreTours',['../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b',1,'Jeu']]],
   ['menu_20config_2ecpp_8',['menu config.cpp',['../d0/d8c/menu_01config_8cpp.html',1,'']]],
-  ['mettreajourplateau_9',['mettreAJourPlateau',['../d6/d1a/classMainWindow.html#ab0b626306a869683fb0336b3c902bce6',1,'MainWindow']]],
-  ['modedejeu_10',['modeDeJeu',['../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15',1,'Jeu']]],
-  ['mousepressevent_11',['mousePressEvent',['../d9/d30/classHexagonObjet.html#a40445fd6bf4a5d1af85cbd84a81733bc',1,'HexagonObjet']]],
-  ['multijoueur_12',['MULTIJOUEUR',['../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589deaf338b5ecf6fb2b534cf46cf1080e5bb8',1,'Utils.hpp']]]
+  ['modedejeu_9',['modeDeJeu',['../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15',1,'Jeu']]],
+  ['mousepressevent_10',['mousePressEvent',['../da/d63/classHexagoneGUIObjet.html#aa14bfce0035b35f8d1c85765b6a2a948',1,'HexagoneGUIObjet']]],
+  ['multijoueur_11',['MULTIJOUEUR',['../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589deaf338b5ecf6fb2b534cf46cf1080e5bb8',1,'Utils.hpp']]]
 ];
