@@ -1,6 +1,10 @@
 #include "Affichage.hpp"
 using namespace constAffichageConsoleHex;
 
+// Création de l'instance d'affichage
+AffichageConsole* AffichageConsole::instance = nullptr;
+
+
 // Affichage console //
 
 // L'affichage se fera sous la forme
@@ -124,11 +128,32 @@ void constAffichageConsoleHex::replace_sauf_charactere(string &text_original, si
 
 // Affichage graphique //
 
-void constAffichageGUI::debugTextures() {
-    qDebug() << "=== LISTE DES RESSOURCES DISPONIBLES ===";
-    QDirIterator it(":", QDirIterator::Subdirectories);
-    while (it.hasNext()) {
-        qDebug() << it.next();
+void AffichageGUI::affiche_joueur(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
+    affiche_container(joueur.get_plateau(), false, Vector2());
+    if (labelNom) labelNom->setText("Plateau de: " + QString::fromStdString(joueur.getNomJoueur()));
+    if (labelScore) labelScore->setText("Score Actuel: " + QString::number(joueur.get_score()));
+    if (labelPierre) labelPierre->setText("Pierre(s): " + QString::number(joueur.get_pierre()));
+}
+
+void AffichageGUI::affiche_container(HexagoneContainer &container, bool selectHexagone, Vector2 selectedHexagone) {
+    // On ne peut rien afficher si la map de scene est nulle
+    if (sceneMap == nullptr) return;
+    sceneMap->clear(); // On efface tout l'ancien affichage
+
+    //boucle de dessin
+    for (const auto& iter : container) {
+        QPointF pos = constAffichageGraphiqueeHex::axialToScreen(iter.first);
+        HexagoneGUIObjet* guiHex = iter.second->affiche_gui();
+        guiHex->setPos(pos);
+        sceneMap->addItem(guiHex);
     }
-    qDebug() << "========================================";
+}
+
+QPointF constAffichageGraphiqueeHex::axialToScreen (Vector2 v) {
+    float largeurGUI = GUIConstants::HEX_SIZE * 3;
+    float hauteurGUI = GUIConstants::HEX_SIZE * 2 * 0.866; // Car le ratio rayon/hauteur est de 0.866 * 2
+
+    float x = v.x / 2 * largeurGUI;
+    float y = (v.y + v.x / 2) * hauteurGUI;
+    return QPointF{x, y};
 }

@@ -17,7 +17,6 @@
 #include <QDebug>
 #include <QGraphicsPixmapItem>
 #include <QPixmap>
-#include <math.h>
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
@@ -28,28 +27,65 @@
 #include <QDebug>
 #include <QTimer>
 #include <QLineEdit>
+#include <iostream>
+
 
 #include "../Utils.hpp"
 #include <QStackedWidget>
-#include "../HexagoneContainer/HexagoneContainer.hpp"
+//#include "../HexagoneContainer/HexagoneContainer.hpp"
+
+namespace constGUI {
+    void backgroundMap(int size, QGraphicsScene* scene);
+
+    QBrush couleurAkropolisToQt(CouleursAkropolis couleur);
+
+    QPointF axialToPixel(int q, int r);
+
+    Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
+
+    const QColor akropolisToQTColors[6] {
+    Qt::white,
+    Qt::blue,
+    Qt::yellow,
+    Qt::red,
+    Qt::magenta,
+    Qt::green,
+    };
+
+     const QColor outlineColor = Qt::black;
+}
 
 // Hexagones //
 
 // Hexagone
-class HexagonObjet :public QObject, public QGraphicsPolygonItem {
+class HexagoneGUIObjet : public QObject, public QGraphicsItem {
+private:
     // QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
     Q_OBJECT //  obligatoire pour les siganux
+
+    QGraphicsPolygonItem hex;
+    QGraphicsPathItem outline;
+    QGraphicsTextItem text;
+    QGraphicsTextItem hauteur;
+
 public:
     bool interactif = true;
-    HexagonObjet();
+
+    HexagoneGUIObjet(CouleursAkropolis couleur, const std::string& description, int height,
+                     const bool doOutline[5]);
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
         if (interactif) {
-            qDebug() << "Hexagone";
             emit hexagoneClique();
-            setBrush(Qt::green);
+            qDebug("heyyyyy");
         }
     }
+
+    QRectF boundingRect() const override {return hex.boundingRect();}
+
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+               QWidget *widget) override {};
+
     signals:
         void hexagoneClique();
 };
@@ -118,25 +154,8 @@ public:
 
 
     MainWindow();
-    void mettreAJourPlateau(HexagoneContainer& plateau);
+    //void mettreAJourPlateau(HexagoneContainer& plateau);
     void lancerLeJeu();
 };
-
-
-
-
-
-
-
-
-namespace constGUI {
-    void backgroundMap(int size, QGraphicsScene* scene);
-
-    QBrush couleurAkropolisToQt(CouleursAkropolis couleur);
-
-    QPointF axialToPixel(int q, int r);
-
-    Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
-}
 
 #endif //LO21_PROJET_GUI_HPP

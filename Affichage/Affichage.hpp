@@ -9,7 +9,6 @@
 // Affichage //
 
 class Affichage {
-
 protected:
     virtual void affiche_joueur(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) = 0;
     virtual void affiche_container(HexagoneContainer& container, bool selectHexagone, Vector2 selectedHexagone) = 0;
@@ -24,22 +23,20 @@ public:
 // Affichage console //
 
 class AffichageConsole : public Affichage{
-    static AffichageConsole* instance;
     const int hexH = 5; // lignes
     const int hexW = 9; // colonnes
+    AffichageConsole() = default;
+    static AffichageConsole* instance;
 
 protected:
     void affiche_joueur(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
     void affiche_container(HexagoneContainer& hexagoneContainer, bool selectHexagone, Vector2 selectedHexagone) override;
 
 public:
-    AffichageConsole() = default;
-
     static AffichageConsole* getInstance() {
         if (instance == nullptr) instance = new AffichageConsole();
         return instance;
     }
-
 };
 
 //! Ensemble de fonctions utiles à l'affichage console
@@ -63,23 +60,28 @@ namespace constAffichageConsoleHex {
 // Affichage graphique //
 
 class AffichageGUI : public Affichage {
-    static AffichageConsole* instance;
-    const int hexH = 5; // lignes
-    const int hexW = 9; // colonnes
-
-public:
-    AffichageGUI();
+private:
+    QGraphicsScene* sceneMap = nullptr;
+    QLabel* labelNom = nullptr;
+    QLabel* labelScore = nullptr;
+    QLabel* labelPierre = nullptr;
 
 protected:
-   // void affiche_plateau_actuel(Plateau& plateau, bool selectHexagone, Vector2 selectedHexagone) override;
-   // void affiche_joueur_actuel(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_joueur(Joueur& joueur, bool selectHexagone, Vector2 selectedHexagone) override;
+    void affiche_container(HexagoneContainer& container, bool selectHexagone, Vector2 selectedHexagone) override;
+
+public:
+    AffichageGUI() = default;
+    void setSceneMap(QGraphicsScene* newSceneMap) {sceneMap = newSceneMap;}
+    void setLabelNom(QLabel* newlabelNom) {labelNom = newlabelNom;}
+    void setLabelScore(QLabel* newlabelScore) {labelScore = newlabelScore;}
+    void setLabelPierre(QLabel* newlabelPierre) {labelPierre = newlabelPierre;}
 };
 
-//! Ensemble de fonctions utiles à l'affichage graphique
-namespace constAffichageGUI {
-    void debugTextures();
+//! Ensemble de fonctions utiles à l'affichage console
+namespace constAffichageGraphiqueeHex {
+    //! Convertion entre les coordonées axiales et les coordonées de l'écran
+    QPointF axialToScreen (Vector2 v);
 }
-
-
 
 #endif //LO21_PROJET_AFFICHAGE_HPP

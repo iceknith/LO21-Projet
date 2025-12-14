@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "../Utils.hpp"
+#include "../GUI/GUI.hpp"
 
 // Sont définis dans d'autres fichiers en-tête, qui importent Hexagone
 // on les définit de façon inline pour ne pas causer d'erreurs
@@ -131,6 +132,9 @@ public :
      \return Un vecteur de 4 éléments, représentant chacun une ligne de l'hexagone
     */
     const vector<string> affiche_console(bool highlighted) const;
+
+    //! Retourne l'affichage graphique de l'hexagone actuel
+    HexagoneGUIObjet* affiche_gui() const;
 
     //! Retourne le type de l'hexagone
     virtual TypeHexagone get_type() const {return TypeHexagone::Hexagone;}

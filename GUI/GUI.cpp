@@ -1,29 +1,64 @@
 #include "GUI.hpp"
 
+#include "../Affichage/Affichage.hpp"
+
 // Hexagones //
 
-HexagonObjet::HexagonObjet(){
+HexagoneGUIObjet::HexagoneGUIObjet(const CouleursAkropolis couleur, const std::string& description, const int height,
+                                   const bool doOutline[6]) :
+        hex(this), outline(this), text(this), hauteur(this) {
+    // Construction de l'Hexagone & de l'outline
     QPolygonF points;
+    QPainterPath outlinePath;
     double rayon = GUIConstants::HEX_SIZE;
 
+    // On définit le premier point, pour l'outline
+    double angle = (60*5)*(M_PI/180);
+    double x = rayon * std::cos(angle);
+    double y = rayon * std::sin(angle);
+    QPointF currentPoint{x,y};
+    outlinePath.moveTo(currentPoint);
+
     for (int i=0;i<6;++i) {
-        double angle = (60*i)*(M_PI/180);
+        angle = (60*i)*(M_PI/180);
 
-        double x = rayon * std::cos(angle);
-        double y = rayon * std::sin(angle);
+        x = rayon * std::cos(angle);
+        y = rayon * std::sin(angle);
+        currentPoint = QPointF{x,y};
 
-        points << QPointF(x, y);
+        // Construction de l'hexagone
+        points << currentPoint;
+
+        // Construction du contour
+        if (doOutline[i]) {
+            outlinePath.lineTo(currentPoint);
+        }
+        outlinePath.closeSubpath();
+        outlinePath.moveTo(currentPoint);
     }
-    this->setPolygon(points);
+    hex.setPolygon(points);
+    hex.setBrush(constGUI::akropolisToQTColors[couleur]); // FOND
+    hex.setPen(Qt::NoPen);
+    outline.setPath(outlinePath);
+    hex.setPos(0,0);
+    outline.setPen(QPen(constGUI::outlineColor, 3));
+    outline.setPos(0,0);
 
-    // Apparance
-    this->setBrush(Qt::white); // FOND
-    this->setPen(QPen(Qt::gray,3));// CONTOURS
+    // Construction du texte
+    text.setPlainText(QString::fromStdString(description));
+    text.setDefaultTextColor(constGUI::outlineColor);
+    text.setPos(-text.boundingRect().width()/2, -text.boundingRect().height());
+
+    // Construction du texte de la hauteur
+    hauteur.setPlainText(QString::number(height));
+    hauteur.setDefaultTextColor(constGUI::outlineColor);
+    hauteur.setPos(-hauteur.boundingRect().width()/2, 0);
 
     //permet reception click souris
     setAcceptHoverEvents(true);
 }
 
+// Camera Map
 CameraMap::CameraMap(QGraphicsScene* scene) : QGraphicsView(scene) {
 
     //Retire les barres de defilement
@@ -64,10 +99,8 @@ EcranTitre::EcranTitre() {
     connect(LoadBouton, &QPushButton::clicked, this, &EcranTitre::startGame);//loadGame
 }
 
-
-
 EcranJeu::EcranJeu() {
-// Layout Principal (Vertical)
+    // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
     layoutGlobal->setContentsMargins(0,0,0,0);
     layoutGlobal->setSpacing(0);
@@ -104,8 +137,26 @@ EcranJeu::EcranJeu() {
 
     sceneMap = new QGraphicsScene();
     vueMap = new CameraMap(sceneMap);
-    constGUI::backgroundMap(10, sceneMap);
 
+    // debug
+    AffichageGUI* affichageGUI = new AffichageGUI();
+    affichageGUI->setSceneMap(sceneMap);
+    affichageGUI->setLabelNom(labelNom);
+    affichageGUI->setLabelPierre(labelPierre);
+    affichageGUI->setLabelScore(labelScore);
+
+    JoueurSimple j{};
+    j.setNomJoueur("Dimi");
+    j.set_pierre(9);
+    j.set_score(getScoreSimple());
+    Vector2 position = Vector2(1,7);
+    j.place_tuile(new TuileDepart(), position, true);
+    position = Vector2(1,5);
+    j.place_tuile(new TuileJeu(), position);
+    position = Vector2(1,9);
+    j.place_tuile(new TuileJeu(), position);
+
+    affichageGUI->Affichage::affiche_joueur(j);
 
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
@@ -143,9 +194,9 @@ void MainWindow::lancerLeJeu() {
     pile->setCurrentWidget(jeu);
 }
 
-
+/*
 void MainWindow::mettreAJourPlateau(HexagoneContainer& plateau) {
-QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
+    QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
     scene->clear(); // On efface tout l'ancien affichage
 
     int tailleFond = 10; // TODO taille evolutive du background
@@ -160,7 +211,7 @@ QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
     //boucle de dessin
     for (int ligne = 0; ligne < tailleFond; ++ligne) {
         for (int col = 0; col < tailleFond; ++col) {
-            HexagonObjet* hex = new HexagonObjet();
+            HexagoneGUIObjet* hex = new HexagoneGUIObjet();
             hex->setZValue(0);
             double x = col * largeur;
             double y = ligne * ecartVertical;
@@ -190,12 +241,12 @@ QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
     }
 
 }
-
-
+ */
 
 // constGUI //
 
 // Obselete
+/*
 void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
     double rayon = GUIConstants::HEX_SIZE;
 
@@ -226,6 +277,7 @@ void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
     }
 }
 
+
 QBrush constGUI::couleurAkropolisToQt(CouleursAkropolis couleur){
     switch(couleur) {
         case CouleursAkropolis::BLEU: return QBrush(Qt::blue);
@@ -236,6 +288,7 @@ QBrush constGUI::couleurAkropolisToQt(CouleursAkropolis couleur){
         default: return QBrush(Qt::white);
     }
 }
+*/
 
 Vector2 constGUI::grilleToAxial(int col, int ligne, int offsetCentre) {
 

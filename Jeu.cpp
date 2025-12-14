@@ -146,7 +146,7 @@ void Jeu::serialize(QVariantMap &data, SerializationContext *context) const {
 
 void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
     // Supprimer les joueurs précédents
-    for (auto joueur : joueurs) delete joueur;
+    for (size_t i = 0; i < nombreJoueurs; i++) delete joueurs[i];
 
     modeDeJeu = static_cast<GameMode>(data["modeDeJeu"].value<int>());
     nombreTours = static_cast<size_t>(data["nombreTours"].value<qsizetype>());
@@ -163,6 +163,7 @@ void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
     tuileDepart = dynamic_cast<TuileDepart*>(context->deserialize(data["tuileDepart"]));
 
     // Finalement, on peut faire les autres dans l'ordre qu'on veut
+    for (auto joueur : joueurs) delete joueur;
     for (int i = 0; i < nombreJoueurs; i++)
         joueurs[i] = dynamic_cast<Joueur*>(context->deserialize(data[QString::number(i)]));
 
@@ -200,7 +201,7 @@ void Jeu::sauvegarderPartie() {
 // Jeu console //
 
 JeuConsole::JeuConsole() : Jeu() {
-    affichage = new AffichageConsole();
+    affichage = AffichageConsole::getInstance();
 }
 
 void JeuConsole::selectGameMode()  {
@@ -588,7 +589,7 @@ void JeuGUI::afficheTourAutomatique(size_t joueurIndex) {
     fenetre->jeu->labelScore->setText("Score: " + QString::number(j->get_score()));
 
     // mise à jour de la map
-    fenetre->mettreAJourPlateau(j->get_plateau());
+    //fenetre->mettreAJourPlateau(j->get_plateau());
 
     // mise à jour du CHANTIER
     // TODO

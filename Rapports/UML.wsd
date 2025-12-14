@@ -116,6 +116,7 @@ class Plateau extends HexagoneContainer  {
     + placer(tuile : Tuile&, position : const Vector2&, premierPlacement : bool = false, joueur : Joueur* = nullptr) : bool
 }
 
+
 abstract class Joueur {
     # pierres : int
     # plateauJoueur : Plateau
@@ -131,6 +132,7 @@ abstract class Joueur {
     + place_tuile(tuile : Tuile, coordonées : Vector2, premierPlacement : bool = false) : bool
     + jouer(chantier : Chantier&) {virtual}
 }
+
 Plateau "1" *-- "1..*" Joueur
 Joueur "1" *-- "1" Score
 
@@ -292,7 +294,8 @@ class JeuGUI extends Jeu {
 
 }
 
-Jeu "1" o-- "1..*" Joueur
+Jeu "1" *-- "1..*" Joueur
+Jeu "1" *-- "1..*" TuileDépart
 Jeu "1" o-- "1" Deck
 Jeu "1" o-- "1" Chantier
 Jeu "1" o-- "1" Affichage

@@ -110,6 +110,18 @@ const vector<string> Hexagone::affiche_console(bool highlighted) const {
     return affichage;
 }
 
+HexagoneGUIObjet* Hexagone::affiche_gui() const {
+    const bool outline[6] {
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[4]),// Haut droite
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[5]),// Bas droite
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[3]),// Bas Millieu
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[1]),// Bas Gauche
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[0]), // Haut gauche
+        !get_tuile()->hasHexagone(localPos + adjascenceHex[2]), // Haut Millieu
+    };
+    return new HexagoneGUIObjet{couleur, get_text(), get_hauteur(), outline};
+}
+
 void Hexagone::serialize(QVariantMap &data, SerializationContext *context) const {
     data["couleur"] = couleur;
     QVariantMap  vectData;
