@@ -41,7 +41,7 @@ HexagoneGUIObjet::HexagoneGUIObjet(const CouleursAkropolis couleur, const std::s
     hex.setPen(Qt::NoPen);
     outline.setPath(outlinePath);
     hex.setPos(0,0);
-    outline.setPen(QPen(constGUI::outlineColor, 3));
+    outline.setPen(QPen(constGUI::outlineColor, 2+height));
     outline.setPos(0,0);
 
     // Construction du texte
@@ -152,6 +152,8 @@ EcranJeu::EcranJeu() {
     Vector2 position = Vector2(1,7);
     j.place_tuile(new TuileDepart(), position, true);
     position = Vector2(1,5);
+    j.place_tuile(new TuileJeu(), position);
+    position = Vector2(1,6);
     j.place_tuile(new TuileJeu(), position);
     position = Vector2(1,9);
     j.place_tuile(new TuileJeu(), position);
