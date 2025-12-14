@@ -181,10 +181,21 @@ EcranJeu::EcranJeu() {
     //Zone 2: chantier
     zoneChantier = new QWidget();
     zoneChantier->setFixedHeight(200);
-    zoneChantier->setStyleSheet("background-color: #b0b0b0; border-bottom: 3px solid black;");
+    zoneChantier->setStyleSheet("background-color: #b0b0b0;");
+    auto* layoutChantier = new QGridLayout(zoneChantier);
 
-    QLabel* lblTemp = new QLabel("EMPLACEMENT DU CHANTIER", zoneChantier);
-    lblTemp->move(20, 60); // Juste pour repérer la zone
+    sceneChantier = new QGraphicsScene*[max_tuiles_par_chantier];
+    labelsChantier = new QLabel*[max_tuiles_par_chantier];
+    for (int i = 0; i < max_tuiles_par_chantier; i++) {
+        sceneChantier[i] = new QGraphicsScene(zoneChantier);
+        auto* viewSceneChantier = new QGraphicsView(sceneChantier[i], zoneChantier);
+        layoutChantier->addWidget(viewSceneChantier,  0, i);
+
+        labelsChantier[i] = new QLabel(QString::number(i), zoneChantier);
+        labelsChantier[i]->setAlignment(Qt::AlignCenter);
+        layoutChantier->addWidget(labelsChantier[i],  1, i);
+    }
+
 
     // ----------------------------------------------------
     //zone 3: plateau
@@ -192,34 +203,26 @@ EcranJeu::EcranJeu() {
     sceneMap = new QGraphicsScene();
     vueMap = new CameraMap(sceneMap);
 
-    // debug
-    AffichageGUI* affichageGUI = new AffichageGUI();
-    affichageGUI->setSceneMap(sceneMap);
-    affichageGUI->setLabelNom(labelNom);
-    affichageGUI->setLabelPierre(labelPierre);
-    affichageGUI->setLabelScore(labelScore);
-
-    JoueurSimple j{};
-    j.setNomJoueur("Dimi");
-    j.set_pierre(9);
-    j.set_score(getScoreSimple());
-    Vector2 position = Vector2(1,7);
-    j.place_tuile(new TuileDepart(), position, true);
-    position = Vector2(1,5);
-    j.place_tuile(new TuileJeu(), position);
-    position = Vector2(1,6);
-    j.place_tuile(new TuileJeu(), position);
-    position = Vector2(1,9);
-    j.place_tuile(new TuileJeu(), position);
-
-    affichageGUI->Affichage::affiche_joueur(j);
-
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
     layoutGlobal->addWidget(zoneChantier);
     layoutGlobal->addWidget(vueMap);
 }
 
+EcranJeu::~EcranJeu() {
+    //TODO Implémenter ça
+}
+
+AffichageGUI *EcranJeu::getAffichageJoueur() {
+    return new AffichageGUI(sceneMap, labelNom, labelScore, labelPierre);
+}
+
+AffichageGUI **EcranJeu::getAffichagesChantier(size_t tailleChantier) {
+    auto result = new AffichageGUI*[tailleChantier];
+    for (size_t i = 0; i < tailleChantier; i++)
+        result[i] = new AffichageGUI(sceneChantier[i]);
+    return result;
+};
 
 // Ecran main (gameManager) //
 

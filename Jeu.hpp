@@ -49,12 +49,6 @@ protected:
     Deck deck;
     //! Le chantier du jeu
     Chantier chantier;
-    //! L'affichage du jeu.
-    /*
-     * L'affichage du jeu
-     * Il s'agit d'un pointeur car on traitera avec des enfants de l'affichage
-    */
-    Affichage* affichage;
 
 
     // Game loop methodes
@@ -75,6 +69,8 @@ protected:
     virtual Difficulte selectNiveauIllustreArchitechte() = 0;
     //! La méthode chargée de la séléction des règles de score
     virtual void selectReglesScore() = 0;
+    //! La méthode chargée de notifier l'affichage qu'on affiche la scène de jeu
+    virtual void afficheSceneJeu() = 0;
     //! La méthode chargée de la séléction d'une tuile.
     virtual int selectTuile(size_t joueur) = 0;
     //! La méthode chargée du placement d'une tuile séléctionné.
@@ -111,6 +107,12 @@ public:
 
 class JeuConsole : public Jeu {
 private:
+    //! L'affichage du jeu.
+    /*
+     * L'affichage du jeu
+    */
+    Affichage* affichage;
+
     JeuConsole();
 
     void titleScreen() override;
@@ -120,6 +122,7 @@ private:
     void selectNomsJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
+    void afficheSceneJeu() override {} // Cette methode n'est pas utilisee par le jeu console
     int selectTuile(size_t joueur) override;
     bool placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override;
@@ -137,11 +140,14 @@ public:
 
 // JEU GUI //
 
-class JeuGUI : public Jeu{
+class JeuGUI : public Jeu {
 private:
     QApplication* app = nullptr;
     MainWindow* window = nullptr;
     QThread* runApp = nullptr;
+
+    AffichageGUI* affichageJoueur = nullptr;
+    AffichageGUI** affichageChantier = nullptr;
 
     JeuGUI() : Jeu() {};
 
@@ -152,10 +158,15 @@ private:
     void selectJoueurs() override { nombreJoueurs = 2; joueurs[0]=new JoueurSimple(); joueurs[1]=new JoueurSimple(); }// Temporaire
     void selectNomsJoueurs() override {}
     Difficulte selectNiveauIllustreArchitechte() override { return Difficulte::FACILE; }// Temporaire
-    void selectReglesScore() override {}
-    int selectTuile(size_t joueur) override { return 0; } // Temporaire
+    void selectReglesScore() override {
+        Score* score = getScoreSimple();
+        for (size_t i = 0; i < nombreJoueurs; i++)
+            dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
+    }
+    void afficheSceneJeu() override;
+    int selectTuile(size_t joueur) override;// Temporaire
     bool placeTuile(size_t joueur, Tuile* tuileSelected) override { return true; } // Temporaire
-    void afficheTourAutomatique(size_t joueur) override;
+    void afficheTourAutomatique(size_t joueur) override {}
     void finDePartie(multimap<int, size_t> scores) override {}
 
 public:

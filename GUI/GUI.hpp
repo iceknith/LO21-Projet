@@ -1,4 +1,3 @@
-
 #ifndef LO21_PROJET_GUI_HPP
 #define LO21_PROJET_GUI_HPP
 
@@ -29,10 +28,11 @@
 #include <QLineEdit>
 #include <iostream>
 
-
 #include "../Utils.hpp"
 #include <QStackedWidget>
-//#include "../HexagoneContainer/HexagoneContainer.hpp"
+
+class AffichageGUI;
+
 
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
@@ -168,7 +168,7 @@ class EcanVictoire : public QWidget {
 
 
 class EcranJeu : public QWidget {
-public:
+Q_OBJECT
     // Indicateurs
     QLabel* labelNom;
     QLabel* labelScore;
@@ -176,12 +176,23 @@ public:
 
     // Chantier
     QWidget* zoneChantier;
+    QGraphicsScene** sceneChantier;
+    QLabel** labelsChantier;
 
     // La Map
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
+public:
+    AffichageGUI* getAffichageJoueur();
+    AffichageGUI** getAffichagesChantier(size_t tailleChantier);
+    QLabel** getLabelsChantier() {return labelsChantier;}
 
     EcranJeu();
+    ~EcranJeu();
+
+signals:
+    void selectionTuileFinished(int tuileSelected);
+    void selectionPlacement(QPointF placement);
 };
 
 
@@ -200,13 +211,9 @@ class MainWindow : public QWidget {
     EcranSaisieNoms* ecranSaisieNoms;
     EcranChoixRegles* ecranChoixRegles;
     // Gameplay
-    EcranJeu* ecranJeu;
-    EcanVictoire* victoire;
+    EcranJeu* ecranJeu = nullptr;
+    EcanVictoire* victoire = nullptr;
 public:
-
-
-
-
     MainWindow();
     void showEcran(QWidget* ecran) {pile->setCurrentWidget(ecran);};
 
@@ -221,5 +228,7 @@ public:
     EcanVictoire* getEictoire() const {return victoire;}
 
 };
+
+
 
 #endif //LO21_PROJET_GUI_HPP
