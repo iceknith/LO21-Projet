@@ -18,12 +18,11 @@ var searchData=
   ['tuile_15',['Tuile',['../d4/dfc/classHexagone.html#ad9001211465a2ec9f5f4fb8b51af150a',1,'Hexagone::Tuile()'],['../d7/d88/classTuile.html#afb479e0f8dc6b2cfeb656fa901d39c41',1,'Tuile::Tuile()'],['../d7/d88/classTuile.html',1,'Tuile']]],
   ['tuile_2ecpp_16',['Tuile.cpp',['../d5/dc8/Tuile_8cpp.html',1,'']]],
   ['tuile_2ehpp_17',['Tuile.hpp',['../da/d27/Tuile_8hpp.html',1,'']]],
-  ['tuiledepart_18',['TuileDepart',['../db/d42/classTuileDepart.html',1,'']]],
+  ['tuiledepart_18',['TuileDepart',['../db/d42/classTuileDepart.html',1,'TuileDepart'],['../db/d42/classTuileDepart.html#ac98fb0b9bb2aeccdb48fc8eaaed91a61',1,'TuileDepart::TuileDepart()']]],
   ['tuiledepart_19',['tuileDepart',['../d1/de1/classJeu.html#acbc48fc80558a2d6b1cc44c59d6154fd',1,'Jeu']]],
-  ['tuiledepart_20',['TuileDepart',['../db/d42/classTuileDepart.html#ac98fb0b9bb2aeccdb48fc8eaaed91a61',1,'TuileDepart']]],
-  ['tuilejeu_21',['TuileJeu',['../d4/dec/classTuileJeu.html#ad212ec49fe340185b5a77c3892e1c03d',1,'TuileJeu::TuileJeu()'],['../d4/dec/classTuileJeu.html',1,'TuileJeu']]],
-  ['tuileparent_22',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
-  ['tuiles_23',['tuiles',['../d6/df2/classDeck.html#a429559b5c6741179aef1b2b5ca1422cd',1,'Deck::tuiles()'],['../df/d51/classChantier.html#a1029255b29825b70ce946266381224d3',1,'Chantier::tuiles()']]],
-  ['type_24',['type',['../d9/ded/structSerializationContext_1_1Record.html#a5e8c530edd85c6581c0833d4ba6eb2e2',1,'SerializationContext::Record']]],
-  ['typehexagone_25',['TypeHexagone',['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf',1,'Utils.hpp']]]
+  ['tuilejeu_20',['TuileJeu',['../d4/dec/classTuileJeu.html#ad212ec49fe340185b5a77c3892e1c03d',1,'TuileJeu::TuileJeu()'],['../d4/dec/classTuileJeu.html',1,'TuileJeu']]],
+  ['tuileparent_21',['tuileParent',['../d4/dfc/classHexagone.html#a236d0fe3282613ef1abeeed69be7bacc',1,'Hexagone']]],
+  ['tuiles_22',['tuiles',['../d6/df2/classDeck.html#a429559b5c6741179aef1b2b5ca1422cd',1,'Deck::tuiles()'],['../df/d51/classChantier.html#a1029255b29825b70ce946266381224d3',1,'Chantier::tuiles()']]],
+  ['type_23',['type',['../d9/ded/structSerializationContext_1_1Record.html#a5e8c530edd85c6581c0833d4ba6eb2e2',1,'SerializationContext::Record']]],
+  ['typehexagone_24',['TypeHexagone',['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf',1,'Utils.hpp']]]
 ];
