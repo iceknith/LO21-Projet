@@ -179,8 +179,20 @@ class EcanVictoire : public QWidget {
     void retourMenu();
 };
 
+class ChantierQGraphicsView : public QGraphicsView {
+Q_OBJECT
+
+    void mousePressEvent(QMouseEvent *event) override {if(event->button() == Qt::LeftButton) emit onClicked();}
+
+public:
+    ChantierQGraphicsView(QGraphicsScene *s, QWidget *p) : QGraphicsView(s,p) {}
+
+signals:
+    void onClicked();
+};
 
 class EcranJeu : public QWidget {
+
 Q_OBJECT
     // Indicateurs
     QLabel* labelNom;
