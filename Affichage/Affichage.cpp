@@ -139,22 +139,39 @@ void AffichageGUI::affiche_joueur(Joueur &joueur, bool selectHexagone, Vector2 s
 void AffichageGUI::affiche_container(HexagoneContainer &container, bool selectHexagone, Vector2 selectedHexagone) {
     // On ne peut rien afficher si la map de scene est nulle
     if (sceneMap == nullptr) return;
-    sceneMap->clear(); // On efface tout l'ancien affichage
+    clearAffichage(); // On efface tout l'ancien affichage
+    sceneMap->addItem(getContainerGraphicsItem(container));
+}
+
+QGraphicsItemGroup* AffichageGUI::getContainerGraphicsItem(HexagoneContainer& container) {
+    auto graphicsGroup = new QGraphicsItemGroup();
 
     //boucle de dessin
     for (const auto& iter : container) {
-        QPointF pos = constAffichageGraphiqueeHex::axialToScreen(iter.first);
+        QPointF pos = constAffichageGraphiqueHex::axialToScreen(iter.first);
         HexagoneGUIObjet* guiHex = iter.second->affiche_gui();
         guiHex->setPos(pos);
-        sceneMap->addItem(guiHex);
+        graphicsGroup->addToGroup(guiHex);
     }
+
+    return graphicsGroup;
 }
 
-QPointF constAffichageGraphiqueeHex::axialToScreen (Vector2 v) {
+QPointF constAffichageGraphiqueHex::axialToScreen(Vector2 v) {
     float largeurGUI = GUIConstants::HEX_SIZE * 3;
     float hauteurGUI = GUIConstants::HEX_SIZE * 2 * 0.866; // Car le ratio rayon/hauteur est de 0.866 * 2
 
     float x = v.x / 2 * largeurGUI;
     float y = (v.y + v.x / 2) * hauteurGUI;
     return QPointF{x, y};
+}
+
+Vector2 constAffichageGraphiqueHex::screenToAxial(QPointF pos) {
+    float largeurGUI = GUIConstants::HEX_SIZE * 3;
+    float hauteurGUI = GUIConstants::HEX_SIZE * 2 * 0.866; // Car le ratio rayon/hauteur est de 0.866 * 2
+
+    float x = roundf(2 * pos.x() / largeurGUI);
+    float y = roundf(pos.y() / hauteurGUI - x / 2);
+
+    return Vector2{x, y};
 }

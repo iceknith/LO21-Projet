@@ -75,6 +75,7 @@ public:
     AffichageGUI(QGraphicsScene* newSceneMap) : sceneMap(newSceneMap) {};
     AffichageGUI(QGraphicsScene* sceneMap, QLabel* labelNom, QLabel* labelScore, QLabel* labelPierre)
         : sceneMap(sceneMap), labelScore(labelScore), labelNom(labelNom), labelPierre(labelPierre) {};
+    QGraphicsItemGroup* getContainerGraphicsItem(HexagoneContainer& container);
 
     void clearAffichage() {if (sceneMap) sceneMap->clear();}
 
@@ -85,9 +86,10 @@ public:
 };
 
 //! Ensemble de fonctions utiles à l'affichage console
-namespace constAffichageGraphiqueeHex {
+namespace constAffichageGraphiqueHex {
     //! Convertion entre les coordonées axiales et les coordonées de l'écran
     QPointF axialToScreen (Vector2 v);
+    Vector2 screenToAxial (QPointF pos);
 }
 
 #endif //LO21_PROJET_AFFICHAGE_HPP

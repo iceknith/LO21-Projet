@@ -684,3 +684,30 @@ int JeuGUI::selectTuile(size_t joueur) {
 
     return resultat;
 }
+
+bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
+    QMetaObject::invokeMethod(qApp, [=]() {
+        window->getEcranJeu()->setSelectedTuile(affichageJoueur->getContainerGraphicsItem(*tuileSelected));
+    }, Qt::QueuedConnection);
+
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranJeu(),
+                     SIGNAL(selectionPlacementFinished(Vector2)),
+                     &SignalWaitLoop, SLOT(quit()));
+
+
+    Vector2 position;
+    QWidget::connect(window->getEcranJeu(),
+                     &EcranJeu::selectionPlacementFinished,
+                     [&](Vector2 nouvellePosition){position = nouvellePosition;});
+
+    do {
+        SignalWaitLoop.exec();
+    } while (!joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, position));
+
+    joueurs[joueur]->place_tuile(tuileSelected, position);
+    QMetaObject::invokeMethod(qApp, [=]() {
+        window->getEcranJeu()->removeSelectedTuile();
+    }, Qt::QueuedConnection);
+    return true;
+}

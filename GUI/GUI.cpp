@@ -70,6 +70,29 @@ CameraMap::CameraMap(QGraphicsScene* scene) : QGraphicsView(scene) {
     setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 }
 
+void CameraMap::wheelEvent(QWheelEvent *event) {
+    double zoomScale = 1.05;
+
+    if (event->angleDelta().y() > 0) {
+        scale(zoomScale, zoomScale);
+    } else {
+        scale(1.0 / zoomScale, 1.0 / zoomScale);
+    }
+}
+
+void CameraMap::mouseMoveEvent(QMouseEvent *event) {
+    //QPointF position = (event->scenePosition() - frameRect().center());
+    QPoint viewPos = mapFromGlobal(event->globalPosition()).toPoint();
+    QPointF position = mapToScene(viewPos);
+    emit mouseMoved(position);
+}
+
+void CameraMap::mousePressEvent(QMouseEvent *event) {
+    QPoint viewPos = mapFromGlobal(event->globalPosition()).toPoint();
+    QPointF position = mapToScene(viewPos);
+    emit mousePressed(position);
+}
+
 // QT - ECRANS //
 
 EcranTitre::EcranTitre() {
@@ -153,7 +176,7 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
 EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("COMBIEN JE JOUEURS?");
+    QLabel* texte  = new QLabel("COMBIEN DE JOUEURS?");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
@@ -310,6 +333,10 @@ EcranJeu::EcranJeu() {
 
     sceneMap = new QGraphicsScene();
     vueMap = new CameraMap(sceneMap);
+    connect(vueMap, &CameraMap::mouseMoved,
+            this, &EcranJeu::onPlateauCameraMapMouseMoved);
+    connect(vueMap, &CameraMap::mousePressed,
+            this, &EcranJeu::onPlateauCameraMapMousePressed);
 
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
@@ -321,6 +348,20 @@ EcranJeu::~EcranJeu() {
     //TODO Implémenter ça
 }
 
+void EcranJeu::onPlateauCameraMapMouseMoved(QPointF mousePos) {
+    if (selectedTuile == nullptr) return;
+    selectedTuile->setPos(
+                constAffichageGraphiqueHex::axialToScreen(
+                        constAffichageGraphiqueHex::screenToAxial(mousePos)
+                )
+            );
+}
+
+void EcranJeu::onPlateauCameraMapMousePressed(QPointF mousePos) {
+    if (selectedTuile == nullptr) return;
+    selectionPlacementFinished(constAffichageGraphiqueHex::screenToAxial(mousePos));
+};
+
 AffichageGUI *EcranJeu::getAffichageJoueur() {
     return new AffichageGUI(sceneMap, labelNom, labelScore, labelPierre);
 }
@@ -330,7 +371,13 @@ AffichageGUI **EcranJeu::getAffichagesChantier(size_t tailleChantier) {
     for (size_t i = 0; i < tailleChantier; i++)
         result[i] = new AffichageGUI(sceneChantier[i]);
     return result;
-};
+}
+
+void EcranJeu::setSelectedTuile(QGraphicsItemGroup *newSelectedTuile) {
+    removeSelectedTuile();
+    selectedTuile = newSelectedTuile;
+    sceneMap->addItem(selectedTuile);
+}
 
 // Ecran main (gameManager) //
 

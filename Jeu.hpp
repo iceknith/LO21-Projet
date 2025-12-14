@@ -164,8 +164,8 @@ private:
             dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
     }
     void afficheSceneJeu() override;
-    int selectTuile(size_t joueur) override;// Temporaire
-    bool placeTuile(size_t joueur, Tuile* tuileSelected) override { return true; } // Temporaire
+    int selectTuile(size_t joueur) override;
+    bool placeTuile(size_t nouvellePosition, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override {}
     void finDePartie(multimap<int, size_t> scores) override {}
 

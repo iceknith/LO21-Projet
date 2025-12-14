@@ -92,19 +92,21 @@ public:
 
 // QGraphicsView: nous permet d' afficher tout nous hexagones et qui permet de zommer et plus ... (je reviendrais refaire aux propre tout les comms)
 class CameraMap : public QGraphicsView {
+    Q_OBJECT
 protected:
     // On capture le scroll de la souris
-    void wheelEvent(QWheelEvent *event) override {
-        double zoomScale = 1.05;
+    void wheelEvent(QWheelEvent *event) override;
 
-        if (event->angleDelta().y() > 0) {
-            scale(zoomScale, zoomScale);
-        } else {
-            scale(1.0 / zoomScale, 1.0 / zoomScale);
-        }
-    }
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+
+
 public:
     CameraMap(QGraphicsScene* scene);
+
+signals:
+    void mouseMoved(QPointF mousePos);
+    void mousePressed(QPointF mousePos);
 };
 
 // QT - ECRANS //
@@ -207,17 +209,26 @@ Q_OBJECT
     // La Map
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
+
+    // La tuile séléctionnée
+    QGraphicsItemGroup* selectedTuile = nullptr;
+
+    void onPlateauCameraMapMouseMoved(QPointF mousePos);
+    void onPlateauCameraMapMousePressed(QPointF mousePos);
+
 public:
     AffichageGUI* getAffichageJoueur();
     AffichageGUI** getAffichagesChantier(size_t tailleChantier);
     QLabel** getLabelsChantier() {return labelsChantier;}
+    void setSelectedTuile(QGraphicsItemGroup* newSelectedTuile);
+    void removeSelectedTuile() {delete selectedTuile; selectedTuile = nullptr;}
 
     EcranJeu();
     ~EcranJeu();
 
 signals:
     void selectionTuileFinished(int tuileSelected);
-    void selectionPlacement(QPointF placement);
+    void selectionPlacementFinished(Vector2 placement);
 };
 
 
