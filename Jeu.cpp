@@ -51,8 +51,11 @@ void Jeu::gameLoop(int argc, char *argv[]) {
         }
     }
 
+
+    afficheSceneJeu();
     while (chantier.get_nombre_tuiles() > 1) {
         sauvegarderPartie();
+        string s;
         // Joueur manuel
         if (!joueurs[joueurActuel]->get_joue_tout_seul())
         {
@@ -115,7 +118,6 @@ multimap<int, size_t> Jeu::calculerScores() {
 
 Jeu::~Jeu() {
     delete tuileDepart;
-    delete affichage;
 }
 
 void Jeu::serialize(QVariantMap &data, SerializationContext *context) const {
@@ -588,7 +590,9 @@ bool JeuGUI::selectChargerPartie() {
     bool resultat = false;
     QObject::connect(window->getEcranSelectionSauvegarde(),
                      &EcranSelectionSauvegarde::selectionFinished,
-                     [&](bool chargeSauvegarde){resultat = chargeSauvegarde;});
+                     [&](bool chargeSauvegarde){
+        cout << (QThread::currentThread() == QApplication::instance()->thread()) << endl;
+        resultat = chargeSauvegarde;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
@@ -618,6 +622,7 @@ void JeuGUI::selectGameMode() {
     else qDebug() << "Mode de jeu: MULTIJOUEUR";
 }
 
+/*
 void JeuGUI::selectJoueurs() {
 
     window->showEcran(window->getEcranSelectionNombreJoueurs());
@@ -646,20 +651,28 @@ void JeuGUI::selectNomsJoueurs() {
 void JeuGUI::selectReglesScore() {
 }*/
 
-void JeuGUI::afficheTourAutomatique(size_t joueurIndex) {
-    //recupere joueur actuelle
-    Joueur* j = joueurs[joueurIndex];
+void JeuGUI::afficheSceneJeu() {
+    window->showEcran(window->getEcranJeu());
+    affichageJoueur = window->getEcranJeu()->getAffichageJoueur();
+    affichageChantier = window->getEcranJeu()->getAffichagesChantier(chantier.get_taille());
+}
 
-    // mise à jour des labels
-    //fenetre->jeu->labelNom->setText("Joueur: " + QString::fromStdString(j->getNomJoueur()));
-    //fenetre->jeu->labelPierre->setText("Pierres: " + QString::number(j->get_pierre()));
-    //fenetre->jeu->labelScore->setText("Score: " + QString::number(j->get_score()));
+int JeuGUI::selectTuile(size_t joueur) {
+    QMetaObject::invokeMethod(qApp, [=]() {
+        affichageJoueur->Affichage::affiche_joueur(*joueurs[joueur]);
+        }, Qt::QueuedConnection);
 
-    // mise à jour de la map
-    //fenetre->mettreAJourPlateau(j->get_plateau());
+    QMetaObject::invokeMethod(qApp, [=]() {
+        int i = 0;
+        for (auto tuile : chantier)
+                affichageChantier[i++]->Affichage::affiche_container(*tuile);
+        }, Qt::QueuedConnection);
 
-    // mise à jour du CHANTIER
-    // TODO
-
-    //QApplication::processEvents();
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranJeu(),
+                     SIGNAL(selectionTuileFinished(int)),
+                     &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+    return 0;
 }

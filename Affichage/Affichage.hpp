@@ -72,6 +72,9 @@ protected:
 
 public:
     AffichageGUI() = default;
+    AffichageGUI(QGraphicsScene* newSceneMap) : sceneMap(newSceneMap) {};
+    AffichageGUI(QGraphicsScene* sceneMap, QLabel* labelNom, QLabel* labelScore, QLabel* labelPierre)
+        : sceneMap(sceneMap), labelScore(labelScore), labelNom(labelNom), labelPierre(labelPierre) {};
     void setSceneMap(QGraphicsScene* newSceneMap) {sceneMap = newSceneMap;}
     void setLabelNom(QLabel* newlabelNom) {labelNom = newlabelNom;}
     void setLabelScore(QLabel* newlabelScore) {labelScore = newlabelScore;}

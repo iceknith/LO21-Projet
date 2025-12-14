@@ -1,4 +1,5 @@
 #include "Affichage.hpp"
+#include "QThread"
 using namespace constAffichageConsoleHex;
 
 // Création de l'instance d'affichage
