@@ -106,7 +106,7 @@ EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
 
     // Bouton start
     QPushButton* StartBouton = new QPushButton("NOUVELLE PARTIE");
-    QPushButton* LoadBouton = new QPushButton("CHARGER PARTIE");
+    QPushButton* LoadBouton = new QPushButton("CHARGER DERNIERE PARTIE");
     StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
     LoadBouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
 
@@ -121,6 +121,29 @@ EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
     connect(StartBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
     connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
     connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::activateChargeSauvegarde);
+}
+
+EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
+
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* texte  = new QLabel("SELECTION MODE DE JEU");
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    layout->addStretch();
+    layout->addWidget(texte);
+    texte->setAlignment(Qt::AlignCenter);
+
+    QPushButton* boutonSOLO = new QPushButton("SOLO");
+    QPushButton* boutonMULTI = new QPushButton("MULTIJOUEUR");
+    boutonSOLO->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+    boutonMULTI->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+
+    layout->addStretch();
+    layout->addWidget(boutonSOLO);
+    layout->addWidget(boutonMULTI);
+    layout->addStretch();
+
+    connect(boutonSOLO, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeSolo);
+    connect(boutonMULTI, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeMulti);
 }
 
 EcranJeu::EcranJeu() {
@@ -140,12 +163,16 @@ EcranJeu::EcranJeu() {
     labelScore = new QLabel("Score actuelle: XXXXX");
     labelPierre = new QLabel("Pierres: XXXXX");
 
-
+    labelNom->setStyleSheet("font-size: 20px;  color: white;");
+    labelScore->setStyleSheet("font-size: 20px;  color: white;");
+    labelPierre->setStyleSheet("font-size: 20px;  color: white;");
+    // Mise en page
     layoutInfo->addWidget(labelNom);
     layoutInfo->addStretch(); // Pousse les éléments pour les écarter
     layoutInfo->addWidget(labelScore);
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelPierre);
+
 
     // ----------------------------------------------------
     //Zone 2: chantier
@@ -203,6 +230,8 @@ MainWindow::MainWindow() {
     pile->addWidget(ecranTitre);
     ecranSelectionSauvegarde = new EcranSelectionSauvegarde();
     pile->addWidget(ecranSelectionSauvegarde);
+    mode_de_jeu = new EcranSelectionModeDeJeu();
+    pile->addWidget(mode_de_jeu);
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 

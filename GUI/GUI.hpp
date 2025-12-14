@@ -37,6 +37,12 @@
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
 
+    QBrush couleurAkropolisToQt(CouleursAkropolis couleur);
+
+    QPointF axialToPixel(int q, int r);
+
+    Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
+
     const QColor akropolisToQTColors[6] {
     Qt::white,
     Qt::blue,
@@ -130,12 +136,37 @@ public slots:
 
 };
 
+class EcranSelectionModeDeJeu : public QWidget {
+Q_OBJECT
+public:
+    EcranSelectionModeDeJeu();
+signals:
+    void modeSolo();
+    void modeMulti();
+};
+
 class EcranSaisieNoms : public QWidget {
 
 };
 
-class EcranChoixRegles : public QWidget {
+class EcranDifficulteArchitechte : public QWidget {
 
+};
+
+class EcranChoixRegles : public QWidget {
+    Q_OBJECT
+    public:
+    EcranChoixRegles();
+    signals:
+    void reglesChoisies(bool avecVariante);
+};
+
+class EcanVictoire : public QWidget {
+    Q_OBJECT
+    public:
+    EcanVictoire();
+    signals:
+    void retourMenu();
 };
 
 
@@ -153,8 +184,9 @@ public:
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
 
-    EcranJeu(); // Constructeur
+    EcranJeu();
 };
+
 
 // Ecran main (gameManager) //
 
@@ -162,10 +194,19 @@ class MainWindow : public QWidget {
     Q_OBJECT
 
     QStackedWidget* pile; // Pile de Widget
+    // Menus
     EcranTitre* ecranTitre;
     EcranSelectionSauvegarde* ecranSelectionSauvegarde;
-    EcranJeu* ecranJeu;
+    //EcranSelectionModeDeJeu* ecranSelectionModeDeJeu;
+    //EcranSelectionNombreJoueurs nombre_joueurs;
+    //EcranSaisieNoms saisie_nom;
+    //EcranChoixRegles choixRegles;
+    // Gameplay
+    //EcranJeu* ecranJeu;
+    EcanVictoire* victoire;
 public:
+
+
 
 
     MainWindow();
