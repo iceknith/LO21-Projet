@@ -564,7 +564,7 @@ void JeuGUI::gameLoop(int argc, char **argv) {
     if (runApp->isRunning()) runApp->terminate();
 }
 
-Jeu* JeuGUI::getJeu() { // ATTENTIIN
+Jeu* JeuGUI::getJeu() {
     if (jeu == nullptr) {
         jeu = new JeuGUI();
     }
@@ -614,12 +614,28 @@ void JeuGUI::selectGameMode() {
                      SIGNAL(selectionFinished(GameMode)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
+    if (modeDeJeu == GameMode::SOLO) qDebug() << "Mode de jeu: SOLO";
+    else qDebug() << "Mode de jeu: MULTIJOUEUR";
 }
 
-
-/*
 void JeuGUI::selectJoueurs() {
-}*/
+
+    window->showEcran(window->getEcranSelectionNombreJoueurs());
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    QObject::connect(window->getEcranSelectionNombreJoueurs(),
+                     &EcranSelectionNombreJoueurs::selectionFinished,
+                     [this](int nb){
+                         this ->nombreJoueurs = nb;
+                     });
+
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranSelectionNombreJoueurs(),
+                     SIGNAL(selectionFinished()),
+                     &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+    qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
+}
 
 /*
 void JeuGUI::selectNomsJoueurs() {

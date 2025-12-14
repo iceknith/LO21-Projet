@@ -149,6 +149,43 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
             this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
 }
 
+
+EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
+
+    QBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* texte  = new QLabel("COMBIEN JE JOUEURS?");
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    layout->addStretch();
+    layout->addWidget(texte);
+    texte->setAlignment(Qt::AlignCenter);
+
+
+    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
+
+    QPushButton* duo = new QPushButton("2");
+    QPushButton* trio = new QPushButton("3");
+    QPushButton* quatuor = new QPushButton("4");
+    duo->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+    trio->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+    quatuor->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+
+    layout->addStretch();
+    BouttonLayout->addWidget(duo);
+    BouttonLayout->addWidget(trio);
+    BouttonLayout->addWidget(quatuor);
+    layout->addLayout(BouttonLayout);
+    layout->addStretch();
+
+    connect(duo, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(2);});
+    connect(trio, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(3);});
+    connect(quatuor, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(4);});
+}
+
+
+//==================
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
@@ -235,6 +272,8 @@ MainWindow::MainWindow() {
     pile->addWidget(ecranSelectionSauvegarde);
     ecranSelectionModeDeJeu = new EcranSelectionModeDeJeu();
     pile->addWidget(ecranSelectionModeDeJeu);
+    ecranSelectionNombreJoueurs = new EcranSelectionNombreJoueurs();
+    pile->addWidget(ecranSelectionNombreJoueurs);
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 

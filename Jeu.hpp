@@ -149,7 +149,7 @@ private:
     void titleScreen() override;
     bool selectChargerPartie() override;
     void selectGameMode() override;
-    void selectJoueurs() override { nombreJoueurs = 2; joueurs[0]=new JoueurSimple(); joueurs[1]=new JoueurSimple(); }// Temporaire
+    void selectJoueurs() override ;
     void selectNomsJoueurs() override {}
     Difficulte selectNiveauIllustreArchitechte() override { return Difficulte::FACILE; }// Temporaire
     void selectReglesScore() override {}

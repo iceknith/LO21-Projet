@@ -139,7 +139,11 @@ signals:
 };
 
 class EcranSelectionNombreJoueurs : public QWidget {
-
+    Q_OBJECT
+    public:
+    EcranSelectionNombreJoueurs();
+    signals:
+        void selectionFinished(int nombreDeJoueurs);
 };
 
 class EcranSaisieNoms : public QWidget {
