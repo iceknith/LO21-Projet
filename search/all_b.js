@@ -10,8 +10,6 @@ var searchData=
   ['maxnombretours_7',['maxNombreTours',['../d1/de1/classJeu.html#a5088d78ecd4bfb62edc3f2b9f045348b',1,'Jeu']]],
   ['menu_20config_2ecpp_8',['menu config.cpp',['../d0/d8c/menu_01config_8cpp.html',1,'']]],
   ['modedejeu_9',['modeDeJeu',['../d1/de1/classJeu.html#a0e405bdc7357a5810d26794c9deb4d15',1,'Jeu']]],
-  ['modemulti_10',['modeMulti',['../d3/d57/classEcranSelectionModeDeJeu.html#ac184b33b6f8369f8280a054442ccc49e',1,'EcranSelectionModeDeJeu']]],
-  ['modesolo_11',['modeSolo',['../d3/d57/classEcranSelectionModeDeJeu.html#a7340cc398f60b7f475720b0722268c84',1,'EcranSelectionModeDeJeu']]],
-  ['mousepressevent_12',['mousePressEvent',['../da/d63/classHexagoneGUIObjet.html#aa14bfce0035b35f8d1c85765b6a2a948',1,'HexagoneGUIObjet']]],
-  ['multijoueur_13',['MULTIJOUEUR',['../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589deaf338b5ecf6fb2b534cf46cf1080e5bb8',1,'Utils.hpp']]]
+  ['mousepressevent_10',['mousePressEvent',['../da/d63/classHexagoneGUIObjet.html#aa14bfce0035b35f8d1c85765b6a2a948',1,'HexagoneGUIObjet']]],
+  ['multijoueur_11',['MULTIJOUEUR',['../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589deaf338b5ecf6fb2b534cf46cf1080e5bb8',1,'Utils.hpp']]]
 ];

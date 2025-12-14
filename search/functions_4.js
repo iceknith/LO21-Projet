@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['ecanvictoire_0',['EcanVictoire',['../d7/d3a/classEcanVictoire.html#a277ca141c75220a00e3fbe483c546e2f',1,'EcanVictoire']]],
-  ['ecranchoixregles_1',['EcranChoixRegles',['../d4/d36/classEcranChoixRegles.html#ab831b03d9e06b679af08d2ca52b252f2',1,'EcranChoixRegles']]],
+  ['ecanvictoire_0',['EcanVictoire',['../d7/d3a/classEcanVictoire.html#a202eb4b22a62f9a2935449da1f5ca023',1,'EcanVictoire']]],
+  ['ecranchoixregles_1',['EcranChoixRegles',['../d4/d36/classEcranChoixRegles.html#ae9bffea54ba2fbe92dd1b7ed18f6ddf7',1,'EcranChoixRegles']]],
   ['ecranjeu_2',['EcranJeu',['../d2/dc8/classEcranJeu.html#acd10bb8b526b79e718f0b0784caaf81c',1,'EcranJeu']]],
   ['ecranselectionmodedejeu_3',['EcranSelectionModeDeJeu',['../d3/d57/classEcranSelectionModeDeJeu.html#a35d393c2f65bda7a882442895598b7a1',1,'EcranSelectionModeDeJeu']]],
   ['ecranselectionsauvegarde_4',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html#a01ab62ceec928e04daf4d1187ccf969e',1,'EcranSelectionSauvegarde']]],
