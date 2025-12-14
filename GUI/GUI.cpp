@@ -118,9 +118,10 @@ EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
     layout->addWidget(LoadBouton);
     layout->addStretch();
 
-    connect(StartBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
-    connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
-    connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::activateChargeSauvegarde);
+    connect(StartBouton, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(false);});
+    connect(LoadBouton, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(true);});
 }
 
 EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
@@ -142,8 +143,10 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
     layout->addWidget(boutonMULTI);
     layout->addStretch();
 
-    connect(boutonSOLO, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeSolo);
-    connect(boutonMULTI, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeMulti);
+    connect(boutonSOLO, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(GameMode::SOLO);});
+    connect(boutonMULTI, &QPushButton::clicked,
+            this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
 }
 
 EcranJeu::EcranJeu() {

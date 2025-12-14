@@ -122,29 +122,20 @@ public:
 
 class EcranSelectionSauvegarde : public QWidget {
 Q_OBJECT
-    bool chargeSauvegarde = false;
 
 public:
     EcranSelectionSauvegarde();
-    bool getChargeSauvegarde() const {return chargeSauvegarde;}
 
 signals:
-    void selectionFinished();
-    void chargeSauvegardeClicked();
-
-public slots:
-    void activateChargeSauvegarde() {chargeSauvegarde = true;};
-
+    void selectionFinished(bool chargeSauvegarde);
 };
 
 class EcranSelectionModeDeJeu : public QWidget {
 Q_OBJECT
 public:
     EcranSelectionModeDeJeu();
-    GameMode getModeDeJeu();
 signals:
-    void modeSolo();
-    void modeMulti();
+    void selectionFinished(GameMode modeDeJeu);
 };
 
 class EcranSelectionNombreJoueurs : public QWidget {
@@ -162,7 +153,7 @@ class EcranDifficulteArchitechte : public QWidget {
 class EcranChoixRegles : public QWidget {
     Q_OBJECT
     public:
-    EcranChoixRegles();
+    EcranChoixRegles() = default;
     signals:
     void reglesChoisies(bool avecVariante);
 };
@@ -170,7 +161,7 @@ class EcranChoixRegles : public QWidget {
 class EcanVictoire : public QWidget {
     Q_OBJECT
     public:
-    EcanVictoire();
+    EcanVictoire() = default;
     signals:
     void retourMenu();
 };

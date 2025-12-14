@@ -583,22 +583,36 @@ void JeuGUI::titleScreen() {
 
 bool JeuGUI::selectChargerPartie() {
     window->showEcran(window->getEcranSelectionSauvegarde());
+
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    bool resultat = false;
+    QObject::connect(window->getEcranSelectionSauvegarde(),
+                     &EcranSelectionSauvegarde::selectionFinished,
+                     [&](bool chargeSauvegarde){resultat = chargeSauvegarde;});
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), &SignalWaitLoop, SLOT(quit()));
+    QWidget::connect(window->getEcranSelectionSauvegarde(),
+                     SIGNAL(selectionFinished(bool))
+                     , &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 
     // Retourner la réponse de l'utilisateur
-    return window->getEcranSelectionSauvegarde()->getChargeSauvegarde();
+    return resultat;
 }
 
 void JeuGUI::selectGameMode() {
-    window->showEcran(window->getEcranSelectionSauvegarde());
+    window->showEcran(window->getEcranSelectionModeDeJeu());
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    QObject::connect(window->getEcranSelectionModeDeJeu(),
+                     &EcranSelectionModeDeJeu::selectionFinished,
+                     [this](GameMode modeDeJeuSelected){modeDeJeu = modeDeJeuSelected;});
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-
-    //QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), this, [=](){});
-    QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), &SignalWaitLoop, SLOT(quit()));
+    QWidget::connect(window->getEcranSelectionModeDeJeu(),
+                     SIGNAL(selectionFinished(GameMode)),
+                     &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 }
 
