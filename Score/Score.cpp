@@ -112,7 +112,7 @@ StatsCouleursSoloArchitecte ScoreUtils::compteur_couleur(Plateau* plateau) {
 
 
 int Score::score(Plateau* plateau) {
-    int s = scoreDecore ? scoreDecore->score(plateau) : 0;
+    int s = scoreDecore != nullptr ? scoreDecore->score(plateau) : 0;
     s += scoreLocal(plateau);
     return s;
 }

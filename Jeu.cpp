@@ -1,5 +1,3 @@
-#include <QFile>
-#include <QFileInfo>
 #include "Jeu.hpp"
 #include "Serialization/Serialization.hpp"
 
@@ -7,8 +5,9 @@
 
 Jeu* Jeu::jeu = nullptr;
 
-void Jeu::gameLoop() {
+void Jeu::gameLoop(int argc, char *argv[]) {
     titleScreen();
+
     // Si on charge une partie existante
     QFileInfo saveFileInfo{constJeu::saveFilePath};
     if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) chargerPartie();
@@ -547,24 +546,52 @@ void JeuConsole::titleScreen() {
 
 // JEU GUI //
 
-Jeu* JeuGUI::getJeu(MainWindow* app) { // ATTENTIIN
-    if (jeu == nullptr && app != nullptr) {
-        jeu = new JeuGUI(app);
+void JeuGUI::gameLoop(int argc, char **argv) {
+    app = new QApplication{argc, argv};
+    window = new MainWindow();
+    window->resize(1200, 800);
+    window->show();
+
+    // Lancer le jeu normal
+    auto launchGameLoop = [](int argc, char **argv) {return JeuGUI::getJeu()->Jeu::gameLoop(argc, argv);};
+    runApp = QThread::create(launchGameLoop, argc, argv);
+    runApp->start();
+
+    // Lancer l'application graphique
+    QApplication::exec();
+
+    // Une fois que l'application graphique est finie, si l'application n'est pas finie, la forcer à finir
+    if (runApp->isRunning()) runApp->terminate();
+}
+
+Jeu* JeuGUI::getJeu() { // ATTENTIIN
+    if (jeu == nullptr) {
+        jeu = new JeuGUI();
     }
     return jeu;
 }
 
-JeuGUI::JeuGUI(MainWindow* app) : Jeu() {
-    this->fenetre = app;
-}
 void JeuGUI::titleScreen() {
-    //fenetre->afficherEcran(fenetre->titre);
+    window->showEcran(window->getEcranTitre());
+    //Attendre que le signal startgame soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranTitre(), SIGNAL(startGame()), &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
 
 }
 
-/*
-void JeuGUI::selectGameMode() {
-}*/
+
+bool JeuGUI::selectChargerPartie() {
+    window->showEcran(window->getEcranSelectionSauvegarde());
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
+    // Retourner la réponse de l'utilisateur
+    return window->getEcranSelectionSauvegarde()->getChargeSauvegarde();
+}
+
 
 /*
 void JeuGUI::selectJoueurs() {
@@ -584,9 +611,9 @@ void JeuGUI::afficheTourAutomatique(size_t joueurIndex) {
     Joueur* j = joueurs[joueurIndex];
 
     // mise à jour des labels
-    fenetre->jeu->labelNom->setText("Joueur: " + QString::fromStdString(j->getNomJoueur()));
-    fenetre->jeu->labelPierre->setText("Pierres: " + QString::number(j->get_pierre()));
-    fenetre->jeu->labelScore->setText("Score: " + QString::number(j->get_score()));
+    //fenetre->jeu->labelNom->setText("Joueur: " + QString::fromStdString(j->getNomJoueur()));
+    //fenetre->jeu->labelPierre->setText("Pierres: " + QString::number(j->get_pierre()));
+    //fenetre->jeu->labelScore->setText("Score: " + QString::number(j->get_score()));
 
     // mise à jour de la map
     //fenetre->mettreAJourPlateau(j->get_plateau());

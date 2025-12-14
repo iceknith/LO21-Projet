@@ -82,6 +82,29 @@ EcranTitre::EcranTitre() {
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
 
     // Bouton start
+    QPushButton* StartBouton = new QPushButton("START");
+    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
+
+    // mise en page
+    layout->addStretch();
+    layout->addWidget(texte);
+    layout->addSpacing(50);
+    layout->addWidget(StartBouton);
+    layout->addStretch();
+
+    connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
+}
+
+EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
+    // Mise en page verticale
+    QVBoxLayout* layout = new QVBoxLayout(this);
+
+    // TITRE
+    QLabel* texte = new QLabel("AKROPOLIS");
+    texte->setAlignment(Qt::AlignCenter);
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+
+    // Bouton start
     QPushButton* StartBouton = new QPushButton("NOUVELLE PARTIE");
     QPushButton* LoadBouton = new QPushButton("CHARGER PARTIE");
     StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
@@ -95,8 +118,9 @@ EcranTitre::EcranTitre() {
     layout->addWidget(LoadBouton);
     layout->addStretch();
 
-    connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
-    connect(LoadBouton, &QPushButton::clicked, this, &EcranTitre::startGame);//loadGame
+    connect(StartBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
+    connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::selectionFinished);
+    connect(LoadBouton, &QPushButton::clicked, this, &EcranSelectionSauvegarde::activateChargeSauvegarde);
 }
 
 EcranJeu::EcranJeu() {
@@ -172,135 +196,16 @@ EcranJeu::EcranJeu() {
 MainWindow::MainWindow() {
     QVBoxLayout* layout = new QVBoxLayout(this);
     layout->setContentsMargins(0,0,0,0);
-
-    // Pile
     pile = new QStackedWidget();
 
-    // innitialisation de nos deux ecran
-    titre = new EcranTitre();
-    jeu = new EcranJeu();
+    //initialisation de nos ecrans
+    ecranTitre = new EcranTitre();
+    pile->addWidget(ecranTitre);
+    ecranSelectionSauvegarde = new EcranSelectionSauvegarde();
+    pile->addWidget(ecranSelectionSauvegarde);
+    ecranJeu = new EcranJeu();
+    pile->addWidget(ecranJeu);
 
-    pile->addWidget(titre);
-    pile->addWidget(jeu);
-
-    //affiche la pile
+    // Pile
     layout->addWidget(pile);
-
-    pile->setCurrentWidget(titre);
-
-    connect(titre, &EcranTitre::startGame, this, &MainWindow::lancerLeJeu);
-}
-
-void MainWindow::lancerLeJeu() {
-    qDebug() << "Changement d'écran -> Jeu !";
-    pile->setCurrentWidget(jeu);
-}
-
-/*
-void MainWindow::mettreAJourPlateau(HexagoneContainer& plateau) {
-    QGraphicsScene* scene = jeu->sceneMap; // Acces via ton pointeur public 'jeu'
-    scene->clear(); // On efface tout l'ancien affichage
-
-    int tailleFond = 10; // TODO taille evolutive du background
-    int offsetCentre = tailleFond / 2; // place le plateau au milieu de l'ecran
-
-    // Contraintes graphiques
-    double rayon = GUIConstants::HEX_SIZE;
-    double hauteur = rayon * std::sqrt(3.0);
-    double largeur = rayon * 1.5;
-    double ecartVertical = hauteur;
-
-    //boucle de dessin
-    for (int ligne = 0; ligne < tailleFond; ++ligne) {
-        for (int col = 0; col < tailleFond; ++col) {
-            HexagoneGUIObjet* hex = new HexagoneGUIObjet();
-            hex->setZValue(0);
-            double x = col * largeur;
-            double y = ligne * ecartVertical;
-            // Decalage (QUINCONCE)
-            if (col % 2 != 0) {
-                y += hauteur / 2.0;
-            }
-            // Si hexagone existe
-            Vector2 coordLogique = constGUI::grilleToAxial(col, ligne, offsetCentre);
-            auto it = plateau.getHexagone(coordLogique);
-            if (it != nullptr) {
-                hex->setBrush(QBrush(constGUI::couleurAkropolisToQt(it->get_couleur())));
-                // TODO: afficher si hexagone est place ou pas
-            }
-            //sinon: trace hexagone de fond
-            else {
-
-                // TODO: regarder si l'hexagone est a coté du plateau pour le mettre interactif ou pas
-
-                //hex->interactif = false;
-                hex->setBrush(QBrush(Qt::darkGray));
-            }
-
-            hex->setPos(x, y);
-            scene->addItem(hex);
-        }
-    }
-
-}
- */
-
-// constGUI //
-
-// Obselete
-/*
-void constGUI::backgroundMap(int size, QGraphicsScene* scene) {
-    double rayon = GUIConstants::HEX_SIZE;
-
-    double hauteur = rayon * std::sqrt(3.0);
-    double largeur = rayon * 1.5;
-
-    double ecartVertical = hauteur;
-
-    for (int ligne = 0; ligne < size; ++ligne) {
-        for (int col = 0; col < size; ++col) {
-
-            HexagonObjet* hex = new HexagonObjet();
-            hex->setZValue(0);
-            //hex->interactif = false;
-            hex->setBrush(QBrush(Qt::darkGray));
-            // Calcul des positions
-            double x = col * largeur;
-            double y = ligne * ecartVertical;
-
-            // Decalage (QUINCONCE)
-            if (col % 2 != 0) {
-                y += hauteur / 2.0;
-            }
-
-            hex->setPos(x, y);
-            scene->addItem(hex);
-        }
-    }
-}
-
-
-QBrush constGUI::couleurAkropolisToQt(CouleursAkropolis couleur){
-    switch(couleur) {
-        case CouleursAkropolis::BLEU: return QBrush(Qt::blue);
-        case CouleursAkropolis::JAUNE: return QBrush(Qt::yellow);
-        case CouleursAkropolis::ROUGE: return QBrush(Qt::red);
-        case CouleursAkropolis::VIOLET: return QBrush(Qt::magenta);
-        case CouleursAkropolis::VERT: return QBrush(Qt::green);
-        default: return QBrush(Qt::white);
-    }
-}
-*/
-
-Vector2 constGUI::grilleToAxial(int col, int ligne, int offsetCentre) {
-
-    int q_offset = col - offsetCentre;
-    int r_offset = ligne - offsetCentre;
-
-    Vector2 resultat;
-
-    resultat.x=q_offset;;
-    resultat.y=r_offset - (q_offset - (q_offset & 1)) / 2;
-
-    return resultat;
 }

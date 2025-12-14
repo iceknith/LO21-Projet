@@ -46,11 +46,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(LoadGame, &QPushButton::clicked, fenetre0, &QWidget::close);
 
     //Fenêtre 1.5 : Choix nv Illustre Architecte si le joueur est seul
-    QWidget *fenetre1_5 = new QWidget;
-    QLabel *NvIllustre = new QLabel("Niveau de l'Illustre Architecte");
-    QPushButton *buttonNvIll1 = new QPushButton("1");
-    QPushButton *buttonNvIll2 = new QPushButton("2");
-    QPushButton *buttonNvIll3 = new QPushButton("3");
+
 
 
 

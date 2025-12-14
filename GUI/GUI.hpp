@@ -37,12 +37,6 @@
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
 
-    QBrush couleurAkropolisToQt(CouleursAkropolis couleur);
-
-    QPointF axialToPixel(int q, int r);
-
-    Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
-
     const QColor akropolisToQTColors[6] {
     Qt::white,
     Qt::blue,
@@ -111,10 +105,29 @@ public:
 
 class EcranTitre : public QWidget {
     Q_OBJECT
+
 public:
     EcranTitre();
+
     signals:
         void startGame();
+
+};
+
+class EcranSelectionSauvegarde : public QWidget {
+Q_OBJECT
+    bool chargeSauvegarde = false;
+
+public:
+    EcranSelectionSauvegarde();
+    bool getChargeSauvegarde() const {return chargeSauvegarde;}
+
+signals:
+    void selectionFinished();
+
+public slots:
+    void activateChargeSauvegarde() {chargeSauvegarde = true;};
+
 };
 
 class EcranSaisieNoms : public QWidget {
@@ -147,15 +160,20 @@ public:
 
 class MainWindow : public QWidget {
     Q_OBJECT
-public:
+
     QStackedWidget* pile; // Pile de Widget
-    EcranTitre* titre;
-    EcranJeu* jeu;
+    EcranTitre* ecranTitre;
+    EcranSelectionSauvegarde* ecranSelectionSauvegarde;
+    EcranJeu* ecranJeu;
+public:
 
 
     MainWindow();
-    //void mettreAJourPlateau(HexagoneContainer& plateau);
-    void lancerLeJeu();
+    void showEcran(QWidget* ecran) {pile->setCurrentWidget(ecran);};
+
+    EcranTitre* getEcranTitre() const {return ecranTitre;}
+    EcranSelectionSauvegarde* getEcranSelectionSauvegarde() const {return ecranSelectionSauvegarde;}
+    EcranJeu* getEcranJeu() const {return ecranJeu;}
 };
 
 #endif //LO21_PROJET_GUI_HPP

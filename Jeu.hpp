@@ -7,6 +7,9 @@
 #include "Chantier/Chantier.hpp"
 #include "Chantier/Deck.hpp"
 #include "GUI/GUI.hpp"
+#include <QFile>
+#include <QFileInfo>
+#include <QThread>
 
 
 namespace constJeu {
@@ -96,7 +99,7 @@ protected:
 public:
     ~Jeu();
 
-    void gameLoop();
+    virtual void gameLoop(int argc, char *argv[]);
 
     //! Retourne le jeu instantié, si il existe, sinon retourne nullptr
     static Jeu* getJeu() {return jeu;}
@@ -134,18 +137,17 @@ public:
 
 // JEU GUI //
 
-class JeuGUI : public Jeu {
+class JeuGUI : public Jeu{
 private:
-    MainWindow* fenetre;
+    QApplication* app = nullptr;
+    MainWindow* window = nullptr;
+    QThread* runApp = nullptr;
 
-
-    JeuGUI(MainWindow* app);
+    JeuGUI() : Jeu() {};
 
 
     void titleScreen() override;
-
-
-    bool selectChargerPartie() override { return false; }// Temporaire
+    bool selectChargerPartie() override;
     void selectGameMode() override { modeDeJeu = GameMode::SOLO; }// Temporaire
     void selectJoueurs() override { nombreJoueurs = 2; joueurs[0]=new JoueurSimple(); joueurs[1]=new JoueurSimple(); }// Temporaire
     void selectNomsJoueurs() override {}
@@ -158,8 +160,8 @@ private:
 
 public:
 
-    static Jeu* getJeu(MainWindow* app = nullptr);
-
+    void gameLoop(int argc, char *argv[]) override;
+    static Jeu* getJeu();
 };
 
 #endif
