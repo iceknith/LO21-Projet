@@ -144,6 +144,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">selectReglesScore</a> ()=0</td></tr>
 <tr class="memdesc:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction des règles de score.  <a href="../../d1/de1/classJeu.html#a5b38799517d1c35a7eb6d0b6b9c53c00">More...</a><br /></td></tr>
 <tr class="separator:a5b38799517d1c35a7eb6d0b6b9c53c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7861bcaa7914dfb40a3fb901293dc14b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a7861bcaa7914dfb40a3fb901293dc14b">afficheSceneJeu</a> ()=0</td></tr>
+<tr class="memdesc:a7861bcaa7914dfb40a3fb901293dc14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de notifier l'affichage qu'on affiche la scène de jeu.  <a href="../../d1/de1/classJeu.html#a7861bcaa7914dfb40a3fb901293dc14b">More...</a><br /></td></tr>
+<tr class="separator:a7861bcaa7914dfb40a3fb901293dc14b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a9e1ed1f2ca08a8ec1829ca3a0449c663">selectTuile</a> (size_t joueur)=0</td></tr>
 <tr class="memdesc:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="mdescLeft">&#160;</td><td class="mdescRight">La méthode chargée de la séléction d'une tuile.  <a href="../../d1/de1/classJeu.html#a9e1ed1f2ca08a8ec1829ca3a0449c663">More...</a><br /></td></tr>
 <tr class="separator:a9e1ed1f2ca08a8ec1829ca3a0449c663"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,9 +209,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a161a4d38b099436e718cb320ee9756c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d51/classChantier.html">Chantier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a161a4d38b099436e718cb320ee9756c0">chantier</a></td></tr>
 <tr class="memdesc:a161a4d38b099436e718cb320ee9756c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le chantier du jeu.  <a href="../../d1/de1/classJeu.html#a161a4d38b099436e718cb320ee9756c0">More...</a><br /></td></tr>
 <tr class="separator:a161a4d38b099436e718cb320ee9756c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1446f5e8d3a00e7c6f00b89139110984"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dca/classAffichage.html">Affichage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classJeu.html#a1446f5e8d3a00e7c6f00b89139110984">affichage</a></td></tr>
-<tr class="memdesc:a1446f5e8d3a00e7c6f00b89139110984"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'affichage du jeu.  <a href="../../d1/de1/classJeu.html#a1446f5e8d3a00e7c6f00b89139110984">More...</a><br /></td></tr>
-<tr class="separator:a1446f5e8d3a00e7c6f00b89139110984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -266,6 +266,33 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7861bcaa7914dfb40a3fb901293dc14b" name="a7861bcaa7914dfb40a3fb901293dc14b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7861bcaa7914dfb40a3fb901293dc14b">&#9670;&#160;</a></span>afficheSceneJeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Jeu::afficheSceneJeu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="../../dc/dcd/classJeuConsole.html#a655eed33b6750ac944136fb48679cc79">JeuConsole</a>, and <a class="el" href="../../da/d36/classJeuGUI.html#ad0800d8e43e88504396ff11af5f5008f">JeuGUI</a>.</p>
+
+</div>
+</div>
 <a id="a6d0fc1ebfd551950cebce62996657b52" name="a6d0fc1ebfd551950cebce62996657b52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d0fc1ebfd551950cebce62996657b52">&#9670;&#160;</a></span>afficheTourAutomatique()</h2>
 
@@ -844,28 +871,6 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1446f5e8d3a00e7c6f00b89139110984" name="a1446f5e8d3a00e7c6f00b89139110984"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1446f5e8d3a00e7c6f00b89139110984">&#9670;&#160;</a></span>affichage</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/dca/classAffichage.html">Affichage</a>* Jeu::affichage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a161a4d38b099436e718cb320ee9756c0" name="a161a4d38b099436e718cb320ee9756c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a161a4d38b099436e718cb320ee9756c0">&#9670;&#160;</a></span>chantier</h2>
 
