@@ -83,7 +83,7 @@ EcranTitre::EcranTitre() {
 
     // Bouton start
     QPushButton* StartBouton = new QPushButton("NOUVELLE PARTIE");
-    QPushButton* LoadBouton = new QPushButton("CHARGER PARTIE");
+    QPushButton* LoadBouton = new QPushButton("CHARGER DERNIERE PARTIE");
     StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
     LoadBouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
 
@@ -96,7 +96,30 @@ EcranTitre::EcranTitre() {
     layout->addStretch();
 
     connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
-    connect(LoadBouton, &QPushButton::clicked, this, &EcranTitre::startGame);//loadGame
+    connect(LoadBouton, &QPushButton::clicked, this, &EcranTitre::loadGame);
+}
+
+EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
+
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    QLabel* texte  = new QLabel("SELECTION MODE DE JEU");
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    layout->addStretch();
+    layout->addWidget(texte);
+    texte->setAlignment(Qt::AlignCenter);
+
+    QPushButton* boutonSOLO = new QPushButton("SOLO");
+    QPushButton* boutonMULTI = new QPushButton("MULTIJOUEUR");
+    boutonSOLO->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+    boutonMULTI->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
+
+    layout->addStretch();
+    layout->addWidget(boutonSOLO);
+    layout->addWidget(boutonMULTI);
+    layout->addStretch();
+
+    connect(boutonSOLO, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeSolo);
+    connect(boutonMULTI, &QPushButton::clicked, this, &EcranSelectionModeDeJeu::modeMulti);
 }
 
 EcranJeu::EcranJeu() {
@@ -116,12 +139,16 @@ EcranJeu::EcranJeu() {
     labelScore = new QLabel("Score actuelle: XXXXX");
     labelPierre = new QLabel("Pierres: XXXXX");
 
-
+    labelNom->setStyleSheet("font-size: 20px;  color: white;");
+    labelScore->setStyleSheet("font-size: 20px;  color: white;");
+    labelPierre->setStyleSheet("font-size: 20px;  color: white;");
+    // Mise en page
     layoutInfo->addWidget(labelNom);
     layoutInfo->addStretch(); // Pousse les éléments pour les écarter
     layoutInfo->addWidget(labelScore);
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelPierre);
+
 
     // ----------------------------------------------------
     //Zone 2: chantier
@@ -176,24 +203,50 @@ MainWindow::MainWindow() {
     // Pile
     pile = new QStackedWidget();
 
-    // innitialisation de nos deux ecran
+    // innitialisation des ecrans
     titre = new EcranTitre();
     jeu = new EcranJeu();
+    mode_de_jeu = new EcranSelectionModeDeJeu();
+    /*
+    nombre_joueurs = new EcranSelectionNombreJoueurs();
+    saisie_nom = new EcranSaisieNoms();
+    choixRegles = new EcranChoixRegles();
+    */
 
     pile->addWidget(titre);
     pile->addWidget(jeu);
+    pile->addWidget(mode_de_jeu);
 
     //affiche la pile
     layout->addWidget(pile);
-
     pile->setCurrentWidget(titre);
 
     connect(titre, &EcranTitre::startGame, this, &MainWindow::lancerLeJeu);
+    connect(mode_de_jeu, &EcranSelectionModeDeJeu::modeSolo, this, &MainWindow::choixNombreJoueur);
+
+
 }
 
 void MainWindow::lancerLeJeu() {
-    qDebug() << "Changement d'écran -> Jeu !";
+    qDebug() << "Changement d'écran: --> Quitte l'ecran titre.";
+    pile->setCurrentWidget(mode_de_jeu);
+}
+void MainWindow::choixNombreJoueur() {
+    qDebug() << "Changement d'écran: --> Le nombre de joueur est choisi.";
     pile->setCurrentWidget(jeu);
+}
+void MainWindow::choixDifficulteArchitechte() {
+    qDebug() << "Changement d'écran: --> Fin selection difficulté Illustre architechte, difficulté " << difficulte;
+    pile->setCurrentWidget(titre);
+}
+void MainWindow::choixRegles() {
+    if (Variante) qDebug() << "Changement d'écran: --> Fin selection regles, regle variante choisie. " ;
+    else qDebug() << "Changement d'écran: --> Fin selection regles, regle classique choisie. "  ;
+    pile->setCurrentWidget(titre);
+}
+void MainWindow::choixNoms() {
+    qDebug() << "Changement d'écran: --> Quitte l'ecran selection de nom.";
+    pile->setCurrentWidget(titre);
 }
 
 /*

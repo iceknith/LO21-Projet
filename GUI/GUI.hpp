@@ -115,16 +115,50 @@ public:
     EcranTitre();
     signals:
         void startGame();
+        void loadGame();
+};
+
+class EcranSelectionModeDeJeu : public QWidget {
+    Q_OBJECT
+    public:
+    EcranSelectionModeDeJeu();
+    signals:
+        void modeSolo();
+        void modeMulti();
+};
+/*
+class EcranSelectionNombreJoueurs : public QWidget {
+    Q_OBJECT
+    public:
+    EcranSelectionNombreJoueurs();
+    signals:
+    void nombreJoueurs();
 };
 
 class EcranSaisieNoms : public QWidget {
 
 };
 
-class EcranChoixRegles : public QWidget {
+class EcranDifficulteArchitechte : public QWidget {
 
 };
 
+class EcranChoixRegles : public QWidget {
+    Q_OBJECT
+    public:
+    EcranChoixRegles();
+    signals:
+    void reglesChoisies(bool avecVariante);
+};
+
+class EcanVictoire : public QWidget {
+    Q_OBJECT
+    public:
+    EcanVictoire();
+    signals:
+    void retourMenu();
+};
+*/
 
 class EcranJeu : public QWidget {
 public:
@@ -140,22 +174,40 @@ public:
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
 
-    EcranJeu(); // Constructeur
+    EcranJeu();
 };
+
 
 // Ecran main (gameManager) //
 
 class MainWindow : public QWidget {
     Q_OBJECT
+    int NbJoueurs = 0;
+    int difficulte = 1;
+    bool Variante = false;
 public:
     QStackedWidget* pile; // Pile de Widget
+
     EcranTitre* titre;
+    // Menus
+    EcranSelectionModeDeJeu* mode_de_jeu;
+    //EcranSelectionNombreJoueurs nombre_joueurs;
+    //EcranSaisieNoms saisie_nom;
+    //EcranChoixRegles choixRegles;
+    // Gameplay
     EcranJeu* jeu;
+
+    //EcanVictoire* victoire;
+
 
 
     MainWindow();
     //void mettreAJourPlateau(HexagoneContainer& plateau);
     void lancerLeJeu();
+    void choixNombreJoueur();
+    void choixDifficulteArchitechte();
+    void choixRegles();
+    void choixNoms();
 };
 
 #endif //LO21_PROJET_GUI_HPP
