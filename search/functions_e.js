@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['replace_5fsauf_5fcharactere_0',['replace_sauf_charactere',['../d3/d75/namespaceconstAffichageConsoleHex.html#a0615d3d625f970f3b15cec04001fdff3',1,'constAffichageConsoleHex']]]
+  ['quand_5frecouvert_0',['quand_recouvert',['../d4/dfc/classHexagone.html#a720f838a00490f62829ef04624a76108',1,'Hexagone::quand_recouvert()'],['../dc/dfe/classCarriere.html#a0202205bcdb3cf40a2fe3bca7b24f373',1,'Carriere::quand_recouvert()']]]
 ];

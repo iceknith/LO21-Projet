@@ -1,7 +1,11 @@
 var searchData=
 [
-  ['id_0',['id',['../d7/d88/classTuile.html#a45754810cef2273dd533138572fd69d3',1,'Tuile']]],
-  ['imagelabel_1',['ImageLabel',['../d5/d4c/classApplication.html#a089daa3202fa8c76b96900ba8e421a88',1,'Application']]],
-  ['indx_2',['indx',['../d1/dc5/classChantier_1_1iterator.html#a7fe4767414f4c3b7a4a7546f4f6c9e4c',1,'Chantier::iterator']]],
-  ['instance_3',['instance',['../d1/d3c/classAffichageConsole.html#a9a0ee13be7c3c26676e3e937382d43e7',1,'AffichageConsole']]]
+  ['hauteur_0',['hauteur',['../d7/d88/classTuile.html#a5bd69abde0437d5f456386eded9065f8',1,'Tuile']]],
+  ['hauteurcentre_1',['hauteurCentre',['../d3/d75/namespaceconstAffichageConsoleHex.html#a495dbee3478d28f5372c3fa7f43698cb',1,'constAffichageConsoleHex']]],
+  ['hauteurhex_2',['hauteurHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a90201f7ad0d7814d1f0954097f378e5d',1,'constAffichageConsoleHex']]],
+  ['hex_5fsize_3',['HEX_SIZE',['../dc/ddf/namespaceGUIConstants.html#aaf6d566c408f031b7b37d6b17b8ebae9',1,'GUIConstants']]],
+  ['hexagon_5fdirections_4',['HEXAGON_DIRECTIONS',['../de/d62/namespaceGameConstants.html#a770a2cc635cae967e4a8d3665ece527b',1,'GameConstants']]],
+  ['hexagonecontainer_5',['HexagoneContainer',['../d4/dfc/classHexagone.html#acd5d75b236b01dedf47c064a6895ad02',1,'Hexagone']]],
+  ['hexh_6',['hexH',['../d1/d3c/classAffichageConsole.html#a2ca67a11efbf8b4625e59bc37d3e0aa9',1,'AffichageConsole::hexH()'],['../de/d5c/classAffichageGUI.html#a20d705465239c5bed0a9f14e82366372',1,'AffichageGUI::hexH()']]],
+  ['hexw_7',['hexW',['../d1/d3c/classAffichageConsole.html#aac9f910ea5635395f38202b9c72c5076',1,'AffichageConsole::hexW()'],['../de/d5c/classAffichageGUI.html#a37b21462e511da94fb5ae15b8f17cbe5',1,'AffichageGUI::hexW()']]]
 ];

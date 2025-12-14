@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['peut_5fetre_5fplacee_0',['peut_etre_placee',['../d4/dfc/classHexagone.html#afc8d977bc9a643d9a845f76c44d93e04',1,'Hexagone']]],
-  ['peut_5fplacer_1',['peut_placer',['../d7/db5/classPlateau.html#a71a8a113eb2c9d3f87ecc71b4e930229',1,'Plateau']]],
-  ['place_5ftuile_2',['place_tuile',['../dd/d07/classJoueur.html#a8d224331463ad8fbeb51b8b7f07c0485',1,'Joueur']]],
-  ['placer_3',['placer',['../d7/db5/classPlateau.html#a03efba908af5746e414cbb1411b2b34e',1,'Plateau']]],
-  ['placetuile_4',['placeTuile',['../d1/de1/classJeu.html#ac026b185a9eb0989e9a8049ab1bcf607',1,'Jeu::placeTuile()'],['../dc/dcd/classJeuConsole.html#a44f1565d544e4bf6d7e306ba7b4eb987',1,'JeuConsole::placeTuile()']]],
-  ['plateau_5',['Plateau',['../d7/db5/classPlateau.html#a07026170529dd928238ee45de0a797d7',1,'Plateau']]],
-  ['prendre_5ftuile_6',['prendre_tuile',['../df/d51/classChantier.html#ab7603d2b41161abc95bff277df26a491',1,'Chantier']]]
+  ['operator_21_3d_0',['operator!=',['../d1/dc5/classChantier_1_1iterator.html#a881308775c3ab5bf9ee24a0216a8ab01',1,'Chantier::iterator::operator!=()'],['../d7/d88/classTuile.html#ad6a1427ea9fb51b85e8ef2620b4391e1',1,'Tuile::operator!=()']]],
+  ['operator_2a_1',['operator*',['../d1/dc5/classChantier_1_1iterator.html#ad91d1f3d16ae609210818ee05b2735f1',1,'Chantier::iterator']]],
+  ['operator_2b_2',['operator+',['../d8/d0d/classVector2.html#a18759ffa878ab208dbe092ae07e70b6f',1,'Vector2']]],
+  ['operator_2b_2b_3',['operator++',['../d1/dc5/classChantier_1_1iterator.html#a49a453f41d508fcea356f79d4d24e5c2',1,'Chantier::iterator']]],
+  ['operator_2d_4',['operator-',['../d8/d0d/classVector2.html#a37653598d7dd2e823c7af55bc50b92bb',1,'Vector2']]],
+  ['operator_2d_2d_5',['operator--',['../d1/dc5/classChantier_1_1iterator.html#adddebd6a5d65d4c8e7a6377f343a8266',1,'Chantier::iterator']]],
+  ['operator_3c_6',['operator&lt;',['../d8/d0d/classVector2.html#a569bd5994787fb2ff4554fea86cd8fc3',1,'Vector2']]],
+  ['operator_3c_3c_7',['operator&lt;&lt;',['../dc/d99/Serialization_8cpp.html#a133b55195b2e9cbc675a9c0078055a9f',1,'operator&lt;&lt;(QDataStream &amp;stream, const SerializationContext &amp;context):&#160;Serialization.cpp'],['../dc/d99/Serialization_8cpp.html#af61207065b101538d3c08c2c2af62491',1,'operator&lt;&lt;(QDataStream &amp;stream, const SerializationContext::Record &amp;record):&#160;Serialization.cpp']]],
+  ['operator_3d_3d_8',['operator==',['../d7/d88/classTuile.html#ada86d55fe2fb7759513594ea1ff51ef1',1,'Tuile::operator==()'],['../d8/d0d/classVector2.html#a77b638de6b16a80d4c4be0c21fe2b481',1,'Vector2::operator==()']]],
+  ['operator_3e_3e_9',['operator&gt;&gt;',['../dc/d99/Serialization_8cpp.html#a53b39d664230e91d707490d4ab769427',1,'operator&gt;&gt;(QDataStream &amp;stream, SerializationContext &amp;context):&#160;Serialization.cpp'],['../dc/d99/Serialization_8cpp.html#a6e1361ae0f6a2ff9cf05843ca62d3811',1,'operator&gt;&gt;(QDataStream &amp;stream, SerializationContext::Record &amp;record):&#160;Serialization.cpp']]]
 ];
