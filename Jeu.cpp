@@ -634,19 +634,63 @@ void JeuGUI::selectJoueurs() {
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
     QWidget::connect(window->getEcranSelectionNombreJoueurs(),
-                     SIGNAL(selectionFinished()),
+                     SIGNAL(selectionFinished(int)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
     qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
+
+
 }
 
 
+void JeuGUI::selectReglesScore() {
+    window->showEcran(window->getEcranChoixRegles());
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    bool resultat =0;
+    QObject::connect(window->getEcranChoixRegles(),
+                     &EcranChoixRegles::selectionFinished,
+                     [&](bool avecVariante){resultat = avecVariante;});
 
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranChoixRegles(),
+                     SIGNAL(selectionFinished(bool)),
+                     &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
+    Score* score = nullptr;
+    if (resultat){ score = getScoreVariante(); qDebug() << "Regles variante";}
+    else {score = getScoreSimple(); qDebug() << "Regles classiques";}
+
+    for (size_t i = 0; i < nombreJoueurs; i++)
+        dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
+
+}
+
+
+Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
+    Difficulte resultat = Difficulte::FACILE;
+    window->showEcran(window->getEcranDifficulteArchitechte());
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    QObject::connect(window->getEcranDifficulteArchitechte(),
+                     &EcranDifficulteArchitechte::selectionFinished,
+                     [&](Difficulte difficulte){resultat = difficulte;});
+
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+    QWidget::connect(window->getEcranDifficulteArchitechte(),
+                     SIGNAL(selectionFinished()),
+                     &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
+    return resultat;
+}
 
 /*
-void JeuGUI::selectReglesScore() {
-}*/
+void JeuGUI::selectNomsJoueurs() {// TODO
 
+}
+*/
 void JeuGUI::afficheSceneJeu() {
     window->showEcran(window->getEcranJeu());
     affichageJoueur = window->getEcranJeu()->getAffichageJoueur();

@@ -146,13 +146,9 @@ class EcranSelectionNombreJoueurs : public QWidget {
         void selectionFinished(int nombreDeJoueurs);
 };
 
+// --------------------
 class EcranSaisieNoms : public QWidget {
-    Q_OBJECT
-private:
-public:
-    EcranSaisieNoms();
-    signals:
-        void selectionFinished(int nombreDeJoueurs);
+
 };
 
 class EcranDifficulteArchitechte : public QWidget {
@@ -250,7 +246,7 @@ public:
     EcranSaisieNoms* getEcranSaisieNoms() const {return ecranSaisieNoms;}
     EcranChoixRegles* getEcranChoixRegles() const {return ecranChoixRegles;}
     EcranJeu* getEcranJeu() const {return ecranJeu;}
-    EcanVictoire* getEictoire() const {return victoire;}
+    EcanVictoire* getEcranVictoire() const {return victoire;}
 
 };
 
