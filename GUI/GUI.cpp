@@ -230,8 +230,8 @@ MainWindow::MainWindow() {
     pile->addWidget(ecranTitre);
     ecranSelectionSauvegarde = new EcranSelectionSauvegarde();
     pile->addWidget(ecranSelectionSauvegarde);
-    mode_de_jeu = new EcranSelectionModeDeJeu();
-    pile->addWidget(mode_de_jeu);
+    ecranSelectionModeDeJeu = new EcranSelectionModeDeJeu();
+    pile->addWidget(ecranSelectionModeDeJeu);
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 

@@ -130,6 +130,7 @@ public:
 
 signals:
     void selectionFinished();
+    void chargeSauvegardeClicked();
 
 public slots:
     void activateChargeSauvegarde() {chargeSauvegarde = true;};
@@ -140,9 +141,14 @@ class EcranSelectionModeDeJeu : public QWidget {
 Q_OBJECT
 public:
     EcranSelectionModeDeJeu();
+    GameMode getModeDeJeu();
 signals:
     void modeSolo();
     void modeMulti();
+};
+
+class EcranSelectionNombreJoueurs : public QWidget {
+
 };
 
 class EcranSaisieNoms : public QWidget {
@@ -197,12 +203,13 @@ class MainWindow : public QWidget {
     // Menus
     EcranTitre* ecranTitre;
     EcranSelectionSauvegarde* ecranSelectionSauvegarde;
-    //EcranSelectionModeDeJeu* ecranSelectionModeDeJeu;
-    //EcranSelectionNombreJoueurs nombre_joueurs;
-    //EcranSaisieNoms saisie_nom;
-    //EcranChoixRegles choixRegles;
+    EcranSelectionModeDeJeu* ecranSelectionModeDeJeu;
+    EcranSelectionNombreJoueurs* ecranSelectionNombreJoueurs;
+    EcranDifficulteArchitechte* ecranDifficulteArchitechte;
+    EcranSaisieNoms* ecranSaisieNoms;
+    EcranChoixRegles* ecranChoixRegles;
     // Gameplay
-    //EcranJeu* ecranJeu;
+    EcranJeu* ecranJeu;
     EcanVictoire* victoire;
 public:
 
@@ -214,7 +221,14 @@ public:
 
     EcranTitre* getEcranTitre() const {return ecranTitre;}
     EcranSelectionSauvegarde* getEcranSelectionSauvegarde() const {return ecranSelectionSauvegarde;}
+    EcranSelectionModeDeJeu* getEcranSelectionModeDeJeu() const {return ecranSelectionModeDeJeu;}
+    EcranSelectionNombreJoueurs* getEcranSelectionNombreJoueurs() const {return ecranSelectionNombreJoueurs;}
+    EcranDifficulteArchitechte* getEcranDifficulteArchitechte() const {return ecranDifficulteArchitechte;}
+    EcranSaisieNoms* getEcranSaisieNoms() const {return ecranSaisieNoms;}
+    EcranChoixRegles* getEcranChoixRegles() const {return ecranChoixRegles;}
     EcranJeu* getEcranJeu() const {return ecranJeu;}
+    EcanVictoire* getEictoire() const {return victoire;}
+
 };
 
 #endif //LO21_PROJET_GUI_HPP

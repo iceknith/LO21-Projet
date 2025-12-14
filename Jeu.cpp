@@ -592,6 +592,16 @@ bool JeuGUI::selectChargerPartie() {
     return window->getEcranSelectionSauvegarde()->getChargeSauvegarde();
 }
 
+void JeuGUI::selectGameMode() {
+    window->showEcran(window->getEcranSelectionSauvegarde());
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+
+    //QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), this, [=](){});
+    QWidget::connect(window->getEcranSelectionSauvegarde(), SIGNAL(selectionFinished()), &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+}
+
 
 /*
 void JeuGUI::selectJoueurs() {
