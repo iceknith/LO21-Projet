@@ -6,6 +6,7 @@
 #include "Affichage/Affichage.hpp"
 #include "Chantier/Chantier.hpp"
 #include "Chantier/Deck.hpp"
+#include "GUI/GUI.hpp"
 
 
 namespace constJeu {
@@ -103,6 +104,8 @@ public:
     string className() override {return "Jeu";}
 };
 
+// JEU CONSOLE //
+
 class JeuConsole : public Jeu {
 private:
     JeuConsole();
@@ -129,11 +132,33 @@ public:
     static Jeu* getJeu();
 };
 
+// JEU GUI //
+
 class JeuGUI : public Jeu {
 private:
-    JeuGUI() = default;
+    MainWindow* fenetre;
+
+
+    JeuGUI(MainWindow* app);
+
+
+    void titleScreen() override;
+
+
+    bool selectChargerPartie() override { return false; }// Temporaire
+    void selectGameMode() override { modeDeJeu = GameMode::SOLO; }// Temporaire
+    void selectJoueurs() override { nombreJoueurs = 2; joueurs[0]=new JoueurSimple(); joueurs[1]=new JoueurSimple(); }// Temporaire
+    void selectNomsJoueurs() override {}
+    Difficulte selectNiveauIllustreArchitechte() override { return Difficulte::FACILE; }// Temporaire
+    void selectReglesScore() override {}
+    int selectTuile(size_t joueur) override { return 0; } // Temporaire
+    bool placeTuile(size_t joueur, Tuile* tuileSelected) override { return true; } // Temporaire
+    void afficheTourAutomatique(size_t joueur) override {}
+    void finDePartie(multimap<int, size_t> scores) override {}
+
 public:
-    static Jeu* getJeu();
+
+    static Jeu* getJeu(MainWindow* app = nullptr);
 
 };
 

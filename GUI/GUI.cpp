@@ -3,66 +3,107 @@
 
 
 
-Application::Application() {
+EcranTitre::EcranTitre() {
+    // Mise en page verticale
+    QVBoxLayout* layout = new QVBoxLayout(this);
 
+    // TITRE
+    QLabel* texte = new QLabel("AKROPOLIS");
+    texte->setAlignment(Qt::AlignCenter);
+    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
 
+    // Bouton start
+    QPushButton* bouton = new QPushButton("PLAY");
+    bouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
 
-    //initialisation, QVBoxLayout --> pour gerer l'emplacement de tous nos prochains elements (verticalement)
-    QVBoxLayout *layoutPrincipal = new QVBoxLayout(this);
-    layoutPrincipal->setContentsMargins(0,0,0,0); // Colle aux bords
+    // mise en page
+    layout->addStretch();
+    layout->addWidget(texte);
+    layout->addSpacing(20);
+    layout->addWidget(bouton);
+    layout->addStretch();
 
-    // ============================================================
-    // ZONE 1 : PLAYER ID + CHANTIER
-    // composé de zoneHaut (QWidget) et LayoutHaut (QHBoxLayout)
-    QWidget *zoneHaut = new QWidget();
-    zoneHaut->setStyleSheet("background-color: #b0b0b0;");
-    // QHBoxLayout pour gerer l'emplacement de tous nos prochains elements en haut de la fenetre (verticalement)
-    QHBoxLayout *layoutHaut = new QHBoxLayout(zoneHaut);
-
-    // Nom des joueurs
-    currentPlayerLabel = new QLabel("<b>Joueur : </b> XX");
-    currentPlayerLabel->setStyleSheet("font-size: 30px; color: orange;");
-
-    // Le Chantier
-    vueChantier = new QGraphicsView();
-    QGraphicsScene *sceneChantier = new QGraphicsScene(); // On stocke la scène dans une variable pour l'utiliser
-    vueChantier->setScene(sceneChantier);
-    vueChantier->setStyleSheet("background: white;");
-
-
-
-    layoutHaut->addWidget(currentPlayerLabel);
-    layoutHaut->addWidget(vueChantier, 2);
-
-    // ajout au widget principale
-    layoutPrincipal->addWidget(zoneHaut, 2);
-
-    // ============================================================
-    // ZONE 2 : stats & buttuns + map hexagones
-    // composé de zoneBas (QWidget) et layoutBas(QHBoxLayout)
-    QWidget *zoneBas = new QWidget();
-    QHBoxLayout *layoutBas = new QHBoxLayout(zoneBas);
-    layoutBas->setContentsMargins(0,0,0,0);
-
-    // Panneau Latéral (Stats + Boutons)
-    QGroupBox *panneauStats = new QGroupBox("Informations");
-    panneauStats->setStyleSheet("background-color: grey;");
-    QVBoxLayout *layoutStats = new QVBoxLayout(panneauStats);
-
-
-
-    // Affichage map hexagonale
-    scenePlateau = new QGraphicsView();
-    scenePlateau ->setScene(new QGraphicsScene());
-    scenePlateau ->setStyleSheet("background: black;");
-
-
-
-    layoutBas ->addWidget(panneauStats,2);
-    layoutBas ->addWidget(scenePlateau,8);
-    layoutPrincipal->addWidget(zoneBas, 4);
-
+    // Quand on clique sur le bouton => émet le signal "clickSurJouer"
+    connect(bouton, &QPushButton::clicked, this, &EcranTitre::startGame);
 }
+
+EcranJeu::EcranJeu() {
+// Layout Principal (Vertical)
+    QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
+    layoutGlobal->setContentsMargins(0,0,0,0);
+    layoutGlobal->setSpacing(0);
+
+    // Zone 1: barre d'infos
+    QWidget* barreInfo = new QWidget();
+    barreInfo->setFixedHeight(50);
+    barreInfo->setStyleSheet("background-color: #333; color: white;");
+
+    QHBoxLayout* layoutInfo = new QHBoxLayout(barreInfo);
+
+    labelNom = new QLabel("Joueur: XXXX");
+    labelScore = new QLabel("Score actuelle: XXXXX");
+    labelPierre = new QLabel("Pierres: XXXXX");
+
+
+    layoutInfo->addWidget(labelNom);
+    layoutInfo->addStretch(); // Pousse les éléments pour les écarter
+    layoutInfo->addWidget(labelScore);
+    layoutInfo->addStretch();
+    layoutInfo->addWidget(labelPierre);
+
+    // ----------------------------------------------------
+    //Zone 2: chantier
+    zoneChantier = new QWidget();
+    zoneChantier->setFixedHeight(200);
+    zoneChantier->setStyleSheet("background-color: #b0b0b0; border-bottom: 3px solid black;");
+
+    QLabel* lblTemp = new QLabel("EMPLACEMENT DU CHANTIER", zoneChantier);
+    lblTemp->move(20, 60); // Juste pour repérer la zone
+
+    // ----------------------------------------------------
+    //zone 3: plateau
+
+    sceneMap = new QGraphicsScene();
+    vueMap = new CameraMap(sceneMap);
+    constGUI::backgroundMap(10, sceneMap);
+
+
+    // ----------------------------------------------------
+    layoutGlobal->addWidget(barreInfo);
+    layoutGlobal->addWidget(zoneChantier);
+    layoutGlobal->addWidget(vueMap);
+}
+
+
+MainWindow::MainWindow() {
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    layout->setContentsMargins(0,0,0,0);
+
+    // Pile
+    pile = new QStackedWidget();
+
+    // innitialisation de nos deux ecran
+    titre = new EcranTitre();
+    jeu = new EcranJeu();
+
+    pile->addWidget(titre);
+    pile->addWidget(jeu);
+
+    //affiche la pile
+    layout->addWidget(pile);
+
+    pile->setCurrentWidget(titre);
+
+    connect(titre, &EcranTitre::startGame, this, &MainWindow::lancerLeJeu);
+}
+
+void MainWindow::lancerLeJeu() {
+    qDebug() << "Changement d'écran -> Jeu !";
+    // On tourne la page : on affiche l'écran jeu
+    pile->setCurrentWidget(jeu);
+}
+
+
 
 HexagonObjet::HexagonObjet(){
     QPolygonF points;

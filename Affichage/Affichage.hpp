@@ -63,7 +63,9 @@ namespace constAffichageConsoleHex {
 // Affichage graphique //
 
 class AffichageGUI : public Affichage {
-    //Application* fenetre;
+    static AffichageConsole* instance;
+    const int hexH = 5; // lignes
+    const int hexW = 9; // colonnes
 
 public:
     AffichageGUI();

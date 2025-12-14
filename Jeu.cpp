@@ -544,9 +544,22 @@ void JeuConsole::titleScreen() {
          "   |___|___|__|\\__|___|__|_______|___|  |_______|_______|_______|_______|\n";
 }
 
+// JEU GUI //
 
-Jeu *JeuGUI::getJeu() {
-    // À décomenter lorsque JeuConsole aura un constructeur
-    //if (jeu == nullptr) jeu = new JeuGUI();
+Jeu* JeuGUI::getJeu(MainWindow* app) { // ATTENTIIN
+    if (jeu == nullptr && app != nullptr) {
+        jeu = new JeuGUI(app);
+    }
     return jeu;
+}
+
+// Constructeur
+JeuGUI::JeuGUI(MainWindow* app) : Jeu() {
+    this->fenetre = app;
+    // On peut aussi initialiser l'affichage ici si besoin
+}
+
+// --- LA FONCTION MAGIQUE ---
+void JeuGUI::titleScreen() {
+
 }

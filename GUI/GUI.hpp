@@ -26,43 +26,16 @@
 #include <QGraphicsSceneMouseEvent>
 #include <cmath>
 #include <QDebug>
+#include <QTimer>
 
 #include "../Utils.hpp"
-
-
-
-
-// QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
-class HexagonObjet :public QObject, public QGraphicsPolygonItem {
-    Q_OBJECT//  obligatoire pour les siganux
-
-public:
-    bool interactif = true;
-    HexagonObjet();
-
-    void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
-        if (interactif) {
-            qDebug() << "Clic reçu sur un hexagone !";
-
-            // emmet signal
-            emit hexagoneClique();
-            setBrush(Qt::green);
-        }
-    }
-
-    signals:
-        //
-        void hexagoneClique();
-};
-
-
-
+#include <QStackedWidget>
 // VUE DE LA MAP
 class CameraMap : public QGraphicsView {
 public:
 
     CameraMap(QGraphicsScene* scene) : QGraphicsView(scene) {
-       // this->setDragMode(QGraphicsView::ScrollHandDrag);
+        // this->setDragMode(QGraphicsView::ScrollHandDrag);
 
         //Retire les barres de defilement
         this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -87,26 +60,73 @@ protected:
 };
 
 
-
-
-
-class Application : public QWidget {
-
-    QGraphicsPolygonItem *HexagonItemA;
-
-
-    //Q_OBJECT // TODO: gestion interactions
-    // Tous les éléments present dans la fenetre de jeu
-    //zone 1
-    QGraphicsView *vueChantier;
-    QLabel *currentPlayerLabel;
-    //zone 2
-    QGraphicsView *scenePlateau;
-    QLabel *ImageLabel;
-    QLabel *labelPierres;
+class EcranTitre : public QWidget {
+    Q_OBJECT
 public:
-    Application();
+    EcranTitre();
+
+    signals:
+        void startGame();
 };
+
+class EcranJeu : public QWidget {
+public:
+    // Indicateurs
+    QLabel* labelNom;
+    QLabel* labelScore;
+    QLabel* labelPierre;
+
+    // Chantier
+    QWidget* zoneChantier;
+
+    // La Map
+    CameraMap* vueMap;
+    QGraphicsScene* sceneMap;
+
+    EcranJeu(); // Constructeur
+};
+
+class MainWindow : public QWidget {
+    Q_OBJECT
+public:
+    QStackedWidget* pile; // Pile de Widget
+    EcranTitre* titre;
+    EcranJeu* jeu;
+
+
+    MainWindow();
+
+    void lancerLeJeu();
+};
+
+
+
+// QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
+class HexagonObjet :public QObject, public QGraphicsPolygonItem {
+    Q_OBJECT//  obligatoire pour les siganux
+
+public:
+    CouleursAkropolis couelur = CouleursAkropolis::BLANC;
+    TypeHexagone type = TypeHexagone::Hexagone;
+    bool interactif = true;
+    HexagonObjet();
+
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
+        if (interactif) {
+            qDebug() << "Clic reçu sur un hexagone !";
+
+            // emmet signal
+            emit hexagoneClique();
+            setBrush(Qt::green);
+        }
+    }
+
+    signals:
+        //
+        void hexagoneClique();
+};
+
+
 
 
 
