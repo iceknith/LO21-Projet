@@ -184,10 +184,10 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
             this, [this](){emit selectionFinished(4);});
 }
 
-/*
+
 EcranSaisieNoms::EcranSaisieNoms() {
 
-}*/
+}
 
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
