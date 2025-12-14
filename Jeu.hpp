@@ -156,13 +156,16 @@ private:
     bool selectChargerPartie() override;
     void selectGameMode() override;
     void selectJoueurs() override ;
+
     void selectNomsJoueurs() override {}
-    Difficulte selectNiveauIllustreArchitechte() override { return Difficulte::FACILE; }// Temporaire
-    void selectReglesScore() override {
+    Difficulte selectNiveauIllustreArchitechte() override;// { return Difficulte::FACILE; }// Temporaire
+    void selectReglesScore() override;
+
+    /*{
         Score* score = getScoreSimple();
         for (size_t i = 0; i < nombreJoueurs; i++)
             dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
-    }
+    }*/
     void afficheSceneJeu() override;
     int selectTuile(size_t joueur) override;
     bool placeTuile(size_t nouvellePosition, Tuile* tuileSelected) override;

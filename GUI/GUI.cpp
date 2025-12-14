@@ -208,10 +208,6 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 }
 
 
-EcranSaisieNoms::EcranSaisieNoms() {
-
-}
-
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
     QBoxLayout* layout = new QVBoxLayout(this);
@@ -395,6 +391,13 @@ MainWindow::MainWindow() {
     pile->addWidget(ecranSelectionModeDeJeu);
     ecranSelectionNombreJoueurs = new EcranSelectionNombreJoueurs();
     pile->addWidget(ecranSelectionNombreJoueurs);
+    ecranSaisieNoms = new EcranSaisieNoms();
+    pile->addWidget(ecranSaisieNoms);
+    ecranDifficulteArchitechte = new EcranDifficulteArchitechte();
+    pile->addWidget(ecranDifficulteArchitechte);
+    ecranChoixRegles = new EcranChoixRegles();
+    pile->addWidget(ecranChoixRegles);
+
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 
