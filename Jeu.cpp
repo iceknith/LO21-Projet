@@ -645,7 +645,9 @@ int JeuGUI::selectTuile(size_t joueur) {
     QMetaObject::invokeMethod(qApp, [=]() {
         int i = 0;
         for (auto tuile : chantier)
-                affichageChantier[i++]->Affichage::affiche_container(*tuile);
+            affichageChantier[i++]->Affichage::affiche_container(*tuile);
+        for (i; i < chantier.get_taille(); i++)
+            affichageChantier[i++]->clearAffichage();
         }, Qt::QueuedConnection);
 
     int resultat = -1;
@@ -663,5 +665,5 @@ int JeuGUI::selectTuile(size_t joueur) {
         SignalWaitLoop.exec();
     } while (resultat > joueurs[joueur]->get_pierre());
 
-    return 0;
+    return resultat;
 }
