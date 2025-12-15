@@ -18,7 +18,7 @@ var searchData=
   ['get_5fplateau_15',['get_plateau',['../dd/d07/classJoueur.html#ac6ea3d78fb52465542bbcf754c0f61a0',1,'Joueur']]],
   ['get_5fscore_16',['get_score',['../dd/d07/classJoueur.html#ae46d462bc45eddb50bf617f0e3cf18de',1,'Joueur']]],
   ['get_5ftaille_17',['get_taille',['../df/d51/classChantier.html#a55016c4c4ad9a26ec4e5baf3680fae93',1,'Chantier::get_taille()'],['../d6/df2/classDeck.html#acfb6adf3f104f389d4f2c5ee769b9444',1,'Deck::get_taille()']]],
-  ['get_5ftext_18',['get_text',['../dc/dfe/classCarriere.html#a211453dc465f165e33c85d6443bab314',1,'Carriere::get_text()'],['../de/df6/classQuartier.html#a1fc01ebb155ec9afc2baca2b9120facd',1,'Quartier::get_text()'],['../d9/d58/classPlace.html#a8e0e4d107bd5ecf1aac2f38d07f2723f',1,'Place::get_text()'],['../d4/dfc/classHexagone.html#a6414f684bb81446c765dc86f641716d2',1,'Hexagone::get_text() const =0']]],
+  ['get_5ftext_18',['get_text',['../de/df6/classQuartier.html#a1fc01ebb155ec9afc2baca2b9120facd',1,'Quartier::get_text()'],['../dc/dfe/classCarriere.html#a211453dc465f165e33c85d6443bab314',1,'Carriere::get_text()'],['../d9/d58/classPlace.html#a8e0e4d107bd5ecf1aac2f38d07f2723f',1,'Place::get_text()'],['../d4/dfc/classHexagone.html#a6414f684bb81446c765dc86f641716d2',1,'Hexagone::get_text() const =0']]],
   ['get_5ftuile_19',['get_tuile',['../d4/dfc/classHexagone.html#ae597040b87e82bf37b15e91222984d43',1,'Hexagone::get_tuile()'],['../df/d51/classChantier.html#aeb83e54de979fe1ee9207f8a4c8690ef',1,'Chantier::get_tuile()']]],
   ['get_5ftype_20',['get_type',['../d4/dfc/classHexagone.html#aa7e8669570bc49957e66ffa44cb92391',1,'Hexagone::get_type()'],['../d9/d58/classPlace.html#a9dda8243462b1a5ee6284632d423ded0',1,'Place::get_type()'],['../dc/dfe/classCarriere.html#ae4b77ec224dce7bc58ef08af4dab0d0b',1,'Carriere::get_type()'],['../de/df6/classQuartier.html#adc001192d4315cb162bf0a23e8ff0b46',1,'Quartier::get_type()']]],
   ['getaffichagejoueur_21',['getAffichageJoueur',['../d2/dc8/classEcranJeu.html#aa084933ae2cc3560672a32211739d0ce',1,'EcranJeu']]],
@@ -39,7 +39,8 @@ var searchData=
   ['getlabelschantier_36',['getLabelsChantier',['../d2/dc8/classEcranJeu.html#a904ae1e32a2214bf76282a7984e00b6f',1,'EcranJeu']]],
   ['getnomjoueur_37',['getNomJoueur',['../dd/d07/classJoueur.html#ac44fc9193efd1efd15782c6d54f67f6f',1,'Joueur']]],
   ['getscoresimple_38',['getScoreSimple',['../d0/dd0/Score_8cpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp']]],
-  ['getscorevariante_39',['getScoreVariante',['../d0/dd0/Score_8cpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp']]],
-  ['getsize_40',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
-  ['grilletoaxial_41',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]]
+  ['getscorevariante_39',['getScoreVariante',['../d1/d7a/Score_8hpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp'],['../d0/dd0/Score_8cpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp']]],
+  ['getselectedtuileposition_40',['getSelectedTuilePosition',['../d2/dc8/classEcranJeu.html#a5a04244d19af360d522f480aa3ecc94c',1,'EcranJeu']]],
+  ['getsize_41',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
+  ['grilletoaxial_42',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]]
 ];

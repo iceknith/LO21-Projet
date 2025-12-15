@@ -22,7 +22,7 @@ var searchData=
   ['get_5ftaille_19',['get_taille',['../d6/df2/classDeck.html#acfb6adf3f104f389d4f2c5ee769b9444',1,'Deck::get_taille()'],['../df/d51/classChantier.html#a55016c4c4ad9a26ec4e5baf3680fae93',1,'Chantier::get_taille()']]],
   ['get_5ftext_20',['get_text',['../d4/dfc/classHexagone.html#a6414f684bb81446c765dc86f641716d2',1,'Hexagone::get_text()'],['../d9/d58/classPlace.html#a8e0e4d107bd5ecf1aac2f38d07f2723f',1,'Place::get_text()'],['../dc/dfe/classCarriere.html#a211453dc465f165e33c85d6443bab314',1,'Carriere::get_text()'],['../de/df6/classQuartier.html#a1fc01ebb155ec9afc2baca2b9120facd',1,'Quartier::get_text()']]],
   ['get_5ftuile_21',['get_tuile',['../df/d51/classChantier.html#aeb83e54de979fe1ee9207f8a4c8690ef',1,'Chantier::get_tuile()'],['../d4/dfc/classHexagone.html#ae597040b87e82bf37b15e91222984d43',1,'Hexagone::get_tuile()']]],
-  ['get_5ftype_22',['get_type',['../d9/d58/classPlace.html#a9dda8243462b1a5ee6284632d423ded0',1,'Place::get_type()'],['../de/df6/classQuartier.html#adc001192d4315cb162bf0a23e8ff0b46',1,'Quartier::get_type()'],['../dc/dfe/classCarriere.html#ae4b77ec224dce7bc58ef08af4dab0d0b',1,'Carriere::get_type()'],['../d4/dfc/classHexagone.html#aa7e8669570bc49957e66ffa44cb92391',1,'Hexagone::get_type()']]],
+  ['get_5ftype_22',['get_type',['../dc/dfe/classCarriere.html#ae4b77ec224dce7bc58ef08af4dab0d0b',1,'Carriere::get_type()'],['../de/df6/classQuartier.html#adc001192d4315cb162bf0a23e8ff0b46',1,'Quartier::get_type()'],['../d9/d58/classPlace.html#a9dda8243462b1a5ee6284632d423ded0',1,'Place::get_type()'],['../d4/dfc/classHexagone.html#aa7e8669570bc49957e66ffa44cb92391',1,'Hexagone::get_type()']]],
   ['getaffichagejoueur_23',['getAffichageJoueur',['../d2/dc8/classEcranJeu.html#aa084933ae2cc3560672a32211739d0ce',1,'EcranJeu']]],
   ['getaffichageschantier_24',['getAffichagesChantier',['../d2/dc8/classEcranJeu.html#ac1bd9df24bd696fd8968d0ad3d738193',1,'EcranJeu']]],
   ['getcontainergraphicsitem_25',['getContainerGraphicsItem',['../de/d5c/classAffichageGUI.html#a76298150fc58e9515f1da780151cdad8',1,'AffichageGUI']]],
@@ -42,9 +42,10 @@ var searchData=
   ['getnomjoueur_39',['getNomJoueur',['../dd/d07/classJoueur.html#ac44fc9193efd1efd15782c6d54f67f6f',1,'Joueur']]],
   ['getscoresimple_40',['getScoreSimple',['../d0/dd0/Score_8cpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp']]],
   ['getscorevariante_41',['getScoreVariante',['../d0/dd0/Score_8cpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp']]],
-  ['getsize_42',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
-  ['grilletoaxial_43',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]],
-  ['gui_2ecpp_44',['GUI.cpp',['../d8/d7b/GUI_8cpp.html',1,'']]],
-  ['gui_2ehpp_45',['GUI.hpp',['../d1/d6f/GUI_8hpp.html',1,'']]],
-  ['guiconstants_46',['GUIConstants',['../dc/ddf/namespaceGUIConstants.html',1,'']]]
+  ['getselectedtuileposition_42',['getSelectedTuilePosition',['../d2/dc8/classEcranJeu.html#a5a04244d19af360d522f480aa3ecc94c',1,'EcranJeu']]],
+  ['getsize_43',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
+  ['grilletoaxial_44',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]],
+  ['gui_2ecpp_45',['GUI.cpp',['../d8/d7b/GUI_8cpp.html',1,'']]],
+  ['gui_2ehpp_46',['GUI.hpp',['../d1/d6f/GUI_8hpp.html',1,'']]],
+  ['guiconstants_47',['GUIConstants',['../dc/ddf/namespaceGUIConstants.html',1,'']]]
 ];

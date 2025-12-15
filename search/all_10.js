@@ -1,16 +1,6 @@
 var searchData=
 [
-  ['readme_2emd_0',['README.md',['../da/ddd/README_8md.html',1,'']]],
-  ['record_1',['Record',['../d9/ded/structSerializationContext_1_1Record.html',1,'SerializationContext']]],
-  ['recordlist_2',['recordList',['../d3/d88/classSerializationContext.html#a664ee9b26c7aa8a59214c3b6cbbdcd54',1,'SerializationContext']]],
-  ['recordmap_3',['recordMap',['../d3/d88/classSerializationContext.html#ada936da0a87bf4647ede50193a7087cb',1,'SerializationContext']]],
-  ['removeselectedtuile_4',['removeSelectedTuile',['../d2/dc8/classEcranJeu.html#a2489f87499efa579c0d58785d8378273',1,'EcranJeu']]],
-  ['replace_5fsauf_5fcharactere_5',['replace_sauf_charactere',['../d3/d75/namespaceconstAffichageConsoleHex.html#a0615d3d625f970f3b15cec04001fdff3',1,'constAffichageConsoleHex']]],
-  ['retourmenu_6',['retourMenu',['../d7/d3a/classEcanVictoire.html#a8d116d2187084344459c42a4ad97543a',1,'EcanVictoire']]],
-  ['rotation_7',['rotation',['../dc/d32/classHexagoneContainer.html#a75e969b97c43542738f1146081c6c3bb',1,'HexagoneContainer']]],
-  ['rouge_8',['ROUGE',['../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252cea92b33cebaccf73541ab06eca48a31e42',1,'Utils.hpp']]],
-  ['rouge_5fvariante_5fbonus_5fmax_5fedges_9',['ROUGE_VARIANTE_BONUS_MAX_EDGES',['../de/d62/namespaceGameConstants.html#a5d487aea69a7f733003abad1adfab058',1,'GameConstants']]],
-  ['rouge_5fvariante_5fbonus_5fmin_5fedges_10',['ROUGE_VARIANTE_BONUS_MIN_EDGES',['../de/d62/namespaceGameConstants.html#a92670a1b925050e779eaf8c84f56271c',1,'GameConstants']]],
-  ['rouge_5fvariante_5fbonus_5fmultiplier_11',['ROUGE_VARIANTE_BONUS_MULTIPLIER',['../de/d62/namespaceGameConstants.html#a3edf3da3a0086a7fe2c60464bc761db2',1,'GameConstants']]],
-  ['runapp_12',['runApp',['../da/d36/classJeuGUI.html#a759ad7a8f2812f49b9dbbf5950d89055',1,'JeuGUI']]]
+  ['quand_5frecouvert_0',['quand_recouvert',['../d4/dfc/classHexagone.html#a720f838a00490f62829ef04624a76108',1,'Hexagone::quand_recouvert()'],['../dc/dfe/classCarriere.html#a0202205bcdb3cf40a2fe3bca7b24f373',1,'Carriere::quand_recouvert()']]],
+  ['quartier_1',['Quartier',['../de/df6/classQuartier.html',1,'Quartier'],['../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdafaa109df924e7f154ec0f7a1121791484a',1,'Quartier():&#160;Utils.hpp']]],
+  ['quartiers_2',['quartiers',['../d1/d19/structStatsCouleursSoloArchitecte.html#a237521a206e5e2a02b32533f575612af',1,'StatsCouleursSoloArchitecte']]]
 ];
