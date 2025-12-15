@@ -211,12 +211,14 @@ Q_OBJECT
 
     void onPlateauCameraMapMouseMoved(QPointF mousePos);
     void onPlateauCameraMapMousePressed(QPointF mousePos);
+    void keyPressEvent(QKeyEvent *event) override;
 
 public:
     AffichageGUI* getAffichageJoueur();
     AffichageGUI** getAffichagesChantier(size_t tailleChantier);
     QLabel** getLabelsChantier() {return labelsChantier;}
     void setSelectedTuile(QGraphicsItemGroup* newSelectedTuile);
+    QPointF getSelectedTuilePosition() {return selectedTuile->pos();};
     void removeSelectedTuile() {delete selectedTuile; selectedTuile = nullptr;}
 
     EcranJeu();
@@ -225,6 +227,8 @@ public:
 signals:
     void selectionTuileFinished(int tuileSelected);
     void selectionPlacementFinished(Vector2 placement);
+    void tourneSelectedTuile(bool sensHoraire);
+    void retour();
 };
 
 

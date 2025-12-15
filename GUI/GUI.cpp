@@ -358,6 +358,14 @@ void EcranJeu::onPlateauCameraMapMousePressed(QPointF mousePos) {
     selectionPlacementFinished(constAffichageGraphiqueHex::screenToAxial(mousePos));
 };
 
+void EcranJeu::keyPressEvent(QKeyEvent *event) {
+    if (selectedTuile == nullptr) return;
+
+    if (event->key() == Qt::Key::Key_Q) emit tourneSelectedTuile(true);
+    else if (event->key() == Qt::Key::Key_D) emit tourneSelectedTuile(false);
+    else if (event->key() == Qt::Key::Key_R) emit retour();
+}
+
 AffichageGUI *EcranJeu::getAffichageJoueur() {
     return new AffichageGUI(sceneMap, labelNom, labelScore, labelPierre);
 }

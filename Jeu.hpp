@@ -168,6 +168,7 @@ private:
     }*/
     void afficheSceneJeu() override;
     int selectTuile(size_t joueur) override;
+    void tourneTuile(Tuile* tuileSelected, bool sensHoraire);
     bool placeTuile(size_t nouvellePosition, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override {}
     void finDePartie(multimap<int, size_t> scores) override {}

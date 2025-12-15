@@ -577,9 +577,10 @@ void JeuGUI::titleScreen() {
     window->showEcran(window->getEcranTitre());
     //Attendre que le signal startgame soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranTitre(), SIGNAL(startGame()), &SignalWaitLoop, SLOT(quit()));
+    auto c1 = QWidget::connect(window->getEcranTitre(), SIGNAL(startGame()), &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 
+    QWidget::disconnect(c1);
 }
 
 
@@ -588,16 +589,19 @@ bool JeuGUI::selectChargerPartie() {
 
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
     bool resultat = false;
-    QObject::connect(window->getEcranSelectionSauvegarde(),
+    auto c1 = QObject::connect(window->getEcranSelectionSauvegarde(),
                      &EcranSelectionSauvegarde::selectionFinished,
                      [&](bool chargeSauvegarde){resultat = chargeSauvegarde;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranSelectionSauvegarde(),
+    auto c2 = QWidget::connect(window->getEcranSelectionSauvegarde(),
                      SIGNAL(selectionFinished(bool))
                      , &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
+
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
 
     // Retourner la réponse de l'utilisateur
     return resultat;
@@ -606,18 +610,21 @@ bool JeuGUI::selectChargerPartie() {
 void JeuGUI::selectGameMode() {
     window->showEcran(window->getEcranSelectionModeDeJeu());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
-    QObject::connect(window->getEcranSelectionModeDeJeu(),
+    auto c1 = QObject::connect(window->getEcranSelectionModeDeJeu(),
                      &EcranSelectionModeDeJeu::selectionFinished,
                      [this](GameMode modeDeJeuSelected){modeDeJeu = modeDeJeuSelected;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranSelectionModeDeJeu(),
+    auto c2 = QWidget::connect(window->getEcranSelectionModeDeJeu(),
                      SIGNAL(selectionFinished(GameMode)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
     if (modeDeJeu == GameMode::SOLO) qDebug() << "Mode de jeu: SOLO";
     else qDebug() << "Mode de jeu: MULTIJOUEUR";
+
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
 }
 
 
@@ -625,7 +632,7 @@ void JeuGUI::selectJoueurs() {
 
     window->showEcran(window->getEcranSelectionNombreJoueurs());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
-    QObject::connect(window->getEcranSelectionNombreJoueurs(),
+    auto c1 = QObject::connect(window->getEcranSelectionNombreJoueurs(),
                      &EcranSelectionNombreJoueurs::selectionFinished,
                      [this](int nb){
                          this ->nombreJoueurs = nb;
@@ -633,13 +640,14 @@ void JeuGUI::selectJoueurs() {
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranSelectionNombreJoueurs(),
+     auto c2 = QWidget::connect(window->getEcranSelectionNombreJoueurs(),
                      SIGNAL(selectionFinished(int)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
     qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
 
-
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
 }
 
 
@@ -647,13 +655,13 @@ void JeuGUI::selectReglesScore() {
     window->showEcran(window->getEcranChoixRegles());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
     bool resultat =0;
-    QObject::connect(window->getEcranChoixRegles(),
+    auto c1 = QObject::connect(window->getEcranChoixRegles(),
                      &EcranChoixRegles::selectionFinished,
                      [&](bool avecVariante){resultat = avecVariante;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranChoixRegles(),
+    auto c2 = QWidget::connect(window->getEcranChoixRegles(),
                      SIGNAL(selectionFinished(bool)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
@@ -665,6 +673,8 @@ void JeuGUI::selectReglesScore() {
     for (size_t i = 0; i < nombreJoueurs; i++)
         dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
 
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
 }
 
 
@@ -672,16 +682,20 @@ Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
     Difficulte resultat = Difficulte::FACILE;
     window->showEcran(window->getEcranDifficulteArchitechte());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
-    QObject::connect(window->getEcranDifficulteArchitechte(),
+    auto c1 = QObject::connect(window->getEcranDifficulteArchitechte(),
                      &EcranDifficulteArchitechte::selectionFinished,
                      [&](Difficulte difficulte){resultat = difficulte;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranDifficulteArchitechte(),
+    auto c2 = QWidget::connect(window->getEcranDifficulteArchitechte(),
                      SIGNAL(selectionFinished()),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
+
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
+
 
     return resultat;
 }
@@ -712,13 +726,13 @@ int JeuGUI::selectTuile(size_t joueur) {
         }, Qt::QueuedConnection);
 
     int resultat = -1;
-    QObject::connect(window->getEcranJeu(),
+    auto c1 = QObject::connect(window->getEcranJeu(),
                          &EcranJeu::selectionTuileFinished,
                          [&](int tuileSelectionne){resultat = tuileSelectionne;});
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranJeu(),
+    auto c2 = QWidget::connect(window->getEcranJeu(),
                      SIGNAL(selectionTuileFinished(int)),
                      &SignalWaitLoop, SLOT(quit()));
 
@@ -726,7 +740,20 @@ int JeuGUI::selectTuile(size_t joueur) {
         SignalWaitLoop.exec();
     } while (resultat > joueurs[joueur]->get_pierre());
 
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
+
     return resultat;
+}
+
+void JeuGUI::tourneTuile(Tuile* tuile, bool sensHoraire) {
+    tuile->tourne(sensHoraire);
+    QPointF prevPos = window->getEcranJeu()->getSelectedTuilePosition();
+    QMetaObject::invokeMethod(qApp, [=]() {
+        auto newSelectedTuile = affichageJoueur->getContainerGraphicsItem(*tuile);
+        newSelectedTuile->setPos(prevPos);
+        window->getEcranJeu()->setSelectedTuile(newSelectedTuile);
+    }, Qt::QueuedConnection);
 }
 
 bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
@@ -735,23 +762,44 @@ bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
     }, Qt::QueuedConnection);
 
     QEventLoop SignalWaitLoop;
-    QWidget::connect(window->getEcranJeu(),
+    auto c1 = QWidget::connect(window->getEcranJeu(),
                      SIGNAL(selectionPlacementFinished(Vector2)),
                      &SignalWaitLoop, SLOT(quit()));
 
 
     Vector2 position;
-    QWidget::connect(window->getEcranJeu(),
+    auto c2 = QWidget::connect(window->getEcranJeu(),
                      &EcranJeu::selectionPlacementFinished,
                      [&](Vector2 nouvellePosition){position = nouvellePosition;});
 
+    // Fonctionalité de tourner les tuiles
+    auto c3 = QWidget::connect(window->getEcranJeu(),
+                     &EcranJeu::tourneSelectedTuile,
+                     [&](bool sensHoraire){ tourneTuile(tuileSelected, sensHoraire);});
+
+    // Fonctionalité de revenir en arrière
+    bool forceQuit = false;
+    auto c4 = QWidget::connect(window->getEcranJeu(),
+                     &EcranJeu::retour,
+                     [&](){ forceQuit = true;});
+    auto c5 = QWidget::connect(window->getEcranJeu(),
+                     SIGNAL(retour()),
+                     &SignalWaitLoop, SLOT(quit()));
+
     do {
         SignalWaitLoop.exec();
-    } while (!joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, position));
+    } while (!joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, position) && !forceQuit);
 
-    joueurs[joueur]->place_tuile(tuileSelected, position);
     QMetaObject::invokeMethod(qApp, [=]() {
         window->getEcranJeu()->removeSelectedTuile();
     }, Qt::QueuedConnection);
-    return true;
+    if (!forceQuit) joueurs[joueur]->place_tuile(tuileSelected, position);
+
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
+    QWidget::disconnect(c3);
+    QWidget::disconnect(c4);
+    QWidget::disconnect(c5);
+
+    return !forceQuit;
 }

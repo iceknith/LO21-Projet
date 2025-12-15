@@ -2,6 +2,7 @@
 #include "../Serialization/Serialization.hpp"
 
 void HexagoneContainer::tourne(bool sens_horaire, const Vector2 &centre_rotation) {
+    cout << "heyyy" << endl;
     map<Vector2, Hexagone*> newContainer;
     Vector2 pos;
 
