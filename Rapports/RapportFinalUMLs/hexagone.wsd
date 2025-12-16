@@ -1,0 +1,62 @@
+@startuml hexagone
+
+abstract class Serializable {}
+
+abstract class Hexagone extends Serializable {
+    # couleur : CouleursAkropolis
+    # localPos : Vector2
+    # tuileParent : Tuile*
+
+    + Hexagone()
+    + Hexagone (tuile_parent : Tuile*, localPos : const Vector2&, couleur : CouleursAkropolis)
+    + get_couleur() : int
+    + get_tuile() : Tuile*
+    + get_local_position() : const Vector2&
+    + get_hauteur() : int
+    + peut_etre_placée(map:Map*, position:Vector2) const : bool {virtual}
+    + quand_recouvert(joueur_qui_la_recouvre:Joueur*) const {virtual}
+    + get_text() : const string {pure virtual}
+    + affiche_console(highlighted : bool) const : const vector<string>
+    + get_type() const : TypeHexagone {virtual}
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*);
+}
+
+class Carriere extends Hexagone {
+    # pierre_count : int
+
+    + Carriere (tuile_parent : Tuile*, localPos : const Vector2&)
+    + get_type() : TypeHexagone
+    + get_text() : const string
+    + quand_recouvert(joueur_qui_la_recouvre:Joueur*) const
+    + className() : string
+}
+
+class Place extends Hexagone {
+    # etoiles : int
+
+    + Place (tuile_parent : Tuile*, localPos : const Vector2&, couleur : CouleursAkropolis)
+    + get_etoiles() : int
+    + get_type() : TypeHexagone
+    + get_text() : const string
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*);
+    + className() : string
+}
+
+class Quartier extends Hexagone {
+    + Quartier (tuile_parent : Tuile*, localPos : const Vector2&, couleur : CouleursAkropolis)
+    + get_type() : TypeHexagone
+    + get_text() : const string
+    + className() : string
+}
+
+abstract class HexagoneContainer {}
+class Tuile extends HexagoneContainer{}
+HexagoneContainer o-- "*" Hexagone
+Tuile *-- "*" Hexagone
+
+abstract Affichage
+abstract Score
+Affichage -- Hexagone : "affiche >"
+Score -- Hexagone : "consulte >"

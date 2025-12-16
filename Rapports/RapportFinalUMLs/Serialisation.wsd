@@ -1,0 +1,41 @@
+@startuml serialisation
+
+class Serializable {
+    + serialize(data : QVariantMap&, context : SerializationContext*) {pure virtual}
+    + deserialize(data : QVariantMap&, context : SerializationContext*) {pure virtual}
+    + className() : string {pure virtual}
+}
+
+class "toutes classes stockant de l'information" extends Serializable
+
+class SerializationContext {
+    - recordList : QList<Record>
+    - recordMap : QHash<Serializable*, qsizetype>
+
+    + serialize(object : Serializable*) : QVariant
+    + deserialize(index : const QVariant&) : Serializable*
+    + currentSerializationIndex() const : qsizetype
+
+    + operator<<(stream : QDataStream&, context : const SerializationContext&) : QDataStream&
+    + operator>>(stream : QDataStream&, context : SerializationContext&) : QDataStream&
+    - operator<<(stream : QDataStream&, context : const Record&) : QDataStream&
+    - operator>>(stream : QDataStream&, context : Record&) : QDataStream&
+}
+
+struct SerializationContext::Record {
+    + object : Serializable*
+    + type : string
+    + serializedData : QVariantMap
+}
+
+SerializationContext *-- "*" SerializationContext::Record
+
+class SerializableFactory {
+    + createSerializable(type : string) : Serializable* {static}
+}
+
+SerializableFactory o-- Serializable
+Serializable - SerializationContext
+SerializableFactory -- SerializationContext
+
+@enduml

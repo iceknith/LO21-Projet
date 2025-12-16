@@ -1,0 +1,48 @@
+@startuml player
+
+abstract class Joueur {
+    # pierres : int
+    # nomJoueur : string
+    # plateauJoueur : Plateau
+    # scoreJoueur : Score*
+
+    + get_joue_tout_seul() : bool {pure virtual}
+    + get_score() const : int
+    + get_nom() const : const string& 
+    + get_pierre() : int
+    + set_pierre(pierre : int)
+    + ajouter_pierre(pierre : int)
+    + get_plateau() : Plateau&
+    + place_tuile(tuile : Tuile, coordonées : Vector2, premierPlacement : bool = false) : bool
+    + jouer(chantier : Chantier&) {virtual}
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*);
+}
+
+class JoueurSimple extends Joueur {
+    + get_joue_tout_seul() : bool
+    + setNomJoueur(nom : const string&)
+    + set_score(score : Score*)
+    + className() : string
+}
+
+class IllustreArchitecte extends Joueur {
+    # difficulte : Difficulte
+
+    # choisir_tuile(chantier : Chantier&) : Tuile*
+    # trouver_emplacement_tuile(tuile : Tuile&) : Vector2
+    + IllustreArchitecte()
+    + IllustreArchitecte(niveau:Difficulte)
+    + get_joue_tout_seul() : bool
+    + get_score() : int
+    + set_niveau(niveau : int)
+    + get_difficulte() : Difficulte
+    + jouer(chantier : Chantier&)
+    + className() : string
+}
+
+Plateau "1" -*  Joueur
+Joueur *- "1" Score
+Jeu *-- "*" Joueur
+
+@enduml

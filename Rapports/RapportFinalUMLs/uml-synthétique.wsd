@@ -1,0 +1,30 @@
+@startuml uml-synthetique
+
+abstract class Serializable {}
+abstract class Joueur {}
+abstract class Hexagone {}
+abstract class HexagoneContainer {}
+class Tuile extends HexagoneContainer {}
+class Plateau extends HexagoneContainer {}
+class Deck {}
+class Chantier {}
+class Jeu {}
+note left : Est un singleton
+class Score {} 
+note bottom : Est un décorateur
+abstract class Affichage {}
+
+Jeu *-- "*" Joueur
+Jeu *- "1" Chantier
+Jeu *- "1" Deck
+Jeu *- "1" Affichage
+Joueur *-- "1" Plateau
+HexagoneContainer *-- "1..*" Hexagone
+Chantier o-- "1..5" Tuile
+Deck *-- "*" Tuile
+Affichage o-- HexagoneContainer
+Score *-- Score
+Joueur *-- Score
+
+
+@enduml

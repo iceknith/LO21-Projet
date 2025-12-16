@@ -1,0 +1,64 @@
+@startuml hexagoneContainer
+
+abstract class HexagoneContainer {
+    # container : map<Vector2, Hexagone*>
+    # roation : float
+
+    + hasHexagone(coordonees : const Vector2&) : bool
+    + getHexagone(coordonees : const Vector2 &) : Hexagone*
+    + getSize() const : size_t
+    + tourne(sens_horaire : bool = true, centre_rotation : constVector2& = Vector2(0,0))
+    + begin() : map::iterator<Vector2, Hexagone*>
+    + end() : map::iterator<Vector2, Hexagone*>
+    + begin() : map::const_iterator<Vector2, Hexagone*> 
+    + end() : map::const_iterator<Vector2, Hexagone*> 
+    + cbegin() : map::const_iterator<Vector2, Hexagone*> 
+    + cend() : map::const_iterator<Vector2, Hexagone*> 
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*);
+}
+HexagoneContainer o- "*" Hexagone
+
+abstract class Tuile extends HexagoneContainer {
+    # static nextID : int
+    # id : int {unique}
+    # hauteur : int
+
+    + set_hauteur(hauteur : const int)
+    + get_hauteur() : int
+    + get_id() const : int
+    + operator==(t : const Tuile &t) const : bool
+    + operator!=(t : const Tuile &t) const : bool
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*);
+}
+
+class TuileDépart extends Tuile {
+    + className() : string
+}
+
+class TuileJeu extends Tuile {
+    + className() : string    
+}
+
+class Plateau extends HexagoneContainer  {
+    + peut_placer(tuile : Tuile&, position : const Vector2&, premierPlacement : bool = false) : bool
+    + placer(tuile : Tuile&, position : const Vector2&, premierPlacement : bool = false, joueur : Joueur* = nullptr) : bool
+    + className() : string
+}
+
+abstract Affichage
+Affichage - HexagoneContainer
+
+Joueur *-- "1" Plateau
+Plateau -- Jeu
+Plateau -- Score
+
+Hexagone "*" --* Tuile
+TuileJeu "*" --o Chantier
+TuileJeu "*" --* Deck
+TuileDépart "1" --* Jeu
+Tuile - Plateau
+
+
+@enduml

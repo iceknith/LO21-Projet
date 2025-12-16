@@ -1,0 +1,69 @@
+@startuml score
+
+abstract class Score {
+    # scoreDécoré : Score*
+
+    # scoreLocal(plateau : Plateau*) : int {pure virtual}
+    + Score()
+    + Score(Score *scoreDecore)
+    + score(plateau : Plateau*) : int
+}
+note top : Est un décorateur
+
+class ScoreBleu extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+    + score(plateau:Plateau*) : int 
+}
+
+class ScoreJaune extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreRouge extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreVert extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreViolet extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreBleuVariante extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreJauneVariante extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreRougeVariante extends Score {
+    # scoreLocal(plateau : Plateau*) : int 
+}
+
+class ScoreVertVariante extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreVioletVariante extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreSoloArchitechteCallicrates extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreSoloArchitechteHippodamos extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+class ScoreSoloArchitechteMetagenes extends Score {
+    # scoreLocal(plateau : Plateau*) : int
+}
+
+Player *-- "1" Score
+Score *-- "1" Score
+
+@enduml
