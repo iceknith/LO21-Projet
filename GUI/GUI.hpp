@@ -195,6 +195,7 @@ Q_OBJECT
     // Indicateurs
     QLabel* labelNom;
     QLabel* labelScore;
+    QLabel* labelRegleScore;
     QLabel* labelPierre;
 
     // Chantier

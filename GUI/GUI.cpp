@@ -172,7 +172,6 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
             this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
 }
 
-
 EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 
     QBoxLayout* layout = new QVBoxLayout(this);
@@ -206,7 +205,6 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
     connect(quatuor, &QPushButton::clicked,
             this, [this](){emit selectionFinished(4);});
 }
-
 
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
@@ -245,7 +243,7 @@ EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
 EcranChoixRegles::EcranChoixRegles() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
+    QLabel* texte  = new QLabel("REGLES DE SCORE");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
@@ -256,7 +254,7 @@ EcranChoixRegles::EcranChoixRegles() {
     QPushButton* facile = new QPushButton("CLASSIQUE");
     QPushButton* normale = new QPushButton("VARIANTE");
 
-    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
+    facile->setStyleSheet("font-size: 20px; padding: 15px; background: green;");
     normale->setStyleSheet("font-size: 20px; padding: 15px; background: orange;");
 
     layout->addStretch();
@@ -272,7 +270,6 @@ EcranChoixRegles::EcranChoixRegles() {
             this, [this](){emit selectionFinished(1);});
 }
 
-//==================
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
@@ -288,15 +285,19 @@ EcranJeu::EcranJeu() {
 
     labelNom = new QLabel("Joueur: XXXX");
     labelScore = new QLabel("Score actuelle: XXXXX");
+    labelRegleScore = new QLabel("Regle de score: XXXXX");
     labelPierre = new QLabel("Pierres: XXXXX");
 
     labelNom->setStyleSheet("font-size: 20px;  color: white;");
     labelScore->setStyleSheet("font-size: 20px;  color: white;");
+    labelRegleScore->setStyleSheet("font-size: 20px;  color: white;");
     labelPierre->setStyleSheet("font-size: 20px;  color: white;");
     // Mise en page
     layoutInfo->addWidget(labelNom);
-    layoutInfo->addStretch(); // Pousse les éléments pour les écarter
+    layoutInfo->addStretch();
     layoutInfo->addWidget(labelScore);
+    layoutInfo->addStretch();
+    layoutInfo->addWidget(labelRegleScore);
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelPierre);
 
@@ -304,7 +305,7 @@ EcranJeu::EcranJeu() {
     // ----------------------------------------------------
     //Zone 2: chantier
     zoneChantier = new QWidget();
-    zoneChantier->setFixedHeight(200);
+    zoneChantier->setFixedHeight(250);
     zoneChantier->setStyleSheet("background-color: #b0b0b0;");
     auto* layoutChantier = new QGridLayout(zoneChantier);
 

@@ -645,7 +645,8 @@ void JeuGUI::selectJoueurs() {
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
     qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
-
+    // Innitialise les nouveaux joueurs
+    for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
 }
