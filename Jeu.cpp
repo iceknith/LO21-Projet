@@ -16,6 +16,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
         selectGameMode();
         if (modeDeJeu == GameMode::MULTIJOUEUR){
             selectJoueurs();
+
             srand(time(NULL));
             premierJoueur = rand()%nombreJoueurs;
         }
@@ -26,7 +27,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
             joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
             premierJoueur = 0;
         }
-        selectNomsJoueurs();
+        selectNomsJoueurs(); // TODO
         joueurActuel = premierJoueur;
 
         initialisePlateau();
@@ -671,8 +672,13 @@ void JeuGUI::selectReglesScore() {
     if (resultat){ score = getScoreVariante(); qDebug() << "Regles variante";}
     else {score = getScoreSimple(); qDebug() << "Regles classiques";}
 
-    for (size_t i = 0; i < nombreJoueurs; i++)
-        dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
+    if (modeDeJeu == GameMode::MULTIJOUEUR) {
+        for (size_t i = 0; i < nombreJoueurs; i++)
+            dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
+    }
+    else {
+        dynamic_cast<JoueurSimple*>(joueurs[0])->set_score(score);
+    }
 
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
@@ -690,10 +696,13 @@ Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
     auto c2 = QWidget::connect(window->getEcranDifficulteArchitechte(),
-                     SIGNAL(selectionFinished()),
+                     SIGNAL(selectionFinished(Difficulte)),
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 
+    if (resultat == Difficulte::FACILE){qDebug() << "Illustre Architechte difficulté FACILE";}
+    if (resultat == Difficulte::NORMALE){qDebug() << "Illustre Architechte difficulté NORMALE";}
+    else {qDebug() << "Illustre Architechte difficulté DIFFICILE";}
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
 
