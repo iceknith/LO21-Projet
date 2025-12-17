@@ -404,12 +404,23 @@ EcranJeu::EcranJeu() {
     // ----------------------------------------------------
     //zone 3: plateau
 
+    QHBoxLayout *layoutMap = new QHBoxLayout();
+
+    QWidget* ScorePlayers = new QWidget();
+
+
+
     sceneMap = new QGraphicsScene();
     vueMap = new CameraMap(sceneMap);
     connect(vueMap, &CameraMap::mouseMoved,
             this, &EcranJeu::onPlateauCameraMapMouseMoved);
     connect(vueMap, &CameraMap::mousePressed,
             this, &EcranJeu::onPlateauCameraMapMousePressed);
+
+    
+    layoutMap->addWidget(vueMap);
+
+
 
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
@@ -418,7 +429,24 @@ EcranJeu::EcranJeu() {
 }
 
 EcranJeu::~EcranJeu() {
-    //TODO Implémenter ça
+    delete labelNom;
+    delete labelScore;
+    delete labelRegleScore;
+    delete labelPierre;
+
+    delete zoneChantier;
+
+    for (int i = 0; i < max_tuiles_par_chantier; i++) {
+        delete sceneChantier[i];
+        delete labelsChantier[i];
+    }
+
+    delete vueMap;
+    delete sceneMap;
+
+    delete selectedTuile;
+
+
 }
 
 void EcranJeu::onPlateauCameraMapMouseMoved(QPointF mousePos) {

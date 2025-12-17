@@ -214,6 +214,8 @@ Q_OBJECT
     QGraphicsScene** sceneChantier;
     QLabel** labelsChantier;
 
+    //Autres Joueurs
+
     // La Map
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
@@ -228,13 +230,13 @@ Q_OBJECT
 public:
     AffichageGUI* getAffichageJoueur();
     AffichageGUI** getAffichagesChantier(size_t tailleChantier);
-    QLabel** getLabelsChantier() {return labelsChantier;}
+    QLabel** getLabelsChantier() const {return labelsChantier;}
     void setSelectedTuile(QGraphicsItemGroup* newSelectedTuile);
-    QPointF getSelectedTuilePosition() {return selectedTuile->pos();};
+    QPointF getSelectedTuilePosition() const {return selectedTuile->pos();};
     void removeSelectedTuile() {delete selectedTuile; selectedTuile = nullptr;}
 
     EcranJeu();
-    ~EcranJeu();
+    ~EcranJeu() override;
 
 signals:
     void selectionTuileFinished(int tuileSelected);

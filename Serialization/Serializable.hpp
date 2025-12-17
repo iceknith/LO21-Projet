@@ -10,6 +10,8 @@ public:
     virtual void serialize( QVariantMap& data, SerializationContext* context ) const = 0;
     virtual void deserialize( const QVariantMap& data, SerializationContext* context ) = 0;
     virtual std::string className()=0;
+
+    virtual ~Serializable() = default;
 };
 
 

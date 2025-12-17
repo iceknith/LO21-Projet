@@ -93,7 +93,7 @@ protected:
 
     Jeu() : deck(), chantier() {tuileDepart = new TuileDepart();}
 public:
-    ~Jeu();
+    ~Jeu() override;
 
     virtual void gameLoop(int argc, char *argv[]);
 

@@ -18,6 +18,9 @@ public:
     void affiche_container(HexagoneContainer& container, Vector2 selectedHexagone) {affiche_container(container, true, selectedHexagone);};
     void affiche_joueur(Joueur& joueur) { affiche_joueur(joueur, false, Vector2());};
     void affiche_joueur(Joueur& joueur, Vector2 selectedHexagone) { affiche_joueur(joueur, true, selectedHexagone);};
+
+    virtual ~Affichage() = default;
+
 };
 
 // Affichage console //
