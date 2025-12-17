@@ -404,9 +404,28 @@ EcranJeu::EcranJeu() {
     // ----------------------------------------------------
     //zone 3: plateau
 
-    QHBoxLayout *layoutMap = new QHBoxLayout();
+    QWidget* plateau = new QWidget();
 
-    QWidget* ScorePlayers = new QWidget();
+
+    QWidget* infoJoueurs = new QWidget();
+    QVBoxLayout* layoutPlayers = new QVBoxLayout(infoJoueurs);
+
+    labelJ1 = new QLabel("Joueur 1: XXXX");
+    labelJ2 = new QLabel("Joueur 2: XXXX");
+    labelJ3 = new QLabel("Joueur 3: XXXX");
+    labelJ4 = new QLabel("Joueur 4: XXXX");
+    labelJ5 = new QLabel("Joueur 5: XXXX");
+
+    layoutPlayers->addWidget(labelJ1);
+    layoutInfo->addStretch();
+    layoutPlayers->addWidget(labelJ2);
+    layoutInfo->addStretch();
+    layoutPlayers->addWidget(labelJ3);
+    layoutInfo->addStretch();
+    layoutPlayers->addWidget(labelJ4);
+    layoutInfo->addStretch();
+    layoutPlayers->addWidget(labelJ5);
+
 
 
 
@@ -417,15 +436,20 @@ EcranJeu::EcranJeu() {
     connect(vueMap, &CameraMap::mousePressed,
             this, &EcranJeu::onPlateauCameraMapMousePressed);
 
-    
-    layoutMap->addWidget(vueMap);
+    labelRegles = new QLabel("VOICI LES REGLES ET LES CONTROLES\n blabla\n blabla");
+
+    QHBoxLayout *layoutMap = new QHBoxLayout(plateau);
+
+    layoutMap->addWidget(infoJoueurs, 1);
+    layoutMap->addWidget(vueMap, 6);
+    layoutMap->addWidget(labelRegles, 1);
 
 
 
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
     layoutGlobal->addWidget(zoneChantier);
-    layoutGlobal->addWidget(vueMap);
+    layoutGlobal->addWidget(plateau);
 }
 
 EcranJeu::~EcranJeu() {

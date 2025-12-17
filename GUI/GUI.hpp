@@ -215,7 +215,14 @@ Q_OBJECT
     QLabel** labelsChantier;
 
     //Autres Joueurs
+    QLabel* labelJ1;
+    QLabel* labelJ2;
+    QLabel* labelJ3;
+    QLabel* labelJ4;
+    QLabel* labelJ5;
 
+
+    QLabel* labelRegles;
     // La Map
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
