@@ -148,8 +148,19 @@ class EcranSelectionNombreJoueurs : public QWidget {
         void selectionFinished(int nombreDeJoueurs);
 };
 
-// --------------------
+
 class EcranSaisieNoms : public QWidget {
+    Q_OBJECT
+private:
+    QVBoxLayout* layoutChampsSaisies;
+    std::vector<QLineEdit*> noms;
+public:
+    EcranSaisieNoms();
+    // Pour poser le bon nombre de champs de texts
+    void setUpChamps(int nbChamps);
+
+    signals:
+    void saisieNoms(std::vector<QString> noms);
 
 };
 
@@ -172,9 +183,9 @@ class EcranChoixRegles : public QWidget {
 class EcanVictoire : public QWidget {
     Q_OBJECT
     public:
-    EcanVictoire() = default;
+    EcanVictoire() ;
     signals:
-    void retourMenu();
+    void startGame();
 };
 
 class ChantierQGraphicsView : public QGraphicsView {

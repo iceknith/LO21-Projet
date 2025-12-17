@@ -27,7 +27,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
             joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
             premierJoueur = 0;
         }
-        selectNomsJoueurs(); // TODO
+        selectNomsJoueurs();
         joueurActuel = premierJoueur;
 
         initialisePlateau();
@@ -584,7 +584,6 @@ void JeuGUI::titleScreen() {
     QWidget::disconnect(c1);
 }
 
-
 bool JeuGUI::selectChargerPartie() {
     window->showEcran(window->getEcranSelectionSauvegarde());
 
@@ -628,9 +627,7 @@ void JeuGUI::selectGameMode() {
     QWidget::disconnect(c2);
 }
 
-
 void JeuGUI::selectJoueurs() {
-
     window->showEcran(window->getEcranSelectionNombreJoueurs());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
     auto c1 = QObject::connect(window->getEcranSelectionNombreJoueurs(),
@@ -651,7 +648,6 @@ void JeuGUI::selectJoueurs() {
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
 }
-
 
 void JeuGUI::selectReglesScore() {
     window->showEcran(window->getEcranChoixRegles());
@@ -684,7 +680,6 @@ void JeuGUI::selectReglesScore() {
     QWidget::disconnect(c2);
 }
 
-
 Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
     Difficulte resultat = Difficulte::FACILE;
     window->showEcran(window->getEcranDifficulteArchitechte());
@@ -700,21 +695,64 @@ Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 
-    if (resultat == Difficulte::FACILE){qDebug() << "Illustre Architechte difficulté FACILE";}
-    if (resultat == Difficulte::NORMALE){qDebug() << "Illustre Architechte difficulté NORMALE";}
-    else {qDebug() << "Illustre Architechte difficulté DIFFICILE";}
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
-
 
     return resultat;
 }
 
-/*
-void JeuGUI::selectNomsJoueurs() {// TODO
+void JeuGUI::selectNomsJoueurs() {
+    int nombreChampsText;
+    if (modeDeJeu == GameMode::SOLO) nombreChampsText = 1;
+    else nombreChampsText = nombreJoueurs;
 
+    // Mise à jour graphique de la page de saisie de nom, On utilise invokeMethod pour basculer sur le thread graphique le temps de la configuration
+    QMetaObject::invokeMethod(qApp, [=]() {
+        window->getEcranSaisieNoms()->setUpChamps(nombreChampsText);
+        window->showEcran(window->getEcranSaisieNoms());
+    }, Qt::BlockingQueuedConnection);
+    window->showEcran(window->getEcranSaisieNoms());
+
+    std::vector<QString> newNames;
+
+    auto c1 = QObject::connect(window->getEcranSaisieNoms(),
+                     &EcranSaisieNoms::saisieNoms,
+                     [&](std::vector<QString> liste){newNames = liste; });
+
+    QEventLoop SignalWaitLoop;
+    auto c2 = QWidget::connect(window->getEcranSaisieNoms(),
+                     SIGNAL(saisieNoms(std::vector<QString>)),
+                     &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
+    // Donne leurs noms à chaque joueurs
+    for(size_t i = 0; i < newNames.size(); i++) {
+        if(joueurs[i]) {
+            if (auto player = dynamic_cast<JoueurSimple*>(joueurs[i])) {
+                player->setNomJoueur(newNames[i].toStdString());
+            }
+        }
+    }
+
+/*
+    if (modeDeJeu == GameMode::SOLO) {
+        if (dynamic_cast<IllustreArchitecte*>(joueurs[1])->get_difficulte() == Difficulte::FACILE) {
+            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Hippodamos");
+        }
+        if (dynamic_cast<IllustreArchitecte*>(joueurs[1])->get_difficulte() == Difficulte::NORMALE) {
+            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Metagenes");
+        }
+        else {
+            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Callicrates");
+        }
+    }*/
+
+    QObject::disconnect(c1);
+    QObject::disconnect(c2);
 }
-*/
+
+
+
 void JeuGUI::afficheSceneJeu() {
     window->showEcran(window->getEcranJeu());
     affichageJoueur = window->getEcranJeu()->getAffichageJoueur();

@@ -270,6 +270,82 @@ EcranChoixRegles::EcranChoixRegles() {
             this, [this](){emit selectionFinished(1);});
 }
 
+EcranSaisieNoms::EcranSaisieNoms() {
+    QBoxLayout* globalLayout = new QVBoxLayout(this);
+    // Titre
+    QLabel* titre  = new QLabel("Selection des noms");
+    titre->setStyleSheet("font-size: 60px; font-weight: bold;");
+    globalLayout->addStretch();
+    globalLayout->addWidget(titre);
+    titre->setAlignment(Qt::AlignCenter);
+
+    // Champ de text modulable
+    QWidget* zoneChamps = new QWidget();
+    layoutChampsSaisies = new QVBoxLayout(zoneChamps);
+
+    globalLayout->addWidget(zoneChamps);
+
+    // Bouton valider
+    QPushButton* boutonValider = new QPushButton("VALIDER");
+    boutonValider->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
+    globalLayout->addWidget(boutonValider);
+    globalLayout->addStretch();
+
+    // Recupere les noms et les envois
+    connect(boutonValider, &QPushButton::clicked, [this](){
+        std::vector<QString> listeNoms;
+           for (size_t i = 0; i < noms.size(); ++i) {
+
+               QString texte = noms[i]->text();
+               // si pas de nom, donne nom avec index
+               if (texte.isEmpty()) texte = "Joueur " + QString::number(i+1);
+
+               listeNoms.push_back(texte);
+           }
+           emit saisieNoms(listeNoms);
+    });
+}
+
+void EcranSaisieNoms::setUpChamps(int nbChamps) {
+    noms.clear();
+    for(int i = 0; i < nbChamps; i++) {
+        QLineEdit* champ = new QLineEdit();
+        champ->setPlaceholderText("Nom du Joueur " + QString::number(i+1));
+        champ->setStyleSheet("background-color: white; color: black; font-size: 18px;");
+
+        layoutChampsSaisies->addWidget(champ);
+        noms.push_back(champ);
+    }
+}
+
+EcanVictoire::EcanVictoire() {
+    // Mise en page verticale
+    QVBoxLayout* layout = new QVBoxLayout(this);
+
+    // TITRE
+    QLabel* titre = new QLabel("VICTOIRE");
+    titre->setAlignment(Qt::AlignCenter);
+    titre->setStyleSheet("font-size: 60px; font-weight: bold; color : yellow");
+    // MESSAGE JOUEUR GAGNANT
+    QLabel* vainqueur = new QLabel("Le joueur XXXX a gagné!"); // TODO : rendre interactif
+    vainqueur->setAlignment(Qt::AlignCenter);
+    vainqueur->setStyleSheet("font-size: 30px; font-weight: bold; color : orange");
+    // Bouton start
+    QPushButton* StartBouton = new QPushButton("RESTART?");
+    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
+
+    // mise en page
+    layout->addStretch();
+    layout->addWidget(titre);
+    layout->addSpacing(50);
+    layout->addWidget(vainqueur);
+    layout->addSpacing(50);
+    layout->addWidget(StartBouton);
+    layout->addStretch();
+
+    connect(StartBouton, &QPushButton::clicked, this, &EcanVictoire::startGame);
+}
+
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);

@@ -151,21 +151,14 @@ private:
 
     JeuGUI() : Jeu() {};
 
-
     void titleScreen() override;
     bool selectChargerPartie() override;
     void selectGameMode() override;
     void selectJoueurs() override ;
 
-    void selectNomsJoueurs() override {}
-    Difficulte selectNiveauIllustreArchitechte() override;// { return Difficulte::FACILE; }// Temporaire
+    void selectNomsJoueurs() override;
+    Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
-
-    /*{
-        Score* score = getScoreSimple();
-        for (size_t i = 0; i < nombreJoueurs; i++)
-            dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
-    }*/
     void afficheSceneJeu() override;
     int selectTuile(size_t joueur) override;
     void tourneTuile(Tuile* tuileSelected, bool sensHoraire);
