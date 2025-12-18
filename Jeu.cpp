@@ -8,7 +8,7 @@ bool BackPressed = false;
 Jeu* Jeu::jeu = nullptr;
 
 void Jeu::gameLoop(int argc, char *argv[]) {
-    bool modeJeuSelected = false;
+    bool Charger = false;
 
     titleScreen();
 
@@ -18,26 +18,50 @@ void Jeu::gameLoop(int argc, char *argv[]) {
     // Sinon, on fait la configuration de la partie
     else {
         selectGameMode();
-        modeJeuSelected = true;
+        Charger = BackPressed;
 
         while (BackPressed) {
             if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) {
                 chargerPartie();
                 BackPressed = false;
-                modeJeuSelected = false;
+                Charger = true;
             }
             else {
                 selectGameMode();
-                modeJeuSelected = true;
+                Charger = BackPressed;
             }
         }
 
-        if (modeJeuSelected) {
+        if (Charger == false) {
             if (modeDeJeu == GameMode::MULTIJOUEUR){
                 selectJoueurs();
 
-                srand(time(NULL));
-                premierJoueur = rand()%nombreJoueurs;
+                while(BackPressed) {
+                    BackPressed = false;
+                    selectGameMode();
+                    Charger = BackPressed;
+                    while (BackPressed) {
+                        if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) {
+                            chargerPartie();
+                            BackPressed = false;
+                            Charger = true;
+                        }
+                        else {
+                            selectGameMode();
+                            Charger = BackPressed;
+                        }
+                    }
+                    if (Charger == false) {
+                        BackPressed = false;
+                        selectJoueurs();
+                    }
+
+                }
+                if (Charger == false) {
+                    srand(time(NULL));
+                    premierJoueur = rand()%nombreJoueurs;
+                }
+
             }
                 // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
             else {
@@ -46,29 +70,33 @@ void Jeu::gameLoop(int argc, char *argv[]) {
                 joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
                 premierJoueur = 0;
             }
-            selectNomsJoueurs();
-            joueurActuel = premierJoueur;
 
-            initialisePlateau();
+            if (Charger == false) {
+                selectNomsJoueurs();
+                joueurActuel = premierJoueur;
 
-            // Initialisation de la règle de score
-            selectReglesScore();
+                initialisePlateau();
 
-            // Initialisation du nombre de pierres
-            for (size_t i = 0; i<nombreJoueurs; i++) {
-                joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
+                // Initialisation de la règle de score
+                selectReglesScore();
+
+                // Initialisation du nombre de pierres
+                for (size_t i = 0; i<nombreJoueurs; i++) {
+                    joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
+                }
+                deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
+                chantier.set_nombre_joueurs(nombreJoueurs);
+
+                nombreTours = 1;
+                maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
+
+                int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+
+                if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
+                    chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
+                }
             }
-            deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
-            chantier.set_nombre_joueurs(nombreJoueurs);
 
-            nombreTours = 1;
-            maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
-
-            int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-            if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
-                chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
-            }
         }
 
 
@@ -677,17 +705,30 @@ void JeuGUI::selectJoueurs() {
                          this ->nombreJoueurs = nb;
                      });
 
+    BackPressed = false;
+    auto cBack = QObject::connect(window->getEcranSelectionNombreJoueurs(),
+                               &EcranSelectionNombreJoueurs::backRequested,
+                               [&](bool retour){
+                                   BackPressed = retour;
+                               });
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
      auto c2 = QWidget::connect(window->getEcranSelectionNombreJoueurs(),
                      SIGNAL(selectionFinished(int)),
                      &SignalWaitLoop, SLOT(quit()));
+
+    auto c3 = QWidget::connect(window->getEcranSelectionNombreJoueurs(),
+                            SIGNAL(backRequested(bool)),
+                            &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
     qDebug() << "Partie comptant " << nombreJoueurs << "joueurs.";
     // Innitialise les nouveaux joueurs
     for (int i = 0; i < nombreJoueurs; i++) joueurs[i] = new JoueurSimple();
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
+    QWidget::disconnect(cBack);
+    QWidget::disconnect(c3);
 }
 
 void JeuGUI::selectReglesScore() {
@@ -896,19 +937,19 @@ bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
 void JeuGUI::finDePartie(multimap<int, size_t> scores) {
     window->showEcran(window->getEcranVictoire());
 
-    size_t i = 0;
-
-    for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
-        i++;
-        string placeSuffixe = i == 1 ? "er" : "ème";
-        if (modeDeJeu == GameMode::MULTIJOUEUR) {
-            cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second + 1
-                << " avec " << scoreIterator->first << " points !" << endl;
-        }
-        else {
-            string nom = scoreIterator->second == 0 ? "vous" : "l'Illustre Architechte";
-            cout << "En " << i << placeSuffixe << "," << nom
-                << " avec " << scoreIterator->first << " points !" << endl;
-        }
-    }
+    // size_t i = 0;
+    //
+    // for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
+    //     i++;
+    //     string placeSuffixe = i == 1 ? "er" : "ème";
+    //     if (modeDeJeu == GameMode::MULTIJOUEUR) {
+    //         cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second + 1
+    //             << " avec " << scoreIterator->first << " points !" << endl;
+    //     }
+    //     else {
+    //         string nom = scoreIterator->second == 0 ? "vous" : "l'Illustre Architechte";
+    //         cout << "En " << i << placeSuffixe << "," << nom
+    //             << " avec " << scoreIterator->first << " points !" << endl;
+    //     }
+    // }
 }

@@ -148,6 +148,7 @@ class EcranSelectionNombreJoueurs : public QWidget {
     EcranSelectionNombreJoueurs();
     signals:
         void selectionFinished(int nombreDeJoueurs);
+        void backRequested(bool retour);
 };
 
 

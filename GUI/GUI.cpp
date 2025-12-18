@@ -186,6 +186,14 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
 EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 
     QBoxLayout* layout = new QVBoxLayout(this);
+
+    QPushButton* backButton = new QPushButton;
+    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
+    backButton->setFixedSize(32, 32);
+    connect(backButton, &QPushButton::clicked,
+        this, [this](){emit backRequested(true);});
+    layout->addWidget(backButton);
+
     QLabel* texte  = new QLabel("COMBIEN DE JOUEURS?");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
