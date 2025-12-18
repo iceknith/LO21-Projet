@@ -7,7 +7,7 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-    //JeuConsole::getJeu()->gameLoop();
+    //JeuConsole::getJeu()->gameLoop(argc, argv);
     JeuGUI::getJeu()->gameLoop(argc, argv);
 }
     /*

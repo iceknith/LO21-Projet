@@ -549,6 +549,9 @@ MainWindow::MainWindow() {
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 
+    victoire = new EcanVictoire();
+    pile->addWidget(victoire);
+
     // Pile
     layout->addWidget(pile);
 }
