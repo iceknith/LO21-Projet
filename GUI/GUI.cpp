@@ -150,6 +150,16 @@ EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
 EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
 
     QVBoxLayout* layout = new QVBoxLayout(this);
+
+
+    QPushButton* backButton = new QPushButton;
+    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
+    backButton->setFixedSize(32, 32);
+    connect(backButton, &QPushButton::clicked,
+        this, [this](){emit backRequested(true);});
+    layout->addWidget(backButton);
+
+
     QLabel* texte  = new QLabel("SELECTION MODE DE JEU");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
@@ -162,6 +172,7 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
     boutonMULTI->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
 
     layout->addStretch();
+
     layout->addWidget(boutonSOLO);
     layout->addWidget(boutonMULTI);
     layout->addStretch();
@@ -221,9 +232,9 @@ EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     QPushButton* facile = new QPushButton("Hippodamos");
     QPushButton* normale = new QPushButton("Metagenes");
     QPushButton* difficile = new QPushButton("Callicrates");
-    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
+    facile->setStyleSheet("font-size: 23px; padding: 15px; background: green;");
     normale->setStyleSheet("font-size: 23px; padding: 15px; background: orange;");
-    difficile->setStyleSheet("font-size: 26px; padding: 10px; background: red;");
+    difficile->setStyleSheet("font-size: 23px; padding: 15px; background: red;");
 
     layout->addStretch();
     BouttonLayout->addWidget(facile);

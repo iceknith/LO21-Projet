@@ -26,6 +26,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QLineEdit>
+#include <Qstyle>
 #include <iostream>
 
 #include "../Utils.hpp"
@@ -138,6 +139,7 @@ public:
     EcranSelectionModeDeJeu();
 signals:
     void selectionFinished(GameMode modeDeJeu);
+    void backRequested(bool retour);
 };
 
 class EcranSelectionNombreJoueurs : public QWidget {

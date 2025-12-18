@@ -3,9 +3,13 @@
 
 // Jeu //
 
+bool BackPressed = false;
+
 Jeu* Jeu::jeu = nullptr;
 
 void Jeu::gameLoop(int argc, char *argv[]) {
+    bool modeJeuSelected = false;
+
     titleScreen();
 
     // Si on charge une partie existante
@@ -14,42 +18,60 @@ void Jeu::gameLoop(int argc, char *argv[]) {
     // Sinon, on fait la configuration de la partie
     else {
         selectGameMode();
-        if (modeDeJeu == GameMode::MULTIJOUEUR){
-            selectJoueurs();
+        modeJeuSelected = true;
 
-            srand(time(NULL));
-            premierJoueur = rand()%nombreJoueurs;
+        while (BackPressed) {
+            if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) {
+                chargerPartie();
+                BackPressed = false;
+                modeJeuSelected = false;
+            }
+            else {
+                selectGameMode();
+                modeJeuSelected = true;
+            }
         }
-            // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
-        else {
-            nombreJoueurs = 2;
-            joueurs[0] = new JoueurSimple();
-            joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
-            premierJoueur = 0;
+
+        if (modeJeuSelected) {
+            if (modeDeJeu == GameMode::MULTIJOUEUR){
+                selectJoueurs();
+
+                srand(time(NULL));
+                premierJoueur = rand()%nombreJoueurs;
+            }
+                // Le joueur 0 sera arbitrairement l'utilisateur et le joueur 1 sera l'illustre architecte.
+            else {
+                nombreJoueurs = 2;
+                joueurs[0] = new JoueurSimple();
+                joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
+                premierJoueur = 0;
+            }
+            selectNomsJoueurs();
+            joueurActuel = premierJoueur;
+
+            initialisePlateau();
+
+            // Initialisation de la règle de score
+            selectReglesScore();
+
+            // Initialisation du nombre de pierres
+            for (size_t i = 0; i<nombreJoueurs; i++) {
+                joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
+            }
+            deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
+            chantier.set_nombre_joueurs(nombreJoueurs);
+
+            nombreTours = 1;
+            maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
+
+            int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+
+            if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
+                chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
+            }
         }
-        selectNomsJoueurs();
-        joueurActuel = premierJoueur;
 
-        initialisePlateau();
 
-        // Initialisation de la règle de score
-        selectReglesScore();
-
-        // Initialisation du nombre de pierres
-        for (size_t i = 0; i<nombreJoueurs; i++) {
-            joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
-        }
-        deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
-        chantier.set_nombre_joueurs(nombreJoueurs);
-
-        nombreTours = 1;
-        maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
-
-        int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-        if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
-            chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
-        }
     }
 
 
@@ -614,17 +636,36 @@ void JeuGUI::selectGameMode() {
                      &EcranSelectionModeDeJeu::selectionFinished,
                      [this](GameMode modeDeJeuSelected){modeDeJeu = modeDeJeuSelected;});
 
+    BackPressed = false;
+    auto cBack = QObject::connect(window->getEcranSelectionModeDeJeu(),
+                               &EcranSelectionModeDeJeu::backRequested,
+                               [&](bool retour){
+                                   BackPressed = retour;
+                               });
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
+
+
+
     auto c2 = QWidget::connect(window->getEcranSelectionModeDeJeu(),
                      SIGNAL(selectionFinished(GameMode)),
                      &SignalWaitLoop, SLOT(quit()));
+
+    auto c3 = QWidget::connect(window->getEcranSelectionModeDeJeu(),
+                            SIGNAL(backRequested(bool)),
+                            &SignalWaitLoop, SLOT(quit()));
+
+
+
     SignalWaitLoop.exec();
     if (modeDeJeu == GameMode::SOLO) qDebug() << "Mode de jeu: SOLO";
     else qDebug() << "Mode de jeu: MULTIJOUEUR";
 
     QWidget::disconnect(c1);
     QWidget::disconnect(c2);
+    QWidget::disconnect(cBack);
+    QWidget::disconnect(c3);
 }
 
 void JeuGUI::selectJoueurs() {
