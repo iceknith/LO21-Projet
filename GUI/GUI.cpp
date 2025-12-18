@@ -228,11 +228,22 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
     QBoxLayout* layout = new QVBoxLayout(this);
+
+
+    QPushButton* backButton = new QPushButton;
+    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
+    backButton->setFixedSize(32, 32);
+    connect(backButton, &QPushButton::clicked,
+        this, [this](){emit backRequested(true);});
+    layout->addWidget(backButton);
+
     QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
     texte->setAlignment(Qt::AlignCenter);
+
+
 
 
     QHBoxLayout* BouttonLayout = new QHBoxLayout(this);

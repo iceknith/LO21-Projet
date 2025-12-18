@@ -165,6 +165,7 @@ public:
     signals:
     void saisieNoms(std::vector<QString> noms);
 
+
 };
 
 class EcranDifficulteArchitechte : public QWidget {
@@ -173,6 +174,7 @@ class EcranDifficulteArchitechte : public QWidget {
     EcranDifficulteArchitechte();
     signals:
     void selectionFinished(Difficulte difficulte);
+    void backRequested(bool retour);
 };
 
 class EcranChoixRegles : public QWidget {
