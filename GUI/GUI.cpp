@@ -183,6 +183,7 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
             this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
 }
 
+
 EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 
     QBoxLayout* layout = new QVBoxLayout(this);
@@ -224,6 +225,7 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
     connect(quatuor, &QPushButton::clicked,
             this, [this](){emit selectionFinished(4);});
 }
+
 
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
@@ -273,7 +275,7 @@ EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
 EcranChoixRegles::EcranChoixRegles() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("REGLES DE SCORE");
+    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
@@ -284,7 +286,7 @@ EcranChoixRegles::EcranChoixRegles() {
     QPushButton* facile = new QPushButton("CLASSIQUE");
     QPushButton* normale = new QPushButton("VARIANTE");
 
-    facile->setStyleSheet("font-size: 20px; padding: 15px; background: green;");
+    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
     normale->setStyleSheet("font-size: 20px; padding: 15px; background: orange;");
 
     layout->addStretch();
@@ -300,82 +302,7 @@ EcranChoixRegles::EcranChoixRegles() {
             this, [this](){emit selectionFinished(1);});
 }
 
-EcranSaisieNoms::EcranSaisieNoms() {
-    QBoxLayout* globalLayout = new QVBoxLayout(this);
-    // Titre
-    QLabel* titre  = new QLabel("Selection des noms");
-    titre->setStyleSheet("font-size: 60px; font-weight: bold;");
-    globalLayout->addStretch();
-    globalLayout->addWidget(titre);
-    titre->setAlignment(Qt::AlignCenter);
-
-    // Champ de text modulable
-    QWidget* zoneChamps = new QWidget();
-    layoutChampsSaisies = new QVBoxLayout(zoneChamps);
-
-    globalLayout->addWidget(zoneChamps);
-
-    // Bouton valider
-    QPushButton* boutonValider = new QPushButton("VALIDER");
-    boutonValider->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
-    globalLayout->addWidget(boutonValider);
-    globalLayout->addStretch();
-
-    // Recupere les noms et les envois
-    connect(boutonValider, &QPushButton::clicked, [this](){
-        std::vector<QString> listeNoms;
-           for (size_t i = 0; i < noms.size(); ++i) {
-
-               QString texte = noms[i]->text();
-               // si pas de nom, donne nom avec index
-               if (texte.isEmpty()) texte = "Joueur " + QString::number(i+1);
-
-               listeNoms.push_back(texte);
-           }
-           emit saisieNoms(listeNoms);
-    });
-}
-
-void EcranSaisieNoms::setUpChamps(int nbChamps) {
-    noms.clear();
-    for(int i = 0; i < nbChamps; i++) {
-        QLineEdit* champ = new QLineEdit();
-        champ->setPlaceholderText("Nom du Joueur " + QString::number(i+1));
-        champ->setStyleSheet("background-color: white; color: black; font-size: 18px;");
-
-        layoutChampsSaisies->addWidget(champ);
-        noms.push_back(champ);
-    }
-}
-
-EcanVictoire::EcanVictoire() {
-    // Mise en page verticale
-    QVBoxLayout* layout = new QVBoxLayout(this);
-
-    // TITRE
-    QLabel* titre = new QLabel("VICTOIRE");
-    titre->setAlignment(Qt::AlignCenter);
-    titre->setStyleSheet("font-size: 60px; font-weight: bold; color : yellow");
-    // MESSAGE JOUEUR GAGNANT
-    QLabel* vainqueur = new QLabel("Le joueur XXXX a gagné!"); // TODO : rendre interactif
-    vainqueur->setAlignment(Qt::AlignCenter);
-    vainqueur->setStyleSheet("font-size: 30px; font-weight: bold; color : orange");
-    // Bouton start
-    QPushButton* StartBouton = new QPushButton("RESTART?");
-    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
-
-    // mise en page
-    layout->addStretch();
-    layout->addWidget(titre);
-    layout->addSpacing(50);
-    layout->addWidget(vainqueur);
-    layout->addSpacing(50);
-    layout->addWidget(StartBouton);
-    layout->addStretch();
-
-    connect(StartBouton, &QPushButton::clicked, this, &EcanVictoire::startGame);
-}
-
+//==================
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
@@ -411,7 +338,7 @@ EcranJeu::EcranJeu() {
     // ----------------------------------------------------
     //Zone 2: chantier
     zoneChantier = new QWidget();
-    zoneChantier->setFixedHeight(250);
+    zoneChantier->setFixedHeight(200);
     zoneChantier->setStyleSheet("background-color: #b0b0b0;");
     auto* layoutChantier = new QGridLayout(zoneChantier);
 

@@ -78,7 +78,6 @@ public:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
         if (interactif) {
             emit hexagoneClique();
-            qDebug("heyyyyy");
         }
     }
 

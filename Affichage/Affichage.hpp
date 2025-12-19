@@ -26,8 +26,6 @@ public:
 // Affichage console //
 
 class AffichageConsole : public Affichage{
-    const int hexH = 5; // lignes
-    const int hexW = 9; // colonnes
     AffichageConsole() = default;
     static AffichageConsole* instance;
 
@@ -55,6 +53,9 @@ namespace constAffichageConsoleHex {
      */
     void replace_sauf_charactere(string& text_original, size_t pos, size_t len,
                                  const string& text_nouveau, char charactere_non_remplace);
+
+    const int hexH = 5; // lignes
+    const int hexW = 9; // colonnes
 
     //! Convertion entre les coordonées axiales et les coordonées de l'écran
     Vector2 axialToScreen (Vector2 v);
