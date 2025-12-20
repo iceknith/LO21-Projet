@@ -53,7 +53,6 @@ void Jeu::gameLoop(int argc, char *argv[]) {
                         }
 
                         if (BackPressed2 == false) {
-
                             selectNomsJoueurs();
                             joueurActuel = premierJoueur;
 
@@ -62,11 +61,14 @@ void Jeu::gameLoop(int argc, char *argv[]) {
                             // Initialisation de la règle de score
                             selectReglesScore();
 
+                            // Initialisation de la vitesse de la partie
+                            VITESSE vitessePartie = selectVitessePartie();
+
                             // Initialisation du nombre de pierres
                             for (size_t i = 0; i<nombreJoueurs; i++) {
                                 joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
                             }
-                            deck.setNombreJoueurs(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs);
+                            deck.initialise(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs, vitessePartie);
                             chantier.set_nombre_joueurs(nombreJoueurs);
 
                             nombreTours = 1;
@@ -82,7 +84,6 @@ void Jeu::gameLoop(int argc, char *argv[]) {
                             BackPressed = true;
                             StartJeu = false;
                         }
-
                     } while (!BackPressed2);
                 }
 

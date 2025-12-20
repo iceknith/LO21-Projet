@@ -71,7 +71,7 @@ void JeuConsole::selectNomsJoueurs() {
 
 Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
     int choix;
-    cout << "\033[0;97m - FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
+    cout << "\033[0;97m FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
          << endl << "\033[0;37m-> \033[0;97m";
     cin >> choix;
 
@@ -138,6 +138,39 @@ void JeuConsole::selectReglesScore() {
     else
         for (size_t i = 0; i < nombreJoueurs; i++)
             dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
+}
+
+VITESSE JeuConsole::selectVitessePartie() {
+    int choix;
+    cout << "\033[0;97mQuelle est la vitesse de la partie ?\n RAPIDE ( 1 ) / NORMALE ( 2 ) / LENTE (3)?"
+         << endl << "\033[0;37m-> \033[0;97m";
+    cin >> choix;
+
+    while (cin.fail() || choix <= 0 || choix > 3) {
+        cout << "\033[1;31m --> difficulté  inexistante !"
+             << endl << "\033[0;37m-> \033[0;97m";
+        // Enlève l'état d'erreur
+        cin.clear();
+        // Ignore les "mauvais" charactères
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choix;
+    }
+    auto difficulte = static_cast<VITESSE>(choix-1);
+    switch (difficulte){
+        case VITESSE::RAPIDE:
+            cout << "\033[0;32mRapide\033[0;97m: Les meilleures choses sont les plus courtes !"<< endl;
+            break;
+        case VITESSE::NORMALE:
+            cout << "\033[0;33mNormale\033[0;97m: Suivant les règles originales d'Akropolis !"<< endl;
+            break;
+        case VITESSE::LENT:
+            cout << "\033[0;31mDifficile\033[0;97m: Pour faire durer le plaisir !"<< endl;
+            break;
+        default:
+            cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
+            break;
+    }
+    return difficulte;
 }
 
 int JeuConsole::selectTuile(size_t joueur) {

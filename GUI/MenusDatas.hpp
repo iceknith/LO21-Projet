@@ -75,9 +75,9 @@ namespace MenuData {
     };
     static const std::vector<MENU_NB_TOURS> getNbTours() {
         return {
-                {VITESSE::RAPIDE, "RAPIDE", "gray"},
-                {VITESSE::NORMALE, "NORMAL", "gray"},
-                {VITESSE::LENT, "LENT", "gray"}
+                {VITESSE::RAPIDE, "RAPIDE", "green"},
+                {VITESSE::NORMALE, "NORMAL", "orange"},
+                {VITESSE::LENT, "LENT", "red"}
         };
     }
 

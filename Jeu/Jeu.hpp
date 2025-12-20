@@ -70,7 +70,7 @@ protected:
     //! La méthode chargée de la séléction du niveau de l'Illustre Architechte
     virtual Difficulte selectNiveauIllustreArchitechte() = 0;
     //! La méthode chargée de la vitesse de la partie
-    virtual void selectVitessePartie() = 0;
+    virtual VITESSE selectVitessePartie() = 0;
     //! La méthode chargée de la séléction des règles de score
     virtual void selectReglesScore() = 0;
     //! La méthode chargée de notifier l'affichage qu'on affiche la scène de jeu
@@ -124,9 +124,9 @@ private:
     void selectGameMode() override;
     void selectJoueurs() override;
     void selectNomsJoueurs() override;
-    void selectVitessePartie() override {};
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
+    VITESSE selectVitessePartie() override;
     void afficheSceneJeu() override {} // Cette methode n'est pas utilisee par le jeu console
     int selectTuile(size_t joueur) override;
     bool placeTuile(size_t joueur, Tuile* tuileSelected) override;
@@ -165,7 +165,7 @@ private:
     void selectNomsJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
-    void selectVitessePartie() override {};
+    VITESSE selectVitessePartie() override;
     void afficheSceneJeu() override;
     int selectTuile(size_t joueur) override;
     void tourneTuile(Tuile* tuileSelected, bool sensHoraire);

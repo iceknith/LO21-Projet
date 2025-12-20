@@ -254,6 +254,8 @@ MainWindow::MainWindow() {
     pile->addWidget(ecranDifficulteArchitechte);
     ecranChoixRegles = new EcranChoixRegles();
     pile->addWidget(ecranChoixRegles);
+    ecranVitessePartie = new EcranVitessePartie();
+    pile->addWidget(ecranVitessePartie);
 
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);

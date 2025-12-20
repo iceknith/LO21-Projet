@@ -248,6 +248,29 @@ void JeuGUI::selectNomsJoueurs() {
     QObject::disconnect(c2);
 }
 
+VITESSE JeuGUI::selectVitessePartie() {
+    window->showEcran(window->getEcranVitessePartie());
+    VITESSE v = VITESSE::NORMALE;
+
+    // Connecter le signal de séléction à une lambda expression qui changera la valeure
+    auto c1 = QObject::connect(window->getEcranVitessePartie(),
+                               &EcranVitessePartie::selectionFinished,
+                               [&](VITESSE vitesse){v = vitesse;});
+
+    //Attendre que le signal pour quitter l'écran soit émis
+    QEventLoop SignalWaitLoop;
+
+    auto c2 = QWidget::connect(window->getEcranVitessePartie(),
+                               SIGNAL(selectionFinished(VITESSE)),
+                               &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
+    QWidget::disconnect(c1);
+    QWidget::disconnect(c2);
+
+    return v;
+}
+
 void JeuGUI::afficheSceneJeu() {
     // Actualiser le plateau de jeu
     QMetaObject::invokeMethod(qApp, [=]() {
