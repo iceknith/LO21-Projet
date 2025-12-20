@@ -8,8 +8,9 @@ var searchData=
   ['ecranselectionnombrejoueurs_5',['ecranSelectionNombreJoueurs',['../d6/d1a/classMainWindow.html#aef8ef5c167681d7166a13480b8d72da7',1,'MainWindow']]],
   ['ecranselectionsauvegarde_6',['ecranSelectionSauvegarde',['../d6/d1a/classMainWindow.html#aac9a169a49773a1405f8faa374459b3f',1,'MainWindow']]],
   ['ecrantitre_7',['ecranTitre',['../d6/d1a/classMainWindow.html#ad95f1de0e6d3612050ebcad4b8d5af52',1,'MainWindow']]],
-  ['emptyhexlineb_8',['emptyHexLineB',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3eef6083b6b26377d53e31e313765be8',1,'constAffichageConsoleHex']]],
-  ['emptyhexlines_9',['emptyHexLineS',['../d3/d75/namespaceconstAffichageConsoleHex.html#a981f53256b830f6e427d730bfb33c002',1,'constAffichageConsoleHex']]],
-  ['emptyselectedhex_10',['emptySelectedHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a75e8aa4d329b16142d0a030daafd6989',1,'constAffichageConsoleHex']]],
-  ['etoiles_11',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
+  ['ecranvitessepartie_8',['ecranVitessePartie',['../d6/d1a/classMainWindow.html#ab4d0340da98e6d9d09b04f5417385fdc',1,'MainWindow']]],
+  ['emptyhexlineb_9',['emptyHexLineB',['../d3/d75/namespaceconstAffichageConsoleHex.html#a3eef6083b6b26377d53e31e313765be8',1,'constAffichageConsoleHex']]],
+  ['emptyhexlines_10',['emptyHexLineS',['../d3/d75/namespaceconstAffichageConsoleHex.html#a981f53256b830f6e427d730bfb33c002',1,'constAffichageConsoleHex']]],
+  ['emptyselectedhex_11',['emptySelectedHex',['../d3/d75/namespaceconstAffichageConsoleHex.html#a75e8aa4d329b16142d0a030daafd6989',1,'constAffichageConsoleHex']]],
+  ['etoiles_12',['etoiles',['../d9/d58/classPlace.html#a7ccbd83f1c9cddc7865492fc6ff7bd7c',1,'Place']]]
 ];
