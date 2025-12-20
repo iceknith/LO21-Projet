@@ -144,6 +144,7 @@ class MainWindow : public QWidget {
     EcranDifficulteArchitechte* ecranDifficulteArchitechte;
     EcranSaisieNoms* ecranSaisieNoms;
     EcranChoixRegles* ecranChoixRegles;
+    EcranVitessePartie* ecranVitessePartie;
     // Gameplay
     EcranJeu* ecranJeu = nullptr;
     EcranVictoire* victoire = nullptr;
@@ -158,6 +159,7 @@ public:
     EcranDifficulteArchitechte* getEcranDifficulteArchitechte() const {return ecranDifficulteArchitechte;}
     EcranSaisieNoms* getEcranSaisieNoms() const {return ecranSaisieNoms;}
     EcranChoixRegles* getEcranChoixRegles() const {return ecranChoixRegles;}
+    EcranVitessePartie* getEcranVitessePartie() const {return ecranVitessePartie;}
     EcranJeu* getEcranJeu() const {return ecranJeu;}
     EcranVictoire* getEcranVictoire() const {return victoire;}
 

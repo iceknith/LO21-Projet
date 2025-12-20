@@ -2,11 +2,11 @@
 #define LO21_PROJET_JEU_HPP
 
 #include <limits>
-#include "Players/Players.hpp"
-#include "Affichage/Affichage.hpp"
-#include "Chantier/Chantier.hpp"
-#include "Chantier/Deck.hpp"
-#include "GUI/GUI.hpp"
+#include "../Players/Players.hpp"
+#include "../Affichage/Affichage.hpp"
+#include "../Chantier/Chantier.hpp"
+#include "../Chantier/Deck.hpp"
+#include "../GUI/GUI.hpp"
 #include <QFile>
 #include <QFileInfo>
 #include <QThread>
@@ -50,6 +50,8 @@ protected:
     //! Le chantier du jeu
     Chantier chantier;
 
+    //! Si la touche de retour as été appuyée
+    bool BackPressed = false;
 
     // Game loop methodes
 
@@ -67,6 +69,8 @@ protected:
     virtual void selectNomsJoueurs() = 0;
     //! La méthode chargée de la séléction du niveau de l'Illustre Architechte
     virtual Difficulte selectNiveauIllustreArchitechte() = 0;
+    //! La méthode chargée de la vitesse de la partie
+    virtual void selectVitessePartie() = 0;
     //! La méthode chargée de la séléction des règles de score
     virtual void selectReglesScore() = 0;
     //! La méthode chargée de notifier l'affichage qu'on affiche la scène de jeu
@@ -120,6 +124,7 @@ private:
     void selectGameMode() override;
     void selectJoueurs() override;
     void selectNomsJoueurs() override;
+    void selectVitessePartie() override {};
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
     void afficheSceneJeu() override {} // Cette methode n'est pas utilisee par le jeu console
@@ -160,6 +165,7 @@ private:
     void selectNomsJoueurs() override;
     Difficulte selectNiveauIllustreArchitechte() override;
     void selectReglesScore() override;
+    void selectVitessePartie() override {};
     void afficheSceneJeu() override;
     int selectTuile(size_t joueur) override;
     void tourneTuile(Tuile* tuileSelected, bool sensHoraire);

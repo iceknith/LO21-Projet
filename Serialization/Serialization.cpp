@@ -1,5 +1,5 @@
 #include "Serialization.hpp"
-#include "../Jeu.hpp"
+#include "../Jeu/Jeu.hpp"
 
 QVariant SerializationContext::serialize(Serializable *object) {
     // Si on donne un pointeur nul, retourner une valeur infinie

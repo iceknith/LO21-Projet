@@ -25,8 +25,8 @@ add_executable(LO21-Projet main.cpp
         Chantier/Deck.cpp
         Chantier/Deck.hpp
         Players/Players.cpp
-        Jeu.cpp
-        Jeu.hpp
+        Jeu/Jeu.cpp
+        Jeu/Jeu.hpp
         HexagoneContainer/HexagoneContainer.cpp
         Serialization/Serializable.hpp
         Serialization/Serialization.cpp
@@ -37,6 +37,8 @@ add_executable(LO21-Projet main.cpp
         GUI/EcranJeu.cpp
         GUI/EcranJeu.cpp
         GUI/EcranJeu.hpp
+        Jeu/JeuConsole.cpp
+        Jeu/JeuGUI.cpp
         #assets.qrc
 
 )
