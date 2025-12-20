@@ -34,6 +34,10 @@
 
 class AffichageGUI;
 
+/**
+ * @namespace constGUI
+ * Regroupe les outils de conversion et les constantes graphiques (couleurs, styles).
+ */
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
 
@@ -58,16 +62,20 @@ namespace constGUI {
 
 // Hexagones //
 
-// Hexagone
+//! La classe HexagoneGUIObjet :
+/*!
+  La classe HexagoneGUIObjet permet d'afficher un hexagone
+  Gère l'affichage du fond, du contour (outline), du type et de la hauteur.
+  Herite de QGraphicsPolygonItem pour dessiner l'hexagone.
+*/
 class HexagoneGUIObjet : public QObject, public QGraphicsItem {
 private:
-    // QGraphicsPolygonItem --> permet de cree des polygones qu'on pourra ajouter à la QGraphicsScene
-    Q_OBJECT //  obligatoire pour les siganux
+    Q_OBJECT
 
-    QGraphicsPolygonItem hex;
-    QGraphicsPathItem outline;
-    QGraphicsTextItem text;
-    QGraphicsTextItem hauteur;
+    QGraphicsPolygonItem hex;   // La forme géométrique
+    QGraphicsPathItem outline;  // Les bordures
+    QGraphicsTextItem text;     // Description affichée
+    QGraphicsTextItem hauteur;  // Niveau de l'hexagone
 
 public:
     HexagoneGUIObjet(CouleursAkropolis couleur, const std::string& description, int height,
@@ -79,7 +87,11 @@ public:
                QWidget *widget) override {};
 };
 
-// QGraphicsView: nous permet d' afficher tout nous hexagones et qui permet de zommer et plus ... (je reviendrais refaire aux propre tout les comms)
+//! La classe CameraMap :
+/*!
+  La classe CameraMap permet d'interagire avec le plateau.
+  Permet de zoomer avec la molette.
+*/
 class CameraMap : public QGraphicsView {
     Q_OBJECT
 protected:
@@ -98,6 +110,7 @@ signals:
     void mousePressed(QPointF mousePos);
 };
 
+
 class ChantierQGraphicsView : public QGraphicsView {
 Q_OBJECT
 
@@ -112,22 +125,27 @@ signals:
 
 // QT - ECRANS //
 
+//! La classe AbstractEcran :
+/*!
+  La classe AbstractEcran est la classe de base pour tous les menus basique du jeu (titre + n boutons).
+*/
 class AbstractEcran : public QWidget {
-    // class maire, permet eviter repetition code classe filles et implementer facilement de nouveaux menus basiques
-
     Q_OBJECT
 protected:
     QVBoxLayout* mainLayout;
-    // Configure le titre et le layout de base
+    // Configure le titre et le layout de base.
     void ecranBasics(const QString& titre, bool avecBoutonRetour = false);
+    // Genere dynamiquement les boutons à partir d'un conteneur de donnée.
     template <typename T, typename ClassFille> void setupBoutons(T &data, ClassFille* fille);
-
 public:
     AbstractEcran(QWidget* parent = nullptr);
     signals:
         void backRequested(bool); // Signal commun pour le retour
 };
-
+//! Classes filles :
+/*!
+  Chaqu'une represente un etat du menu (selection difficulté, nombre de joueurs...).
+*/
 class EcranSelectionSauvegarde : public AbstractEcran {
     Q_OBJECT
 public:
@@ -136,7 +154,6 @@ public:
     signals:
         void selectionFinished(bool chargeSauvegarde);
 };
-
 class EcranSelectionModeDeJeu : public AbstractEcran {
     Q_OBJECT
 public:
@@ -145,7 +162,6 @@ public:
         void selectionFinished(GameMode modeDeJeu);
 
 };
-
 class EcranSelectionNombreJoueurs : public AbstractEcran {
     Q_OBJECT
     public:
@@ -153,7 +169,6 @@ class EcranSelectionNombreJoueurs : public AbstractEcran {
     signals:
         void selectionFinished(int nombreDeJoueurs);
 };
-
 class EcranDifficulteArchitechte : public AbstractEcran {
     Q_OBJECT
         public:
@@ -162,7 +177,6 @@ class EcranDifficulteArchitechte : public AbstractEcran {
     void selectionFinished(Difficulte difficulte);
 
 };
-
 class EcranVitessePartie : public AbstractEcran {
     Q_OBJECT
         public:
@@ -172,6 +186,10 @@ class EcranVitessePartie : public AbstractEcran {
 
 };
 
+//! La classe EcranTitre :
+/*!
+  Ecran titre du jeu avec bouton start.
+*/
 class EcranTitre : public QWidget {
     Q_OBJECT
 
@@ -182,7 +200,10 @@ public:
         void startGame();
 
 };
-
+//! La classe EcranSaisieNoms :
+/*!
+  Ecran selection des noms de chaque joueur.
+*/
 class EcranSaisieNoms : public QWidget {
     Q_OBJECT
 private:
@@ -197,7 +218,10 @@ public:
     void saisieNoms(std::vector<QString> noms);
 
 };
-
+//! La classe EcranChoixRegles :
+/*!
+  TODO :
+*/
 class EcranChoixRegles : public QWidget {
     Q_OBJECT
     public:
@@ -205,17 +229,25 @@ class EcranChoixRegles : public QWidget {
     signals:
     void selectionFinished(bool avecVariante);
 };
-
-class EcanVictoire : public QWidget {
+//! La classe EcranVictoire :
+/*!
+  La classe EcranVictoire implemente l'ecran titre du jeu avec un bouton start.
+*/
+class EcranVictoire : public QWidget {
     Q_OBJECT
     public:
-    EcanVictoire() ;
+    EcranVictoire() ;
     signals:
     void startGame();
 };
 
+//! La classe EcranJeu :
+/*!
+    EcranJeu: L'ecran principale où se deroule le jeu:
+    Il est divisé en 3 parties: Barre information (en haut)
+    Le chantier (millieu) et le plateau (bas)
+*/
 class EcranJeu : public QWidget {
-
 Q_OBJECT
     size_t nombreJoueurs = 0;
 
@@ -278,6 +310,11 @@ signals:
 
 // Ecran main (gameManager) //
 
+//! La classe MainWindow :
+/*!
+    MainWindow: Gestionnaire des fenetres.
+    Utilise une pile (QStackedWidget) et permet de basculer entre les ecrans du jeu.
+*/
 class MainWindow : public QWidget {
     Q_OBJECT
 
@@ -292,7 +329,7 @@ class MainWindow : public QWidget {
     EcranChoixRegles* ecranChoixRegles;
     // Gameplay
     EcranJeu* ecranJeu = nullptr;
-    EcanVictoire* victoire = nullptr;
+    EcranVictoire* victoire = nullptr;
 public:
     MainWindow();
     void showEcran(QWidget* ecran) {pile->setCurrentWidget(ecran);};
@@ -305,7 +342,7 @@ public:
     EcranSaisieNoms* getEcranSaisieNoms() const {return ecranSaisieNoms;}
     EcranChoixRegles* getEcranChoixRegles() const {return ecranChoixRegles;}
     EcranJeu* getEcranJeu() const {return ecranJeu;}
-    EcanVictoire* getEcranVictoire() const {return victoire;}
+    EcranVictoire* getEcranVictoire() const {return victoire;}
 
 };
 

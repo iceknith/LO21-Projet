@@ -203,11 +203,13 @@ EcranTitre::EcranTitre() {
 EcranChoixRegles::EcranChoixRegles() {
     // TODO: CHECKBOX DES REGLES
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("CHOIX DES REGLES");
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
+    QLabel* titre  = new QLabel("CHOIX DES REGLES");
+    titre->setStyleSheet("font-size: 60px; font-weight: bold;");
+    QLabel* text  = new QLabel("Selectionnez les regles variante à appliquer...");
+    text->setStyleSheet("font-size: 20px; font-weight: bold;");
     layout->addStretch();
-    layout->addWidget(texte);
-    texte->setAlignment(Qt::AlignCenter);
+    layout->addWidget(titre);
+    titre->setAlignment(Qt::AlignCenter);
 
     QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
 
@@ -229,6 +231,8 @@ EcranChoixRegles::EcranChoixRegles() {
     connect(normale, &QPushButton::clicked,
             this, [this](){emit selectionFinished(1);});
 }
+
+// Ecran saisie de noms
 
 EcranSaisieNoms::EcranSaisieNoms() {
     QBoxLayout* globalLayout = new QVBoxLayout(this);
@@ -277,6 +281,8 @@ void EcranSaisieNoms::setUpChamps(int nbChamps) {
         noms.push_back(champ);
     }
 }
+
+// Ecran de jeu
 
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
@@ -477,7 +483,7 @@ void EcranJeu::setSelectedTuile(QGraphicsItemGroup *newSelectedTuile) {
     sceneMap->addItem(selectedTuile);
 }
 
-EcanVictoire::EcanVictoire() {
+EcranVictoire::EcranVictoire() {
     // Mise en page verticale
     QVBoxLayout* layout = new QVBoxLayout(this);
 
@@ -502,7 +508,7 @@ EcanVictoire::EcanVictoire() {
     layout->addWidget(StartBouton);
     layout->addStretch();
 
-    connect(StartBouton, &QPushButton::clicked, this, &EcanVictoire::startGame);
+    connect(StartBouton, &QPushButton::clicked, this, &EcranVictoire::startGame);
 }
 
 // Ecran main (gameManager) //
@@ -531,7 +537,7 @@ MainWindow::MainWindow() {
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 
-    victoire = new EcanVictoire();
+    victoire = new EcranVictoire();
     pile->addWidget(victoire);
 
     // Pile
