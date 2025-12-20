@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['calculerscores_0',['calculerScores',['../d1/de1/classJeu.html#a1766b8825c6715ad5de19dc4efda4c9e',1,'Jeu']]],
+  ['calculerscores_0',['calculerScores',['../d1/de1/classJeu.html#a1c6f7813c9a1a9e37f9790fa75a67076',1,'Jeu']]],
   ['cameramap_1',['CameraMap',['../d8/d7c/classCameraMap.html#ae6e7ea42c8424c7c6440cd2e7a75106d',1,'CameraMap']]],
   ['carriere_2',['Carriere',['../dc/dfe/classCarriere.html#a2212f40102caeaf6df61d02573db7f11',1,'Carriere::Carriere(Tuile *tuile_parent, const Vector2 &amp;localPos, CouleursAkropolis couleur)=delete'],['../dc/dfe/classCarriere.html#ab42d31712bc93245bf7e31870a798e59',1,'Carriere::Carriere(Tuile *tuile_parent, const Vector2 &amp;localPos)']]],
   ['cbegin_3',['cbegin',['../df/d51/classChantier.html#ac384bee025dda7e9478b78c2555fcec1',1,'Chantier::cbegin()'],['../dc/d32/classHexagoneContainer.html#a0e326428005cb2cce5237e6e730f0b87',1,'HexagoneContainer::cbegin()']]],

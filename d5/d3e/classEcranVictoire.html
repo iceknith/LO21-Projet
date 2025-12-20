@@ -70,8 +70,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#signals">Signals</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../dd/d76/classEcranVictoire-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">EcranVictoire Class Reference</div></div>
 </div><!--header-->
@@ -88,15 +88,17 @@ Inheritance diagram for EcranVictoire:</div>
   <img src="../../d5/d3e/classEcranVictoire.png" alt=""/>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="signals" name="signals"></a>
-Signals</h2></td></tr>
-<tr class="memitem:aba26a7efb2b76c23d6448c3dfe1255b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d3e/classEcranVictoire.html#aba26a7efb2b76c23d6448c3dfe1255b3">startGame</a> ()</td></tr>
-<tr class="separator:aba26a7efb2b76c23d6448c3dfe1255b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a26ed191f1906854805aa0dc3205854d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d3e/classEcranVictoire.html#a26ed191f1906854805aa0dc3205854d2">EcranVictoire</a> ()</td></tr>
 <tr class="separator:a26ed191f1906854805aa0dc3205854d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab803ed4cbee62ace5cb81e53055de0d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d3e/classEcranVictoire.html#ab803ed4cbee62ace5cb81e53055de0d3">setUpWidgets</a> (std::multimap&lt; int, std::string &gt; scores)</td></tr>
+<tr class="separator:ab803ed4cbee62ace5cb81e53055de0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ada481b3f79d482b0b49d4d00e06a2582"><td class="memItemLeft" align="right" valign="top">QVBoxLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d3e/classEcranVictoire.html#ada481b3f79d482b0b49d4d00e06a2582">layout</a></td></tr>
+<tr class="separator:ada481b3f79d482b0b49d4d00e06a2582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >La classe <a class="el" href="../../d5/d3e/classEcranVictoire.html" title="La classe EcranVictoire :">EcranVictoire</a> implemente l'ecran titre du jeu avec un bouton start. </p>
@@ -119,8 +121,27 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aba26a7efb2b76c23d6448c3dfe1255b3" name="aba26a7efb2b76c23d6448c3dfe1255b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba26a7efb2b76c23d6448c3dfe1255b3">&#9670;&#160;</a></span>startGame</h2>
+<a id="ab803ed4cbee62ace5cb81e53055de0d3" name="ab803ed4cbee62ace5cb81e53055de0d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab803ed4cbee62ace5cb81e53055de0d3">&#9670;&#160;</a></span>setUpWidgets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EcranVictoire::setUpWidgets </td>
+          <td>(</td>
+          <td class="paramtype">std::multimap&lt; int, std::string &gt;&#160;</td>
+          <td class="paramname"><em>scores</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ada481b3f79d482b0b49d4d00e06a2582" name="ada481b3f79d482b0b49d4d00e06a2582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada481b3f79d482b0b49d4d00e06a2582">&#9670;&#160;</a></span>layout</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,15 +150,12 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void EcranVictoire::startGame </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">QVBoxLayout* EcranVictoire::layout</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

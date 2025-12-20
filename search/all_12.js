@@ -63,11 +63,11 @@ var searchData=
   ['setselectedtuile_60',['setSelectedTuile',['../d2/dc8/classEcranJeu.html#a94c60b47fd95da299612c4c989b69d3d',1,'EcranJeu']]],
   ['setupboutons_61',['setupBoutons',['../d6/dba/classAbstractEcran.html#ad5726a26e7ae9c70b3bf77f73c896f14',1,'AbstractEcran']]],
   ['setupchamps_62',['setUpChamps',['../d9/ddf/classEcranSaisieNoms.html#acf8d21fbabf3506ff5723e2a011e63b4',1,'EcranSaisieNoms']]],
-  ['setupwidgets_63',['setUpWidgets',['../d2/dc8/classEcranJeu.html#aa9353118ce7575cec63eeb0b7d29beba',1,'EcranJeu']]],
+  ['setupwidgets_63',['setUpWidgets',['../d2/dc8/classEcranJeu.html#aa9353118ce7575cec63eeb0b7d29beba',1,'EcranJeu::setUpWidgets()'],['../d5/d3e/classEcranVictoire.html#ab803ed4cbee62ace5cb81e53055de0d3',1,'EcranVictoire::setUpWidgets()']]],
   ['showecran_64',['showEcran',['../d6/d1a/classMainWindow.html#a6de7a3dcf8ab398ae27f1c25070fe4e4',1,'MainWindow']]],
   ['signaldata_65',['signalData',['../d2/d16/structMenuData_1_1MENU__SELECTION__SAUVEGARDE.html#a0f098ada29370119d7c9f891d07d5617',1,'MenuData::MENU_SELECTION_SAUVEGARDE::signalData()'],['../d2/d0b/structMenuData_1_1MENU__MODE__DE__JEU.html#a6313d4e0751345e83599eff654ac72c1',1,'MenuData::MENU_MODE_DE_JEU::signalData()'],['../d5/de4/structMenuData_1_1MENU__DIFFICULTE.html#a8281c8c871968e9be247e7d278251e5f',1,'MenuData::MENU_DIFFICULTE::signalData()'],['../d2/d35/structMenuData_1_1MENU__NB__JOUEURS.html#ab8389766cb594eb8403d4fc825e09370',1,'MenuData::MENU_NB_JOUEURS::signalData()'],['../d1/d36/structMenuData_1_1MENU__NB__TOURS.html#acc608f11e798e0f1ff5a2563bc521130',1,'MenuData::MENU_NB_TOURS::signalData()']]],
   ['solo_66',['SOLO',['../d7/d09/Utils_8hpp.html#aaf5ef5a17b53e9997c837b07015589deaca17c443abc74bd2419fbc922fc0c32e',1,'Utils.hpp']]],
-  ['startgame_67',['startGame',['../d0/d72/classEcranTitre.html#a2f9e6bd82ce0c33cb3652a4fddcd641d',1,'EcranTitre::startGame()'],['../d5/d3e/classEcranVictoire.html#aba26a7efb2b76c23d6448c3dfe1255b3',1,'EcranVictoire::startGame()']]],
+  ['startgame_67',['startGame',['../d0/d72/classEcranTitre.html#a2f9e6bd82ce0c33cb3652a4fddcd641d',1,'EcranTitre']]],
   ['statscouleurssoloarchitecte_68',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]],
   ['sum_5fheights_69',['sum_heights',['../da/dd1/namespaceScoreUtils.html#aa413551b5b9f833c4f6a2ae1163b58b7',1,'ScoreUtils']]]
 ];
