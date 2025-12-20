@@ -1,7 +1,7 @@
 var searchData=
 [
   ['decalagepetiteligne_0',['decalagePetiteLigne',['../d3/d75/namespaceconstAffichageConsoleHex.html#a2a03d155bd5b86182ec18fbb69420e96',1,'constAffichageConsoleHex']]],
-  ['deck_1',['Deck',['../d6/df2/classDeck.html#a57ae1cb4ac6fd61c249cefb2db85eb99',1,'Deck::Deck()'],['../d6/df2/classDeck.html#a4621b07ba70fa7dee11d73f464dd9edc',1,'Deck::Deck(int nombre_joueurs)']]],
+  ['deck_1',['Deck',['../d6/df2/classDeck.html#a57ae1cb4ac6fd61c249cefb2db85eb99',1,'Deck::Deck()'],['../d6/df2/classDeck.html#a78dc740b1aa6da84a7618483c095609e',1,'Deck::Deck(int nombre_joueurs, VITESSE vitesse)']]],
   ['deck_2',['deck',['../d1/de1/classJeu.html#a3c962762e8307ac9847b6ab35c1e9329',1,'Jeu']]],
   ['deck_3',['Deck',['../d6/df2/classDeck.html',1,'']]],
   ['deck_2ecpp_4',['Deck.cpp',['../df/db8/Deck_8cpp.html',1,'']]],
