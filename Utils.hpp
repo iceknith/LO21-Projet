@@ -44,6 +44,7 @@ namespace GameConstants {
     const int VIOLET_VARIANTE_HAUTEUR_THRESHOLD = 1;
     const int VIOLET_VARIANTE_BONUS_MULTIPLIER = 2;
     const int JAUNE_VARIANTE_BONUS_MULTIPLIER = 2;
+    const int VERT_VARIANTE_BONUS_MULTIPLIER = 2;
 
     // Game rules
     const int MAX_HEXAGON_NEIGHBORS = 6;

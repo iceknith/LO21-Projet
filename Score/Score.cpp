@@ -287,10 +287,31 @@ int ScoreRougeVariante::scoreLocal(Plateau* plateau) {
 
 int ScoreVertVariante::scoreLocal(Plateau* plateau) {
     // Règle vertVariante : (somme des hauteurs des quartiers verts (*2 si quartier vert est adjacent à un espace vide entouré ) ) * (nombre de places vertes * 3)
-    // TODO : implementer regle vert variante
-    // en attendant: uniquement regle de base
+
     int place = get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VERT)*GameConstants::VERT_PLACE_MULTIPLIER;
-    int quartier = get_iteration_with_hauteur_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::VERT);
+
+
+    int quartier = 0;
+    auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::VERT);
+    for (const auto& [pos, hex] : Hex) {
+        bool estAdjacentALac = false;
+
+        for (int d = 0; d < GameConstants::MAX_HEXAGON_NEIGHBORS; ++d) {
+            Vector2 position_voisin = pos + adjascenceHex[d];
+
+            if (!plateau->hasHexagone(position_voisin)) {
+                if (ScoreUtils::get_hexagone_voisins(plateau, position_voisin).size() == GameConstants::MAX_HEXAGON_NEIGHBORS) {
+                    estAdjacentALac = true;
+                    break;
+                }
+            }
+        }
+        if (estAdjacentALac) {
+            quartier += hex->get_hauteur() * GameConstants::VERT_VARIANTE_BONUS_MULTIPLIER; // *2
+        } else {
+            quartier += hex->get_hauteur();
+        }
+    }
     return place*quartier;
 }
 
