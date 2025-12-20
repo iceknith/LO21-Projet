@@ -42,7 +42,7 @@ var searchData=
   ['gethexagone_39',['getHexagone',['../dc/d32/classHexagoneContainer.html#acdc01bcf915352cc0d779fbf89af6e5d',1,'HexagoneContainer']]],
   ['getinstance_40',['getInstance',['../d1/d3c/classAffichageConsole.html#aa81c3f205d74e2f88b40723f04668381',1,'AffichageConsole']]],
   ['getjeu_41',['getJeu',['../d1/de1/classJeu.html#a3183656c8617b3f8c9366c2141de164e',1,'Jeu::getJeu()'],['../dc/dcd/classJeuConsole.html#a214e0b1658a9fea8876ada883284ca64',1,'JeuConsole::getJeu()'],['../da/d36/classJeuGUI.html#af64b6e2baebe501fb255bfa33c12e90a',1,'JeuGUI::getJeu()']]],
-  ['getlabelschantier_42',['getLabelsChantier',['../d2/dc8/classEcranJeu.html#a4160c08d94072746d246003318f392fe',1,'EcranJeu']]],
+  ['getlabeltour_42',['getLabelTour',['../d2/dc8/classEcranJeu.html#a85c87dd549b5ef3816756c14b1a8a19c',1,'EcranJeu']]],
   ['getmodesdejeu_43',['getModesDeJeu',['../dc/d5b/namespaceMenuData.html#a26a66bb165996e75061549f6d9aed5b0',1,'MenuData']]],
   ['getnbjoueurs_44',['getNbJoueurs',['../dc/d5b/namespaceMenuData.html#adc112a33570017aba6c38625a8322037',1,'MenuData']]],
   ['getnbtours_45',['getNbTours',['../dc/d5b/namespaceMenuData.html#aa48066efd29ada5a7b050de1ad800f3d',1,'MenuData']]],
