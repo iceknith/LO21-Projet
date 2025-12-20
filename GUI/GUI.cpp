@@ -202,31 +202,55 @@ EcranTitre::EcranTitre() {
 EcranChoixRegles::EcranChoixRegles() {
     // TODO: CHECKBOX DES REGLES
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("CHOIX DES REGLES");
+    QLabel* texte  = new QLabel("CHOIX DES VARIANTES DE SCORE");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
     texte->setAlignment(Qt::AlignCenter);
 
-    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
+    auto* boutonLayout = new QGridLayout(this);
 
-    QPushButton* facile = new QPushButton("CLASSIQUE");
-    QPushButton* normale = new QPushButton("VARIANTE");
+    for (size_t i = 0; i < GameConstants::scoreAmounts; i++) {
 
-    facile->setStyleSheet("font-size: 20px; padding: 10px; background: green;");
-    normale->setStyleSheet("font-size: 20px; padding: 15px; background: orange;");
+        auto* label = new QLabel(QString::fromStdString(GameConstants::nomScoresInOrder[i]));
+        label->setAlignment(Qt::AlignCenter);
+        label->setStyleSheet("font-size: 25px; color: " + constGUI::akropolisToQTColors[i+1].name() + ";");
+        boutonLayout->addWidget(label, 0, i);
+
+        boutons[i] = new QPushButton("NORMAL");
+        boutons[i]->setStyleSheet("font-size: 15px; padding: 15px; background: green;");
+        boutons[i]->setCheckable(true);
+        boutons[i]->setChecked(false);
+        connect(boutons[i], &QPushButton::clicked,
+                [b = boutons[i]](bool checked) {
+            if (checked) {
+                b->setStyleSheet("font-size: 15px; padding: 15px; background: orange;");
+                b->setText("VARIANTE");
+            }
+            else {
+                b->setStyleSheet("font-size: 15px; padding: 15px; background: green;");
+                b->setText("NORMAL");
+            }
+        });
+        boutonLayout->addWidget(boutons[i], 1, i);
+    }
 
     layout->addStretch();
-    BouttonLayout->addWidget(facile);
-    BouttonLayout->addWidget(normale);
+    auto boutonValider = new QPushButton("VALIDER");
+    boutonValider->setStyleSheet("font-size: 20px; padding: 20px; background: red;");
+    boutonLayout->addWidget(boutonValider, 3, 0, 1, GameConstants::scoreAmounts);
 
-    layout->addLayout(BouttonLayout);
+    layout->addLayout(boutonLayout);
     layout->addStretch();
 
-    connect(facile, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(0);});
-    connect(normale, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(1);});
+    connect(boutonValider, &QPushButton::clicked,
+            this,
+            [this](){
+                    bool varianteCouleurs[GameConstants::scoreAmounts];
+                    for (size_t i = 0; i < GameConstants::scoreAmounts; i++)
+                        varianteCouleurs[i] = boutons[i]->isChecked();
+                    emit selectionFinished(varianteCouleurs);
+            });
 }
 
 EcranSaisieNoms::EcranSaisieNoms() {

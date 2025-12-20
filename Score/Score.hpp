@@ -241,10 +241,8 @@ namespace ScoreUtils {
 
 };
 
-//! Responsable de la création du score simple pour les joueurs
-Score* getScoreSimple();
-
-//! Responsable de la création du score avancé pour les joueurs
-Score* getScoreVariante();
+//! Responsable de la création du score pour les joueurs
+Score* getScore(bool varianteBleu, bool varianteRouge, bool varianteVert, bool varianteViolet, bool varianteJaune);
+Score* getScore(bool varianteCouleurs[5]);
 
 #endif //LO21_PROJET_SCORE_HPP

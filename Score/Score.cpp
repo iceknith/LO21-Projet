@@ -366,20 +366,21 @@ int ScoreJauneVariante::scoreLocal(Plateau* plateau) {
 }
 
 // Fonctions de création de score
-Score* getScoreSimple() {
-    Score *scoreBleu = new ScoreBleu();
-    Score *scoreRouge = new ScoreRouge(scoreBleu);
-    Score *scoreVert = new ScoreVert(scoreRouge);
-    Score *scoreViolet = new ScoreViolet(scoreVert);
-    Score *scoreJaune = new ScoreViolet(scoreViolet);
-    return scoreJaune;
+Score* getScore(bool varianteBleu, bool varianteRouge, bool varianteVert, bool varianteViolet, bool varianteJaune) {
+    Score *scoreBleu = varianteBleu ? new ScoreBleuVariante : reinterpret_cast<Score*>(new ScoreBleu);
+    Score *scoreJaune = varianteJaune ? new ScoreJauneVariante(scoreBleu) : reinterpret_cast<Score*>(new ScoreJaune(scoreBleu));
+    Score *scoreRouge = varianteRouge ? new ScoreRougeVariante(scoreJaune) : reinterpret_cast<Score*>(new ScoreRouge(scoreJaune));
+    Score *scoreViolet = varianteViolet ? new ScoreVioletVariante(scoreRouge) : reinterpret_cast<Score*>(new ScoreViolet(scoreRouge));
+    Score *scoreVert = varianteVert ? new ScoreVertVariante(scoreViolet) : reinterpret_cast<Score*>(new ScoreVert(scoreViolet));
+    return scoreVert;
 }
 
-Score* getScoreVariante() {
-    Score *scoreBleu = new ScoreVioletVariante();
-    Score *scoreRouge = new ScoreVioletVariante(scoreBleu);
-    Score *scoreVert = new ScoreVioletVariante(scoreRouge);
-    Score *scoreViolet = new ScoreVioletVariante(scoreVert);
-    Score *scoreJaune = new ScoreVioletVariante(scoreViolet);
-    return scoreJaune;
+Score* getScore(bool varianteCouleurs[5]) {
+        return getScore(
+                varianteCouleurs[0],
+                varianteCouleurs[1],
+                varianteCouleurs[2],
+                varianteCouleurs[3],
+                varianteCouleurs[4]
+        );
 }

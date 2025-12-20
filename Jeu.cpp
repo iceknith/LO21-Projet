@@ -345,34 +345,35 @@ Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
 }
 
 void JeuConsole::selectReglesScore() {
-    string choixRegles;
-    cout << "\033[0;97mAvec quelles règles de score voulez-vous jouer ?" << endl
-        << "SIMPLE ( s ) / VARIANTE ( v )"
-         << endl << "\033[0;37m-> \033[0;97m";
-    cin >> choixRegles;
 
-    while (cin.fail() || (choixRegles != "s" && choixRegles != "v")) {
-        cout << "\033[1;31mLes règles ne peuvent que être: SIMPLE ( s ) / AVANCÉES ( a ) !"
+    bool variantesCouleursScores[5]{};
+
+    for (int i = 0; i < 5; i++) {
+        string choixRegles;
+        cout << "\033[0;97mAvec quelles règles de score voulez-vous jouer pour la couleur " << GameConstants::nomScoresInOrder[i] << " ?" << endl
+            << "SIMPLE ( s ) / VARIANTE ( v )"
              << endl << "\033[0;37m-> \033[0;97m";
-        // Enlève l'état d'erreur
-        cin.clear();
-        // Ignore les "mauvais" charactères
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> choixRegles;
+
+        while (cin.fail() || (choixRegles != "s" && choixRegles != "v")) {
+            cout << "\033[1;31mLes règles ne peuvent que être: SIMPLE ( s ) / AVANCÉES ( a ) !"
+                 << endl << "\033[0;37m-> \033[0;97m";
+            // Enlève l'état d'erreur
+            cin.clear();
+            // Ignore les "mauvais" charactères
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> choixRegles;
+        }
+
+        if (choixRegles == "v")
+            cout << "\033[0;36mCette partie se déroulera avec les règles de score de la variante pour la couleur " << GameConstants::nomScoresInOrder[i] << endl;
+        else
+            cout << "\033[0;36mCette partie se déroulera avec les règles de score simples pour la couleur " << GameConstants::nomScoresInOrder[i] << endl;
+
+        variantesCouleursScores[i] = choixRegles == "v";
     }
 
-    Score* score;
-    if (choixRegles == "s") {
-        cout << "\033[0;36mCette partie se déroulera avec les règles de score simple" << endl;
-        score = getScoreSimple();
-    }
-    else if (choixRegles == "v") {
-        cout << "\033[0;36mCette partie se déroulera avec les règles de score de la variante" << endl;
-        score = getScoreVariante();
-    }
-    else {
-        cout << "\033[1;31mErreur, règles de score inconnues !" << endl;
-    }
+    Score* score = getScore(variantesCouleursScores);
 
     if (modeDeJeu == GameMode::SOLO)
         dynamic_cast<JoueurSimple*>(joueurs[0])->set_score(score);
@@ -725,10 +726,12 @@ void JeuGUI::selectJoueurs() {
 void JeuGUI::selectReglesScore() {
     window->showEcran(window->getEcranChoixRegles());
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
-    bool resultat =0;
+    bool varianteCouleurs[GameConstants::scoreAmounts];
     auto c1 = QObject::connect(window->getEcranChoixRegles(),
                      &EcranChoixRegles::selectionFinished,
-                     [&](bool avecVariante){resultat = avecVariante;});
+                     [&](const bool avecVariante[GameConstants::scoreAmounts]){
+        for (size_t i = 0; i < GameConstants::scoreAmounts; i++) varianteCouleurs[i] = avecVariante[i];
+    });
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
@@ -737,9 +740,7 @@ void JeuGUI::selectReglesScore() {
                      &SignalWaitLoop, SLOT(quit()));
     SignalWaitLoop.exec();
 
-    Score* score = nullptr;
-    if (resultat){ score = getScoreVariante(); qDebug() << "Regles variante";}
-    else {score = getScoreSimple(); qDebug() << "Regles classiques";}
+    Score* score = getScore(varianteCouleurs);
 
     if (modeDeJeu == GameMode::MULTIJOUEUR) {
         for (size_t i = 0; i < nombreJoueurs; i++)

@@ -57,12 +57,21 @@ namespace GameConstants {
     const int MAX_HEXAGON_NEIGHBORS = 6;
     const int HEXAGON_DIRECTIONS = 6;
     const int MAX_COULEUR = 6;
+
+    // Score order
+    const size_t scoreAmounts = 5;
+    const std::string nomScoresInOrder[scoreAmounts]{
+        "bleu",
+        "jaune",
+        "rouge",
+        "violet",
+        "vert",
+        };
 }
 
 namespace GUIConstants {
     // Constantes de score
     const int HEX_SIZE = 50; // en pixels
-
 }
 
 

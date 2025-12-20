@@ -180,7 +180,6 @@ public:
 
     signals:
         void startGame();
-
 };
 
 class EcranSaisieNoms : public QWidget {
@@ -200,10 +199,12 @@ public:
 
 class EcranChoixRegles : public QWidget {
     Q_OBJECT
+    QPushButton* boutons[GameConstants::scoreAmounts];
+
     public:
     EcranChoixRegles();
     signals:
-    void selectionFinished(bool avecVariante);
+    void selectionFinished(bool varianteCouleurs[GameConstants::scoreAmounts]);
 };
 
 class EcanVictoire : public QWidget {
