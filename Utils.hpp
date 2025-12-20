@@ -33,6 +33,13 @@ enum class Difficulte {
     DIFFICILE = 2
 };
 
+//! Définit les duree de partie d'Akropolis
+enum class VITESSE {
+    RAPIDE = 0,
+    NORMALE = 1,
+    LENT = 2
+};
+
 namespace GameConstants {
     // Constantes de score
     const int VERT_PLACE_MULTIPLIER = 3;
@@ -135,9 +142,6 @@ public :
 };
 
 
-// -  - -- - - - -- - -
-
-
 namespace MenuData {
     // Infos pour chacun des menus du jeu, à utiliser avec la class abstraite AbstractEcran.
 
@@ -198,6 +202,22 @@ namespace MenuData {
                 {2, "2", "orange"},
                 {3, "3", "orange"},
                 {4, "4", "orange"}
+        };
+    }
+
+    // ================================
+
+    struct MENU_NB_TOURS {
+        VITESSE signalData;
+        QString btnTexte;
+        QString couleur;
+    };
+
+    static const std::vector<MENU_NB_JOUEURS> MENU_NB_TOURS() {
+        return {
+                    {0, "RAPIDE", "gray"},
+                    {1, "LENT", "gray"},
+                    {2, "TRES LENT", "gray"}
         };
     }
 

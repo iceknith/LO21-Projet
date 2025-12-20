@@ -163,6 +163,15 @@ class EcranDifficulteArchitechte : public AbstractEcran {
 
 };
 
+class EcranVitessePartie : public AbstractEcran {
+    Q_OBJECT
+        public:
+    EcranVitessePartie();
+    //signals:
+    //void selectionFinished(VITESSE vitesse);
+
+};
+
 class EcranTitre : public QWidget {
     Q_OBJECT
 

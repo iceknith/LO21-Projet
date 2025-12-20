@@ -169,6 +169,10 @@ EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     ecranBasics("DIFFICULTE ILLUSTRE ARCHITECHTE", true);
     AbstractEcran::setupBoutons(MenuData::getDifficultes(),this);
 }
+EcranVitessePartie::EcranVitessePartie() {
+    ecranBasics("SELECTION VITESSE PARTIE", true);
+    //AbstractEcran::setupBoutons(MenuData::getDifficultes(),this);
+}
 
 // AUTRES ECRANS
 
