@@ -39,14 +39,14 @@ void Deck::setNombreJoueurs(int nombre_joueurs) {
 
 //Retire la tuile la plus "haute" (la dernière du tableau tuiles) du deck et la retourne
 TuileJeu* Deck::tirer_tuile(){
-    if (nombreTuiles < 1) throw "Le deck est vide";
+    if (nombreTuiles < 1) throw SetException ("Le deck est vide");
     nombreTuiles--;
     return tuiles[nombreTuiles];
 };
 
 //Retire les x tuiles les plus "hautes" (les dernières du tableau tuiles) du deck et retourne un tableau de ces x tuiles
 TuileJeu** Deck::tirer_tuiles(size_t nombre_tuiles){
-    if (nombreTuiles < nombre_tuiles) throw "Le deck ne contient pas assez de tuiles";
+    if (nombreTuiles < nombre_tuiles) throw SetException("Le deck ne contient pas assez de tuiles");
     nombreTuiles -= nombre_tuiles;
     return tuiles + nombreTuiles;
 }
