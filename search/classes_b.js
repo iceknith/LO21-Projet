@@ -17,5 +17,6 @@ var searchData=
   ['serializable_14',['Serializable',['../d6/dcb/classSerializable.html',1,'']]],
   ['serializablefactory_15',['SerializableFactory',['../d8/d20/classSerializableFactory.html',1,'']]],
   ['serializationcontext_16',['SerializationContext',['../d3/d88/classSerializationContext.html',1,'']]],
-  ['statscouleurssoloarchitecte_17',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]]
+  ['setexception_17',['SetException',['../d9/d4c/classSetException.html',1,'']]],
+  ['statscouleurssoloarchitecte_18',['StatsCouleursSoloArchitecte',['../d1/d19/structStatsCouleursSoloArchitecte.html',1,'']]]
 ];
