@@ -221,7 +221,7 @@ void Jeu::chargerPartie() {
         file.close();
     }
     // Sinon dire qu'on as pas réussi à ouvrir le fichier
-    else throw SetException("Cannot open the file");
+    else throw AkropolisException("Cannot open the file");
     // Deserialiser le jeu (stocké à l'indice 0)
     s.deserialize(0);
 }
@@ -237,7 +237,7 @@ void Jeu::sauvegarderPartie() {
         file.close();
     }
     // Sinon dire qu'on as pas réussi à ouvrir le fichier
-    else throw SetException("Cannot open the file");
+    else throw AkropolisException("Cannot open the file");
 }
 
 // Jeu console //
@@ -870,6 +870,7 @@ int JeuGUI::selectTuile(size_t joueur) {
         size_t i = 0;
         for (auto tuile : chantier)
             affichageChantier[i++]->Affichage::affiche_container(*tuile);
+
         for (i; i < chantier.get_taille(); i++)
             affichageChantier[i++]->clearAffichage();
 

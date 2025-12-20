@@ -1,7 +1,6 @@
 #ifndef LO21_PROJET_GUI_HPP
 #define LO21_PROJET_GUI_HPP
 
-// JE NE SUIS PAS SUR QU'ILS SOIENT TOUS UTILES!
 #include <QApplication>
 #include <QPushButton>
 #include <QWidget>
@@ -54,10 +53,8 @@ namespace constGUI {
     QColor(86,190,68),//green
     };
 
-     const QColor outlineColor = QColor(46,44,59);//black
-
-
-
+    const QColor outlineColor = QColor(46,44,59);//black
+    const QString chantierStyleSheet = "background-color: #343638;";
 }
 
 // Hexagones //
@@ -100,6 +97,18 @@ public:
 signals:
     void mouseMoved(QPointF mousePos);
     void mousePressed(QPointF mousePos);
+};
+
+class ChantierQGraphicsView : public QGraphicsView {
+Q_OBJECT
+
+    void mousePressEvent(QMouseEvent *event) override {if(event->button() == Qt::LeftButton) emit onClicked();}
+
+public:
+    ChantierQGraphicsView(QGraphicsScene *s, QWidget *p);
+
+signals:
+    void onClicked();
 };
 
 // QT - ECRANS //
@@ -183,18 +192,6 @@ class EcanVictoire : public QWidget {
     EcanVictoire() ;
     signals:
     void startGame();
-};
-
-class ChantierQGraphicsView : public QGraphicsView {
-Q_OBJECT
-
-    void mousePressEvent(QMouseEvent *event) override {if(event->button() == Qt::LeftButton) emit onClicked();}
-
-public:
-    ChantierQGraphicsView(QGraphicsScene *s, QWidget *p) : QGraphicsView(s,p) {}
-
-signals:
-    void onClicked();
 };
 
 class EcranJeu : public QWidget {

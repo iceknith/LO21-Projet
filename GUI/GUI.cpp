@@ -93,6 +93,12 @@ void CameraMap::mousePressEvent(QMouseEvent *event) {
     emit mousePressed(position);
 }
 
+ChantierQGraphicsView::ChantierQGraphicsView(QGraphicsScene *s, QWidget *p)
+    : QGraphicsView(s,p) {
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
 // QT - ECRANS //
 
 EcranTitre::EcranTitre() {
@@ -350,16 +356,16 @@ void EcranSaisieNoms::setUpChamps(int nbChamps) {
 
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
-    QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
+    auto* layoutGlobal = new QVBoxLayout(this);
     layoutGlobal->setContentsMargins(0,0,0,0);
     layoutGlobal->setSpacing(0);
 
     // Zone 1: barre d'infos
-    QWidget* barreInfo = new QWidget();
+    auto* barreInfo = new QWidget();
     barreInfo->setFixedHeight(50);
     barreInfo->setStyleSheet("background-color: #333; color: white;");
 
-    QHBoxLayout* layoutInfo = new QHBoxLayout(barreInfo);
+    auto* layoutInfo = new QHBoxLayout(barreInfo);
 
     labelNom = new QLabel("Joueur: XXXX");
     labelScore = new QLabel("Score actuelle: XXXXX");
@@ -379,20 +385,16 @@ EcranJeu::EcranJeu() {
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelPierre);
 
-
     // ----------------------------------------------------
     //Zone 2: chantier
     zoneChantier = new QWidget();
     zoneChantier->setFixedHeight(200);
-    zoneChantier->setStyleSheet("background-color: #b0b0b0;");
-
+    zoneChantier->setStyleSheet(constGUI::chantierStyleSheet);
 
     // ----------------------------------------------------
     //zone 3: plateau
-
     plateau = new QWidget();
     infoJoueurs = new QWidget();
-
 
     sceneMap = new QGraphicsScene();
     vueMap = new CameraMap(sceneMap);
@@ -509,6 +511,14 @@ void EcranJeu::setUpWidgets(size_t playerCount) {
 
         connect(viewSceneChantier, &ChantierQGraphicsView::onClicked,
                 this, [=](){emit selectionTuileFinished(i);});
+        // Faire en sorte que le chantier soit toujours à la bonne taille
+        connect(sceneChantier[i], &QGraphicsScene::sceneRectChanged,
+                viewSceneChantier,
+                [viewSceneChantier](){
+                        viewSceneChantier->fitInView(viewSceneChantier->sceneRect(),
+                                                     Qt::KeepAspectRatio);
+                    }
+        );
     }
 
     //Setup preview autres joueurs

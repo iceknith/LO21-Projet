@@ -141,6 +141,7 @@ void AffichageGUI::affiche_container(HexagoneContainer &container, bool selectHe
     if (sceneMap == nullptr) return;
     clearAffichage(); // On efface tout l'ancien affichage
     sceneMap->addItem(getContainerGraphicsItem(container));
+
 }
 
 QGraphicsItemGroup* AffichageGUI::getContainerGraphicsItem(HexagoneContainer& container) {

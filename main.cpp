@@ -10,8 +10,9 @@ int main(int argc, char *argv[]) {
     try{
         //JeuConsole::getJeu()->gameLoop(argc, argv);
         JeuGUI::getJeu()->gameLoop(argc, argv);
-    } catch (SetException e){
-        cout<<e.get_info()<<"\n";
+    } catch (AkropolisException e) {
+        cout << e.get_info() << "\n";
+    }
 }
     /*
 int main() {
