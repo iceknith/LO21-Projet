@@ -11,8 +11,9 @@ var searchData=
   ['affichetourautomatique_8',['afficheTourAutomatique',['../d1/de1/classJeu.html#a6d0fc1ebfd551950cebce62996657b52',1,'Jeu::afficheTourAutomatique()'],['../dc/dcd/classJeuConsole.html#a827a7b25b6ff31ae75209729e08f0692',1,'JeuConsole::afficheTourAutomatique()'],['../da/d36/classJeuGUI.html#a15c1e8579f520553b1487a76afc4ed07',1,'JeuGUI::afficheTourAutomatique()']]],
   ['ajouter_5fpierre_9',['ajouter_pierre',['../dd/d07/classJoueur.html#af76c56726209959ed6ab7df700777884',1,'Joueur']]],
   ['ajouter_5ftuile_10',['ajouter_tuile',['../df/d51/classChantier.html#aa9526aca25a6e6d1a145db1a39544b40',1,'Chantier::ajouter_tuile(TuileJeu *tuile)'],['../df/d51/classChantier.html#a60a4da652cd58aa0b172004b2a1e8b36',1,'Chantier::ajouter_tuile(TuileJeu **tuile, size_t nombre)']]],
-  ['asserttests_11',['assertTests',['../d0/d76/Tests_8cpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp'],['../dc/d9d/Tests_8hpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp']]],
-  ['asserttestsscore_12',['assertTestsScore',['../d0/d76/Tests_8cpp.html#a1df0098b34e447a85ffd547a1c4b0b96',1,'Tests.cpp']]],
-  ['axialtopixel_13',['axialToPixel',['../d1/d25/namespaceconstGUI.html#a4b993a5d378fb21f62c779b7609d88f2',1,'constGUI']]],
-  ['axialtoscreen_14',['axialToScreen',['../d3/d75/namespaceconstAffichageConsoleHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageConsoleHex::axialToScreen()'],['../d3/dca/namespaceconstAffichageGraphiqueHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageGraphiqueHex::axialToScreen()']]]
+  ['akropolisexception_11',['AkropolisException',['../de/df5/classAkropolisException.html#ae5b513342dd84066d7df4ca812b565eb',1,'AkropolisException']]],
+  ['asserttests_12',['assertTests',['../d0/d76/Tests_8cpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp'],['../dc/d9d/Tests_8hpp.html#a1ae1e1f85527b56eee91b44bd20fe720',1,'assertTests():&#160;Tests.cpp']]],
+  ['asserttestsscore_13',['assertTestsScore',['../d0/d76/Tests_8cpp.html#a1df0098b34e447a85ffd547a1c4b0b96',1,'Tests.cpp']]],
+  ['axialtopixel_14',['axialToPixel',['../d1/d25/namespaceconstGUI.html#a4b993a5d378fb21f62c779b7609d88f2',1,'constGUI']]],
+  ['axialtoscreen_15',['axialToScreen',['../d3/d75/namespaceconstAffichageConsoleHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageConsoleHex::axialToScreen()'],['../d3/dca/namespaceconstAffichageGraphiqueHex.html#afffbfbcd44c07037fc75a841f5a51de0',1,'constAffichageGraphiqueHex::axialToScreen()']]]
 ];

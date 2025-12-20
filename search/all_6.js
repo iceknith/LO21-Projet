@@ -10,7 +10,7 @@ var searchData=
   ['get_5fhexagone_5ffiltres_7',['get_hexagone_filtres',['../da/dd1/namespaceScoreUtils.html#a693d790decfffab02b47c8b5e345af6f',1,'ScoreUtils']]],
   ['get_5fhexagone_5fvoisins_8',['get_hexagone_voisins',['../da/dd1/namespaceScoreUtils.html#a67ca2750e37900922d98ae135f6d0c03',1,'ScoreUtils']]],
   ['get_5fid_9',['get_id',['../d7/d88/classTuile.html#a426b8435a775b7524294529be4b851fe',1,'Tuile']]],
-  ['get_5finfo_10',['get_info',['../d9/d4c/classSetException.html#ab45c718cd3b756e8185b5480c4317c12',1,'SetException']]],
+  ['get_5finfo_10',['get_info',['../de/df5/classAkropolisException.html#a92980d37fcda375c322dafd48489954d',1,'AkropolisException']]],
   ['get_5fiteration_5ffiltres_11',['get_iteration_filtres',['../da/dd1/namespaceScoreUtils.html#a5ddf5ad6762058c14cc69cbc0a3aa223',1,'ScoreUtils']]],
   ['get_5fiteration_5fwith_5fhauteur_5ffiltres_12',['get_iteration_with_hauteur_filtres',['../da/dd1/namespaceScoreUtils.html#aca18e93ae5e2e9ecffc7c475a6988438',1,'ScoreUtils']]],
   ['get_5fjoue_5ftout_5fseul_13',['get_joue_tout_seul',['../dd/d07/classJoueur.html#a0e052bb1eb9f0928b88bfb86d281c3ea',1,'Joueur::get_joue_tout_seul()'],['../d9/d17/classIllustreArchitecte.html#ab73f8b7fd378e0aa762fd7da8ce5e74d',1,'IllustreArchitecte::get_joue_tout_seul()'],['../d6/dfa/classJoueurSimple.html#a7ce1c777cd56d96f3d6757455e5ff36b',1,'JoueurSimple::get_joue_tout_seul()']]],
