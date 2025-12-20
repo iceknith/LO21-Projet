@@ -7,8 +7,11 @@ using namespace std;
 
 
 int main(int argc, char *argv[]) {
-    //JeuConsole::getJeu()->gameLoop(argc, argv);
-    JeuGUI::getJeu()->gameLoop(argc, argv);
+    try{
+        //JeuConsole::getJeu()->gameLoop(argc, argv);
+        JeuGUI::getJeu()->gameLoop(argc, argv);
+    } catch (SetException e){
+        cout<<e.get_info()<<"\n";
 }
     /*
 int main() {
