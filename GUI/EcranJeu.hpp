@@ -164,6 +164,7 @@ public:
     AffichageGUI** getAffichagesChantier();
     AffichageGUI** getAffichagesJoueursAdverses();
     QLabel* getLabelTour() {return labelTour;}
+    QLabel* getLabelRegles() {return labelRegles;}
 
     void setUpWidgets(size_t playerCount);
 

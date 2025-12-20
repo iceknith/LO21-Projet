@@ -335,6 +335,9 @@ int JeuGUI::selectTuile(size_t joueur) {
     QString text = "Tour " + QString::number(nombreTours) + "/" + QString::number(maxNombreTours);
     window->getEcranJeu()->getLabelTour()->setText(text);
 
+    QString textControles = "Séléctionnez une tuile dans le chantier en cliquant dessus !";
+    window->getEcranJeu()->getLabelRegles()->setText(textControles);
+
     int resultat = -1;
     auto c1 = QObject::connect(window->getEcranJeu(),
                                &EcranJeu::selectionTuileFinished,
@@ -370,6 +373,10 @@ bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
     QMetaObject::invokeMethod(qApp, [=]() {
         window->getEcranJeu()->setSelectedTuile(affichageJoueur->getContainerGraphicsItem(*tuileSelected));
     }, Qt::QueuedConnection);
+
+    QString textControles = "Placez la tuile en cliquant sur un emplacement valide.\n\nContrôles:\nQ : tourner la tuile d'un cran sur la gauche\nD : tourner la tuile d'un cran sur la droite\nR : revenir à la séléction de tuiles";
+    window->getEcranJeu()->getLabelRegles()->setText(textControles);
+
 
     QEventLoop SignalWaitLoop;
     auto c1 = QWidget::connect(window->getEcranJeu(),
