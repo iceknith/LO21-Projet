@@ -2,8 +2,8 @@ var searchData=
 [
   ['saisienoms_0',['saisieNoms',['../d9/ddf/classEcranSaisieNoms.html#a4d56f49d788aa288a99b3c39fe0ed114',1,'EcranSaisieNoms']]],
   ['sauvegarderpartie_1',['sauvegarderPartie',['../d1/de1/classJeu.html#a8f1aa743aafdea16b274cd1d8d26d9dc',1,'Jeu']]],
-  ['score_2',['Score',['../d7/d48/classScore.html#aa34a5054236b40a6de262f1251e05f2c',1,'Score::Score()=default'],['../d7/d48/classScore.html#aac9a421717543d27245942dbe36ebff2',1,'Score::Score(Score *scoreDecore)']]],
-  ['score_3',['score',['../d7/d48/classScore.html#a547b8b5c6cee8fcc4a4ce95c27ee9c6e',1,'Score']]],
+  ['score_2',['score',['../d7/d48/classScore.html#a547b8b5c6cee8fcc4a4ce95c27ee9c6e',1,'Score']]],
+  ['score_3',['Score',['../d7/d48/classScore.html#aa34a5054236b40a6de262f1251e05f2c',1,'Score::Score()=default'],['../d7/d48/classScore.html#aac9a421717543d27245942dbe36ebff2',1,'Score::Score(Score *scoreDecore)']]],
   ['scorebleu_4',['ScoreBleu',['../d2/d58/classScoreBleu.html#a35b3073f39f793b9d233147554f4dd6e',1,'ScoreBleu::ScoreBleu()'],['../d2/d58/classScoreBleu.html#aa65fc8644437c2d2a13c6af69d2695e6',1,'ScoreBleu::ScoreBleu(Score *scoreDecore)']]],
   ['scorebleuvariante_5',['ScoreBleuVariante',['../d7/d8b/classScoreBleuVariante.html#a19bdf4126fed0523f2db09597519db90',1,'ScoreBleuVariante::ScoreBleuVariante()'],['../d7/d8b/classScoreBleuVariante.html#a8fb622364db7d75da522432986d0944d',1,'ScoreBleuVariante::ScoreBleuVariante(Score *scoreDecore)']]],
   ['scorejaune_6',['ScoreJaune',['../db/dc9/classScoreJaune.html#a78f77395b9e52df14713d80e7234d785',1,'ScoreJaune::ScoreJaune(Score *scoreDecore)'],['../db/dc9/classScoreJaune.html#af471f930f53d97c12b62d5f20968054b',1,'ScoreJaune::ScoreJaune()']]],
