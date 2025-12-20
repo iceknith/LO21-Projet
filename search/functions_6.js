@@ -44,10 +44,9 @@ var searchData=
   ['getnbjoueurs_41',['getNbJoueurs',['../dc/d5b/namespaceMenuData.html#adc112a33570017aba6c38625a8322037',1,'MenuData']]],
   ['getnbtours_42',['getNbTours',['../dc/d5b/namespaceMenuData.html#aa48066efd29ada5a7b050de1ad800f3d',1,'MenuData']]],
   ['getnomjoueur_43',['getNomJoueur',['../dd/d07/classJoueur.html#ac44fc9193efd1efd15782c6d54f67f6f',1,'Joueur']]],
-  ['getscoresimple_44',['getScoreSimple',['../d0/dd0/Score_8cpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a383609779c6452d7ce01eb4e84f4cfb5',1,'getScoreSimple():&#160;Score.cpp']]],
-  ['getscorevariante_45',['getScoreVariante',['../d0/dd0/Score_8cpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#a3bb665961179ffabecfb7715c0d6be5c',1,'getScoreVariante():&#160;Score.cpp']]],
-  ['getselectedtuileposition_46',['getSelectedTuilePosition',['../d2/dc8/classEcranJeu.html#a44251f2084bdcd187ffa3996ab043868',1,'EcranJeu']]],
-  ['getseletionsauvegarde_47',['getSeletionSauvegarde',['../dc/d5b/namespaceMenuData.html#a1d5fa62cf4f8f9e6d7652bb6a940b043',1,'MenuData']]],
-  ['getsize_48',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
-  ['grilletoaxial_49',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]]
+  ['getscore_44',['getScore',['../d0/dd0/Score_8cpp.html#aed88a3969ca1bcaa5a2e477a016f5bd7',1,'getScore(bool varianteBleu, bool varianteRouge, bool varianteVert, bool varianteViolet, bool varianteJaune):&#160;Score.cpp'],['../d0/dd0/Score_8cpp.html#afd9d995e2e1ccd26f4caebf7b6ace444',1,'getScore(bool varianteCouleurs[5]):&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#aed88a3969ca1bcaa5a2e477a016f5bd7',1,'getScore(bool varianteBleu, bool varianteRouge, bool varianteVert, bool varianteViolet, bool varianteJaune):&#160;Score.cpp'],['../d1/d7a/Score_8hpp.html#afd9d995e2e1ccd26f4caebf7b6ace444',1,'getScore(bool varianteCouleurs[5]):&#160;Score.cpp']]],
+  ['getselectedtuileposition_45',['getSelectedTuilePosition',['../d2/dc8/classEcranJeu.html#a44251f2084bdcd187ffa3996ab043868',1,'EcranJeu']]],
+  ['getseletionsauvegarde_46',['getSeletionSauvegarde',['../dc/d5b/namespaceMenuData.html#a1d5fa62cf4f8f9e6d7652bb6a940b043',1,'MenuData']]],
+  ['getsize_47',['getSize',['../dc/d32/classHexagoneContainer.html#a8b3277c6811268335bd0231e21a7e62c',1,'HexagoneContainer']]],
+  ['grilletoaxial_48',['grilleToAxial',['../d1/d25/namespaceconstGUI.html#a6acdfa909080b5982e6a0b89dea36db4',1,'constGUI']]]
 ];

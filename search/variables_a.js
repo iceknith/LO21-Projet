@@ -6,5 +6,6 @@ var searchData=
   ['nombretours_3',['nombreTours',['../d1/de1/classJeu.html#a090a1fc4bfe29c48d97903990196c9a7',1,'Jeu']]],
   ['nombretuiles_4',['nombreTuiles',['../df/d51/classChantier.html#abefa1198f791023d5ebe61122c17af27',1,'Chantier::nombreTuiles()'],['../d6/df2/classDeck.html#ac9523619303bfd9d62abf010ca5529b4',1,'Deck::nombreTuiles()']]],
   ['nomjoueur_5',['nomJoueur',['../dd/d07/classJoueur.html#ac9de73063d1f35b745e0e8e78f91f0e7',1,'Joueur']]],
-  ['noms_6',['noms',['../d9/ddf/classEcranSaisieNoms.html#abda12980162ead3407c8a7152f7af6e6',1,'EcranSaisieNoms']]]
+  ['noms_6',['noms',['../d9/ddf/classEcranSaisieNoms.html#abda12980162ead3407c8a7152f7af6e6',1,'EcranSaisieNoms']]],
+  ['nomscoresinorder_7',['nomScoresInOrder',['../de/d62/namespaceGameConstants.html#a662672ef2b3bf830244386a8cee7c40c',1,'GameConstants']]]
 ];
