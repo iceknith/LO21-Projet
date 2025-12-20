@@ -37,7 +37,7 @@ var searchData=
   ['getecranselectionnombrejoueurs_34',['getEcranSelectionNombreJoueurs',['../d6/d1a/classMainWindow.html#a864dec0c584c6a7521b27eb15feeabfb',1,'MainWindow']]],
   ['getecranselectionsauvegarde_35',['getEcranSelectionSauvegarde',['../d6/d1a/classMainWindow.html#a1983e4caf5a348b57a3b0d566b47ccd8',1,'MainWindow']]],
   ['getecrantitre_36',['getEcranTitre',['../d6/d1a/classMainWindow.html#a4edf53deb3612fb59835c136079fb6d1',1,'MainWindow']]],
-  ['getecranvictoire_37',['getEcranVictoire',['../d6/d1a/classMainWindow.html#a1eda3c814ef519b05f788007e3266823',1,'MainWindow']]],
+  ['getecranvictoire_37',['getEcranVictoire',['../d6/d1a/classMainWindow.html#af8e0e112e0cccd24ef706269ae393389',1,'MainWindow']]],
   ['gethexagone_38',['getHexagone',['../dc/d32/classHexagoneContainer.html#acdc01bcf915352cc0d779fbf89af6e5d',1,'HexagoneContainer']]],
   ['getinstance_39',['getInstance',['../d1/d3c/classAffichageConsole.html#aa81c3f205d74e2f88b40723f04668381',1,'AffichageConsole']]],
   ['getjeu_40',['getJeu',['../d1/de1/classJeu.html#a3183656c8617b3f8c9366c2141de164e',1,'Jeu::getJeu()'],['../dc/dcd/classJeuConsole.html#a214e0b1658a9fea8876ada883284ca64',1,'JeuConsole::getJeu()'],['../da/d36/classJeuGUI.html#af64b6e2baebe501fb255bfa33c12e90a',1,'JeuGUI::getJeu()']]],

@@ -44,6 +44,6 @@ var searchData=
   ['setupchamps_41',['setUpChamps',['../d9/ddf/classEcranSaisieNoms.html#acf8d21fbabf3506ff5723e2a011e63b4',1,'EcranSaisieNoms']]],
   ['setupwidgets_42',['setUpWidgets',['../d2/dc8/classEcranJeu.html#aa9353118ce7575cec63eeb0b7d29beba',1,'EcranJeu']]],
   ['showecran_43',['showEcran',['../d6/d1a/classMainWindow.html#a6de7a3dcf8ab398ae27f1c25070fe4e4',1,'MainWindow']]],
-  ['startgame_44',['startGame',['../d0/d72/classEcranTitre.html#a2f9e6bd82ce0c33cb3652a4fddcd641d',1,'EcranTitre::startGame()'],['../d7/d3a/classEcanVictoire.html#aa46e986cc480db00895365ed014e6312',1,'EcanVictoire::startGame()']]],
+  ['startgame_44',['startGame',['../d0/d72/classEcranTitre.html#a2f9e6bd82ce0c33cb3652a4fddcd641d',1,'EcranTitre::startGame()'],['../d5/d3e/classEcranVictoire.html#aba26a7efb2b76c23d6448c3dfe1255b3',1,'EcranVictoire::startGame()']]],
   ['sum_5fheights_45',['sum_heights',['../da/dd1/namespaceScoreUtils.html#aa413551b5b9f833c4f6a2ae1163b58b7',1,'ScoreUtils']]]
 ];
