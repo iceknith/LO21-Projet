@@ -126,13 +126,12 @@ struct StatsCouleursSoloArchitecte {
 };
 
 //Class SetException, utile si jamais le programme renvoie une erreur
-/*
 class SetException{
     string info;
 public :
     SetException(const string& s):info(s) {}
     const string& get_info () const { return info; }
 };
-*/
+
 
 #endif
