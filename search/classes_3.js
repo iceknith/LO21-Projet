@@ -8,5 +8,6 @@ var searchData=
   ['ecranselectionmodedejeu_5',['EcranSelectionModeDeJeu',['../d3/d57/classEcranSelectionModeDeJeu.html',1,'']]],
   ['ecranselectionnombrejoueurs_6',['EcranSelectionNombreJoueurs',['../d0/dbe/classEcranSelectionNombreJoueurs.html',1,'']]],
   ['ecranselectionsauvegarde_7',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html',1,'']]],
-  ['ecrantitre_8',['EcranTitre',['../d0/d72/classEcranTitre.html',1,'']]]
+  ['ecrantitre_8',['EcranTitre',['../d0/d72/classEcranTitre.html',1,'']]],
+  ['ecranvitessepartie_9',['EcranVitessePartie',['../df/d5a/classEcranVitessePartie.html',1,'']]]
 ];

@@ -10,6 +10,7 @@ var searchData=
   ['ecranselectionnombrejoueurs_7',['EcranSelectionNombreJoueurs',['../d0/dbe/classEcranSelectionNombreJoueurs.html#a9662dd582097bf478545aaf80f38f10e',1,'EcranSelectionNombreJoueurs']]],
   ['ecranselectionsauvegarde_8',['EcranSelectionSauvegarde',['../de/d9c/classEcranSelectionSauvegarde.html#a01ab62ceec928e04daf4d1187ccf969e',1,'EcranSelectionSauvegarde']]],
   ['ecrantitre_9',['EcranTitre',['../d0/d72/classEcranTitre.html#ae93cbe479f0d31ab038f52e316394547',1,'EcranTitre']]],
-  ['end_10',['end',['../df/d51/classChantier.html#aa9bee9c5223edfbfcdd5ff6ad7bb231c',1,'Chantier::end()'],['../df/d51/classChantier.html#a5f90c313e0c27bd7362fb2daf9eab415',1,'Chantier::end() const'],['../dc/d32/classHexagoneContainer.html#a3ddc0427a6a6775fa0e710a034c098c1',1,'HexagoneContainer::end()'],['../dc/d32/classHexagoneContainer.html#a15174135f03d44ade9f699ada383a16d',1,'HexagoneContainer::end() const']]],
-  ['est_5fvide_11',['est_vide',['../df/d51/classChantier.html#a71cf801583fcc32d96d4515ee03e5163',1,'Chantier']]]
+  ['ecranvitessepartie_10',['EcranVitessePartie',['../df/d5a/classEcranVitessePartie.html#ad6b8c29265452a78dd04837642a50176',1,'EcranVitessePartie']]],
+  ['end_11',['end',['../df/d51/classChantier.html#aa9bee9c5223edfbfcdd5ff6ad7bb231c',1,'Chantier::end()'],['../df/d51/classChantier.html#a5f90c313e0c27bd7362fb2daf9eab415',1,'Chantier::end() const'],['../dc/d32/classHexagoneContainer.html#a3ddc0427a6a6775fa0e710a034c098c1',1,'HexagoneContainer::end()'],['../dc/d32/classHexagoneContainer.html#a15174135f03d44ade9f699ada383a16d',1,'HexagoneContainer::end() const']]],
+  ['est_5fvide_12',['est_vide',['../df/d51/classChantier.html#a71cf801583fcc32d96d4515ee03e5163',1,'Chantier']]]
 ];
