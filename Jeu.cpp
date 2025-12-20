@@ -93,7 +93,6 @@ void Jeu::gameLoop(int argc, char *argv[]) {
 
     } while (BackPressed && StartJeu);
 
-
     afficheSceneJeu();
     while (chantier.get_nombre_tuiles() > 1) {
         sauvegarderPartie();
@@ -837,26 +836,43 @@ void JeuGUI::selectNomsJoueurs() {
     QObject::disconnect(c2);
 }
 
-
-
 void JeuGUI::afficheSceneJeu() {
+    // Actualiser le plateau de jeu
+    QMetaObject::invokeMethod(qApp, [=]() {
+        window->getEcranJeu()->setUpWidgets(nombreJoueurs);
+    }, Qt::QueuedConnection);
+
+    // Attendre que l'écran de jeu soit prêt
+    QEventLoop SignalWaitLoop;
+    auto c2 = QWidget::connect(window->getEcranJeu(),
+                               SIGNAL(ready()),
+                               &SignalWaitLoop, SLOT(quit()));
+    SignalWaitLoop.exec();
+
     window->showEcran(window->getEcranJeu());
     affichageJoueur = window->getEcranJeu()->getAffichageJoueur();
-    affichageChantier = window->getEcranJeu()->getAffichagesChantier(chantier.get_taille());
+    affichageChantier = window->getEcranJeu()->getAffichagesChantier();
+    affichageJoueursAdverses = window->getEcranJeu()->getAffichagesJoueursAdverses();
 }
 
 int JeuGUI::selectTuile(size_t joueur) {
-    // Dessiner le plateau du joueur et le chantier
+    // Dessiner le plateau des joueurs et le chantier
     QMetaObject::invokeMethod(qApp, [=]() {
+        // Joueur principal
         affichageJoueur->Affichage::affiche_joueur(*joueurs[joueur]);
-        }, Qt::QueuedConnection);
 
-    QMetaObject::invokeMethod(qApp, [=]() {
-        int i = 0;
+        // Joueurs adverses
+        for (size_t i = 0; i < nombreJoueurs; i++)
+            if (i != joueur)
+                affichageJoueursAdverses[i - (i > joueur)]->Affichage::affiche_joueur(*joueurs[i]);
+
+        // Chantier
+        size_t i = 0;
         for (auto tuile : chantier)
             affichageChantier[i++]->Affichage::affiche_container(*tuile);
         for (i; i < chantier.get_taille(); i++)
             affichageChantier[i++]->clearAffichage();
+
         }, Qt::QueuedConnection);
 
     int resultat = -1;

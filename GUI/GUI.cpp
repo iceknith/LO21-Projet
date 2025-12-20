@@ -388,50 +388,13 @@ EcranJeu::EcranJeu() {
     zoneChantier = new QWidget();
     zoneChantier->setFixedHeight(200);
     zoneChantier->setStyleSheet("background-color: #b0b0b0;");
-    auto* layoutChantier = new QGridLayout(zoneChantier);
-
-    sceneChantier = new QGraphicsScene*[max_tuiles_par_chantier];
-    labelsChantier = new QLabel*[max_tuiles_par_chantier];
-    for (int i = 0; i < max_tuiles_par_chantier; i++) {
-        sceneChantier[i] = new QGraphicsScene(zoneChantier);
-        auto* viewSceneChantier = new ChantierQGraphicsView(sceneChantier[i], zoneChantier);
-        layoutChantier->addWidget(viewSceneChantier,  0, i);
-
-        labelsChantier[i] = new QLabel(QString::number(i), zoneChantier);
-        labelsChantier[i]->setAlignment(Qt::AlignCenter);
-        layoutChantier->addWidget(labelsChantier[i],  1, i);
-
-        connect(viewSceneChantier, &ChantierQGraphicsView::onClicked,
-                this, [=](){emit selectionTuileFinished(i);});
-    }
 
 
     // ----------------------------------------------------
     //zone 3: plateau
 
-    QWidget* plateau = new QWidget();
-
-
-    QWidget* infoJoueurs = new QWidget();
-    QVBoxLayout* layoutPlayers = new QVBoxLayout(infoJoueurs);
-
-    labelJ1 = new QLabel("Joueur 1: XXXX");
-    labelJ2 = new QLabel("Joueur 2: XXXX");
-    labelJ3 = new QLabel("Joueur 3: XXXX");
-    labelJ4 = new QLabel("Joueur 4: XXXX");
-    labelJ5 = new QLabel("Joueur 5: XXXX");
-
-    layoutPlayers->addWidget(labelJ1);
-    layoutInfo->addStretch();
-    layoutPlayers->addWidget(labelJ2);
-    layoutInfo->addStretch();
-    layoutPlayers->addWidget(labelJ3);
-    layoutInfo->addStretch();
-    layoutPlayers->addWidget(labelJ4);
-    layoutInfo->addStretch();
-    layoutPlayers->addWidget(labelJ5);
-
-
+    plateau = new QWidget();
+    infoJoueurs = new QWidget();
 
 
     sceneMap = new QGraphicsScene();
@@ -443,13 +406,11 @@ EcranJeu::EcranJeu() {
 
     labelRegles = new QLabel("VOICI LES REGLES ET LES CONTROLES\n blabla\n blabla");
 
-    QHBoxLayout *layoutMap = new QHBoxLayout(plateau);
+    auto* layoutMap = new QHBoxLayout(plateau);
 
     layoutMap->addWidget(infoJoueurs, 1);
     layoutMap->addWidget(vueMap, 6);
     layoutMap->addWidget(labelRegles, 1);
-
-
 
     // ----------------------------------------------------
     layoutGlobal->addWidget(barreInfo);
@@ -465,17 +426,31 @@ EcranJeu::~EcranJeu() {
 
     delete zoneChantier;
 
-    for (int i = 0; i < max_tuiles_par_chantier; i++) {
+    for (int i = 0; i < nombreJoueurs+1; i++) {
         delete sceneChantier[i];
         delete labelsChantier[i];
     }
+    delete sceneChantier;
+    delete labelsChantier;
+
+    for (int i = 0; i < nombreJoueurs-1; i++) {
+        delete labelNomJoueurs[i];
+        delete labelScoreJoueurs[i];
+        delete labelPierreJoueurs[i];
+        delete sceneMapJoueurs[i];
+    }
+    delete labelNomJoueurs;
+    delete labelScoreJoueurs;
+    delete labelPierreJoueurs;
+    delete sceneMapJoueurs;
 
     delete vueMap;
     delete sceneMap;
+    delete infoJoueurs;
 
     delete selectedTuile;
 
-
+    delete labelRegles;
 }
 
 void EcranJeu::onPlateauCameraMapMouseMoved(QPointF mousePos) {
@@ -504,11 +479,65 @@ AffichageGUI *EcranJeu::getAffichageJoueur() {
     return new AffichageGUI(sceneMap, labelNom, labelScore, labelPierre);
 }
 
-AffichageGUI **EcranJeu::getAffichagesChantier(size_t tailleChantier) {
-    auto result = new AffichageGUI*[tailleChantier];
-    for (size_t i = 0; i < tailleChantier; i++)
+AffichageGUI **EcranJeu::getAffichagesChantier() {
+    auto result = new AffichageGUI*[nombreJoueurs+1];
+    for (size_t i = 0; i < nombreJoueurs+1; i++)
         result[i] = new AffichageGUI(sceneChantier[i]);
     return result;
+}
+
+AffichageGUI **EcranJeu::getAffichagesJoueursAdverses() {
+    auto result = new AffichageGUI*[nombreJoueurs-1];
+    for (size_t i = 0; i < nombreJoueurs-1; i++)
+        result[i] = new AffichageGUI(sceneMapJoueurs[i], labelNomJoueurs[i], labelScoreJoueurs[i], labelPierreJoueurs[i]);
+    return result;
+}
+
+
+void EcranJeu::setUpWidgets(size_t playerCount) {
+    nombreJoueurs = playerCount;
+
+    //Setup chantier
+    auto* layoutChantier = new QGridLayout(zoneChantier);
+    sceneChantier = new QGraphicsScene*[nombreJoueurs+1];
+    labelsChantier = new QLabel*[nombreJoueurs+1];
+    for (int i = 0; i < nombreJoueurs+1; i++) {
+        sceneChantier[i] = new QGraphicsScene(zoneChantier);
+        auto* viewSceneChantier = new ChantierQGraphicsView(sceneChantier[i], zoneChantier);
+        layoutChantier->addWidget(viewSceneChantier,  0, i);
+
+        labelsChantier[i] = new QLabel(QString::number(i), zoneChantier);
+        labelsChantier[i]->setAlignment(Qt::AlignCenter);
+        layoutChantier->addWidget(labelsChantier[i],  1, i);
+
+        connect(viewSceneChantier, &ChantierQGraphicsView::onClicked,
+                this, [=](){emit selectionTuileFinished(i);});
+    }
+
+    //Setup preview autres joueurs
+    auto* layoutPlayers = new QGridLayout(infoJoueurs);
+    labelNomJoueurs = new QLabel*[nombreJoueurs-1];
+    labelScoreJoueurs = new QLabel*[nombreJoueurs-1];
+    labelPierreJoueurs = new QLabel*[nombreJoueurs-1];
+    sceneMapJoueurs = new QGraphicsScene*[nombreJoueurs-1];
+    for (int i = 0; i < nombreJoueurs-1; i++) {
+        labelNomJoueurs[i] = new QLabel();
+        labelScoreJoueurs[i] = new QLabel();
+        labelPierreJoueurs[i] = new QLabel();
+        sceneMapJoueurs[i] = new QGraphicsScene();
+        auto vueMapJoueur = new CameraMap(sceneMapJoueurs[i]);
+
+        labelNomJoueurs[i]->setAlignment(Qt::AlignCenter);
+        labelScoreJoueurs[i]->setAlignment(Qt::AlignCenter);
+        labelPierreJoueurs[i]->setAlignment(Qt::AlignCenter);
+
+        layoutPlayers->addWidget(labelNomJoueurs[i],  2*i, 0);
+        layoutPlayers->addWidget(labelScoreJoueurs[i],  2*i, 1);
+        layoutPlayers->addWidget(labelPierreJoueurs[i],  2*i, 2);
+        layoutPlayers->addWidget(vueMapJoueur,  2*i+1, 0, 1, 3);
+    }
+
+    emit ready();
 }
 
 void EcranJeu::setSelectedTuile(QGraphicsItemGroup *newSelectedTuile) {

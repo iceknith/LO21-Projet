@@ -196,7 +196,9 @@ signals:
 class EcranJeu : public QWidget {
 
 Q_OBJECT
-    // Indicateurs
+    size_t nombreJoueurs = 0;
+
+    // Indicateurs Joueur principal
     QLabel* labelNom;
     QLabel* labelScore;
     QLabel* labelRegleScore;
@@ -207,17 +209,20 @@ Q_OBJECT
     QGraphicsScene** sceneChantier;
     QLabel** labelsChantier;
 
-    //Autres Joueurs
-    QLabel* labelJ1;
-    QLabel* labelJ2;
-    QLabel* labelJ3;
-    QLabel* labelJ4;
-    QLabel* labelJ5;
-
-    QLabel* labelRegles;
     // La Map
+    QWidget* plateau;
     CameraMap* vueMap;
     QGraphicsScene* sceneMap;
+    QWidget* infoJoueurs;
+
+    // Autres joueurs
+    QLabel** labelNomJoueurs;
+    QLabel** labelScoreJoueurs;
+    QLabel** labelPierreJoueurs;
+    QGraphicsScene** sceneMapJoueurs;
+
+
+    QLabel* labelRegles;
 
     // La tuile séléctionnée
     QGraphicsItemGroup* selectedTuile = nullptr;
@@ -228,8 +233,12 @@ Q_OBJECT
 
 public:
     AffichageGUI* getAffichageJoueur();
-    AffichageGUI** getAffichagesChantier(size_t tailleChantier);
+    AffichageGUI** getAffichagesChantier();
+    AffichageGUI** getAffichagesJoueursAdverses();
     QLabel** getLabelsChantier() const {return labelsChantier;}
+
+    void setUpWidgets(size_t playerCount);
+
     void setSelectedTuile(QGraphicsItemGroup* newSelectedTuile);
     QPointF getSelectedTuilePosition() const {return selectedTuile->pos();};
     void removeSelectedTuile() {delete selectedTuile; selectedTuile = nullptr;}
@@ -238,6 +247,7 @@ public:
     ~EcranJeu() override;
 
 signals:
+    void ready();
     void selectionTuileFinished(int tuileSelected);
     void selectionPlacementFinished(Vector2 placement);
     void tourneSelectedTuile(bool sensHoraire);

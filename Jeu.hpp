@@ -148,6 +148,7 @@ private:
 
     AffichageGUI* affichageJoueur = nullptr;
     AffichageGUI** affichageChantier = nullptr;
+    AffichageGUI** affichageJoueursAdverses = nullptr;
 
     JeuGUI() : Jeu() {};
 
