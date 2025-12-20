@@ -37,7 +37,7 @@ protected:
     //! Le nombre de joueurs qui participent au jeu
     size_t nombreJoueurs = 0;
     //! Les joueurs qui jouent dans ce jeu
-    Joueur* joueurs[constJeu::nombreJoueursMax]= {nullptr};;
+    Joueur* joueurs[constJeu::nombreJoueursMax]= {nullptr};
     //! Le joueur actuel
     size_t joueurActuel = 0;
     //! Le premier joueur

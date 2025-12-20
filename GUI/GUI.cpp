@@ -253,6 +253,8 @@ EcranChoixRegles::EcranChoixRegles() {
             });
 }
 
+// Ecran saisie de noms
+
 EcranSaisieNoms::EcranSaisieNoms() {
     QBoxLayout* globalLayout = new QVBoxLayout(this);
     // Titre
@@ -300,6 +302,8 @@ void EcranSaisieNoms::setUpChamps(int nbChamps) {
         noms.push_back(champ);
     }
 }
+
+// Ecran de jeu
 
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
@@ -499,7 +503,7 @@ void EcranJeu::setSelectedTuile(QGraphicsItemGroup *newSelectedTuile) {
     sceneMap->addItem(selectedTuile);
 }
 
-EcanVictoire::EcanVictoire() {
+EcranVictoire::EcranVictoire() {
     // Mise en page verticale
     QVBoxLayout* layout = new QVBoxLayout(this);
 
@@ -524,7 +528,7 @@ EcanVictoire::EcanVictoire() {
     layout->addWidget(StartBouton);
     layout->addStretch();
 
-    connect(StartBouton, &QPushButton::clicked, this, &EcanVictoire::startGame);
+    connect(StartBouton, &QPushButton::clicked, this, &EcranVictoire::startGame);
 }
 
 // Ecran main (gameManager) //
@@ -553,7 +557,7 @@ MainWindow::MainWindow() {
     ecranJeu = new EcranJeu();
     pile->addWidget(ecranJeu);
 
-    victoire = new EcanVictoire();
+    victoire = new EcranVictoire();
     pile->addWidget(victoire);
 
     // Pile
