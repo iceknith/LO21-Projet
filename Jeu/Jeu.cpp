@@ -147,6 +147,8 @@ multimap<int, string> Jeu::calculerScores() {
 }
 
 Jeu::~Jeu() {
+    for (size_t i = 0; i < nombreJoueurs; i++) delete joueurs[i];
+
     delete tuileDepart;
 }
 

@@ -97,7 +97,7 @@ protected:
 
     Jeu() : deck(), chantier() {tuileDepart = new TuileDepart();}
 public:
-    ~Jeu() override;
+    virtual ~Jeu();
 
     virtual void gameLoop(int argc, char *argv[]);
 
@@ -111,13 +111,7 @@ public:
 
 class JeuConsole : public Jeu {
 private:
-    //! L'affichage du jeu.
-    /*
-     * L'affichage du jeu
-    */
-    Affichage* affichage;
-
-    JeuConsole();
+    JeuConsole() : Jeu() {};
 
     void titleScreen() override;
     bool selectChargerPartie() override;
@@ -156,6 +150,7 @@ private:
     AffichageGUI** affichageJoueursAdverses = nullptr;
 
     JeuGUI() : Jeu() {};
+    ~JeuGUI();
 
     void titleScreen() override;
     bool selectChargerPartie() override;

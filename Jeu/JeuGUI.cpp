@@ -427,3 +427,15 @@ void JeuGUI::finDePartie(multimap<int, string> scores) {
     }, Qt::QueuedConnection);
     window->showEcran(window->getEcranVictoire());
 }
+
+JeuGUI::~JeuGUI() {
+    delete app;
+    delete window;
+    delete runApp;
+
+    delete affichageJoueur;
+    for (size_t i = 0; i < nombreJoueurs + 1; i++) delete affichageChantier[i];
+    delete[] affichageChantier;
+    for (size_t i = 0; i < nombreJoueurs - 1; i++) delete affichageJoueursAdverses[i];
+    delete[] affichageJoueursAdverses;
+}

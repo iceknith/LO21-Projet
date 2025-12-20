@@ -24,6 +24,7 @@ protected:
     int hauteur;
 public :
     Tuile();
+    ~Tuile() override;
 
     //! Setteur de la Hauteur. À appeler lors de la pose sur le terrain
     void set_hauteur(const int hauteur) {this->hauteur = max(hauteur, 0);}

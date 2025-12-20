@@ -1,9 +1,5 @@
 #include "Jeu.hpp"
 
-JeuConsole::JeuConsole() : Jeu() {
-    affichage = AffichageConsole::getInstance();
-}
-
 void JeuConsole::selectGameMode()  {
     int choix =0;
     cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?" << endl
@@ -227,10 +223,10 @@ int JeuConsole::selectTuile(size_t joueur) {
         // Définition du plateau pour la tuile
         cout<<"\033[0;97mTuile n°"<<i+1<< " (cout en pierre = "<< i << ") : "<<endl;
         i++;
-        affichage->affiche_container(*iter);
+        AffichageConsole::getInstance()->Affichage::affiche_container(*iter);
     }
     cout<<"\033[0;97m\n Votre plateau :" <<endl;
-    affichage->affiche_joueur(*joueurs[joueur]);
+    AffichageConsole::getInstance()->Affichage::affiche_joueur(*joueurs[joueur]);
 
     cout << "\033[0;97m" << joueurs[joueur]->getNomJoueur() <<" quelle tuile voulez vous selectionner ?" << endl;
     cout << "\033[0;37m( -1 ) pour quitter le programme et sauvegarder la partie." << endl;
@@ -335,7 +331,7 @@ bool JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 
                 Joueur *tempJoueur = joueurs[joueur];
                 tempJoueur->place_tuile(tuileSelected, positionSelectionne);
-                affichage->affiche_joueur(*tempJoueur);
+                AffichageConsole::getInstance()->Affichage::affiche_joueur(*tempJoueur);
 
                 cout << "\033[0;97mTapez \033[1;32my\033[0;97m pour confirmer ce placement !" << endl
                      << "\033[0;37m-> \033[0;97m";
@@ -364,16 +360,16 @@ bool JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
 void JeuConsole::afficheJoueur(size_t joueur, Tuile &tuileSelected, Vector2& positionSelectionne) {
     cout << "\033[0;36m-------------------------------------------" << endl
          << "\033[0;97m"<<joueurs[joueur]->getNomJoueur()<<", Où voulez vous placer cette tuile:" << endl;
-    affichage->affiche_container(tuileSelected, Vector2(0,0));
+    AffichageConsole::getInstance()->Affichage::affiche_container(tuileSelected, Vector2(0,0));
     cout << endl
          << "\033[0;97mSur votre plateau:" << endl;
-    affichage->affiche_joueur(*joueurs[joueur], positionSelectionne);
+    AffichageConsole::getInstance()->Affichage::affiche_joueur(*joueurs[joueur], positionSelectionne);
 }
 
 void JeuConsole::afficheTourAutomatique(size_t joueur) {
     cout << "\033[0;36m-------------------------------------------" << endl
          << "\033[0;97mVoici le plateau de l'Illustre Architechte:" << endl;
-    affichage->affiche_joueur(*joueurs[joueur]);
+    AffichageConsole::getInstance()->Affichage::affiche_joueur(*joueurs[joueur]);
 
 }
 

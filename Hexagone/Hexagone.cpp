@@ -140,6 +140,18 @@ void Carriere::quand_recouvert(Joueur *joueur_qui_recouvre) const {
     joueur_qui_recouvre->ajouter_pierre(pierre_count);
 }
 
+Place::Place(Tuile *tuile_parent, const Vector2 &localPos, CouleursAkropolis couleur)
+    : Hexagone(tuile_parent, localPos, couleur) {
+    switch (couleur) {
+        case BLEU: etoiles = 1; break;
+        case JAUNE: etoiles = 2; break;
+        case ROUGE: etoiles = 2; break;
+        case VIOLET: etoiles = 2; break;
+        case VERT: etoiles = 3; break;
+        default: etoiles = 0; break;
+    }
+}
+
 void Place::serialize(QVariantMap &data, SerializationContext *context) const {
     Hexagone::serialize(data, context);
     data["etoiles"] = etoiles;

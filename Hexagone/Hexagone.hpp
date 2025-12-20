@@ -77,7 +77,7 @@ public :
     Hexagone() : Hexagone(nullptr, {}, CouleursAkropolis::BLANC) {};
     Hexagone(Tuile* tuile_parent, const Vector2& localPos, CouleursAkropolis couleur) :
             tuileParent(tuile_parent), localPos(localPos), couleur(couleur) {};
-    ~Hexagone() = default;
+    virtual ~Hexagone() = default;
 
 
     //! Retourne la couleur de cet hexagone
@@ -155,10 +155,11 @@ protected:
     /*!
      * Permet de savoir le multiplicateur à appliquer à la fin de la partie pour le score
      */
-    int etoiles;
+    int etoiles = 0;
 public:
-    using Hexagone::Hexagone;
-    ~Place() {std::cout<<"Place détruite";};
+    Place() : Hexagone() {}
+    Place(Tuile* tuile_parent, const Vector2& localPos, CouleursAkropolis couleur);
+
     // ! Retourne le type de l'hexagone
     TypeHexagone get_type()  const override{
         return TypeHexagone::Place;
@@ -189,7 +190,6 @@ public:
     Carriere(Tuile* tuile_parent, const Vector2& localPos, CouleursAkropolis couleur) = delete;
 
     Carriere(Tuile* tuile_parent, const Vector2& localPos) : Hexagone(tuile_parent, localPos, BLANC) {}
-    ~Carriere() {std::cout<<"Carriere détruite";};
     // ! Retourne le type de l'hexagone
     TypeHexagone get_type()  const override{
         return TypeHexagone::Carriere;
@@ -209,7 +209,6 @@ public:
 class Quartier : public Hexagone{
 public:
     using Hexagone::Hexagone;
-    ~Quartier() {std::cout<<"Quartier détruite";};
     // ! Retourne le type de l'hexagone
     TypeHexagone get_type()  const override{
         return TypeHexagone::Quartier;

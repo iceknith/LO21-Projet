@@ -14,7 +14,7 @@ protected:
     float rotation;
 public:
     HexagoneContainer() = default;
-    virtual ~HexagoneContainer() {};
+    virtual ~HexagoneContainer() {}; // Le container ne gère pas directement la suppression des hexagones qu'il contient.
 
     //! Retourne si il existe un hexagone aux coordonées entreées
     /*!

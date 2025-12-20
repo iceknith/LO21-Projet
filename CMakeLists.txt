@@ -35,12 +35,9 @@ add_executable(LO21-Projet main.cpp
         GUI/GUI.hpp
         GUI/MenusDatas.hpp
         GUI/EcranJeu.cpp
-        GUI/EcranJeu.cpp
         GUI/EcranJeu.hpp
         Jeu/JeuConsole.cpp
         Jeu/JeuGUI.cpp
-        #assets.qrc
-
 )
 
 # Lier executable aux bibliothèques qt

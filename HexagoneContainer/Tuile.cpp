@@ -11,6 +11,10 @@ Tuile::Tuile() : HexagoneContainer() {
     hauteur = 0;
 }
 
+Tuile::~Tuile() {
+    for (auto it: container) delete it.second;
+}
+
 void Tuile::serialize(QVariantMap &data, SerializationContext *context) const {
     HexagoneContainer::serialize(data, context);
     data["hauteur"] = hauteur;
