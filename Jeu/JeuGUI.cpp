@@ -69,7 +69,7 @@ void JeuGUI::selectGameMode() {
     auto cBack = QObject::connect(window->getEcranSelectionModeDeJeu(),
                                   &EcranSelectionModeDeJeu::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
 
     //Attendre que le signal pour quitter l'écran soit émis
@@ -109,7 +109,7 @@ void JeuGUI::selectJoueurs() {
     auto cBack = QObject::connect(window->getEcranSelectionNombreJoueurs(),
                                   &EcranSelectionNombreJoueurs::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
 
     //Attendre que le signal pour quitter l'écran soit émis
@@ -143,7 +143,7 @@ void JeuGUI::selectReglesScore() {
     auto cBack = QObject::connect(window->getEcranChoixRegles(),
                                   &EcranChoixRegles::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
 
     //Attendre que le signal pour quitter l'écran soit émis
@@ -184,7 +184,7 @@ Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
     auto cBack = QObject::connect(window->getEcranDifficulteArchitechte(),
                                   &EcranDifficulteArchitechte::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
@@ -226,7 +226,7 @@ void JeuGUI::selectNomsJoueurs() {
     auto cBack = QObject::connect(window->getEcranSaisieNoms(),
                                   &EcranSaisieNoms::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
 
     QEventLoop SignalWaitLoop;
@@ -268,7 +268,7 @@ VITESSE JeuGUI::selectVitessePartie() {
     auto cBack = QObject::connect(window->getEcranVitessePartie(),
                                   &EcranVitessePartie::backRequested,
                                   [&](bool retour){
-                                      BackPressed = retour;
+                                      backPressed = retour;
                                   });
 
     //Attendre que le signal pour quitter l'écran soit émis

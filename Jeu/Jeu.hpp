@@ -51,7 +51,7 @@ protected:
     Chantier chantier;
 
     //! Si la touche de retour as été appuyée
-    bool BackPressed = false;
+    bool backPressed = false;
 
     // Game loop methodes
 

@@ -18,7 +18,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
     const int maxEtape = 5;
 
     while (etape <= maxEtape && !gameLoaded) {
-        BackPressed = false;
+        backPressed = false;
 
         switch (etape) {
             case 0: // Chargement de fichier
@@ -52,7 +52,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
                 break;
         }
 
-        etape += BackPressed ? -1 : 1;
+        etape += backPressed ? -1 : 1;
     }
     // Si le jeu n'as pas été chargé via une sauvegarde, initialiser toutes les variables
     if (!gameLoaded) {

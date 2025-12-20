@@ -6,11 +6,12 @@ JeuConsole::JeuConsole() : Jeu() {
 
 void JeuConsole::selectGameMode()  {
     int choix =0;
-    cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?"
-         << endl << "\033[0;37m-> \033[0;97m";
+    cout << "\033[0;97mSOLO ( 1 ) / MULTI ( 2 )?" << endl
+        << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+        << "\033[0;37m-> \033[0;97m";
     cin >> choix;
 
-    while (cin.fail() || choix <= 0 || choix > 2) {
+    while (cin.fail() || choix < 0 || choix > 2) {
         cout << "\033[1;31m --> gamemode inexistant !"
              << endl << "\033[0;37m-> \033[0;97m";
         // Enlève l'état d'erreur
@@ -20,6 +21,13 @@ void JeuConsole::selectGameMode()  {
         cin >> choix;
 
     }
+
+    // Si il y as un retour en arrière
+    if (choix == 0) {
+        backPressed = true;
+        return;
+    }
+
     modeDeJeu = static_cast<GameMode>(choix -1);
 
     if (modeDeJeu == GameMode::MULTIJOUEUR) { return;}
@@ -28,11 +36,12 @@ void JeuConsole::selectGameMode()  {
 }
 
 void JeuConsole::selectJoueurs() {
-    cout << "\033[0;97mCombien de joueurs joueront à cette partie ?"
-         << endl << "\033[0;37m-> \033[0;97m";
+    cout << "\033[0;97mCombien de joueurs joueront à cette partie ?" << endl
+        << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+        << "\033[0;37m-> \033[0;97m";
     cin >> nombreJoueurs;
 
-    while (cin.fail() || nombreJoueurs < 2 || nombreJoueurs > 4) {
+    while (cin.fail() || ((nombreJoueurs < 2 || nombreJoueurs > 4) && nombreJoueurs != 0)) {
         cout << "\033[1;31mLe nombre de joueur doit être un entier entre 2 et 4 !"
              << endl << "\033[0;37m-> \033[0;97m";
         // Enlève l'état d'erreur
@@ -40,6 +49,11 @@ void JeuConsole::selectJoueurs() {
         // Ignore les "mauvais" charactères
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> nombreJoueurs;
+    }
+
+    if (nombreJoueurs == 0) {
+        backPressed = true;
+        return;
     }
 
     cout << "\033[0;36mCette partie se déroulera à " << nombreJoueurs << " joueurs" << endl;
@@ -51,8 +65,9 @@ void JeuConsole::selectNomsJoueurs() {
     for (size_t i = 0; i < (modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs); i++) {
         string nomJoueur;
         string placeSuffixe = i == 0 ? "er" : "ème";
-        cout << "\033[0;97mQuel est le nom du " << i+1 << placeSuffixe << " joueur ?"
-             << endl << "\033[0;37m-> \033[0;97m";
+        cout << "\033[0;97mQuel est le nom du " << i+1 << placeSuffixe << " joueur ?" << endl
+                << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+                << "\033[0;37m-> \033[0;97m";
         cin >> nomJoueur;
 
         while (cin.fail()) {
@@ -65,17 +80,23 @@ void JeuConsole::selectNomsJoueurs() {
             cin >> nomJoueur;
         }
 
+        if (nomJoueur == "0") {
+            backPressed = true;
+            return;
+        }
+
         dynamic_cast<JoueurSimple*>(joueurs[i])->setNomJoueur(nomJoueur);
     }
 }
 
 Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
     int choix;
-    cout << "\033[0;97m FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?"
-         << endl << "\033[0;37m-> \033[0;97m";
+    cout << "\033[0;97m FACILE ( 1 ) / NORMALE ( 2 ) / DIFFICILE (3)?" << endl
+        << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+        << "\033[0;37m-> \033[0;97m";
     cin >> choix;
 
-    while (cin.fail() || choix <= 0 || choix > 3) {
+    while (cin.fail() || choix < 0 || choix > 3) {
         cout << "\033[1;31m --> difficulté  inexistante !"
              << endl << "\033[0;37m-> \033[0;97m";
         // Enlève l'état d'erreur
@@ -84,6 +105,12 @@ Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> choix;
     }
+
+    if (choix == 0)  {
+        backPressed = true;
+        return Difficulte::NORMALE;
+    }
+
     auto difficulte = static_cast<Difficulte>(choix-1);
     switch (difficulte){
         case Difficulte::FACILE:
@@ -109,11 +136,12 @@ void JeuConsole::selectReglesScore() {
     for (int i = 0; i < 5; i++) {
         string choixRegles;
         cout << "\033[0;97mAvec quelles règles de score voulez-vous jouer pour la couleur " << GameConstants::nomScoresInOrder[i] << " ?" << endl
-             << "SIMPLE ( s ) / VARIANTE ( v )"
-             << endl << "\033[0;37m-> \033[0;97m";
+             << "SIMPLE ( s ) / VARIANTE ( v )" << endl
+             << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+             << "\033[0;37m-> \033[0;97m";
         cin >> choixRegles;
 
-        while (cin.fail() || (choixRegles != "s" && choixRegles != "v")) {
+        while (cin.fail() || (choixRegles != "s" && choixRegles != "v" && choixRegles != "0")) {
             cout << "\033[1;31mLes règles ne peuvent que être: SIMPLE ( s ) / AVANCÉES ( a ) !"
                  << endl << "\033[0;37m-> \033[0;97m";
             // Enlève l'état d'erreur
@@ -121,6 +149,11 @@ void JeuConsole::selectReglesScore() {
             // Ignore les "mauvais" charactères
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cin >> choixRegles;
+        }
+
+        if (choixRegles == "0") {
+            backPressed = true;
+            return;
         }
 
         if (choixRegles == "v")
@@ -142,11 +175,13 @@ void JeuConsole::selectReglesScore() {
 
 VITESSE JeuConsole::selectVitessePartie() {
     int choix;
-    cout << "\033[0;97mQuelle est la vitesse de la partie ?\n RAPIDE ( 1 ) / NORMALE ( 2 ) / LENTE (3)?"
-         << endl << "\033[0;37m-> \033[0;97m";
+    cout << "\033[0;97mQuelle est la vitesse de la partie ?" << endl
+        << "RAPIDE ( 1 ) / NORMALE ( 2 ) / LENTE (3)?" << endl
+        << "\033[0;37m( 0 ) pour revenir en arrière" << endl
+        << "\033[0;37m-> \033[0;97m";
     cin >> choix;
 
-    while (cin.fail() || choix <= 0 || choix > 3) {
+    while (cin.fail() || choix < 0 || choix > 3) {
         cout << "\033[1;31m --> difficulté  inexistante !"
              << endl << "\033[0;37m-> \033[0;97m";
         // Enlève l'état d'erreur
@@ -155,8 +190,14 @@ VITESSE JeuConsole::selectVitessePartie() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cin >> choix;
     }
-    auto difficulte = static_cast<VITESSE>(choix-1);
-    switch (difficulte){
+
+    if (choix == 0) {
+        backPressed = true;
+        return VITESSE::NORMALE;
+    }
+
+    auto vitesse = static_cast<VITESSE>(choix - 1);
+    switch (vitesse){
         case VITESSE::RAPIDE:
             cout << "\033[0;32mRapide\033[0;97m: Les meilleures choses sont les plus courtes !"<< endl;
             break;
@@ -167,10 +208,10 @@ VITESSE JeuConsole::selectVitessePartie() {
             cout << "\033[0;31mDifficile\033[0;97m: Pour faire durer le plaisir !"<< endl;
             break;
         default:
-            cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
+            cout << "\033[1;31mErreur : vitesse inconnue ..." << endl;
             break;
     }
-    return difficulte;
+    return vitesse;
 }
 
 int JeuConsole::selectTuile(size_t joueur) {

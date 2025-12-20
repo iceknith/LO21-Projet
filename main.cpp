@@ -8,8 +8,8 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     try{
-        //JeuConsole::getJeu()->gameLoop(argc, argv);
-        JeuGUI::getJeu()->gameLoop(argc, argv);
+        JeuConsole::getJeu()->gameLoop(argc, argv);
+        //JeuGUI::getJeu()->gameLoop(argc, argv);
     } catch (AkropolisException e) {
         cout << e.get_info() << "\n";
     }
