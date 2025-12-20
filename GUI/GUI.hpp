@@ -28,6 +28,7 @@
 #include <QLineEdit>
 #include <QStyle>
 #include <iostream>
+#include <QColor>
 
 #include "../Utils.hpp"
 #include <QStackedWidget>
@@ -45,15 +46,18 @@ namespace constGUI {
     Vector2 grilleToAxial(int col, int ligne, int offsetCentre) ;
 
     const QColor akropolisToQTColors[6] {
-    Qt::white,
-    Qt::blue,
-    Qt::yellow,
-    Qt::red,
-    Qt::magenta,
-    Qt::green,
+    QColor(193,229,234),//white
+    QColor(59,119,166),//blue
+    QColor(243,194,32),//yellow
+    QColor(181,65,49),//red
+    QColor(97,64,122),//magenta
+    QColor(86,190,68),//green
     };
 
-     const QColor outlineColor = Qt::black;
+     const QColor outlineColor = QColor(46,44,59);//black
+
+
+
 }
 
 // Hexagones //
