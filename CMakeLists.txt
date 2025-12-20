@@ -34,6 +34,9 @@ add_executable(LO21-Projet main.cpp
         GUI/GUI.cpp
         GUI/GUI.hpp
         GUI/MenusDatas.hpp
+        GUI/EcranJeu.cpp
+        GUI/EcranJeu.cpp
+        GUI/EcranJeu.hpp
         #assets.qrc
 
 )
