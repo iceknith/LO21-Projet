@@ -101,12 +101,7 @@ EcranTitre::EcranTitre() {
 }
 
 EcranChoixRegles::EcranChoixRegles() {
-    QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("CHOIX DES VARIANTES DE SCORE");
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
-    layout->addStretch();
-    layout->addWidget(texte);
-    texte->setAlignment(Qt::AlignCenter);
+    ecranBasics("CHOIX DES VARIANTES DE SCORE", true);
 
     auto* boutonLayout = new QGridLayout();
 
@@ -135,13 +130,13 @@ EcranChoixRegles::EcranChoixRegles() {
         boutonLayout->addWidget(boutons[i], 1, i);
     }
 
-    layout->addStretch();
+    mainLayout->addStretch();
     auto boutonValider = new QPushButton("VALIDER");
     boutonValider->setStyleSheet("font-size: 20px; padding: 20px; background: red;");
     boutonLayout->addWidget(boutonValider, 3, 0, 1, GameConstants::scoreAmounts);
 
-    layout->addLayout(boutonLayout);
-    layout->addStretch();
+    mainLayout->addLayout(boutonLayout);
+    mainLayout->addStretch();
 
     connect(boutonValider, &QPushButton::clicked,
             this,
@@ -156,25 +151,19 @@ EcranChoixRegles::EcranChoixRegles() {
 // Ecran saisie de noms
 
 EcranSaisieNoms::EcranSaisieNoms() {
-    QBoxLayout* globalLayout = new QVBoxLayout(this);
-    // Titre
-    QLabel* titre  = new QLabel("Selection des noms");
-    titre->setStyleSheet("font-size: 60px; font-weight: bold;");
-    globalLayout->addStretch();
-    globalLayout->addWidget(titre);
-    titre->setAlignment(Qt::AlignCenter);
+    ecranBasics("SELECTION DES NOMS", true);
 
     // Champ de text modulable
     QWidget* zoneChamps = new QWidget();
     layoutChampsSaisies = new QVBoxLayout(zoneChamps);
 
-    globalLayout->addWidget(zoneChamps);
+    mainLayout->addWidget(zoneChamps);
 
     // Bouton valider
     QPushButton* boutonValider = new QPushButton("VALIDER");
     boutonValider->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
-    globalLayout->addWidget(boutonValider);
-    globalLayout->addStretch();
+    mainLayout->addWidget(boutonValider);
+    mainLayout->addStretch();
 
     // Recupere les noms et les envois
     connect(boutonValider, &QPushButton::clicked, [this](){
@@ -192,6 +181,10 @@ EcranSaisieNoms::EcranSaisieNoms() {
 }
 
 void EcranSaisieNoms::setUpChamps(int nbChamps) {
+    for (auto& nom : noms) {
+        layoutChampsSaisies->removeWidget(nom);
+        delete nom;
+    }
     noms.clear();
     for(int i = 0; i < nbChamps; i++) {
         QLineEdit* champ = new QLineEdit();

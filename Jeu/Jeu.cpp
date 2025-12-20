@@ -17,7 +17,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
     bool gameLoaded = false;
     const int maxEtape = 5;
 
-    while (etape < maxEtape && !gameLoaded) {
+    while (etape <= maxEtape && !gameLoaded) {
         BackPressed = false;
 
         switch (etape) {
@@ -189,12 +189,11 @@ void Jeu::deserialize(const QVariantMap &data, SerializationContext *context) {
     // On commence par le deck, vu que c'est lui qui est responsable de toutes les tuilesJeu
     deck.deserialize(data["deck"].value<QVariantMap>(), context);
 
-    // Ensuite, en deuxième, on sérialize la tuile de départ
+    // Ensuite, en deuxième, on désérialize la tuile de départ
     delete tuileDepart;
     tuileDepart = dynamic_cast<TuileDepart*>(context->deserialize(data["tuileDepart"]));
 
     // Finalement, on peut faire les autres dans l'ordre qu'on veut
-    for (auto joueur : joueurs) delete joueur;
     for (int i = 0; i < nombreJoueurs; i++)
         joueurs[i] = dynamic_cast<Joueur*>(context->deserialize(data[QString::number(i)]));
 

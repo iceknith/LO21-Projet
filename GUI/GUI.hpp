@@ -85,7 +85,7 @@ public:
 /*!
   Ecran selection des noms de chaque joueur.
 */
-class EcranSaisieNoms : public QWidget {
+class EcranSaisieNoms : public AbstractEcran {
     Q_OBJECT
 private:
     QVBoxLayout* layoutChampsSaisies;
@@ -96,21 +96,21 @@ public:
     void setUpChamps(int nbChamps);
 
     signals:
-    void saisieNoms(std::vector<QString> noms);
+        void saisieNoms(std::vector<QString> noms);
 
 };
 //! La classe EcranChoixRegles :
 /*!
   TODO :
 */
-class EcranChoixRegles : public QWidget {
+class EcranChoixRegles : public AbstractEcran {
     Q_OBJECT
     QPushButton* boutons[GameConstants::scoreAmounts];
 
     public:
     EcranChoixRegles();
     signals:
-    void selectionFinished(bool varianteCouleurs[GameConstants::scoreAmounts]);
+        void selectionFinished(bool varianteCouleurs[GameConstants::scoreAmounts]);
 };
 //! La classe EcranVictoire :
 /*!

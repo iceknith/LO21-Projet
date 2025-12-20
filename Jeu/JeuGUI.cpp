@@ -66,7 +66,6 @@ void JeuGUI::selectGameMode() {
                                &EcranSelectionModeDeJeu::selectionFinished,
                                [this](GameMode modeDeJeuSelected){modeDeJeu = modeDeJeuSelected;});
 
-    BackPressed = false;
     auto cBack = QObject::connect(window->getEcranSelectionModeDeJeu(),
                                   &EcranSelectionModeDeJeu::backRequested,
                                   [&](bool retour){
@@ -107,7 +106,6 @@ void JeuGUI::selectJoueurs() {
                                    this ->nombreJoueurs = nb;
                                });
 
-    BackPressed = false;
     auto cBack = QObject::connect(window->getEcranSelectionNombreJoueurs(),
                                   &EcranSelectionNombreJoueurs::backRequested,
                                   [&](bool retour){
@@ -142,12 +140,21 @@ void JeuGUI::selectReglesScore() {
                                [&](const bool avecVariante[GameConstants::scoreAmounts]){
                                    for (size_t i = 0; i < GameConstants::scoreAmounts; i++) varianteCouleurs[i] = avecVariante[i];
                                });
+    auto cBack = QObject::connect(window->getEcranChoixRegles(),
+                                  &EcranChoixRegles::backRequested,
+                                  [&](bool retour){
+                                      BackPressed = retour;
+                                  });
 
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
     auto c2 = QWidget::connect(window->getEcranChoixRegles(),
                                SIGNAL(selectionFinished(bool)),
                                &SignalWaitLoop, SLOT(quit()));
+    auto c3 = QWidget::connect(window->getEcranChoixRegles(),
+                               SIGNAL(backRequested(bool)),
+                               &SignalWaitLoop, SLOT(quit()));
+
     SignalWaitLoop.exec();
 
     Score* score = getScore(varianteCouleurs);
@@ -161,7 +168,9 @@ void JeuGUI::selectReglesScore() {
     }
 
     QWidget::disconnect(c1);
+    QWidget::disconnect(cBack);
     QWidget::disconnect(c2);
+    QWidget::disconnect(c3);
 }
 
 Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
@@ -172,8 +181,6 @@ Difficulte JeuGUI::selectNiveauIllustreArchitechte() {
                                &EcranDifficulteArchitechte::selectionFinished,
                                [&](Difficulte difficulte){resultat = difficulte;});
 
-
-    BackPressed = false;
     auto cBack = QObject::connect(window->getEcranDifficulteArchitechte(),
                                   &EcranDifficulteArchitechte::backRequested,
                                   [&](bool retour){
@@ -216,10 +223,22 @@ void JeuGUI::selectNomsJoueurs() {
                                &EcranSaisieNoms::saisieNoms,
                                [&](std::vector<QString> liste){newNames = liste; });
 
+    auto cBack = QObject::connect(window->getEcranSaisieNoms(),
+                                  &EcranSaisieNoms::backRequested,
+                                  [&](bool retour){
+                                      BackPressed = retour;
+                                  });
+
     QEventLoop SignalWaitLoop;
     auto c2 = QWidget::connect(window->getEcranSaisieNoms(),
                                SIGNAL(saisieNoms(std::vector<QString>)),
                                &SignalWaitLoop, SLOT(quit()));
+
+    auto c3 = QWidget::connect(window->getEcranSaisieNoms(),
+                               SIGNAL(backRequested(bool)),
+                               &SignalWaitLoop, SLOT(quit()));
+
+
     SignalWaitLoop.exec();
 
     // Donne leurs noms à chaque joueurs
@@ -231,21 +250,10 @@ void JeuGUI::selectNomsJoueurs() {
         }
     }
 
-/*
-    if (modeDeJeu == GameMode::SOLO) {
-        if (dynamic_cast<IllustreArchitecte*>(joueurs[1])->get_difficulte() == Difficulte::FACILE) {
-            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Hippodamos");
-        }
-        if (dynamic_cast<IllustreArchitecte*>(joueurs[1])->get_difficulte() == Difficulte::NORMALE) {
-            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Metagenes");
-        }
-        else {
-            dynamic_cast<JoueurSimple*>(joueurs[1])->setNomJoueur("Callicrates");
-        }
-    }*/
-
     QObject::disconnect(c1);
+    QObject::disconnect(cBack);
     QObject::disconnect(c2);
+    QObject::disconnect(c3);
 }
 
 VITESSE JeuGUI::selectVitessePartie() {
@@ -257,16 +265,29 @@ VITESSE JeuGUI::selectVitessePartie() {
                                &EcranVitessePartie::selectionFinished,
                                [&](VITESSE vitesse){v = vitesse;});
 
+    auto cBack = QObject::connect(window->getEcranVitessePartie(),
+                                  &EcranVitessePartie::backRequested,
+                                  [&](bool retour){
+                                      BackPressed = retour;
+                                  });
+
     //Attendre que le signal pour quitter l'écran soit émis
     QEventLoop SignalWaitLoop;
 
     auto c2 = QWidget::connect(window->getEcranVitessePartie(),
                                SIGNAL(selectionFinished(VITESSE)),
                                &SignalWaitLoop, SLOT(quit()));
+
+    auto c3 = QWidget::connect(window->getEcranVitessePartie(),
+                               SIGNAL(backRequested(bool)),
+                               &SignalWaitLoop, SLOT(quit()));
+
     SignalWaitLoop.exec();
 
     QWidget::disconnect(c1);
+    QObject::disconnect(cBack);
     QWidget::disconnect(c2);
+    QObject::disconnect(c3);
 
     return v;
 }
