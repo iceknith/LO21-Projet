@@ -101,7 +101,6 @@ EcranTitre::EcranTitre() {
 }
 
 EcranChoixRegles::EcranChoixRegles() {
-    // TODO: CHECKBOX DES REGLES
     QBoxLayout* layout = new QVBoxLayout(this);
     QLabel* texte  = new QLabel("CHOIX DES VARIANTES DE SCORE");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
@@ -109,7 +108,7 @@ EcranChoixRegles::EcranChoixRegles() {
     layout->addWidget(texte);
     texte->setAlignment(Qt::AlignCenter);
 
-    auto* boutonLayout = new QGridLayout(this);
+    auto* boutonLayout = new QGridLayout();
 
     for (size_t i = 0; i < GameConstants::scoreAmounts; i++) {
 
