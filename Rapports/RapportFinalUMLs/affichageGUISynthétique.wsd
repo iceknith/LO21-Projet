@@ -1,0 +1,54 @@
+@startuml affichageGUISynthetique
+
+class HexagoneGUIObject extends QObject, QGraphicsItem {
+    - hex : QGraphicsPolygonItem
+    - outline : QGraphicsPathItem
+    - text : QGraphicsTextItem
+    - hauteur : QGraphicsTextItem
+
+    + HexagoneGUIObjet(couleur : CouleursAkropolis, description : const string&, height : int, doOutline : const bool[5])
+    + boundingRect() const : QRectF
+    + void paint(painter : QPainter*, option : const QStyleOptionGraphicsItem*, widget : QWidget*)
+}
+
+class CameraMap extends QGraphicsView {
+    # wheelEvent(event : QWheelEvent*)
+    # mouseMoveEvent(event : QMouseEvent*)
+    # mousePressEvent(event : QMouseEvent*)
+    + CameraMap(scene : QGraphicsScene*)
+    + mouseMoved(mousePos : QPointF) {signal}
+    + mousePressed(mousePos : QPointF) {signal}
+}
+
+class ChantierQGraphicsView extends QGraphicsView {
+    # mousePressEvent(event : QMouseEvent*)
+    + ChantierQGraphicsView(scene : QGraphicsScene*, p : QWidget*)
+    + onClicked() {signal}
+}
+
+class EcranType extends QWidget {
+    + EcranType()
+    + signalDeCommunication(argumentDuSignal : Type) {signal}
+}
+
+class EcranJeu extends QWidget {
+    /' définir celà une fois que le jeu est fini '/
+    + EcranJeu()
+    + selectionFinished(chargeSauvegarde : bool) {signal}
+}
+
+class AffichageGUI extends Affichage
+
+Hexagone -- AffichageGUI
+AffichageGUI *-- HexagoneGUIObject
+JeuGUI *-- AffichageGUI
+
+EcranType --* MainWindow
+EcranJeu --* MainWindow
+CameraMap --* EcranJeu
+ChantierQGraphicsView --* EcranJeu
+EcranJeu -- HexagoneGUIObject
+MainWindow o-- AffichageGUI
+JeuGUI *- MainWindow
+
+@enduml

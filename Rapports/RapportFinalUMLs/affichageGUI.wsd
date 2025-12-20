@@ -1,0 +1,98 @@
+@startuml affichageGUI
+
+class HexagoneGUIObject extends QObject, QGraphicsItem {
+    - hex : QGraphicsPolygonItem
+    - outline : QGraphicsPathItem
+    - text : QGraphicsTextItem
+    - hauteur : QGraphicsTextItem
+
+    + HexagoneGUIObjet(couleur : CouleursAkropolis, description : const string&, height : int, doOutline : const bool[5])
+    + boundingRect() const : QRectF
+    + void paint(painter : QPainter*, option : const QStyleOptionGraphicsItem*, widget : QWidget*)
+}
+
+class CameraMap extends QGraphicsView {
+    # wheelEvent(event : QWheelEvent*)
+    # mouseMoveEvent(event : QMouseEvent*)
+    # mousePressEvent(event : QMouseEvent*)
+    + CameraMap(scene : QGraphicsScene*)
+    + mouseMoved(mousePos : QPointF) {signal}
+    + mousePressed(mousePos : QPointF) {signal}
+}
+
+class ChantierQGraphicsView extends QGraphicsView {
+    # mousePressEvent(event : QMouseEvent*)
+    + ChantierQGraphicsView(scene : QGraphicsScene*, p : QWidget*)
+    + onClicked() {signal}
+}
+
+
+
+class EcranTitre extends QWidget {
+    + EcranTitre()
+    + startGame() {signal}
+}
+
+class EcranSelectionSauvegarde extends QWidget {
+    + EcranSelectionSauvegarde()
+    + selectionFinished(chargeSauvegarde : bool) {signal}
+}
+
+class EcranSelectionModeDeJeu extends QWidget {
+    + EcranSelectionModeDeJeu()
+    + selectionFinished(modeDeJeu : GameMode) {signal}
+}
+
+class EcranSelectionNombreJoueurs extends QWidget {
+    + EcranSelectionNombreJoueurs()
+    + selectionFinished(nombreDeJoueurs : int) {signal}
+}
+
+class EcranSaisieNoms extends QWidget {
+    + EcranSaisieNoms()
+    + selectionFinished(noms : vector<QString>) {signal}
+}
+
+class EcranDifficulteArchitechte extends QWidget {
+    + EcranDifficulteArchitechte()
+    + selectionFinished(difficulte : Difficulte) {signal}
+}
+
+class EcranChoixRegles extends QWidget {
+    + EcranChoixRegles()
+    + selectionFinished(avecVariante : bool) {signal}
+}
+
+class EcranVictoire extends QWidget {
+    + EcranVictoire()
+    + startGame() {signal}
+}
+
+class EcranJeu extends QWidget {
+    /' définir celà une fois que le jeu est fini '/
+    + EcranJeu()
+    + selectionFinished(chargeSauvegarde : bool) {signal}
+}
+
+class AffichageGUI extends Affichage
+
+Hexagone -- AffichageGUI
+AffichageGUI *-- HexagoneGUIObject
+JeuGUI *-- AffichageGUI
+
+EcranTitre --* MainWindow
+EcranSelectionSauvegarde --* MainWindow
+EcranSelectionModeDeJeu --* MainWindow
+EcranSelectionNombreJoueurs --* MainWindow
+EcranSaisieNoms --* MainWindow
+EcranDifficulteArchitechte --* MainWindow
+EcranChoixRegles --* MainWindow
+EcranVictoire --* MainWindow
+EcranJeu --* MainWindow
+CameraMap --* EcranJeu
+ChantierQGraphicsView --* EcranJeu
+EcranJeu -- HexagoneGUIObject
+MainWindow o-- AffichageGUI
+JeuGUI *- MainWindow
+
+@enduml

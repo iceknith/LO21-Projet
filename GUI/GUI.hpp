@@ -26,7 +26,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QLineEdit>
-#include <Qstyle>
+#include <QStyle>
 #include <iostream>
 
 #include "../Utils.hpp"
@@ -70,24 +70,13 @@ private:
     QGraphicsTextItem hauteur;
 
 public:
-    bool interactif = true;
-
     HexagoneGUIObjet(CouleursAkropolis couleur, const std::string& description, int height,
                      const bool doOutline[5]);
-
-    void mousePressEvent(QGraphicsSceneMouseEvent *event) override {
-        if (interactif) {
-            emit hexagoneClique();
-        }
-    }
 
     QRectF boundingRect() const override {return hex.boundingRect();}
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget) override {};
-
-    signals:
-        void hexagoneClique();
 };
 
 // QGraphicsView: nous permet d' afficher tout nous hexagones et qui permet de zommer et plus ... (je reviendrais refaire aux propre tout les comms)
@@ -225,7 +214,6 @@ Q_OBJECT
     QLabel* labelJ4;
     QLabel* labelJ5;
 
-
     QLabel* labelRegles;
     // La Map
     CameraMap* vueMap;
@@ -289,7 +277,5 @@ public:
     EcanVictoire* getEcranVictoire() const {return victoire;}
 
 };
-
-
 
 #endif //LO21_PROJET_GUI_HPP

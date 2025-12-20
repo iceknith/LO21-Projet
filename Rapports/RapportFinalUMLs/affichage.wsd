@@ -1,0 +1,57 @@
+@startuml affichage
+
+class Affichage {
+    # affiche_joueur(joueur : Joueur&, selectHexagone : bool, selectedHexagone : Vector2) {pure virtual}
+    # affiche_container(container : HexagoneContainer&, selectHexagone : bool, selectedHexagone : Vector2) {pure virtual}
+
+    + affiche_container(container : HexagoneContainer&)
+    + affiche_container(container : HexagoneContainer&, selectedHexagone : Vector2)
+    + affiche_joueur(joueur : Joueur&)
+    + affiche_joueur(joueur : Joueur&, selectedHexagone : Vector2)
+}
+
+class AffichageConsole extends Affichage {
+    instance : AffichageConsole* {static}
+
+    + getInstance() : AffichageConsole* {static}
+
+    - AffichageConsole()
+
+    # affiche_joueur(joueur : Joueur&, selectHexagone : bool, selectedHexagone : Vector2)
+    # affiche_container(container : HexagoneContainer&, selectHexagone : bool, selectedHexagone : Vector2)
+}
+note bottom: "Est un singleton"
+
+
+class AffichageGUI extends Affichage {
+    - sceneMap : QGraphicsScene*
+    - labelNom : QLabel*
+    - labelScore : QLabel*
+    - labelPierre : QLabel*
+
+    # affiche_joueur(joueur : Joueur&, selectHexagone : bool, selectedHexagone : Vector2)
+    # affiche_container(container : HexagoneContainer&, selectHexagone : bool, selectedHexagone : Vector2)
+
+    + AffichageGUI()
+    + AffichageGUI(newSceneMap : QGraphicsScene*)
+    + AffichageGUI(sceneMap : QGraphicsScene*, labelNom : QLabel*, labelScore : QLabel*, labelPierre : QLabel*)
+    
+    + getContainerGraphicsItem(container : HexagoneContainer&) : QGraphicsItemGroup* 
+    + clearAffichage() {if (sceneMap) sceneMap->clear();}
+
+    + setSceneMap(newSceneMap : QGraphicsScene*)
+    + setLabelNom(newlabelNom : QLabel*)
+    + setLabelScore(newlabelScore : QLabel*)
+    + setLabelPierre(newlabelPierre : QLabel*)
+}
+
+AffichageConsole -- Hexagone : Hexagone.affiche_console()
+AffichageGUI -- Hexagone : Hexagone.affiche_GUI()
+AffichageGUI o-- CameraMap
+AffichageGUI *-- HexagoneGUIObject
+
+JeuConsole o-- AffichageConsole
+EcranJeu o-- AffichageGUI
+JeuGUI *-- AffichageGUI
+
+@enduml
