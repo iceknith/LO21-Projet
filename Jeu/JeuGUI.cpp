@@ -311,6 +311,9 @@ int JeuGUI::selectTuile(size_t joueur) {
 
     }, Qt::QueuedConnection);
 
+    QString text = "Tour " + QString::number(nombreTours) + "/" + QString::number(maxNombreTours);
+    window->getEcranJeu()->getLabelTour()->setText(text);
+
     int resultat = -1;
     auto c1 = QObject::connect(window->getEcranJeu(),
                                &EcranJeu::selectionTuileFinished,

@@ -115,19 +115,19 @@ EcranJeu::EcranJeu() {
 
     labelNom = new QLabel("Joueur: XXXX");
     labelScore = new QLabel("Score actuelle: XXXXX");
-    labelRegleScore = new QLabel("Regle de score: XXXXX");
+    labelTour = new QLabel("Tour: XXXXX");
     labelPierre = new QLabel("Pierres: XXXXX");
 
     labelNom->setStyleSheet("font-size: 20px;  color: white;");
     labelScore->setStyleSheet("font-size: 20px;  color: white;");
-    labelRegleScore->setStyleSheet("font-size: 20px;  color: white;");
+    labelTour->setStyleSheet("font-size: 20px;  color: white;");
     labelPierre->setStyleSheet("font-size: 20px;  color: white;");
     // Mise en page
     layoutInfo->addWidget(labelNom);
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelScore);
     layoutInfo->addStretch();
-    layoutInfo->addWidget(labelRegleScore);
+    layoutInfo->addWidget(labelTour);
     layoutInfo->addStretch();
     layoutInfo->addWidget(labelPierre);
 
@@ -166,7 +166,7 @@ EcranJeu::EcranJeu() {
 EcranJeu::~EcranJeu() {
     delete labelNom;
     delete labelScore;
-    delete labelRegleScore;
+    delete labelTour;
     delete labelPierre;
 
     delete zoneChantier;

@@ -104,7 +104,6 @@ public:
     void mousePressed(QPointF mousePos);
 };
 
-
 class ChantierQGraphicsView : public QGraphicsView {
     Q_OBJECT
 
@@ -130,7 +129,7 @@ class EcranJeu : public QWidget {
     // Indicateurs Joueur principal
     QLabel* labelNom;
     QLabel* labelScore;
-    QLabel* labelRegleScore;
+    QLabel* labelTour;
     QLabel* labelPierre;
 
     // Chantier
@@ -164,7 +163,7 @@ public:
     AffichageGUI* getAffichageJoueur();
     AffichageGUI** getAffichagesChantier();
     AffichageGUI** getAffichagesJoueursAdverses();
-    QLabel** getLabelsChantier() const {return labelsChantier;}
+    QLabel* getLabelTour() {return labelTour;}
 
     void setUpWidgets(size_t playerCount);
 
