@@ -34,7 +34,6 @@
 
 class AffichageGUI;
 
-
 namespace constGUI {
     void backgroundMap(int size, QGraphicsScene* scene);
 
@@ -113,6 +112,57 @@ signals:
 
 // QT - ECRANS //
 
+class AbstractEcran : public QWidget {
+    // class maire, permet eviter repetition code classe filles et implementer facilement de nouveaux menus basiques
+
+    Q_OBJECT
+protected:
+    QVBoxLayout* mainLayout;
+    // Configure le titre et le layout de base
+    void ecranBasics(const QString& titre, bool avecBoutonRetour = false);
+    template <typename T, typename ClassFille> void setupBoutons(T &data, ClassFille* fille);
+
+public:
+    AbstractEcran(QWidget* parent = nullptr);
+    signals:
+        void backRequested(bool); // Signal commun pour le retour
+};
+
+class EcranSelectionSauvegarde : public AbstractEcran {
+    Q_OBJECT
+public:
+    EcranSelectionSauvegarde();
+
+    signals:
+        void selectionFinished(bool chargeSauvegarde);
+};
+
+class EcranSelectionModeDeJeu : public AbstractEcran {
+    Q_OBJECT
+public:
+    EcranSelectionModeDeJeu();
+    signals:
+        void selectionFinished(GameMode modeDeJeu);
+
+};
+
+class EcranSelectionNombreJoueurs : public AbstractEcran {
+    Q_OBJECT
+    public:
+    EcranSelectionNombreJoueurs();
+    signals:
+        void selectionFinished(int nombreDeJoueurs);
+};
+
+class EcranDifficulteArchitechte : public AbstractEcran {
+    Q_OBJECT
+        public:
+    EcranDifficulteArchitechte();
+    signals:
+    void selectionFinished(Difficulte difficulte);
+
+};
+
 class EcranTitre : public QWidget {
     Q_OBJECT
 
@@ -123,35 +173,6 @@ public:
         void startGame();
 
 };
-
-class EcranSelectionSauvegarde : public QWidget {
-Q_OBJECT
-
-public:
-    EcranSelectionSauvegarde();
-
-signals:
-    void selectionFinished(bool chargeSauvegarde);
-};
-
-class EcranSelectionModeDeJeu : public QWidget {
-Q_OBJECT
-public:
-    EcranSelectionModeDeJeu();
-signals:
-    void selectionFinished(GameMode modeDeJeu);
-    void backRequested(bool retour);
-};
-
-class EcranSelectionNombreJoueurs : public QWidget {
-    Q_OBJECT
-    public:
-    EcranSelectionNombreJoueurs();
-    signals:
-        void selectionFinished(int nombreDeJoueurs);
-        void backRequested(bool retour);
-};
-
 
 class EcranSaisieNoms : public QWidget {
     Q_OBJECT
@@ -166,16 +187,6 @@ public:
     signals:
     void saisieNoms(std::vector<QString> noms);
 
-
-};
-
-class EcranDifficulteArchitechte : public QWidget {
-    Q_OBJECT
-        public:
-    EcranDifficulteArchitechte();
-    signals:
-    void selectionFinished(Difficulte difficulte);
-    void backRequested(bool retour);
 };
 
 class EcranChoixRegles : public QWidget {

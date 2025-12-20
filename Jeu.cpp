@@ -649,6 +649,7 @@ bool JeuGUI::selectChargerPartie() {
 
 void JeuGUI::selectGameMode() {
     window->showEcran(window->getEcranSelectionModeDeJeu());
+
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
     auto c1 = QObject::connect(window->getEcranSelectionModeDeJeu(),
                      &EcranSelectionModeDeJeu::selectionFinished,

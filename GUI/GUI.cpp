@@ -5,7 +5,7 @@
 // Hexagones //
 
 HexagoneGUIObjet::HexagoneGUIObjet(const CouleursAkropolis couleur, const std::string& description, const int height,
-                                   const bool doOutline[6]) :
+                                   const bool doOutline[GameConstants::HEXAGON_DIRECTIONS]) :
         hex(this), outline(this), text(this), hauteur(this) {
     // Construction de l'Hexagone & de l'outline
     QPolygonF points;
@@ -101,6 +101,77 @@ ChantierQGraphicsView::ChantierQGraphicsView(QGraphicsScene *s, QWidget *p)
 
 // QT - ECRANS //
 
+// ABSTRACT ECRAN
+
+AbstractEcran::AbstractEcran(QWidget* parent) : QWidget(parent) {
+    // On initialise le layout  pour que tous les enfants l'aient
+    mainLayout = new QVBoxLayout(this);
+}
+
+void AbstractEcran::ecranBasics(const QString& titreText, bool avecBoutonRetour) {
+
+    // Integration du bouton retour :
+    if (avecBoutonRetour) {
+        QPushButton* backButton = new QPushButton();
+        backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
+        backButton->setFixedSize(32, 32);
+        mainLayout->addWidget(backButton);
+        connect(backButton, &QPushButton::clicked, this, [this](){ emit backRequested(true); });
+    }
+    mainLayout->addStretch();
+    // Ajout du titre menu :
+    //mainLayout->addStretch();
+    QLabel* titre = new QLabel(titreText);
+    titre->setAlignment(Qt::AlignCenter);
+    titre->setStyleSheet("font-size: 60px; font-weight: bold;");
+    mainLayout->addWidget(titre);
+    mainLayout->addSpacing(30);
+}
+
+template <typename T, typename ClassFille> void AbstractEcran::setupBoutons(T &data, ClassFille* fille) {
+    // Creations des boutons:
+    for (const auto& option : data) {
+
+        QPushButton* btn = new QPushButton(option.btnTexte);
+        QString style = QString("font-size: 20px; padding: 10px; background: %1; color: white;").arg(option.couleur);
+        btn->setStyleSheet(style);
+
+
+        mainLayout->addWidget(btn);
+
+        // Connexion du signal :
+        connect(btn, &QPushButton::clicked, fille, [fille, option]() {
+            emit fille->selectionFinished(option.signalData);
+        });
+    }
+    mainLayout->addStretch();
+}
+
+
+EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
+    // On met en place la base de l'ecran (titre & fleche retour):
+    ecranBasics("AKROPOLIS", false);
+    // recupere les informations relatif a l'ecran :
+    auto options = MenuData::getSeletionSauvegarde();
+    // Creation de tout les boutons :
+    AbstractEcran::setupBoutons(options,this);
+}
+
+EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
+    ecranBasics("SELECTION MODE DE JEU", true);
+    AbstractEcran::setupBoutons( MenuData::getModesDeJeu(),this);
+}
+EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
+    ecranBasics("COMBIEN DE JOUEURS?", true);
+    AbstractEcran::setupBoutons(MenuData::getNbJoueurs(),this);
+}
+EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
+    ecranBasics("DIFFICULTE ILLUSTRE ARCHITECHTE", true);
+    AbstractEcran::setupBoutons(MenuData::getDifficultes(),this);
+}
+
+// AUTRES ECRANS
+
 EcranTitre::EcranTitre() {
     // Mise en page verticale
     QVBoxLayout* layout = new QVBoxLayout(this);
@@ -124,162 +195,11 @@ EcranTitre::EcranTitre() {
     connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
 }
 
-EcranSelectionSauvegarde::EcranSelectionSauvegarde() {
-    // Mise en page verticale
-    QVBoxLayout* layout = new QVBoxLayout(this);
-
-    // TITRE
-    QLabel* texte = new QLabel("AKROPOLIS");
-    texte->setAlignment(Qt::AlignCenter);
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
-
-    // Bouton start
-    QPushButton* StartBouton = new QPushButton("NOUVELLE PARTIE");
-    QPushButton* LoadBouton = new QPushButton("CHARGER DERNIERE PARTIE");
-    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
-    LoadBouton->setStyleSheet("font-size: 20px; padding: 10px; background: orange;");
-
-    // mise en page
-    layout->addStretch();
-    layout->addWidget(texte);
-    layout->addSpacing(50);
-    layout->addWidget(StartBouton);
-    layout->addWidget(LoadBouton);
-    layout->addStretch();
-
-    connect(StartBouton, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(false);});
-    connect(LoadBouton, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(true);});
-}
-
-EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
-
-    QVBoxLayout* layout = new QVBoxLayout(this);
-
-
-    QPushButton* backButton = new QPushButton;
-    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
-    backButton->setFixedSize(32, 32);
-    connect(backButton, &QPushButton::clicked,
-        this, [this](){emit backRequested(true);});
-    layout->addWidget(backButton);
-
-
-    QLabel* texte  = new QLabel("SELECTION MODE DE JEU");
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
-    layout->addStretch();
-    layout->addWidget(texte);
-    texte->setAlignment(Qt::AlignCenter);
-
-    QPushButton* boutonSOLO = new QPushButton("SOLO");
-    QPushButton* boutonMULTI = new QPushButton("MULTIJOUEUR");
-    boutonSOLO->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
-    boutonMULTI->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
-
-    layout->addStretch();
-
-    layout->addWidget(boutonSOLO);
-    layout->addWidget(boutonMULTI);
-    layout->addStretch();
-
-    connect(boutonSOLO, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(GameMode::SOLO);});
-    connect(boutonMULTI, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
-}
-
-EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
-
-    QBoxLayout* layout = new QVBoxLayout(this);
-
-    QPushButton* backButton = new QPushButton;
-    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
-    backButton->setFixedSize(32, 32);
-    connect(backButton, &QPushButton::clicked,
-        this, [this](){emit backRequested(true);});
-    layout->addWidget(backButton);
-
-    QLabel* texte  = new QLabel("COMBIEN DE JOUEURS?");
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
-    layout->addStretch();
-    layout->addWidget(texte);
-    texte->setAlignment(Qt::AlignCenter);
-
-
-    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
-
-    QPushButton* duo = new QPushButton("2");
-    QPushButton* trio = new QPushButton("3");
-    QPushButton* quatuor = new QPushButton("4");
-    duo->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
-    trio->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
-    quatuor->setStyleSheet("font-size: 20px; padding: 10px; background: gray;");
-
-    layout->addStretch();
-    BouttonLayout->addWidget(duo);
-    BouttonLayout->addWidget(trio);
-    BouttonLayout->addWidget(quatuor);
-    layout->addLayout(BouttonLayout);
-    layout->addStretch();
-
-    connect(duo, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(2);});
-    connect(trio, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(3);});
-    connect(quatuor, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(4);});
-}
-
-EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
-    // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
-    QBoxLayout* layout = new QVBoxLayout(this);
-
-
-    QPushButton* backButton = new QPushButton;
-    backButton->setIcon(style()->standardIcon(QStyle::SP_ArrowBack));
-    backButton->setFixedSize(32, 32);
-    connect(backButton, &QPushButton::clicked,
-        this, [this](){emit backRequested(true);});
-    layout->addWidget(backButton);
-
-    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
-    texte->setStyleSheet("font-size: 60px; font-weight: bold;");
-    layout->addStretch();
-    layout->addWidget(texte);
-    texte->setAlignment(Qt::AlignCenter);
-
-
-
-
-    QHBoxLayout* BouttonLayout = new QHBoxLayout(this);
-
-    QPushButton* facile = new QPushButton("Hippodamos");
-    QPushButton* normale = new QPushButton("Metagenes");
-    QPushButton* difficile = new QPushButton("Callicrates");
-    facile->setStyleSheet("font-size: 23px; padding: 15px; background: green;");
-    normale->setStyleSheet("font-size: 23px; padding: 15px; background: orange;");
-    difficile->setStyleSheet("font-size: 23px; padding: 15px; background: red;");
-
-    layout->addStretch();
-    BouttonLayout->addWidget(facile);
-    BouttonLayout->addWidget(normale);
-    BouttonLayout->addWidget(difficile);
-    layout->addLayout(BouttonLayout);
-    layout->addStretch();
-
-    connect(facile, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(Difficulte::FACILE);});
-    connect(normale, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(Difficulte::NORMALE);});
-    connect(difficile, &QPushButton::clicked,
-            this, [this](){emit selectionFinished(Difficulte::DIFFICILE);});
-}
 
 EcranChoixRegles::EcranChoixRegles() {
-    // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
+    // TODO: CHECKBOX DES REGLES
     QBoxLayout* layout = new QVBoxLayout(this);
-    QLabel* texte  = new QLabel("DIFFICULTE ILLUSTRE ARCHITECHTE");
+    QLabel* texte  = new QLabel("CHOIX DES REGLES");
     texte->setStyleSheet("font-size: 60px; font-weight: bold;");
     layout->addStretch();
     layout->addWidget(texte);
