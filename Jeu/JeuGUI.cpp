@@ -393,7 +393,10 @@ bool JeuGUI::placeTuile(size_t joueur, Tuile* tuileSelected) {
     return !forceQuit;
 }
 
-void JeuGUI::finDePartie(multimap<int, size_t> scores) {
+void JeuGUI::finDePartie(multimap<int, string> scores) {
+    QMetaObject::invokeMethod(qApp, [=]() {
+        window->getEcranVictoire()->setUpWidgets(scores);
+    }, Qt::QueuedConnection);
     window->showEcran(window->getEcranVictoire());
 
     // size_t i = 0;

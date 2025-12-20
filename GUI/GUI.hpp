@@ -118,10 +118,11 @@ class EcranChoixRegles : public QWidget {
 */
 class EcranVictoire : public QWidget {
     Q_OBJECT
-    public:
+    QVBoxLayout* layout;
+
+public:
     EcranVictoire() ;
-    signals:
-    void startGame();
+    void setUpWidgets(std::multimap<int, std::string> scores);
 };
 
 

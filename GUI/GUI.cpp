@@ -206,30 +206,41 @@ void EcranSaisieNoms::setUpChamps(int nbChamps) {
 
 EcranVictoire::EcranVictoire() {
     // Mise en page verticale
-    QVBoxLayout* layout = new QVBoxLayout(this);
+    layout = new QVBoxLayout(this);
 
     // TITRE
     QLabel* titre = new QLabel("VICTOIRE");
     titre->setAlignment(Qt::AlignCenter);
     titre->setStyleSheet("font-size: 60px; font-weight: bold; color : yellow");
-    // MESSAGE JOUEUR GAGNANT
-    QLabel* vainqueur = new QLabel("Le joueur XXXX a gagné!"); // TODO : rendre interactif
-    vainqueur->setAlignment(Qt::AlignCenter);
-    vainqueur->setStyleSheet("font-size: 30px; font-weight: bold; color : orange");
-    // Bouton start
-    QPushButton* StartBouton = new QPushButton("RESTART?");
-    StartBouton->setStyleSheet("font-size: 20px; padding: 10px; background: red;");
 
     // mise en page
     layout->addStretch();
     layout->addWidget(titre);
     layout->addSpacing(50);
-    layout->addWidget(vainqueur);
-    layout->addSpacing(50);
-    layout->addWidget(StartBouton);
-    layout->addStretch();
+}
 
-    connect(StartBouton, &QPushButton::clicked, this, &EcranVictoire::startGame);
+void EcranVictoire::setUpWidgets(std::multimap<int, std::string> scores) {
+
+    size_t i = 0;
+    for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
+        i++;
+        QString placeSuffixe = i == 1 ? "er" : "ème";
+        QString text = QString::number(i) + placeSuffixe + ": " + QString::fromStdString(scoreIterator->second)
+                + " avec " + QString::number(scoreIterator->first) + " points";
+        QString color;
+        switch (i) {
+            case 1: color = "gold"; break;
+            case 2: color = "silver"; break;
+            case 3: color = "bronze"; break;
+            default: color = "white"; break;
+        }
+
+        QLabel* resultat = new QLabel(text);
+        resultat->setAlignment(Qt::AlignCenter);
+        resultat->setStyleSheet("font-size: 30px; font-weight: bold; color : " + color + ";");
+        layout->addWidget(resultat);
+        layout->addSpacing(50);
+    }
 }
 
 // Ecran main (gameManager) //

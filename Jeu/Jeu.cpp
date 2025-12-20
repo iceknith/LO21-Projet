@@ -150,9 +150,9 @@ void Jeu::initialisePlateau() {
     }
 }
 
-multimap<int, size_t> Jeu::calculerScores() {
-    multimap<int, size_t> scores{};
-    for (size_t i = 0; i < nombreJoueurs; i++) scores.insert(make_pair(joueurs[i]->get_score(), i));
+multimap<int, string> Jeu::calculerScores() {
+    multimap<int, string> scores{};
+    for (size_t i = 0; i < nombreJoueurs; i++) scores.insert(make_pair(joueurs[i]->get_score(), joueurs[i]->getNomJoueur()));
     return scores;
 }
 

@@ -21,7 +21,7 @@ namespace constJeu {
 class Jeu : public Serializable {
 private:
     //! La méthode chargée de calculer les score des gagnants, la map associe score : joueur
-    multimap<int, size_t> calculerScores();
+    multimap<int, string> calculerScores();
 
 protected:
     //! Jeu est un singleton
@@ -83,7 +83,7 @@ protected:
     virtual void afficheTourAutomatique(size_t joueur) = 0;
 
     //! La méthode chargée de la gestion de la fin de partie
-    virtual void finDePartie(multimap<int, size_t> scores) = 0;
+    virtual void finDePartie(multimap<int, string> scores) = 0;
 
     //! La méthode chargée de charger la dernière partie
     static void chargerPartie();
@@ -131,7 +131,7 @@ private:
     int selectTuile(size_t joueur) override;
     bool placeTuile(size_t joueur, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override;
-    void finDePartie(multimap<int, size_t> scores) override;
+    void finDePartie(multimap<int, string> scores) override;
 
     //! Affiche toutes les informations au joueur lors du placement de tuile
     void afficheJoueur(size_t joueur, Tuile& tuileSelected, Vector2& positionSelectionne);
@@ -171,7 +171,7 @@ private:
     void tourneTuile(Tuile* tuileSelected, bool sensHoraire);
     bool placeTuile(size_t nouvellePosition, Tuile* tuileSelected) override;
     void afficheTourAutomatique(size_t joueur) override {}
-    void finDePartie(multimap<int, size_t> scores) override;
+    void finDePartie(multimap<int, string> scores) override;
 
 public:
 
