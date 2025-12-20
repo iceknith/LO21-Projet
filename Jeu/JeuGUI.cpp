@@ -398,20 +398,4 @@ void JeuGUI::finDePartie(multimap<int, string> scores) {
         window->getEcranVictoire()->setUpWidgets(scores);
     }, Qt::QueuedConnection);
     window->showEcran(window->getEcranVictoire());
-
-    // size_t i = 0;
-    //
-    // for (auto scoreIterator = scores.rbegin(); scoreIterator != scores.rend(); scoreIterator++) {
-    //     i++;
-    //     string placeSuffixe = i == 1 ? "er" : "ème";
-    //     if (modeDeJeu == GameMode::MULTIJOUEUR) {
-    //         cout << "En " << i << placeSuffixe << ", le joueur " << scoreIterator->second + 1
-    //             << " avec " << scoreIterator->first << " points !" << endl;
-    //     }
-    //     else {
-    //         string nom = scoreIterator->second == 0 ? "vous" : "l'Illustre Architechte";
-    //         cout << "En " << i << placeSuffixe << "," << nom
-    //             << " avec " << scoreIterator->first << " points !" << endl;
-    //     }
-    // }
 }

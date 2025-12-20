@@ -6,91 +6,81 @@
 Jeu* Jeu::jeu = nullptr;
 
 void Jeu::gameLoop(int argc, char *argv[]) {
-    bool Charger = false;
-    bool BackPressed2 = false;
-    bool StartJeu = true;
-
     titleScreen();
+    srand(time(NULL));
 
-    // Si on charge une partie existante
+    // Initialisation des variables utilisées dans la gameLoop
     QFileInfo saveFileInfo{constJeu::saveFilePath};
+    VITESSE vitessePartie;
 
-    do {
+    int etape = 0;
+    bool gameLoaded = false;
+    const int maxEtape = 5;
+
+    while (etape < maxEtape && !gameLoaded) {
         BackPressed = false;
 
-        if (saveFileInfo.exists() && saveFileInfo.isFile()&&selectChargerPartie()) {
-            BackPressed = false;
-            chargerPartie();
-        }
-        else {
-            do {
-                BackPressed = false;
-                selectGameMode();
-
-                if (!BackPressed) {
-                    do {
-                        BackPressed = false;
-
-                        if (modeDeJeu == GameMode::MULTIJOUEUR) {
-                            selectJoueurs();
-                            BackPressed2 = BackPressed;
-                            BackPressed = false;
-
-                            if (!BackPressed2) {
-                                srand(time(NULL));
-                                premierJoueur = rand() % nombreJoueurs;
-                            }
-                        }
-                        else {
-                            nombreJoueurs = 2;
-                            joueurs[0] = new JoueurSimple();
-                            joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
-                            BackPressed2 = BackPressed;
-                            BackPressed = false;
-                            if (!BackPressed2) {
-                                premierJoueur = 0;
-                            }
-                        }
-
-                        if (BackPressed2 == false) {
-                            selectNomsJoueurs();
-                            joueurActuel = premierJoueur;
-
-                            initialisePlateau();
-
-                            // Initialisation de la règle de score
-                            selectReglesScore();
-
-                            // Initialisation de la vitesse de la partie
-                            VITESSE vitessePartie = selectVitessePartie();
-
-                            // Initialisation du nombre de pierres
-                            for (size_t i = 0; i<nombreJoueurs; i++) {
-                                joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
-                            }
-                            deck.initialise(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs, vitessePartie);
-                            chantier.set_nombre_joueurs(nombreJoueurs);
-
-                            nombreTours = 1;
-                            maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
-
-                            int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
-
-                            if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
-                                chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
-                            }
-
-                            BackPressed2 = true;
-                            BackPressed = true;
-                            StartJeu = false;
-                        }
-                    } while (!BackPressed2);
+        switch (etape) {
+            case 0: // Chargement de fichier
+                if (saveFileInfo.exists() && saveFileInfo.isFile() && selectChargerPartie()) {
+                    chargerPartie();
+                    gameLoaded = true;
                 }
-
-            } while (!BackPressed);
+                break;
+            case 1: // Séléction du mode de jeu
+                selectGameMode();
+                break;
+            case 2: // Séléction du nombre de joueur ou du niveau de l'illustre architechte
+                if (modeDeJeu == GameMode::MULTIJOUEUR) {
+                    selectJoueurs();
+                } else {
+                    nombreJoueurs = 2;
+                    joueurs[0] = new JoueurSimple();
+                    joueurs[1] = new IllustreArchitecte(selectNiveauIllustreArchitechte());
+                }
+                break;
+            case 3: // Séléction du nom des joueurs
+                selectNomsJoueurs();
+                break;
+            case 4: // Séléction des règles de score
+                selectReglesScore();
+                break;
+            case 5: // Séléction de la vitesse d'une partie
+                vitessePartie = selectVitessePartie();
+                break;
+            default:
+                break;
         }
 
-    } while (BackPressed && StartJeu);
+        etape += BackPressed ? -1 : 1;
+    }
+    // Si le jeu n'as pas été chargé via une sauvegarde, initialiser toutes les variables
+    if (!gameLoaded) {
+        // Choisir le premier joueur
+        if (modeDeJeu == GameMode::MULTIJOUEUR) premierJoueur =  rand() % nombreJoueurs;
+        else premierJoueur = 0;
+        joueurActuel = premierJoueur;
+
+        // Initialisation des plateaux
+        initialisePlateau();
+
+        // Initialisation du nombre de pierres
+        for (size_t i = 0; i<nombreJoueurs; i++) {
+            joueurs[(joueurActuel+i)%nombreJoueurs]->set_pierre(i+1);
+        }
+        deck.initialise(modeDeJeu == GameMode::SOLO ? 1 : nombreJoueurs, vitessePartie);
+        chantier.set_nombre_joueurs(nombreJoueurs);
+
+        // Initialisation du nombre de tours
+        nombreTours = 1;
+        maxNombreTours = deck.get_taille() / (chantier.get_taille() - 1);
+
+        // Remplissage du chantier
+        int diff = chantier.get_taille()-chantier.get_nombre_tuiles();
+        if (diff > 0 && deck.get_nombre_tuiles() >= diff) {
+            chantier.ajouter_tuile(deck.tirer_tuiles(diff), diff);
+        }
+    }
 
     afficheSceneJeu();
     while (chantier.get_nombre_tuiles() > 1) {
