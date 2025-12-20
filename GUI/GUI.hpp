@@ -31,6 +31,7 @@
 
 #include "../Utils.hpp"
 #include <QStackedWidget>
+#include "MenusDatas.hpp"
 
 class AffichageGUI;
 
@@ -181,9 +182,8 @@ class EcranVitessePartie : public AbstractEcran {
     Q_OBJECT
         public:
     EcranVitessePartie();
-    //signals:
-    //void selectionFinished(VITESSE vitesse);
-
+    signals:
+        void selectionFinished(VITESSE vitesse);
 };
 
 //! La classe EcranTitre :

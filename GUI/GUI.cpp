@@ -171,7 +171,7 @@ EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
 }
 EcranVitessePartie::EcranVitessePartie() {
     ecranBasics("SELECTION VITESSE PARTIE", true);
-    //AbstractEcran::setupBoutons(MenuData::getDifficultes(),this);
+    AbstractEcran::setupBoutons(MenuData::getNbTours(),this);
 }
 
 // AUTRES ECRANS
@@ -198,7 +198,6 @@ EcranTitre::EcranTitre() {
 
     connect(StartBouton, &QPushButton::clicked, this, &EcranTitre::startGame);
 }
-
 
 EcranChoixRegles::EcranChoixRegles() {
     // TODO: CHECKBOX DES REGLES
@@ -421,7 +420,6 @@ AffichageGUI **EcranJeu::getAffichagesJoueursAdverses() {
         result[i] = new AffichageGUI(sceneMapJoueurs[i], labelNomJoueurs[i], labelScoreJoueurs[i], labelPierreJoueurs[i]);
     return result;
 }
-
 
 void EcranJeu::setUpWidgets(size_t playerCount) {
     nombreJoueurs = playerCount;

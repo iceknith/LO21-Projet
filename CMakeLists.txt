@@ -33,6 +33,7 @@ add_executable(LO21-Projet main.cpp
         Serialization/Serialization.hpp
         GUI/GUI.cpp
         GUI/GUI.hpp
+        GUI/MenusDatas.hpp
         #assets.qrc
 
 )
