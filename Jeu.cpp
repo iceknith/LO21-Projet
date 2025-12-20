@@ -221,7 +221,7 @@ void Jeu::chargerPartie() {
         file.close();
     }
     // Sinon dire qu'on as pas réussi à ouvrir le fichier
-    else throw exception();
+    else throw SetException("Cannot open the file");
     // Deserialiser le jeu (stocké à l'indice 0)
     s.deserialize(0);
 }
@@ -237,7 +237,7 @@ void Jeu::sauvegarderPartie() {
         file.close();
     }
     // Sinon dire qu'on as pas réussi à ouvrir le fichier
-    else throw exception();
+    else throw SetException("Cannot open the file");
 }
 
 // Jeu console //

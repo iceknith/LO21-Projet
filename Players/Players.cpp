@@ -44,7 +44,7 @@ Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
             }
         }
         if (row > 100) {
-            throw "Error: l'Illustre Architechte ne trouve pas d'emplacement";
+            throw SetException("Error: l'Illustre Architechte ne trouve pas d'emplacement");
         }
     }
     return pos;

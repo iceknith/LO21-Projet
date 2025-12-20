@@ -41,10 +41,10 @@ add_executable(LO21-Projet main.cpp
 target_link_libraries(LO21-Projet PRIVATE Qt6::Widgets)
 
 
-if(WIN32)
-    add_custom_command(TARGET LO21-Projet POST_BUILD
-            COMMAND "${CMAKE_COMMAND}" -E echo "Déploiement automatique des DLL Qt..."
-            COMMAND "C:/Qt/6.10.1/mingw_64/bin/windeployqt.exe" $<TARGET_FILE:LO21-Projet>
-            COMMENT "Déploiement Qt automatique avec windeployqt"
-    )
-endif()
+#if(WIN32)
+#    add_custom_command(TARGET LO21-Projet POST_BUILD
+#            COMMAND "${CMAKE_COMMAND}" -E echo "Déploiement automatique des DLL Qt..."
+#            COMMAND "C:/Qt/6.10.1/mingw_64/bin/windeployqt.exe" $<TARGET_FILE:LO21-Projet>
+#            COMMENT "Déploiement Qt automatique avec windeployqt"
+#    )
+#endif()

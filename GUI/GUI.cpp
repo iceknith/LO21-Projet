@@ -183,7 +183,6 @@ EcranSelectionModeDeJeu::EcranSelectionModeDeJeu() {
             this, [this](){emit selectionFinished(GameMode::MULTIJOUEUR);});
 }
 
-
 EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
 
     QBoxLayout* layout = new QVBoxLayout(this);
@@ -225,7 +224,6 @@ EcranSelectionNombreJoueurs::EcranSelectionNombreJoueurs() {
     connect(quatuor, &QPushButton::clicked,
             this, [this](){emit selectionFinished(4);});
 }
-
 
 EcranDifficulteArchitechte::EcranDifficulteArchitechte() {
     // TODO: le core du code est un copier coller de EcranSelectionNombreJoueurs -> pas super pratique, faudra qu'on change ca par la suite
@@ -350,7 +348,6 @@ void EcranSaisieNoms::setUpChamps(int nbChamps) {
     }
 }
 
-//==================
 EcranJeu::EcranJeu() {
     // Layout Principal (Vertical)
     QVBoxLayout* layoutGlobal = new QVBoxLayout(this);
@@ -605,4 +602,5 @@ MainWindow::MainWindow() {
 
     // Pile
     layout->addWidget(pile);
+    
 }

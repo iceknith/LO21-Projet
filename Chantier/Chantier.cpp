@@ -15,7 +15,7 @@ Tuile* Chantier::prendre_tuile(size_t index){
 
 //Ajoute une tuile à la fin du chantier (la fin du tableau de tuiles)
 void Chantier::ajouter_tuile(TuileJeu* tuile){
-    if (nombreTuiles >= taille) {throw "Chantier plein";}
+    if (nombreTuiles >= taille) {throw SetException ("Chantier plein");}
 
     tuiles[nombreTuiles] = tuile;
     nombreTuiles++;
@@ -23,7 +23,7 @@ void Chantier::ajouter_tuile(TuileJeu* tuile){
 
 //Ajoute plusieurs tuiles à la fin du tableau
 void Chantier::ajouter_tuile(TuileJeu** tuile, size_t nombre){
-    if (nombreTuiles >= taille) {throw "Ajout de trop de tuiles";}
+    if (nombreTuiles >= taille) {throw SetException ("Ajout de trop de tuiles");}
 
     for (size_t i = 0; i < nombre; i++) {
         tuiles[nombreTuiles] = tuile[i];
