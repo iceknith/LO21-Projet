@@ -108,7 +108,8 @@ void AffichageConsole::affiche_container(HexagoneContainer& container, bool sele
 void AffichageConsole::affiche_joueur(Joueur &joueur, bool selectHexagone, Vector2 selectedHexagone) {
     cout << "\033[0;97mPlateau de " << joueur.getNomJoueur() << endl;
     affiche_container(joueur.get_plateau(), selectHexagone, selectedHexagone);
-    cout << "\033[0;37m " << joueur.get_pierre() << " pierre(s)" << endl;
+    cout << "\033[0;37m " << joueur.get_pierre() << " pierre(s)" << endl
+        << " Score actuel : " << joueur.get_score() << endl;
 }
 
 Vector2 constAffichageConsoleHex::axialToScreen(Vector2 v) {

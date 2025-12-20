@@ -8,35 +8,28 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     try{
-        //JeuConsole::getJeu()->gameLoop(argc, argv);
-        JeuGUI::getJeu()->gameLoop(argc, argv);
+        string versionProgramme;
+        cout << "\033[0;97mQuel version du programme voulez-vous lancer ? " << endl
+             << "CONSOLE ( c ) / GRAPHIQUE ( g )" << endl
+             << "\033[0;37m-> \033[0;97m";
+        cin >> versionProgramme;
+
+        while (cin.fail() || (versionProgramme != "c" && versionProgramme != "g")) {
+            cout << "\033[1;31mIl n'y as que deux versions du programme: CONSOLE ( c ) / GRAPHIQUE ( g ) !"
+                 << endl << "\033[0;37m-> \033[0;97m";
+            // Enlève l'état d'erreur
+            cin.clear();
+            // Ignore les "mauvais" charactères
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> versionProgramme;
+        }
+
+        if (versionProgramme == "c")
+            JeuConsole::getJeu()->gameLoop(argc, argv);
+        else if (versionProgramme == "g")
+            JeuGUI::getJeu()->gameLoop(argc, argv);
     } catch (AkropolisException e) {
-        cout << e.get_info() << "\n";
+        cout << "\033[1;31mUne erreure inconnue est survenue, veuillez réessayer !";
+        //cout << e.get_info() << "\n";
     }
 }
-    /*
-int main() {
-    assertTests();
-*/
-
-    /*
-    Deck d{3};
-    Affichage* a = new AffichageConsole();
-    for(size_t i = 0; i < d.get_taille(); i++) a->affiche_container(*d.getTuiles()[i]);
-
-
-
-    cout << "------------------------------";
-
-    SerializationContext s2{};
-    QFile file2{"output.dat"};
-    if (file2.open(QIODevice::ReadOnly)) {
-        QDataStream in(&file2);
-        in >> s2;
-        file2.close();
-    }
-
-    Deck d2 = *dynamic_cast<Deck*>(s2.deserialize(0));
-    for(size_t i = 0; i < d.get_taille(); i++) a->affiche_container(*d2.getTuiles()[i]);
-
-    return 0;*/

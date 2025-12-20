@@ -84,7 +84,7 @@ public:
 };
 
 namespace IllustreArchitechteConsts {
-    const int board_max_width = 15;
+    const int board_max_width = 5;
 }
 
 class IllustreArchitecte : public Joueur {
