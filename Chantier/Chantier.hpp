@@ -73,11 +73,6 @@ public:
 
     [[nodiscard]] iterator begin() {return iterator{0, *this};}
     [[nodiscard]] iterator end() {return iterator{nombreTuiles, *this};}
-    // Itérateur const
-    [[nodiscard]] iterator begin() const {return iterator{0, *this};}
-    [[nodiscard]] iterator end() const {return iterator{nombreTuiles, *this};}
-    [[nodiscard]] iterator cbegin() const {return iterator{0, *this};}
-    [[nodiscard]] iterator cend() const {return iterator{nombreTuiles, *this};}
 
 
     //! Implémentation concrète de la sérialisation

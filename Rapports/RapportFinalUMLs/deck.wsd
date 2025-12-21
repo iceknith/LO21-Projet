@@ -1,0 +1,24 @@
+@startuml deck
+
+abstract Serializable
+class Deck extends Serializable {
+    - taille size_t
+    - nombreTuiles size_t
+    - tuiles TuileJeu**
+
+    + Deck()
+    + Deck(nombre_joueurs : int, vitesse : Vitesse)
+    + get_taille() {return taille;} : int
+    + get_nombre_tuiles(){return nombreTuiles;} : int
+    + tirer_tuile() : TuileJeu*
+    + tirer_tuiles(nombre_tuiles : size_t) : TuileJeu**
+
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*)
+    + className() : string
+}
+
+Deck *-- "*" TuileJeu
+Jeu *- "1" Deck
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml chantier
+
+abstract Serialisable
+class Chantier extends Serialisable {
+    - taille : size_t
+    - nombreTuiles : size_t
+    - tuiles : TuileJeu*[max_tuiles_par_chantier]
+
+    - set_taille(newTaille : size_t)
+
+    + set_nombre_joueurs(int nombre_joueurs)
+    + get_taille() const : size_t 
+    + get_nombre_tuiles() const : size_t 
+    + est_vide() const : bool 
+    + get_tuile(index : size_t) const : Tuile*
+    + prendre_tuile(index : size_t ) : Tuile*
+    + ajouter_tuile(TuileJeu* tuile)
+    + ajouter_tuile(TuileJeu** tuile, size_t nombre)
+
+    + begin() : Chantier::iterator
+    + end() : Chantier::iterator
+
+    + serialize(data : QVariantMap&, context : SerializationContext*)
+    + deserialize(data : const QVariantMap&, context : SerializationContext*)
+    + className() : string
+}
+
+class Chantier::iterator 
+
+Chantier *- "*" "Chantier::iterator"
+Chantier *-- "*" TuileJeu
+Jeu *- "1" Chantier
+
+@enduml
