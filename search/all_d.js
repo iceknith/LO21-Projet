@@ -8,5 +8,5 @@ var searchData=
   ['nomjoueur_5',['nomJoueur',['../dd/d07/classJoueur.html#ac9de73063d1f35b745e0e8e78f91f0e7',1,'Joueur']]],
   ['noms_6',['noms',['../d9/ddf/classEcranSaisieNoms.html#abda12980162ead3407c8a7152f7af6e6',1,'EcranSaisieNoms']]],
   ['nomscoresinorder_7',['nomScoresInOrder',['../de/d62/namespaceGameConstants.html#a662672ef2b3bf830244386a8cee7c40c',1,'GameConstants']]],
-  ['normale_8',['NORMALE',['../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555a1758932d18841976caf0cf463ef1bee1',1,'NORMALE():&#160;Utils.hpp'],['../d7/d09/Utils_8hpp.html#a7ed5a746c3907d29876acc78ec27c450a1758932d18841976caf0cf463ef1bee1',1,'NORMALE():&#160;Utils.hpp']]]
+  ['normale_8',['NORMALE',['../d7/d09/Utils_8hpp.html#ad3df9804641f6ea0105cd2a89f495555a1758932d18841976caf0cf463ef1bee1',1,'NORMALE():&#160;Utils.hpp'],['../d7/d09/Utils_8hpp.html#af3a264da59a96779cab45b7536c37b93a1758932d18841976caf0cf463ef1bee1',1,'NORMALE():&#160;Utils.hpp']]]
 ];
