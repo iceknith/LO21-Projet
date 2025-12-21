@@ -270,3 +270,17 @@ MainWindow::MainWindow() {
     layout->addWidget(pile);
     
 }
+
+MainWindow::~ MainWindow() {
+    delete ecranTitre;
+    delete ecranSelectionSauvegarde;
+    delete ecranSelectionModeDeJeu;
+    delete ecranSelectionNombreJoueurs;
+    delete ecranDifficulteArchitechte;
+    delete ecranSaisieNoms;
+    delete ecranChoixRegles;
+    delete ecranVitessePartie;
+    delete ecranJeu;
+    delete victoire;
+    delete pile;
+}

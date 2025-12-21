@@ -151,6 +151,7 @@ class MainWindow : public QWidget {
     EcranVictoire* victoire = nullptr;
 public:
     MainWindow();
+    ~ MainWindow();
     void showEcran(QWidget* ecran) {pile->setCurrentWidget(ecran);};
 
     EcranTitre* getEcranTitre() const {return ecranTitre;}

@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Ressources/hexagone_vide.png</file>
-	<file>Ressources/hexagone_bleu.png</file>
-	<file>Ressources/place.png</file>
-    </qresource>
-</RCC>
