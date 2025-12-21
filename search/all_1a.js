@@ -7,7 +7,8 @@ var searchData=
   ['_7ehexagonecontainer_4',['~HexagoneContainer',['../dc/d32/classHexagoneContainer.html#a6b91fb49be68f25094165939c04331b8',1,'HexagoneContainer']]],
   ['_7ejeu_5',['~Jeu',['../d1/de1/classJeu.html#a9cd19e73df169d7f09397be61ba8548c',1,'Jeu']]],
   ['_7ejeugui_6',['~JeuGUI',['../da/d36/classJeuGUI.html#ab83b9c92e554cb2b9547db6bb8f68cda',1,'JeuGUI']]],
-  ['_7escore_7',['~Score',['../d7/d48/classScore.html#aeec7196d9a8115114e10a7368c5e4257',1,'Score']]],
-  ['_7eserializable_8',['~Serializable',['../d6/dcb/classSerializable.html#a7a3c66ccf8a2a42ea7fb3c90b64ddda0',1,'Serializable']]],
-  ['_7etuile_9',['~Tuile',['../d7/d88/classTuile.html#a0f870a53ab6fd9648d9a069c06dec09b',1,'Tuile']]]
+  ['_7emainwindow_7',['~MainWindow',['../d6/d1a/classMainWindow.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow']]],
+  ['_7escore_8',['~Score',['../d7/d48/classScore.html#aeec7196d9a8115114e10a7368c5e4257',1,'Score']]],
+  ['_7eserializable_9',['~Serializable',['../d6/dcb/classSerializable.html#a7a3c66ccf8a2a42ea7fb3c90b64ddda0',1,'Serializable']]],
+  ['_7etuile_10',['~Tuile',['../d7/d88/classTuile.html#a0f870a53ab6fd9648d9a069c06dec09b',1,'Tuile']]]
 ];

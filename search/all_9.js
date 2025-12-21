@@ -1,8 +1,8 @@
 var searchData=
 [
   ['jaune_0',['JAUNE',['../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ceaeb840a0760d5c5122e980d507891c1a1',1,'Utils.hpp']]],
-  ['jeu_1',['jeu',['../d1/de1/classJeu.html#a55cee6351977d6ce71fa6cc278d398b6',1,'Jeu']]],
-  ['jeu_2',['Jeu',['../d1/de1/classJeu.html',1,'Jeu'],['../d1/de1/classJeu.html#acc5795ee00edf75516d3dfe65be3e6d6',1,'Jeu::Jeu()']]],
+  ['jeu_1',['Jeu',['../d1/de1/classJeu.html#acc5795ee00edf75516d3dfe65be3e6d6',1,'Jeu::Jeu()'],['../d1/de1/classJeu.html',1,'Jeu']]],
+  ['jeu_2',['jeu',['../d1/de1/classJeu.html#a55cee6351977d6ce71fa6cc278d398b6',1,'Jeu']]],
   ['jeu_2ecpp_3',['Jeu.cpp',['../d4/d29/Jeu_8cpp.html',1,'']]],
   ['jeu_2ehpp_4',['Jeu.hpp',['../d4/d7b/Jeu_8hpp.html',1,'']]],
   ['jeuconsole_5',['JeuConsole',['../dc/dcd/classJeuConsole.html#ae342a6282692956ca326faa8446c81db',1,'JeuConsole::JeuConsole()'],['../dc/dcd/classJeuConsole.html',1,'JeuConsole']]],
