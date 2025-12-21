@@ -69,15 +69,15 @@ namespace MenuData {
     // ================================
 
     struct MENU_NB_TOURS {
-        VITESSE signalData;
+        Vitesse signalData;
         QString btnTexte;
         QString couleur;
     };
     static const std::vector<MENU_NB_TOURS> getNbTours() {
         return {
-                {VITESSE::RAPIDE, "RAPIDE", "green"},
-                {VITESSE::NORMALE, "NORMAL", "orange"},
-                {VITESSE::LENT, "LENT", "red"}
+                {Vitesse::RAPIDE,  "RAPIDE", "green"},
+                {Vitesse::NORMALE, "NORMAL", "orange"},
+                {Vitesse::LENT,    "LENT",   "red"}
         };
     }
 

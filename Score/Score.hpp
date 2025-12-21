@@ -32,7 +32,7 @@ public:
 class ScoreSoloArchitecteHippodamos : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
-
+public:
     //! Implémentation concrète de ClassName
     string className() override {return "ScoreSoloArchitecteHippodamos";}
 };
@@ -41,7 +41,7 @@ protected:
 class ScoreSoloArchitecteMetagenes : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
-
+public:
     //! Implémentation concrète de ClassName
     string className() override {return "ScoreSoloArchitecteMetagenes";}
 };
@@ -50,7 +50,7 @@ protected:
 class ScoreSoloArchitecteCallicrates : public Score {
 protected:
     int scoreLocal(Plateau* plateau) override;
-
+public:
     //! Implémentation concrète de ClassName
     string className() override {return "ScoreSoloArchitecteCallicrates";}
 };

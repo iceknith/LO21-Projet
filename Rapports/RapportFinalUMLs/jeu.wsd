@@ -1,0 +1,108 @@
+@startuml jeu
+
+abstract Jeu {
+
+    # jeu : static Jeu*
+    # modeDeJeu : GameMode
+    # backPressed : bool 
+
+    # nombreTours : size_t 
+    # maxNombreTours : size_t 
+
+    # nombreJoueurs : size_t 
+    # joueurs : Joueur*[constJeu::nombreJoueursMax]
+    # joueurActuel : size_t 
+    # premierJoueur : size_t 
+
+    # tuileDepart : TuileDepart* 
+    # deck : Deck 
+    # chantier : Chantier 
+
+    - calculerScores() : multimap<int, string> 
+
+    # Jeu()
+
+    # initialisePlateau();
+    # titleScreen() {pure virtual}
+    # bool selectChargerPartie() {pure virtual}
+    # selectGameMode() {pure virtual}
+    # selectJoueurs() {pure virtual}
+    # selectNomsJoueurs() {pure virtual}
+    # selectNiveauIllustreArchitechte() : Difficulte {pure virtual}
+    # selectVitessePartie() : Vitesse  {pure virtual}
+    # selectReglesScore() {pure virtual}
+    # afficheSceneJeu() {pure virtual}
+    # selectTuile(joueur : size_t) : int {pure virtual}
+    # placeTuile(joueur : size_t, tuileSelected : Tuile*) : bool {pure virtual}
+    # afficheTourAutomatique(joueur : size_t) {pure virtual}
+    # finDePartie(scores : multimap<int, string>) {pure virtual}
+
+    # chargerPartie() {static};
+    # sauvegarderPartie() {static};
+    # serialize(QVariantMap& data, SerializationContext* context) const override;
+    # deserialize(const QVariantMap& data, SerializationContext* context) override;
+
+    + getJeu() : Jeu* {static};
+    + gameLoop(argc : int, argv : char*) {virtual}
+    + className() : string
+}
+note left: est un singleton
+
+class JeuConsole extends Jeu {
+    # titleScreen()
+    # bool selectChargerPartie()
+    # selectGameMode()
+    # selectJoueurs()
+    # selectNomsJoueurs()
+    # selectNiveauIllustreArchitechte() : Difficulte
+    # selectVitessePartie() : Vitesse 
+    # selectReglesScore()
+    # afficheSceneJeu()
+    # selectTuile(joueur : size_t) : int
+    # placeTuile(joueur : size_t, tuileSelected : Tuile*) : bool
+    # afficheTourAutomatique(joueur : size_t)
+    # finDePartie(scores : multimap<int, string>)
+
+    + getJeu() : Jeu* {static};
+}
+
+
+class JeuGUI extends Jeu {
+    # app : QApplication*
+    # window : MainWindow*
+    # runApp : QThread*
+
+    # affichageJoueur : AffichageGUI*
+    # affichageChantier : AffichageGUI**
+    # affichageJoueursAdverses : AffichageGUI**
+
+    # titleScreen()
+    # bool selectChargerPartie()
+    # selectGameMode()
+    # selectJoueurs()
+    # selectNomsJoueurs()
+    # selectNiveauIllustreArchitechte() : Difficulte
+    # selectVitessePartie() : Vitesse 
+    # selectReglesScore()
+    # afficheSceneJeu()
+    # selectTuile(joueur : size_t) : int
+    # placeTuile(joueur : size_t, tuileSelected : Tuile*) : bool
+    # afficheTourAutomatique(joueur : size_t)
+    # finDePartie(scores : multimap<int, string>)
+
+    + getJeu() : Jeu* {static};
+}
+
+
+Deck "1" --* Jeu
+Chantier "1" --* Jeu
+Serializable <|-- Jeu
+TuileDepart "1" --* Jeu
+Joueur "*" --* Jeu
+
+JeuConsole o-- AffichageConsole
+
+JeuGUI *-- MainWindow
+JeuGUI *-- AffichageGUI
+
+@enduml

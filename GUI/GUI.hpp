@@ -65,7 +65,7 @@ class EcranVitessePartie : public AbstractEcran {
         public:
     EcranVitessePartie();
     signals:
-        void selectionFinished(VITESSE vitesse);
+        void selectionFinished(Vitesse vitesse);
 };
 
 //! La classe EcranTitre :

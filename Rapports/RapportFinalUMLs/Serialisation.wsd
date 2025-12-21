@@ -1,6 +1,6 @@
 @startuml serialisation
 
-class Serializable {
+abstract Serializable {
     + serialize(data : QVariantMap&, context : SerializationContext*) {pure virtual}
     + deserialize(data : QVariantMap&, context : SerializationContext*) {pure virtual}
     + className() : string {pure virtual}

@@ -1,7 +1,7 @@
 #include "Deck.hpp"
 #include "../Serialization/Serialization.hpp"
 
-Deck::Deck(int nombre_joueurs, VITESSE vitesse) {
+Deck::Deck(int nombre_joueurs, Vitesse vitesse) {
     initialise(nombre_joueurs, vitesse);
 };
 
@@ -10,7 +10,7 @@ Deck::~Deck() {
     delete[] tuiles;
 }
 
-void Deck::initialise(int nombre_joueurs, VITESSE vitesse) {
+void Deck::initialise(int nombre_joueurs, Vitesse vitesse) {
     for(size_t i = 0; i < taille; i++) delete tuiles[i];
     delete[] tuiles;
 
@@ -29,9 +29,9 @@ void Deck::initialise(int nombre_joueurs, VITESSE vitesse) {
 
     float multiplicateur;
     switch (vitesse) {
-        case VITESSE::RAPIDE: multiplicateur = 0.5; break;
-        case VITESSE::NORMALE: multiplicateur = 1; break;
-        case VITESSE::LENT: multiplicateur = 2; break;
+        case Vitesse::RAPIDE: multiplicateur = 0.5; break;
+        case Vitesse::NORMALE: multiplicateur = 1; break;
+        case Vitesse::LENT: multiplicateur = 2; break;
         default: multiplicateur = 1; break;
     }
     taille = static_cast<size_t>(static_cast<float>(taille) * multiplicateur);

@@ -1,6 +1,7 @@
 @startuml score
 
-abstract class Score {
+abstract Serializable
+abstract class Score extends Serializable {
     # scoreDécoré : Score*
 
     # scoreLocal(plateau : Plateau*) : int {pure virtual}
@@ -8,59 +9,25 @@ abstract class Score {
     + Score(Score *scoreDecore)
     + score(plateau : Plateau*) : int
 }
-note top : Est un décorateur
+note left : Est un décorateur
 
-class ScoreBleu extends Score {
+class ScoreCouleur extends Score {
     # scoreLocal(plateau : Plateau*) : int
-    + score(plateau:Plateau*) : int 
+    + ScoreCouleur()
+    + ScoreCouleur(scoreDecore)
+    + className() : string
 }
 
-class ScoreJaune extends Score {
+class ScoreCouleurVariante extends Score {
     # scoreLocal(plateau : Plateau*) : int
+    + ScoreCouleurVariante()
+    + ScoreCouleurVariante(scoreDecore)
+    + className() : string
 }
 
-class ScoreRouge extends Score {
+class ScoreSoloArchitechteSpecifique extends Score {
     # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreVert extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreViolet extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreBleuVariante extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreJauneVariante extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreRougeVariante extends Score {
-    # scoreLocal(plateau : Plateau*) : int 
-}
-
-class ScoreVertVariante extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreVioletVariante extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreSoloArchitechteCallicrates extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreSoloArchitechteHippodamos extends Score {
-    # scoreLocal(plateau : Plateau*) : int
-}
-
-class ScoreSoloArchitechteMetagenes extends Score {
-    # scoreLocal(plateau : Plateau*) : int
+    + className() : string
 }
 
 Player *-- "1" Score

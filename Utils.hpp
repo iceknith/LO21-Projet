@@ -34,7 +34,7 @@ enum class Difficulte {
 };
 
 //! Définit les duree de partie d'Akropolis
-enum class VITESSE {
+enum class Vitesse {
     RAPIDE = 0,
     NORMALE = 1,
     LENT = 2

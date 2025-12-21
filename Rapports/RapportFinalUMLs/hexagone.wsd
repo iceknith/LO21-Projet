@@ -1,12 +1,13 @@
 @startuml hexagone
 
-abstract class Serializable {}
+abstract Serializable
 
 abstract class Hexagone extends Serializable {
     # couleur : CouleursAkropolis
     # localPos : Vector2
     # tuileParent : Tuile*
 
+    # set_local_position(newLocalPos : Vector2)
     + Hexagone()
     + Hexagone (tuile_parent : Tuile*, localPos : const Vector2&, couleur : CouleursAkropolis)
     + get_couleur() : int

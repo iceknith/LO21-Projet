@@ -1,6 +1,7 @@
 @startuml hexagoneContainer
 
-abstract class HexagoneContainer {
+abstract Serializable
+abstract class HexagoneContainer extends Serializable {
     # container : map<Vector2, Hexagone*>
     # roation : float
 

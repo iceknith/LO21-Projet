@@ -16,12 +16,12 @@ public:
     //! Initialiseur du Deck par défaut
     Deck() : taille(0), nombreTuiles(0), tuiles(nullptr) {}
     //! Initialise le Deck selon le nombre de joueurs et la vitesse du jeu.
-    Deck(int nombre_joueurs, VITESSE vitesse);
+    Deck(int nombre_joueurs, Vitesse vitesse);
     //! Libère toutes les tuiles au sein du deck
     ~Deck();
 
     //! Remplis le Deck selon le nombre de joueurs
-    void initialise(int nombre_joueurs, VITESSE vitesse);
+    void initialise(int nombre_joueurs, Vitesse vitesse);
 
     //! Getteur de la taille maximale du Deck
     int get_taille() {return taille;};

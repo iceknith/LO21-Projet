@@ -11,7 +11,7 @@ void Jeu::gameLoop(int argc, char *argv[]) {
 
     // Initialisation des variables utilisées dans la gameLoop
     QFileInfo saveFileInfo{constJeu::saveFilePath};
-    VITESSE vitessePartie;
+    Vitesse vitessePartie;
 
     int etape = 0;
     bool gameLoaded = false;

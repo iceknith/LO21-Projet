@@ -1,6 +1,7 @@
 @startuml player
 
-abstract class Joueur {
+abstract Serializable
+abstract class Joueur extends Serializable {
     # pierres : int
     # nomJoueur : string
     # plateauJoueur : Plateau

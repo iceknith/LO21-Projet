@@ -1,5 +1,33 @@
 @startuml affichageGUISynthetique
 
+class MainWindow {
+    - pile : QStackedWidget*
+    - ecranTitre : EcranTitre*
+    - ecranSelectionSauvegarde : EcranSelectionSauvegarde*
+    - ecranSelectionModeDeJeu : EcranSelectionModeDeJeu*
+    - ecranSelectionNombreJoueurs : EcranSelectionNombreJoueurs*
+    - ecranDifficulteArchitechte : EcranDifficulteArchitechte*
+    - ecranSaisieNoms : EcranSaisieNoms*
+    - ecranChoixRegles : EcranChoixRegles*
+    - ecranVitessePartie : EcranVitessePartie*
+    - ecranJeu : EcranJeu*
+    - victoire : EcranVictoire*
+
+    + MainWindow()
+    + showEcran(ecran : QWidget*)
+
+    + getEcranTitre() : EcranTitre*
+    + getEcranSelectionSauvegarde() : EcranSelectionSauvegarde*
+    + getEcranSelectionModeDeJeu() : EcranSelectionModeDeJeu*
+    + getEcranSelectionNombreJoueurs() : EcranSelectionNombreJoueurs*
+    + getEcranDifficulteArchitechte() : EcranDifficulteArchitechte*
+    + getEcranSaisieNoms() : EcranSaisieNoms*
+    + getEcranChoixRegles() : EcranChoixRegles*
+    + getEcranVitessePartie() : EcranVitessePartie*
+    + getEcranJeu() : EcranJeu*
+    + getEcranVictoire() : EcranVictoire*
+}
+
 class HexagoneGUIObject extends QObject, QGraphicsItem {
     - hex : QGraphicsPolygonItem
     - outline : QGraphicsPathItem
@@ -26,19 +54,89 @@ class ChantierQGraphicsView extends QGraphicsView {
     + onClicked() {signal}
 }
 
-class EcranType extends QWidget {
+abstract AbstractEcran extends QWidget {
+    # mainLayout : QVBoxLayout*
+
+    # ecranBasics(titre : const QString&, avecBoutonRetour : bool);
+    # template <typename T, typename ClassFille> setupBoutons(data : T&, fille : ClassFille*);
+    + AbstractEcran(QWidget* parent = nullptr);
+    + backRequested(bool) {signal}
+}
+
+class EcranType extends AbstractEcran {
     + EcranType()
-    + signalDeCommunication(argumentDuSignal : Type) {signal}
+    + selectionFinished(arg : Type) {signal}
 }
 
 class EcranJeu extends QWidget {
-    /' définir celà une fois que le jeu est fini '/
+    # nombreJoueurs : size_t 
+    # labelNom : QLabel* 
+    # labelScore : QLabel* 
+    # labelTour : QLabel* 
+    # labelPierre : QLabel* 
+
+    # labelRegles : QLabel* 
+
+    # zoneChantier : QWidget* 
+    # sceneChantier : QGraphicsScene** 
+    # labelsChantier : QLabel** 
+
+    # plateau : QWidget* 
+    # vueMap : CameraMap* 
+    # sceneMap : QGraphicsScene* 
+    # infoJoueurs : QWidget* 
+
+    # labelNomJoueurs : QLabel** 
+    # labelScoreJoueurs : QLabel** 
+    # labelPierreJoueurs : QLabel** 
+    # sceneMapJoueurs : QGraphicsScene** 
+
+    # selectedTuile : QGraphicsItemGroup* 
+
+    # onPlateauCameraMapMouseMoved(mousePos : QPointF)
+    # onPlateauCameraMapMousePressed(mousePos : QPointF)
+    # keyPressEvent(event : QKeyEvent*)
+
     + EcranJeu()
-    + selectionFinished(chargeSauvegarde : bool) {signal}
+    
+    + getAffichageJoueur() : AffichageGUI*
+    + getAffichagesChantier() : AffichageGUI**
+    + getAffichagesJoueursAdverses() : AffichageGUI**
+    + getLabelTour() : QLabel*
+    + getLabelRegles() : QLabel*
+
+    + setUpWidgets(size_t playerCount)
+
+    + setSelectedTuile(QGraphicsItemGroup* newSelectedTuile)
+    + getSelectedTuilePosition() const : QPointF
+    + removeSelectedTuile()
+
+    + ready() {signal}
+    + selectionTuileFinished(tuileSelected : int) {signal}
+    + selectionPlacementFinished(placement : Vector2) {signal}
+    + tourneSelectedTuile(sensHoraire : bool) {signal}
+    + retour() {signal}
 }
 
 class AffichageGUI extends Affichage
 
+MainWindow *- EcranType
+EcranJeu -* MainWindow
+
+JeuGUI *-- MainWindow
+
+HexagoneGUIObject --o Hexagone
+AffichageGUI -- HexagoneGUIObject
+HexagoneGUIObject - EcranJeu
+
+AffichageGUI -o EcranJeu
+AffichageGUI -* JeuGUI
+
+EcranJeu *-- CameraMap
+EcranJeu *-- ChantierQGraphicsView
+
+
+/'
 Hexagone -- AffichageGUI
 AffichageGUI *-- HexagoneGUIObject
 JeuGUI *-- AffichageGUI
@@ -50,5 +148,6 @@ ChantierQGraphicsView --* EcranJeu
 EcranJeu -- HexagoneGUIObject
 MainWindow o-- AffichageGUI
 JeuGUI *- MainWindow
+'/
 
 @enduml

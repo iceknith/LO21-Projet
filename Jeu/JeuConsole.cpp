@@ -169,7 +169,7 @@ void JeuConsole::selectReglesScore() {
             dynamic_cast<JoueurSimple*>(joueurs[i])->set_score(score);
 }
 
-VITESSE JeuConsole::selectVitessePartie() {
+Vitesse JeuConsole::selectVitessePartie() {
     int choix;
     cout << "\033[0;97mQuelle est la vitesse de la partie ?" << endl
         << "RAPIDE ( 1 ) / NORMALE ( 2 ) / LENTE (3)?" << endl
@@ -189,18 +189,18 @@ VITESSE JeuConsole::selectVitessePartie() {
 
     if (choix == 0) {
         backPressed = true;
-        return VITESSE::NORMALE;
+        return Vitesse::NORMALE;
     }
 
-    auto vitesse = static_cast<VITESSE>(choix - 1);
+    auto vitesse = static_cast<Vitesse>(choix - 1);
     switch (vitesse){
-        case VITESSE::RAPIDE:
+        case Vitesse::RAPIDE:
             cout << "\033[0;32mRapide\033[0;97m: Les meilleures choses sont les plus courtes !"<< endl;
             break;
-        case VITESSE::NORMALE:
+        case Vitesse::NORMALE:
             cout << "\033[0;33mNormale\033[0;97m: Suivant les règles originales d'Akropolis !"<< endl;
             break;
-        case VITESSE::LENT:
+        case Vitesse::LENT:
             cout << "\033[0;31mDifficile\033[0;97m: Pour faire durer le plaisir !"<< endl;
             break;
         default:

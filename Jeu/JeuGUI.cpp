@@ -1,5 +1,17 @@
 #include "Jeu.hpp"
 
+JeuGUI::~JeuGUI() {
+    delete app;
+    delete window;
+    delete runApp;
+
+    delete affichageJoueur;
+    for (size_t i = 0; i < nombreJoueurs + 1; i++) delete affichageChantier[i];
+    delete[] affichageChantier;
+    for (size_t i = 0; i < nombreJoueurs - 1; i++) delete affichageJoueursAdverses[i];
+    delete[] affichageJoueursAdverses;
+}
+
 void JeuGUI::gameLoop(int argc, char **argv) {
     app = new QApplication{argc, argv};
     window = new MainWindow();
@@ -256,14 +268,14 @@ void JeuGUI::selectNomsJoueurs() {
     QObject::disconnect(c3);
 }
 
-VITESSE JeuGUI::selectVitessePartie() {
+Vitesse JeuGUI::selectVitessePartie() {
     window->showEcran(window->getEcranVitessePartie());
-    VITESSE v = VITESSE::NORMALE;
+    Vitesse v = Vitesse::NORMALE;
 
     // Connecter le signal de séléction à une lambda expression qui changera la valeure
     auto c1 = QObject::connect(window->getEcranVitessePartie(),
                                &EcranVitessePartie::selectionFinished,
-                               [&](VITESSE vitesse){v = vitesse;});
+                               [&](Vitesse vitesse){ v = vitesse;});
 
     auto cBack = QObject::connect(window->getEcranVitessePartie(),
                                   &EcranVitessePartie::backRequested,
@@ -275,7 +287,7 @@ VITESSE JeuGUI::selectVitessePartie() {
     QEventLoop SignalWaitLoop;
 
     auto c2 = QWidget::connect(window->getEcranVitessePartie(),
-                               SIGNAL(selectionFinished(VITESSE)),
+                               SIGNAL(selectionFinished(Vitesse)),
                                &SignalWaitLoop, SLOT(quit()));
 
     auto c3 = QWidget::connect(window->getEcranVitessePartie(),
@@ -426,16 +438,4 @@ void JeuGUI::finDePartie(multimap<int, string> scores) {
         window->getEcranVictoire()->setUpWidgets(scores);
     }, Qt::QueuedConnection);
     window->showEcran(window->getEcranVictoire());
-}
-
-JeuGUI::~JeuGUI() {
-    delete app;
-    delete window;
-    delete runApp;
-
-    delete affichageJoueur;
-    for (size_t i = 0; i < nombreJoueurs + 1; i++) delete affichageChantier[i];
-    delete[] affichageChantier;
-    for (size_t i = 0; i < nombreJoueurs - 1; i++) delete affichageJoueursAdverses[i];
-    delete[] affichageJoueursAdverses;
 }

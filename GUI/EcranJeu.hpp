@@ -124,7 +124,7 @@ public:
 */
 class EcranJeu : public QWidget {
     Q_OBJECT
-            size_t nombreJoueurs = 0;
+    size_t nombreJoueurs = 0;
 
     // Indicateurs Joueur principal
     QLabel* labelNom;
