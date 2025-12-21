@@ -194,7 +194,14 @@ namespace ScoreUtils {
      * @param couleur Couleur d'hexagone à filtrer
      * @return Le nombre d'hexagones filtrées
      */
-    int get_iteration_filtres ( Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+    int get_iteration_filtres (Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur);
+    //! Retourne l'addition des étoiles de toutes les places dont la couleur correspondent aux critères donnés
+    /*!
+     * @param plateau Plateau sur lequel effectuer la recherche
+     * @param couleur Couleur de place à filtrer
+     * @return Addition des étoiles de toutes les places filtrées
+     */
+    int get_iteration_filtres_etoiles (Plateau* plateau, CouleursAkropolis couleur);
     //! Retourne l'addition des hauteurs de tous les hexagones dont le type et la couleur correspondent aux critères donnés
     /*!
      * @param plateau Plateau sur lequel effectuer la recherche

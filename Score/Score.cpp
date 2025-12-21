@@ -25,6 +25,17 @@ int ScoreUtils::get_iteration_filtres(Plateau* plateau, TypeHexagone type, Coule
     return result;
 }
 
+int ScoreUtils::get_iteration_filtres_etoiles(Plateau* plateau, CouleursAkropolis couleur) {
+    int result = 0;
+    for (auto iter : *plateau) {
+        Hexagone* h = iter.second;
+        if (h->get_type() == TypeHexagone::Place && h->get_couleur() == couleur) {
+            result += reinterpret_cast<Place*>(h)->get_etoiles();
+        }
+    }
+    return result;
+}
+
 int ScoreUtils::get_iteration_with_hauteur_filtres ( Plateau* plateau, TypeHexagone type, CouleursAkropolis couleur) {
     int iteration = 0;
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, type, couleur);
@@ -176,8 +187,8 @@ int ScoreSoloArchitecteCallicrates::scoreLocal(Plateau* plateau) {
 
 int ScoreBleu::scoreLocal(Plateau* plateau) {
     // Règle bleue : (somme des hauteurs du plus grand groupe de quartiers bleus) * (nombre de places bleues)
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::BLEU);
     int quartier = ScoreUtils::sum_heights(ScoreUtils::get_largest_hexagone_voisinnage_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::BLEU));
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::BLEU);
     return quartier*place;
 }
 // =======================
@@ -186,7 +197,7 @@ int ScoreBleu::scoreLocal(Plateau* plateau) {
 int ScoreRouge::scoreLocal(Plateau* plateau) {
     // Règle rouge : (somme des hauteurs des quartiers rouges adjacents au vide) * (nombre de places rouges)
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::ROUGE);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::ROUGE);
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::ROUGE);
     for (const auto& [pos, hex]:Hex) {
         if (ScoreUtils::get_hexagone_voisins(plateau,pos).size() < GameConstants::MAX_HEXAGON_NEIGHBORS) {
@@ -200,7 +211,7 @@ int ScoreRouge::scoreLocal(Plateau* plateau) {
 
 int ScoreVert::scoreLocal(Plateau* plateau) {
     // Règle vert : (somme des hauteurs des quartiers verts) * (nombre de places vertes * 3)
-    int place = ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VERT)*GameConstants::VERT_PLACE_MULTIPLIER;
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::VERT);
     int quartier = ScoreUtils::get_iteration_with_hauteur_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::VERT);
     return place*quartier;
 }
@@ -211,7 +222,7 @@ int ScoreVert::scoreLocal(Plateau* plateau) {
 int ScoreViolet::scoreLocal(Plateau* plateau) {
     // Règle violet : (somme des hauteurs des quartiers violets non adjacents au vide) * (nombre de places violets)
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VIOLET);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::VIOLET);
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::VIOLET);
     for (const auto& [pos, hex]:Hex) {
         if (ScoreUtils::get_hexagone_voisins(plateau,pos).size() == GameConstants::MAX_HEXAGON_NEIGHBORS) {
@@ -227,7 +238,7 @@ int ScoreViolet::scoreLocal(Plateau* plateau) {
 int ScoreJaune::scoreLocal(Plateau* plateau) {
     // Règle jaune : (somme des hauteurs des quartiers jaunes non adjacents à un autre quartier jaune) * (nombre de places jaunes)
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::JAUNE);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::JAUNE);
     bool voisin_jaune = false;
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::JAUNE);
     for (const auto& [pos, hex]:Hex) {
@@ -254,7 +265,7 @@ int ScoreBleuVariante::scoreLocal(Plateau* plateau) {
     int quartier =0;
     auto voisinnage = ScoreUtils::get_largest_hexagone_voisinnage_filtres(plateau,TypeHexagone::Quartier,CouleursAkropolis::BLEU);
     quartier = sum_heights(voisinnage);
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::BLEU);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::BLEU);
     if (voisinnage.size() >=GameConstants::BLEU_VARIANTE_BONUS_THRESHOLD){return quartier*place*GameConstants::BLEU_VARIANTE_BONUS_MULTIPLIER;}
     return quartier*place;
 }
@@ -266,7 +277,7 @@ int ScoreRougeVariante::scoreLocal(Plateau* plateau) {
     // Règle rougeVariante : (somme des hauteurs des quartiers rouges adjacents au vide (*2 sur hauteur si le quartier rouge est adjacent à 3 ou 4 vide ) ) * (nombre de places rouges)
     int tmp=0;
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::ROUGE);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::ROUGE);
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::ROUGE);
     for (const auto& [pos, hex]:Hex) {
         //tmp correspond au nombre de place vide (place vide = 6 - place occupés)
@@ -288,9 +299,7 @@ int ScoreRougeVariante::scoreLocal(Plateau* plateau) {
 int ScoreVertVariante::scoreLocal(Plateau* plateau) {
     // Règle vertVariante : (somme des hauteurs des quartiers verts (*2 si quartier vert est adjacent à un espace vide entouré ) ) * (nombre de places vertes * 3)
 
-    int place = get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VERT)*GameConstants::VERT_PLACE_MULTIPLIER;
-
-
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::VERT);
     int quartier = 0;
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::VERT);
     for (const auto& [pos, hex] : Hex) {
@@ -321,7 +330,7 @@ int ScoreVertVariante::scoreLocal(Plateau* plateau) {
 int ScoreVioletVariante::scoreLocal(Plateau* plateau) {
     // Règle violetVariante : (somme des hauteurs des quartiers violets non adjacents au vide (*2 si le quartier à une hauteur > 1 ) ) * (nombre de places violets)
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::VIOLET);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::VIOLET);
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::VIOLET);
     for (const auto& [pos, hex]:Hex) {
         if (ScoreUtils::get_hexagone_voisins(plateau,pos).size() == GameConstants::MAX_HEXAGON_NEIGHBORS) {
@@ -343,7 +352,7 @@ int ScoreVioletVariante::scoreLocal(Plateau* plateau) {
 int ScoreJauneVariante::scoreLocal(Plateau* plateau) {
     // Règle jauneVariante : (somme des hauteurs des quartiers jaunes non adjacents à un autre quartier jaune (*2 si le quartier est adjacent à une place jaune) ) * (nombre de places jaunes)
     int quartier = 0;
-    int place =  ScoreUtils::get_iteration_filtres(plateau,TypeHexagone::Place,CouleursAkropolis::JAUNE);
+    int place = ScoreUtils::get_iteration_filtres_etoiles(plateau, CouleursAkropolis::JAUNE);
     bool quartier_voisin_jaune,place_voisin_jaune = false;
     auto Hex = ScoreUtils::get_hexagone_filtres(plateau, TypeHexagone::Quartier, CouleursAkropolis::JAUNE);
     for (const auto& [pos, hex]:Hex) {

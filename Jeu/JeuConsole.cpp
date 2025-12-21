@@ -338,9 +338,9 @@ bool JeuConsole::placeTuile(size_t joueur, Tuile* tuileSelected) {
             if (joueurs[joueur]->get_plateau().peut_placer(*tuileSelected, positionSelectionne)) {
                 cout << "\033[1;32mPosition valide :" << endl;
 
-                Joueur *tempJoueur = joueurs[joueur];
-                tempJoueur->place_tuile(tuileSelected, positionSelectionne);
-                AffichageConsole::getInstance()->Affichage::affiche_joueur(*tempJoueur);
+                JoueurSimple tempJoueur = *reinterpret_cast<JoueurSimple*>(joueurs[joueur]);
+                tempJoueur.place_tuile(tuileSelected, positionSelectionne);
+                AffichageConsole::getInstance()->Affichage::affiche_joueur(tempJoueur);
 
                 cout << "\033[0;97mTapez \033[1;32my\033[0;97m pour confirmer ce placement !" << endl
                      << "\033[0;37m-> \033[0;97m";

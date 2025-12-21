@@ -42,7 +42,6 @@ enum class Vitesse {
 
 namespace GameConstants {
     // Constantes de score
-    const int VERT_PLACE_MULTIPLIER = 3;
     const int BLEU_VARIANTE_BONUS_THRESHOLD = 10;
     const int BLEU_VARIANTE_BONUS_MULTIPLIER = 2;
     const int ROUGE_VARIANTE_BONUS_MIN_EDGES = 3;
@@ -50,7 +49,6 @@ namespace GameConstants {
     const int ROUGE_VARIANTE_BONUS_MULTIPLIER = 2;
     const int VIOLET_VARIANTE_HAUTEUR_THRESHOLD = 1;
     const int VIOLET_VARIANTE_BONUS_MULTIPLIER = 2;
-    const int JAUNE_VARIANTE_BONUS_MULTIPLIER = 2;
     const int VERT_VARIANTE_BONUS_MULTIPLIER = 2;
 
     // Game rules

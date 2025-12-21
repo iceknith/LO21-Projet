@@ -25,9 +25,7 @@ void Joueur::deserialize(const QVariantMap &data, SerializationContext *context)
 
 Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
     bool continueRecherche = true;
-    //var parity = hex.col&1
-    //var q = hex.col
-    //var r = hex.row - (hex.col - parity) / 2
+
     int row = -2;
     int col;
     Vector2 pos;
@@ -51,13 +49,27 @@ Vector2 IllustreArchitecte::trouver_emplacement_tuile(Tuile &tuile) {
 }
 
 Tuile* IllustreArchitecte::choisir_tuile(Chantier &chantier) {
+
+    // On prend la première tuile que l'on peut acheter qui as une place
+    size_t i;
+    for (i = 0; i <= get_pierre(); i++) {
+        auto tuileChantier  = chantier.get_tuile(i);
+
+        for (auto& iter : *tuileChantier) {
+            if (iter.second->get_type() == TypeHexagone::Place) {
+                pierre -= i;
+                return chantier.prendre_tuile(i);
+            }
+        }
+    }
+
+    // Si ce n'est pas le cas, on prends la première tuile du chantier
     return chantier.prendre_tuile(0);
 }
 
 void IllustreArchitecte::jouer(Chantier &chantier) {
     Tuile *tuile = choisir_tuile(chantier);
     Vector2 position = trouver_emplacement_tuile(*tuile);
-    cout << position.x << " " << position.y << endl;
     place_tuile(tuile, position);
 }
 
