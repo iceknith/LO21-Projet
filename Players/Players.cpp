@@ -69,11 +69,11 @@ IllustreArchitecte::IllustreArchitecte(Difficulte difficulte) : difficulte(diffi
             break;
         case Difficulte::NORMALE:
             scoreJoueur = new ScoreSoloArchitecteMetagenes();
-            nomJoueur = "Metagenes";
+            nomJoueur = "Métagénès";
             break;
         case Difficulte::DIFFICILE:
             scoreJoueur = new ScoreSoloArchitecteCallicrates();
-            nomJoueur = "Callicrates";
+            nomJoueur = "Callicratès";
             break;
         default:
             break;

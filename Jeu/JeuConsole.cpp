@@ -110,13 +110,22 @@ Difficulte JeuConsole::selectNiveauIllustreArchitechte() {
     auto difficulte = static_cast<Difficulte>(choix-1);
     switch (difficulte){
         case Difficulte::FACILE:
-            cout << "\033[0;32mFacile\033[0;97m: vous aller affronter Hippodamos, c'est un maitre du BLABLABLABLA"<< endl;
+            cout << "\033[0;32mFacile\033[0;97m: Tous les Quartiers d’Hippodamos sont considérés comme étant au 1er niveau." << endl << endl
+                << "\033[3;37mAffronter Hippodamos vous permettra de vous familiariser avec le principe du jeu." << endl
+                << "Un peu d’entraînement et vous parviendrez à en venir à bout."<< endl << endl;
             break;
         case Difficulte::NORMALE:
-            cout << "\033[0;33mNormale\033[0;97m: bon courage avec Metagenes"<< endl;
+            cout << "\033[0;33mNormale\033[0;97m: Tous les Quartiers de Métagénès sont considérés comme étant au 1er niveau." << endl
+                << "         Chaque Carrière de Métagénès lui rapporte 2 points supplémentaires." << endl
+                << "\033[3;37mMétagénès est un adversaire coriace." << endl
+                << "Attention à ne pas lui laisser de trop nombreuse Carrières"<< endl << endl;
             break;
         case Difficulte::DIFFICILE:
-            cout << "\033[0;31mDifficile\033[0;97m: vous n'aurez aucune chance face à Callicrates, balbalbal comment ses regles fonctionnent"<< endl;
+            cout << "\033[0;31mDifficile\033[0;97m: tous les Quartiers de Callicratès sont considérés comme étant au 2ème niveau." << endl << endl
+                    << "\033[3;37mCallicratès sera votre ultime adversaire. " << endl
+                    << "De nombreuses tentatives seront nécessaires avant d’espérer le vaincre. " << endl
+                    << "Ne vous laissez pas décourager et adaptez votre stratégie en conséquence. " << endl
+                    << "Courage, la gloire est à portée de main !"<< endl << endl;
             break;
         default:
             cout << "\033[1;31mErreur : difficulté inconnue ..." << endl;
