@@ -86,6 +86,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a5ddf5ad6762058c14cc69cbc0a3aa223"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd1/namespaceScoreUtils.html#a5ddf5ad6762058c14cc69cbc0a3aa223">get_iteration_filtres</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau, <a class="el" href="../../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf">TypeHexagone</a> type, <a class="el" href="../../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce">CouleursAkropolis</a> couleur)</td></tr>
 <tr class="memdesc:a5ddf5ad6762058c14cc69cbc0a3aa223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le nombre hexagones dont le type et la couleur correspondent aux critères donnés.  <a href="../../da/dd1/namespaceScoreUtils.html#a5ddf5ad6762058c14cc69cbc0a3aa223">More...</a><br /></td></tr>
 <tr class="separator:a5ddf5ad6762058c14cc69cbc0a3aa223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea3b2ed8295af88e25ba556b8347239"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd1/namespaceScoreUtils.html#a8ea3b2ed8295af88e25ba556b8347239">get_iteration_filtres_etoiles</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau, <a class="el" href="../../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce">CouleursAkropolis</a> couleur)</td></tr>
+<tr class="memdesc:a8ea3b2ed8295af88e25ba556b8347239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'addition des étoiles de toutes les places dont la couleur correspondent aux critères donnés.  <a href="../../da/dd1/namespaceScoreUtils.html#a8ea3b2ed8295af88e25ba556b8347239">More...</a><br /></td></tr>
+<tr class="separator:a8ea3b2ed8295af88e25ba556b8347239"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca18e93ae5e2e9ecffc7c475a6988438"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd1/namespaceScoreUtils.html#aca18e93ae5e2e9ecffc7c475a6988438">get_iteration_with_hauteur_filtres</a> (<a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *plateau, <a class="el" href="../../d7/d09/Utils_8hpp.html#a5f32847d4f76db62c43a38bdc5b2cdaf">TypeHexagone</a> type, <a class="el" href="../../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce">CouleursAkropolis</a> couleur)</td></tr>
 <tr class="memdesc:aca18e93ae5e2e9ecffc7c475a6988438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'addition des hauteurs de tous les hexagones dont le type et la couleur correspondent aux critères donnés.  <a href="../../da/dd1/namespaceScoreUtils.html#aca18e93ae5e2e9ecffc7c475a6988438">More...</a><br /></td></tr>
 <tr class="separator:aca18e93ae5e2e9ecffc7c475a6988438"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,6 +296,42 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Le nombre d'hexagones filtrées </dd></dl>
+
+</div>
+</div>
+<a id="a8ea3b2ed8295af88e25ba556b8347239" name="a8ea3b2ed8295af88e25ba556b8347239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea3b2ed8295af88e25ba556b8347239">&#9670;&#160;</a></span>get_iteration_filtres_etoiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ScoreUtils::get_iteration_filtres_etoiles </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/db5/classPlateau.html">Plateau</a> *&#160;</td>
+          <td class="paramname"><em>plateau</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d7/d09/Utils_8hpp.html#a892c50cc8f60ade01ab459df925252ce">CouleursAkropolis</a>&#160;</td>
+          <td class="paramname"><em>couleur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plateau</td><td><a class="el" href="../../d7/db5/classPlateau.html" title="La classe implémentant le Plateau de jeu d&#39;un joueur.">Plateau</a> sur lequel effectuer la recherche </td></tr>
+    <tr><td class="paramname">couleur</td><td>Couleur de place à filtrer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Addition des étoiles de toutes les places filtrées </dd></dl>
 
 </div>
 </div>
